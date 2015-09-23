@@ -6,8 +6,11 @@ before_install:
 install:
   - sudo apt-get install libboost-all-dev
   - sudo apt-get install cmake
+  - g++ --version
+  - cmake --version
 
 compiler:
+  - g++
   - gcc
 
 before_script:
