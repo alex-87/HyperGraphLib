@@ -6,11 +6,9 @@ before_install:
 install:
   - sudo apt-get install libboost-all-dev
   - sudo apt-get install cmake
-  - sudo apt-get install -qq g++-4.8
-  - export CXX="g++-4.8"
 
 compiler:
-  - g++
+  - gcc
 
 before_script:
   - cmake CMakeLists.txt
