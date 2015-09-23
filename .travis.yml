@@ -1,0 +1,11 @@
+install:
+  - sudo apt-get install boost
+  - sudo apt-get install cmake
+
+compiler:
+  - gcc
+
+before_script:
+  - cmake CMakeLists.txt
+
+script: make
