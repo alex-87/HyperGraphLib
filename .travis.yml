@@ -1,19 +1,19 @@
+language: cpp
+
+compiler: g++
 
 before_install:
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
 
 install:
+  - sudo apt-get install -qq g++-4.8
+  - export CXX="g++-4.8"
   - sudo apt-get install libboost-all-dev
   - sudo apt-get install cmake
-  - g++ --version
-  - cmake --version
-
-compiler:
-  - g++
-  - gcc
 
 before_script:
   - cmake CMakeLists.txt
 
 script: make
+
