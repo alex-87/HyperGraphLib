@@ -3,7 +3,7 @@ install:
   - sudo apt-get install cmake
 
 compiler:
-  - gcc-4.8
+  - g++-4.8
 
 before_script:
   - cmake CMakeLists.txt
