@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Hypergraphlib by alex-87</title>
+    <title>HyperGraphLib - The C++ Hypergraphs Library</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
@@ -16,16 +16,25 @@
     <div class="wrapper">
       <header>
         <h1>Hypergraphlib</h1>
-        <p>School project - C++ Hypergraph modelisation Library using Boost and OpenMP.</p>
+        <p>School project - C++ Hypergraph modelisation Library using <a href="http://www.boost.org/">Boost</a>( > v1.54 ) and <a href="http://openmp.org">OpenMP</a>.</p>
 
         <p class="view"><a href="https://github.com/alex-87/HyperGraphLib">View the Project on GitHub <small>alex-87/HyperGraphLib</small></a></p>
-
 
         <ul>
           <li><a href="https://github.com/alex-87/HyperGraphLib/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/alex-87/HyperGraphLib/tarball/master">Download <strong>TAR Ball</strong></a></li>
           <li><a href="https://github.com/alex-87/HyperGraphLib">View On <strong>GitHub</strong></a></li>
         </ul>
+
+	<h2>Social :)</h2>
+	
+	<div id="ghbtns">
+		<iframe src="https://ghbtns.com/github-btn.html?user=alex-87&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+	</div>
+
+	<a href="https://twitter.com/Alex_alex0" class="twitter-follow-button" data-show-count="true">Follow @Alex_alex0</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
       </header>
       <section>
         <h3>
@@ -37,6 +46,8 @@
 <a id="hypergraph-structure" class="anchor" href="#hypergraph-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hypergraph structure</h3>
 
 <p>This is a Hypergraph:</p>
+
+<img src="images/hypergraph.png" />
 
 <h3>
 <a id="implemented-algorithms" class="anchor" href="#implemented-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implemented algorithms</h3>
@@ -55,54 +66,54 @@
 
 <p>Some of them only decide of the associated property.</p>
 
-<h3>
-<a id="application-instead-of-library" class="anchor" href="#application-instead-of-library" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application instead of library</h3>
+<h2>
+<a id="application-instead-of-library" class="anchor" href="#application-instead-of-library" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application instead of library</h2>
 
 <p>With the <strong>client</strong> package (included by default), compile it with:</p>
 
-<h2>
-<a id="compilation" class="anchor" href="#compilation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compilation</h2>
+<h3>
+<a id="compilation" class="anchor" href="#compilation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compilation</h3>
 
 <p><code>
 cmake CMakeLists.txt
 make
 </code></p>
 
-<h2>
-<a id="try-it-" class="anchor" href="#try-it-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Try it :)</h2>
-
 <h1>
-<a id="how-to-generate-a-random-hypergraph-with-5-vertexes-" class="anchor" href="#how-to-generate-a-random-hypergraph-with-5-vertexes-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to generate a random hypergraph with 5 vertexes ?</h1>
+<a id="try-it-" class="anchor" href="#try-it-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Try it :)</h1>
+
+<h3>
+<a id="how-to-generate-a-random-hypergraph-with-5-vertexes-" class="anchor" href="#how-to-generate-a-random-hypergraph-with-5-vertexes-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to generate a random hypergraph with 5 vertexes ?</h3>
 
 <p><code>
 ./HypergraphLib --random 5 &gt; myAwesomeHypergraph.txt
 </code></p>
 
-<h1>
-<a id="how-to-get-the-adjacent-matrix-" class="anchor" href="#how-to-get-the-adjacent-matrix-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to get the adjacent matrix ?</h1>
+<h3>
+<a id="how-to-get-the-adjacent-matrix-" class="anchor" href="#how-to-get-the-adjacent-matrix-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to get the adjacent matrix ?</h3>
 
 <p><code>
 ./HypergraphLib --inputfile myAwesomeHypergraph.txt --adjacence
 </code></p>
 
-<h1>
-<a id="how-to-know-if-my-hypergraph-is-connected-each-vertex-can-be-reach-" class="anchor" href="#how-to-know-if-my-hypergraph-is-connected-each-vertex-can-be-reach-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to know if my hypergraph is connected (each vertex can be reach) ?</h1>
+<h3>
+<a id="how-to-know-if-my-hypergraph-is-connected-each-vertex-can-be-reach-" class="anchor" href="#how-to-know-if-my-hypergraph-is-connected-each-vertex-can-be-reach-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to know if my hypergraph is connected (each vertex can be reach) ?</h3>
 
 <p><code>
 ./HypergraphLib --inputfile myAwesomeHypergraph.txt --connexe
 </code></p>
 
-<h1>
-<a id="how-to-use-hypergraphlib-" class="anchor" href="#how-to-use-hypergraphlib-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use HyperGraphLib ?</h1>
+<h3>
+<a id="how-to-use-hypergraphlib-" class="anchor" href="#how-to-use-hypergraphlib-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use HyperGraphLib ?</h3>
 
 <p><code>
 ./HypergraphLib --help
 </code></p>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<h2>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h2>
 
-<p>This is a school project, by <a href="https://github.com/alex-87" class="user-mention">@alex-87</a>, tell me what you think about HyperGraphLib at <a href="https://twitter.com/Alex_alex0">twitter.com/Alex_alex0</a>, on get support at <a href="https://twitter.com/hashtag/HyperGraphLib">#HyperGraphLib</a></p>
+<p>This is a school project, by <a href="https://github.com/alex-87" class="user-mention">@alex-87</a>, tell me what you think about HyperGraphLib at <a href="https://twitter.com/Alex_alex0">twitter.com/Alex_alex0</a>, or get support at <a href="https://twitter.com/hashtag/HyperGraphLib">#HyperGraphLib</a></p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/alex-87">alex-87</a></p>
