@@ -4,9 +4,9 @@
 
 #include <map>
 #include <vector>
-//#include <boost/container/vector.hpp>
+#include <boost/container/vector.hpp>
 #include <boost/multi_array.hpp>
-//#include <boost/interprocess/allocators/allocator.hpp>
+#include <boost/interprocess/allocators/allocator.hpp>
 
 
 class HyperVertex;
@@ -24,12 +24,10 @@ public:
 	typedef boost::multi_array<int, 2>
 	AdjacentMatrixContainerInt;
 
-	//typedef boost::container::vector<HyperVertex>
-	typedef std::vector<HyperVertex>
+	typedef boost::container::vector<HyperVertex>
 	ListHyperVertex;
 
-	//typedef boost::container::vector<HyperEdge>
-	typedef std::vector<HyperVertex>
+	typedef boost::container::vector<HyperEdge>
 	ListHyperEdge;
 
 	typedef std::map<HyperVertex, int>
