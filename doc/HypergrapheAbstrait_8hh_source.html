@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>HypergraphLib:  Fichier source de src/model/include/HypergrapheAbstrait.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HypergraphLib
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5dd65160827af56e6353642206b80129.html">model</a></li><li class="navelem"><a class="el" href="dir_4e42d8d7040e5636217fe339fb7064ec.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">HypergrapheAbstrait.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef HYPERGRAPHE_HH_</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define HYPERGRAPHE_HH_</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;AdjacentMatrix.hh&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classHypergrapheAbstrait.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHypergrapheAbstrait.html">HypergrapheAbstrait</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classHypergrapheAbstrait.html#a528857847156e7b6dc38c76541e4a35d">HypergrapheAbstrait</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classHypergrapheAbstrait.html#acdb3790a448bfb69e85f82578a33534d">addHyperVertex</a>(<span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;) = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classHypergrapheAbstrait.html#ae900e60453e35ed0dc164eccf550cd2c">addHyperEdge</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;)     = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classAdjacentMatrix.html">AdjacentMatrix</a>&amp; <a class="code" href="classHypergrapheAbstrait.html#ad54d4b2800d49053915aaac2e6b553d9">getAdjacentMatrix</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    LibType::IndexerHyperVertex&amp; <a class="code" href="classHypergrapheAbstrait.html#a697f41772e2f212b8940ba164950d78a">getIndexHyperVertex</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    LibType::IndexerHyperEdge&amp; <a class="code" href="classHypergrapheAbstrait.html#a732add4707d7dd3bb55a902fa87f345c">getIndexHyperEdge</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp; <a class="code" href="classHypergrapheAbstrait.html#a0a988c30e8264f71a8420804667b98ed">getHyperVertexById</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;) = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp; <a class="code" href="classHypergrapheAbstrait.html#ac4104a117ea7b877f5ae4c068e27c297">getHyperEdgeById</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;) = 0;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    LibType::ListHyperVertex&amp; <a class="code" href="classHypergrapheAbstrait.html#a6698e99c65a192984b3251340bf3c6f0">getHyperVertexList</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    LibType::ListHyperEdge&amp;   <a class="code" href="classHypergrapheAbstrait.html#aea883c1389bb1bff20951e3bf2052117">getHyperEdgeList</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classHypergrapheAbstrait.html#a26279785446787460bd5a030e77b1c24">flush</a>() = 0;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classHypergrapheAbstrait.html#a73996276a13337e2c12a6f9fb69b2a8a">~HypergrapheAbstrait</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classHypergrapheAbstrait.html#a4caabe8796540f739a8d46141b0aab05">   92</a></span>&#160;    LibType::IndexerHyperVertex <a class="code" href="classHypergrapheAbstrait.html#a4caabe8796540f739a8d46141b0aab05">_indexHyperVertex</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classHypergrapheAbstrait.html#ae097b6e41e6c1d50a76d7657983f2286">   97</a></span>&#160;    LibType::IndexerHyperEdge   <a class="code" href="classHypergrapheAbstrait.html#ae097b6e41e6c1d50a76d7657983f2286">_indexHyperEdge</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classHypergrapheAbstrait.html#a4001a407a991f88c9249bf90ed2b71e1">  102</a></span>&#160;    LibType::ListHyperVertex    <a class="code" href="classHypergrapheAbstrait.html#a4001a407a991f88c9249bf90ed2b71e1">_listHyperVertex</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classHypergrapheAbstrait.html#a10d1d8376c68eb0817d38af620b9a6cc">  107</a></span>&#160;    LibType::ListHyperEdge      <a class="code" href="classHypergrapheAbstrait.html#a10d1d8376c68eb0817d38af620b9a6cc">_listHyperEdge</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classHypergrapheAbstrait.html#a1bd95574faad184034cd69360f18a3a9">  112</a></span>&#160;    LibType::HyperVertexIndexer <a class="code" href="classHypergrapheAbstrait.html#a1bd95574faad184034cd69360f18a3a9">_hyperVertexIndexer</a>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classHypergrapheAbstrait.html#a8b99a2ab59161899fbfd50927ee4cc08">  117</a></span>&#160;    LibType::HyperEdgeIndexer   <a class="code" href="classHypergrapheAbstrait.html#a8b99a2ab59161899fbfd50927ee4cc08">_hyperEdgeIndexer</a>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="classHypergrapheAbstrait.html#a3f339ffd733fa3c65ddcc88abe6399b7">  122</a></span>&#160;    <a class="code" href="classAdjacentMatrix.html">AdjacentMatrix</a>              <a class="code" href="classHypergrapheAbstrait.html#a3f339ffd733fa3c65ddcc88abe6399b7">_adjacentMatrix</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;};</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classAdjacentMatrix_html"><div class="ttname"><a href="classAdjacentMatrix.html">AdjacentMatrix</a></div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:20</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a1bd95574faad184034cd69360f18a3a9"><div class="ttname"><a href="classHypergrapheAbstrait.html#a1bd95574faad184034cd69360f18a3a9">HypergrapheAbstrait::_hyperVertexIndexer</a></div><div class="ttdeci">LibType::HyperVertexIndexer _hyperVertexIndexer</div><div class="ttdef"><b>Definition:</b> HypergrapheAbstrait.hh:112</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a26279785446787460bd5a030e77b1c24"><div class="ttname"><a href="classHypergrapheAbstrait.html#a26279785446787460bd5a030e77b1c24">HypergrapheAbstrait::flush</a></div><div class="ttdeci">virtual void flush()=0</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a697f41772e2f212b8940ba164950d78a"><div class="ttname"><a href="classHypergrapheAbstrait.html#a697f41772e2f212b8940ba164950d78a">HypergrapheAbstrait::getIndexHyperVertex</a></div><div class="ttdeci">LibType::IndexerHyperVertex &amp; getIndexHyperVertex()</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_ad54d4b2800d49053915aaac2e6b553d9"><div class="ttname"><a href="classHypergrapheAbstrait.html#ad54d4b2800d49053915aaac2e6b553d9">HypergrapheAbstrait::getAdjacentMatrix</a></div><div class="ttdeci">AdjacentMatrix &amp; getAdjacentMatrix()</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a73996276a13337e2c12a6f9fb69b2a8a"><div class="ttname"><a href="classHypergrapheAbstrait.html#a73996276a13337e2c12a6f9fb69b2a8a">HypergrapheAbstrait::~HypergrapheAbstrait</a></div><div class="ttdeci">virtual ~HypergrapheAbstrait()</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a8b99a2ab59161899fbfd50927ee4cc08"><div class="ttname"><a href="classHypergrapheAbstrait.html#a8b99a2ab59161899fbfd50927ee4cc08">HypergrapheAbstrait::_hyperEdgeIndexer</a></div><div class="ttdeci">LibType::HyperEdgeIndexer _hyperEdgeIndexer</div><div class="ttdef"><b>Definition:</b> HypergrapheAbstrait.hh:117</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a732add4707d7dd3bb55a902fa87f345c"><div class="ttname"><a href="classHypergrapheAbstrait.html#a732add4707d7dd3bb55a902fa87f345c">HypergrapheAbstrait::getIndexHyperEdge</a></div><div class="ttdeci">LibType::IndexerHyperEdge &amp; getIndexHyperEdge()</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a6698e99c65a192984b3251340bf3c6f0"><div class="ttname"><a href="classHypergrapheAbstrait.html#a6698e99c65a192984b3251340bf3c6f0">HypergrapheAbstrait::getHyperVertexList</a></div><div class="ttdeci">LibType::ListHyperVertex &amp; getHyperVertexList()</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a4001a407a991f88c9249bf90ed2b71e1"><div class="ttname"><a href="classHypergrapheAbstrait.html#a4001a407a991f88c9249bf90ed2b71e1">HypergrapheAbstrait::_listHyperVertex</a></div><div class="ttdeci">LibType::ListHyperVertex _listHyperVertex</div><div class="ttdef"><b>Definition:</b> HypergrapheAbstrait.hh:102</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_aea883c1389bb1bff20951e3bf2052117"><div class="ttname"><a href="classHypergrapheAbstrait.html#aea883c1389bb1bff20951e3bf2052117">HypergrapheAbstrait::getHyperEdgeList</a></div><div class="ttdeci">LibType::ListHyperEdge &amp; getHyperEdgeList()</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_ae900e60453e35ed0dc164eccf550cd2c"><div class="ttname"><a href="classHypergrapheAbstrait.html#ae900e60453e35ed0dc164eccf550cd2c">HypergrapheAbstrait::addHyperEdge</a></div><div class="ttdeci">virtual void addHyperEdge(const HyperEdge &amp;)=0</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a4caabe8796540f739a8d46141b0aab05"><div class="ttname"><a href="classHypergrapheAbstrait.html#a4caabe8796540f739a8d46141b0aab05">HypergrapheAbstrait::_indexHyperVertex</a></div><div class="ttdeci">LibType::IndexerHyperVertex _indexHyperVertex</div><div class="ttdef"><b>Definition:</b> HypergrapheAbstrait.hh:92</div></div>
+<div class="ttc" id="classHyperEdge_html"><div class="ttname"><a href="classHyperEdge.html">HyperEdge</a></div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:15</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a10d1d8376c68eb0817d38af620b9a6cc"><div class="ttname"><a href="classHypergrapheAbstrait.html#a10d1d8376c68eb0817d38af620b9a6cc">HypergrapheAbstrait::_listHyperEdge</a></div><div class="ttdeci">LibType::ListHyperEdge _listHyperEdge</div><div class="ttdef"><b>Definition:</b> HypergrapheAbstrait.hh:107</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a0a988c30e8264f71a8420804667b98ed"><div class="ttname"><a href="classHypergrapheAbstrait.html#a0a988c30e8264f71a8420804667b98ed">HypergrapheAbstrait::getHyperVertexById</a></div><div class="ttdeci">virtual HyperVertex &amp; getHyperVertexById(const unsigned int &amp;)=0</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a3f339ffd733fa3c65ddcc88abe6399b7"><div class="ttname"><a href="classHypergrapheAbstrait.html#a3f339ffd733fa3c65ddcc88abe6399b7">HypergrapheAbstrait::_adjacentMatrix</a></div><div class="ttdeci">AdjacentMatrix _adjacentMatrix</div><div class="ttdef"><b>Definition:</b> HypergrapheAbstrait.hh:122</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_a528857847156e7b6dc38c76541e4a35d"><div class="ttname"><a href="classHypergrapheAbstrait.html#a528857847156e7b6dc38c76541e4a35d">HypergrapheAbstrait::HypergrapheAbstrait</a></div><div class="ttdeci">HypergrapheAbstrait()</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_acdb3790a448bfb69e85f82578a33534d"><div class="ttname"><a href="classHypergrapheAbstrait.html#acdb3790a448bfb69e85f82578a33534d">HypergrapheAbstrait::addHyperVertex</a></div><div class="ttdeci">virtual void addHyperVertex(const HyperVertex &amp;)=0</div></div>
+<div class="ttc" id="classHyperVertex_html"><div class="ttname"><a href="classHyperVertex.html">HyperVertex</a></div><div class="ttdef"><b>Definition:</b> HyperVertex.hh:16</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html"><div class="ttname"><a href="classHypergrapheAbstrait.html">HypergrapheAbstrait</a></div><div class="ttdef"><b>Definition:</b> HypergrapheAbstrait.hh:13</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_ac4104a117ea7b877f5ae4c068e27c297"><div class="ttname"><a href="classHypergrapheAbstrait.html#ac4104a117ea7b877f5ae4c068e27c297">HypergrapheAbstrait::getHyperEdgeById</a></div><div class="ttdeci">virtual HyperEdge &amp; getHyperEdgeById(const unsigned int &amp;)=0</div></div>
+<div class="ttc" id="classHypergrapheAbstrait_html_ae097b6e41e6c1d50a76d7657983f2286"><div class="ttname"><a href="classHypergrapheAbstrait.html#ae097b6e41e6c1d50a76d7657983f2286">HypergrapheAbstrait::_indexHyperEdge</a></div><div class="ttdeci">LibType::IndexerHyperEdge _indexHyperEdge</div><div class="ttdef"><b>Definition:</b> HypergrapheAbstrait.hh:97</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

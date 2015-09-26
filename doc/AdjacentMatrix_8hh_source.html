@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>HypergraphLib:  Fichier source de src/model/include/AdjacentMatrix.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HypergraphLib
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5dd65160827af56e6353642206b80129.html">model</a></li><li class="navelem"><a class="el" href="dir_4e42d8d7040e5636217fe339fb7064ec.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">AdjacentMatrix.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Modélisation de la matrice d&#39;adjacence associée à l&#39;hypergraphe.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef MODEL_INCLUDE_ADJACENTMATRIX_HH_</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define MODEL_INCLUDE_ADJACENTMATRIX_HH_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;LibType.hh&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;boost/tuple/tuple.hpp&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span><a class="code" href="classHyperEdge.html">HyperEdge</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">class </span><a class="code" href="classHyperVertex.html">HyperVertex</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classAdjacentMatrix.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAdjacentMatrix.html">AdjacentMatrix</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classAdjacentMatrix.html#a5da1fb678f25de59cab46bb181cbfc35">AdjacentMatrix</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classAdjacentMatrix.html#a5da1fb678f25de59cab46bb181cbfc35">AdjacentMatrix</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#a3129f47ce926e95fea18930811a63816">resize</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#af6a2ca9235c8fb2e52ffeb8462abee25">addHyperVertex</a>(<span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#a21554318b5ccb36d8ca89748033d297e">addHyperEdge</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a1c53ab1daaec81c49f2661e7d54678cc">isVertexInEdge</a>(<span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;, <span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a6a94758e5e824382c7d1772070d65937">isEdgeInVertex</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;, <span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a1c53ab1daaec81c49f2661e7d54678cc">isVertexInEdge</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a6a94758e5e824382c7d1772070d65937">isEdgeInVertex</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    LibType::AdjacentMatrixContainerBool&amp; <a class="code" href="classAdjacentMatrix.html#a315845d3a01f738b5edcc209f6032aee">getBoolAdjacentMatrix</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    LibType::AdjacentMatrixContainerInt&amp; <a class="code" href="classAdjacentMatrix.html#a45dd7071ce7a69b8e0fb11cc42eb1443">getUIntAdjacentMatrix</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#a9f25f6e88b3a19a26ebc45dfffe7db5d">getVertexDegree</a>(<span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#a4db5b2697694c75b75865dc62ee5dd07">getEdgeSize</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#ae7a4e2fe4ff9d19aade991e5a5fce63f">getCoRank</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#af1e872485fc6ad7cc3a3120fd09bb52c">getRank</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    boost::tuple&lt;unsigned int, unsigned int&gt;&amp;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="classAdjacentMatrix.html#affb19162f9c891d90b07e9ef60de503e">getMatrixDimension</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#a5d5d4c921f7649baea50e6dee807232b">display</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classAdjacentMatrix.html#a44c6efab4a83c8bd4d759f60f6aa30f0">  142</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#a44c6efab4a83c8bd4d759f60f6aa30f0">_m</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="classAdjacentMatrix.html#aa3a4aadf374e76c50d3d1d59ce0eba9a">  147</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#aa3a4aadf374e76c50d3d1d59ce0eba9a">_n</a>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="classAdjacentMatrix.html#a4f38fc6fcabf5d7ab2e5e888098d94ed">  152</a></span>&#160;    LibType::AdjacentMatrixContainerBool <a class="code" href="classAdjacentMatrix.html#a4f38fc6fcabf5d7ab2e5e888098d94ed">_adjacentMatrixBool</a>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classAdjacentMatrix.html#ae6737c737573488313c67040464065f8">  157</a></span>&#160;    LibType::AdjacentMatrixContainerInt  <a class="code" href="classAdjacentMatrix.html#ae6737c737573488313c67040464065f8">_adjacentMatrixUInt</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;};</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="ttc" id="classAdjacentMatrix_html_ae7a4e2fe4ff9d19aade991e5a5fce63f"><div class="ttname"><a href="classAdjacentMatrix.html#ae7a4e2fe4ff9d19aade991e5a5fce63f">AdjacentMatrix::getCoRank</a></div><div class="ttdeci">int getCoRank() const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html"><div class="ttname"><a href="classAdjacentMatrix.html">AdjacentMatrix</a></div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:20</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_af1e872485fc6ad7cc3a3120fd09bb52c"><div class="ttname"><a href="classAdjacentMatrix.html#af1e872485fc6ad7cc3a3120fd09bb52c">AdjacentMatrix::getRank</a></div><div class="ttdeci">int getRank() const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a21554318b5ccb36d8ca89748033d297e"><div class="ttname"><a href="classAdjacentMatrix.html#a21554318b5ccb36d8ca89748033d297e">AdjacentMatrix::addHyperEdge</a></div><div class="ttdeci">void addHyperEdge(const HyperEdge &amp;)</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a1c53ab1daaec81c49f2661e7d54678cc"><div class="ttname"><a href="classAdjacentMatrix.html#a1c53ab1daaec81c49f2661e7d54678cc">AdjacentMatrix::isVertexInEdge</a></div><div class="ttdeci">bool isVertexInEdge(const HyperVertex &amp;, const HyperEdge &amp;) const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a5d5d4c921f7649baea50e6dee807232b"><div class="ttname"><a href="classAdjacentMatrix.html#a5d5d4c921f7649baea50e6dee807232b">AdjacentMatrix::display</a></div><div class="ttdeci">void display() const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html_af6a2ca9235c8fb2e52ffeb8462abee25"><div class="ttname"><a href="classAdjacentMatrix.html#af6a2ca9235c8fb2e52ffeb8462abee25">AdjacentMatrix::addHyperVertex</a></div><div class="ttdeci">void addHyperVertex(const HyperVertex &amp;)</div></div>
+<div class="ttc" id="classHyperEdge_html"><div class="ttname"><a href="classHyperEdge.html">HyperEdge</a></div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:15</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_ae6737c737573488313c67040464065f8"><div class="ttname"><a href="classAdjacentMatrix.html#ae6737c737573488313c67040464065f8">AdjacentMatrix::_adjacentMatrixUInt</a></div><div class="ttdeci">LibType::AdjacentMatrixContainerInt _adjacentMatrixUInt</div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:157</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a5da1fb678f25de59cab46bb181cbfc35"><div class="ttname"><a href="classAdjacentMatrix.html#a5da1fb678f25de59cab46bb181cbfc35">AdjacentMatrix::AdjacentMatrix</a></div><div class="ttdeci">AdjacentMatrix()</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a9f25f6e88b3a19a26ebc45dfffe7db5d"><div class="ttname"><a href="classAdjacentMatrix.html#a9f25f6e88b3a19a26ebc45dfffe7db5d">AdjacentMatrix::getVertexDegree</a></div><div class="ttdeci">unsigned int getVertexDegree(const HyperVertex &amp;) const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a44c6efab4a83c8bd4d759f60f6aa30f0"><div class="ttname"><a href="classAdjacentMatrix.html#a44c6efab4a83c8bd4d759f60f6aa30f0">AdjacentMatrix::_m</a></div><div class="ttdeci">unsigned int _m</div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:142</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a4f38fc6fcabf5d7ab2e5e888098d94ed"><div class="ttname"><a href="classAdjacentMatrix.html#a4f38fc6fcabf5d7ab2e5e888098d94ed">AdjacentMatrix::_adjacentMatrixBool</a></div><div class="ttdeci">LibType::AdjacentMatrixContainerBool _adjacentMatrixBool</div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:152</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a45dd7071ce7a69b8e0fb11cc42eb1443"><div class="ttname"><a href="classAdjacentMatrix.html#a45dd7071ce7a69b8e0fb11cc42eb1443">AdjacentMatrix::getUIntAdjacentMatrix</a></div><div class="ttdeci">LibType::AdjacentMatrixContainerInt &amp; getUIntAdjacentMatrix()</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a3129f47ce926e95fea18930811a63816"><div class="ttname"><a href="classAdjacentMatrix.html#a3129f47ce926e95fea18930811a63816">AdjacentMatrix::resize</a></div><div class="ttdeci">void resize(const unsigned int &amp;, const unsigned int &amp;)</div></div>
+<div class="ttc" id="classHyperVertex_html"><div class="ttname"><a href="classHyperVertex.html">HyperVertex</a></div><div class="ttdef"><b>Definition:</b> HyperVertex.hh:16</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a6a94758e5e824382c7d1772070d65937"><div class="ttname"><a href="classAdjacentMatrix.html#a6a94758e5e824382c7d1772070d65937">AdjacentMatrix::isEdgeInVertex</a></div><div class="ttdeci">bool isEdgeInVertex(const HyperEdge &amp;, const HyperVertex &amp;) const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html_aa3a4aadf374e76c50d3d1d59ce0eba9a"><div class="ttname"><a href="classAdjacentMatrix.html#aa3a4aadf374e76c50d3d1d59ce0eba9a">AdjacentMatrix::_n</a></div><div class="ttdeci">unsigned int _n</div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:147</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a315845d3a01f738b5edcc209f6032aee"><div class="ttname"><a href="classAdjacentMatrix.html#a315845d3a01f738b5edcc209f6032aee">AdjacentMatrix::getBoolAdjacentMatrix</a></div><div class="ttdeci">LibType::AdjacentMatrixContainerBool &amp; getBoolAdjacentMatrix()</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a4db5b2697694c75b75865dc62ee5dd07"><div class="ttname"><a href="classAdjacentMatrix.html#a4db5b2697694c75b75865dc62ee5dd07">AdjacentMatrix::getEdgeSize</a></div><div class="ttdeci">unsigned int getEdgeSize(const HyperEdge &amp;) const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html_affb19162f9c891d90b07e9ef60de503e"><div class="ttname"><a href="classAdjacentMatrix.html#affb19162f9c891d90b07e9ef60de503e">AdjacentMatrix::getMatrixDimension</a></div><div class="ttdeci">boost::tuple&lt; unsigned int, unsigned int &gt; &amp; getMatrixDimension()</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

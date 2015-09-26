@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['_5fadjacentmatrix',['_adjacentMatrix',['../classHypergrapheAbstrait.html#a3f339ffd733fa3c65ddcc88abe6399b7',1,'HypergrapheAbstrait']]],
+  ['_5fadjacentmatrixbool',['_adjacentMatrixBool',['../classAdjacentMatrix.html#a4f38fc6fcabf5d7ab2e5e888098d94ed',1,'AdjacentMatrix']]],
+  ['_5fadjacentmatrixuint',['_adjacentMatrixUInt',['../classAdjacentMatrix.html#ae6737c737573488313c67040464065f8',1,'AdjacentMatrix']]],
+  ['_5fbooleanresult',['_booleanResult',['../classRStructure.html#aee41262f5da47a84531d99817eca7df7',1,'RStructure']]],
+  ['_5fhyperedgeindexer',['_hyperEdgeIndexer',['../classHypergrapheAbstrait.html#a8b99a2ab59161899fbfd50927ee4cc08',1,'HypergrapheAbstrait']]],
+  ['_5fhypergrapheresult',['_hypergrapheResult',['../classRStructure.html#af698d2a49e6f4d12cbfa72830d915bdb',1,'RStructure']]],
+  ['_5fhypervertexindexer',['_hyperVertexIndexer',['../classHypergrapheAbstrait.html#a1bd95574faad184034cd69360f18a3a9',1,'HypergrapheAbstrait']]],
+  ['_5fidentifier',['_identifier',['../classHyperEdge.html#a3744cd7ac296650969ff2ecccc8d6556',1,'HyperEdge::_identifier()'],['../classHyperVertex.html#adde80284a14a52ac6a2464c3a6892278',1,'HyperVertex::_identifier()']]],
+  ['_5findexhyperedge',['_indexHyperEdge',['../classHypergrapheAbstrait.html#ae097b6e41e6c1d50a76d7657983f2286',1,'HypergrapheAbstrait']]],
+  ['_5findexhypervertex',['_indexHyperVertex',['../classHypergrapheAbstrait.html#a4caabe8796540f739a8d46141b0aab05',1,'HypergrapheAbstrait']]],
+  ['_5fintegerresult',['_integerResult',['../classRStructure.html#af7e5c5c50cbc4f91acdafa23ce9a3d5f',1,'RStructure']]],
+  ['_5fk',['_k',['../classkUniform.html#af7351be6232588cf3de0970086566ec1',1,'kUniform']]],
+  ['_5flisthyperedge',['_listHyperEdge',['../classHypergrapheAbstrait.html#a10d1d8376c68eb0817d38af620b9a6cc',1,'HypergrapheAbstrait::_listHyperEdge()'],['../classHyperVertex.html#af811cdaf32ea6232fd497412e51913f5',1,'HyperVertex::_listHyperEdge()'],['../classReaderFile.html#a752a2bb17214663b54f0675073ac5726',1,'ReaderFile::_listHyperEdge()']]],
+  ['_5flisthypervertex',['_listHyperVertex',['../classHyperEdge.html#ad9dc4b59a46ef46321158f0a0cab464d',1,'HyperEdge::_listHyperVertex()'],['../classHypergrapheAbstrait.html#a4001a407a991f88c9249bf90ed2b71e1',1,'HypergrapheAbstrait::_listHyperVertex()'],['../classReaderFile.html#a7a4879e664608e91c81d5bba3a2e7fc5',1,'ReaderFile::_listHyperVertex()']]],
+  ['_5fm',['_m',['../classAdjacentMatrix.html#a44c6efab4a83c8bd4d759f60f6aa30f0',1,'AdjacentMatrix']]],
+  ['_5fn',['_n',['../classAdjacentMatrix.html#aa3a4aadf374e76c50d3d1d59ce0eba9a',1,'AdjacentMatrix']]],
+  ['_5fptrdualhypergraphe',['_ptrDualHypergraphe',['../classDual.html#a5ef98e5bf4a3219d082fff6bc9c48a32',1,'Dual']]],
+  ['_5fptrhypergraphe',['_ptrHypergraphe',['../classHyperEdge.html#a8a19d06b528adc44f079ae2c2425043c',1,'HyperEdge::_ptrHypergraphe()'],['../classHyperVertex.html#ab9c3dfe924376ec97da4f04a2db2ff8b',1,'HyperVertex::_ptrHypergraphe()']]],
+  ['_5fptrhypergrapheabstrait',['_ptrHypergrapheAbstrait',['../classConnected.html#a8b230ab8a6ced13ef973b5cc5dcaf33b',1,'Connected::_ptrHypergrapheAbstrait()'],['../classDual.html#ade9d469d0724eb60f65e0984e7bbbef6',1,'Dual::_ptrHypergrapheAbstrait()'],['../classHelly.html#abe43feed4e0a8d8b418b45e56e06cd48',1,'Helly::_ptrHypergrapheAbstrait()'],['../classkRegular.html#a20b289cb2731db1749e8d30af921bd33',1,'kRegular::_ptrHypergrapheAbstrait()'],['../classkUniform.html#a644f88c38af4c6ecd3da4d388ba74a15',1,'kUniform::_ptrHypergrapheAbstrait()'],['../classLinear.html#aaf14b5c04caecfbf29ddcff2c63b893b',1,'Linear::_ptrHypergrapheAbstrait()'],['../classSimple.html#aa2ee8b1707824c6abb3157ef4eb8f8b5',1,'Simple::_ptrHypergrapheAbstrait()'],['../classReaderAbstrait.html#a81b6211bb1cd30d3f6be44109cf8dc23',1,'ReaderAbstrait::_ptrHypergrapheAbstrait()'],['../classWriterAbstrait.html#aa67ec2de3b7926f7bbc54301364233b7',1,'WriterAbstrait::_ptrHypergrapheAbstrait()']]],
+  ['_5fresult',['_result',['../classConnected.html#a28ca8b5f9c0fbee2249bd0a6f5f1403d',1,'Connected::_result()'],['../classDual.html#a5325006ffd464dc5a5baa9ea57df1d7a',1,'Dual::_result()'],['../classHelly.html#a00c7f907c93622dbee765a99f2c527af',1,'Helly::_result()'],['../classkRegular.html#a5c91cf856c86d3fe263f448a73629d70',1,'kRegular::_result()'],['../classkUniform.html#a1bd8010d82d932917fb47ead9eaa669a',1,'kUniform::_result()'],['../classLinear.html#abdb71d9011d274ce9673f54011b8b455',1,'Linear::_result()'],['../classSimple.html#ad93540f2fcc1db3a387441e190750bcb',1,'Simple::_result()']]]
+];

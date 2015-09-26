@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>HypergraphLib:  Fichier source de src/algorithm/include/Dual.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HypergraphLib
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fbc178c12bd249518b3c0868875b8083.html">algorithm</a></li><li class="navelem"><a class="el" href="dir_4111af61861b09da0c6085bd1c09c594.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Dual.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef ALGORITHM_INCLUDE_DUAL_HH_</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define ALGORITHM_INCLUDE_DUAL_HH_</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;boost/shared_ptr.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../../model/include/HypergrapheAbstrait.hh&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../model/include/AlgorithmeAbstrait.hh&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classDual.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDual.html">Dual</a> : <span class="keyword">public</span> <a class="code" href="classAlgorithmeAbstrait.html">AlgorithmeAbstrait</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classDual.html#a7663f7c9cd4bf36b28bd7831bc5ba041">Dual</a>(<span class="keyword">const</span> boost::shared_ptr&lt;HypergrapheAbstrait&gt;&amp;);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classRStructure.html">RStructure</a> <a class="code" href="classDual.html#a284651753d752726578f9d14673ff89f">getResult</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classDual.html#a685872d18642e7a66474a803e2ccce91">~Dual</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classDual.html#a760713cb6d9a2cf32877555b8ef2fd84">runAlgorithme</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    boost::shared_ptr&lt;HypergrapheAbstrait&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classDual.html#ade9d469d0724eb60f65e0984e7bbbef6">   49</a></span>&#160;    <a class="code" href="classDual.html#ade9d469d0724eb60f65e0984e7bbbef6">_ptrHypergrapheAbstrait</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    boost::shared_ptr&lt;HypergrapheAbstrait&gt;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classDual.html#a5ef98e5bf4a3219d082fff6bc9c48a32">   55</a></span>&#160;    <a class="code" href="classDual.html#a5ef98e5bf4a3219d082fff6bc9c48a32">_ptrDualHypergraphe</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classDual.html#a5325006ffd464dc5a5baa9ea57df1d7a">   60</a></span>&#160;    <a class="code" href="classRStructure.html">RStructure</a> <a class="code" href="classDual.html#a5325006ffd464dc5a5baa9ea57df1d7a">_result</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classDual_html_a760713cb6d9a2cf32877555b8ef2fd84"><div class="ttname"><a href="classDual.html#a760713cb6d9a2cf32877555b8ef2fd84">Dual::runAlgorithme</a></div><div class="ttdeci">void runAlgorithme()</div></div>
+<div class="ttc" id="classAlgorithmeAbstrait_html"><div class="ttname"><a href="classAlgorithmeAbstrait.html">AlgorithmeAbstrait</a></div><div class="ttdef"><b>Definition:</b> AlgorithmeAbstrait.hh:16</div></div>
+<div class="ttc" id="classRStructure_html"><div class="ttname"><a href="classRStructure.html">RStructure</a></div><div class="ttdef"><b>Definition:</b> RStructure.hh:14</div></div>
+<div class="ttc" id="classDual_html_a7663f7c9cd4bf36b28bd7831bc5ba041"><div class="ttname"><a href="classDual.html#a7663f7c9cd4bf36b28bd7831bc5ba041">Dual::Dual</a></div><div class="ttdeci">Dual(const boost::shared_ptr&lt; HypergrapheAbstrait &gt; &amp;)</div></div>
+<div class="ttc" id="classDual_html_a284651753d752726578f9d14673ff89f"><div class="ttname"><a href="classDual.html#a284651753d752726578f9d14673ff89f">Dual::getResult</a></div><div class="ttdeci">RStructure getResult() const </div></div>
+<div class="ttc" id="classDual_html_a5325006ffd464dc5a5baa9ea57df1d7a"><div class="ttname"><a href="classDual.html#a5325006ffd464dc5a5baa9ea57df1d7a">Dual::_result</a></div><div class="ttdeci">RStructure _result</div><div class="ttdef"><b>Definition:</b> Dual.hh:60</div></div>
+<div class="ttc" id="classDual_html_a685872d18642e7a66474a803e2ccce91"><div class="ttname"><a href="classDual.html#a685872d18642e7a66474a803e2ccce91">Dual::~Dual</a></div><div class="ttdeci">~Dual()</div></div>
+<div class="ttc" id="classDual_html_a5ef98e5bf4a3219d082fff6bc9c48a32"><div class="ttname"><a href="classDual.html#a5ef98e5bf4a3219d082fff6bc9c48a32">Dual::_ptrDualHypergraphe</a></div><div class="ttdeci">boost::shared_ptr&lt; HypergrapheAbstrait &gt; _ptrDualHypergraphe</div><div class="ttdef"><b>Definition:</b> Dual.hh:55</div></div>
+<div class="ttc" id="classDual_html_ade9d469d0724eb60f65e0984e7bbbef6"><div class="ttname"><a href="classDual.html#ade9d469d0724eb60f65e0984e7bbbef6">Dual::_ptrHypergrapheAbstrait</a></div><div class="ttdeci">boost::shared_ptr&lt; HypergrapheAbstrait &gt; _ptrHypergrapheAbstrait</div><div class="ttdef"><b>Definition:</b> Dual.hh:49</div></div>
+<div class="ttc" id="classDual_html"><div class="ttname"><a href="classDual.html">Dual</a></div><div class="ttdef"><b>Definition:</b> Dual.hh:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

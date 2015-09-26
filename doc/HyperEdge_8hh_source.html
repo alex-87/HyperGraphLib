@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>HypergraphLib:  Fichier source de src/model/include/HyperEdge.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HypergraphLib
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5dd65160827af56e6353642206b80129.html">model</a></li><li class="navelem"><a class="el" href="dir_4e42d8d7040e5636217fe339fb7064ec.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">HyperEdge.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef _HYPEREDGE_HH</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define _HYPEREDGE_HH</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;boost/shared_ptr.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;LibType.hh&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;HypergrapheAbstrait.hh&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classHyperEdge.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHyperEdge.html">HyperEdge</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classHyperEdge.html#adf70a7e444e26c3c7751e9301ea67d8d">HyperEdge</a>(<span class="keyword">const</span> boost::shared_ptr&lt;HypergrapheAbstrait&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; identifier);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHyperEdge.html#aba52d1c977dd16a0ad1dae841da31503">addHyperVertex</a>(<a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHyperEdge.html#a65f434cceef01aef3edf098883d4f850">setHyperVertexList</a>(LibType::ListHyperVertex&amp;);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    LibType::ListHyperVertex&amp; <a class="code" href="classHyperEdge.html#ae16c779442eea6e21a94b7c29702e345">getHyperVertexList</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classHyperEdge.html#a9f1789a372146e2ea22358625699bc5a">getEffectif</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp; <a class="code" href="classHyperEdge.html#afea70333ff1568ee8882945e3134a9fc">getIdentifier</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHyperEdge.html#a626fe11d09c7d352c2214ec91b8d800a">containVertex</a>(<a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHyperEdge.html#a43a97a32f12e156b03e1aa2856f7157c">operator==</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHyperEdge.html#ab3cf8e46e4feb169b0cde234598e7f1f">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHyperEdge.html#a7dc05ca252749a6932370643f2cdc924">operator&gt;</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">const</span> LibType::ListHyperVertex&amp; <a class="code" href="classHyperEdge.html#ae16c779442eea6e21a94b7c29702e345">getHyperVertexList</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    boost::shared_ptr&lt;HypergrapheAbstrait&gt;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classHyperEdge.html#a8a19d06b528adc44f079ae2c2425043c">   90</a></span>&#160;    <a class="code" href="classHyperEdge.html#a8a19d06b528adc44f079ae2c2425043c">_ptrHypergraphe</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classHyperEdge.html#a3744cd7ac296650969ff2ecccc8d6556">   95</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classHyperEdge.html#a3744cd7ac296650969ff2ecccc8d6556">_identifier</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    LibType::ListHyperVertex</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classHyperEdge.html#ad9dc4b59a46ef46321158f0a0cab464d">  101</a></span>&#160;    <a class="code" href="classHyperEdge.html#ad9dc4b59a46ef46321158f0a0cab464d">_listHyperVertex</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classHyperEdge_html_afea70333ff1568ee8882945e3134a9fc"><div class="ttname"><a href="classHyperEdge.html#afea70333ff1568ee8882945e3134a9fc">HyperEdge::getIdentifier</a></div><div class="ttdeci">const unsigned int &amp; getIdentifier() const </div></div>
+<div class="ttc" id="classHyperEdge_html_a9f1789a372146e2ea22358625699bc5a"><div class="ttname"><a href="classHyperEdge.html#a9f1789a372146e2ea22358625699bc5a">HyperEdge::getEffectif</a></div><div class="ttdeci">const unsigned int getEffectif() const </div></div>
+<div class="ttc" id="classHyperEdge_html_a3744cd7ac296650969ff2ecccc8d6556"><div class="ttname"><a href="classHyperEdge.html#a3744cd7ac296650969ff2ecccc8d6556">HyperEdge::_identifier</a></div><div class="ttdeci">unsigned int _identifier</div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:95</div></div>
+<div class="ttc" id="classHyperEdge_html_a65f434cceef01aef3edf098883d4f850"><div class="ttname"><a href="classHyperEdge.html#a65f434cceef01aef3edf098883d4f850">HyperEdge::setHyperVertexList</a></div><div class="ttdeci">void setHyperVertexList(LibType::ListHyperVertex &amp;)</div></div>
+<div class="ttc" id="classHyperEdge_html_ad9dc4b59a46ef46321158f0a0cab464d"><div class="ttname"><a href="classHyperEdge.html#ad9dc4b59a46ef46321158f0a0cab464d">HyperEdge::_listHyperVertex</a></div><div class="ttdeci">LibType::ListHyperVertex _listHyperVertex</div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:101</div></div>
+<div class="ttc" id="classHyperEdge_html_adf70a7e444e26c3c7751e9301ea67d8d"><div class="ttname"><a href="classHyperEdge.html#adf70a7e444e26c3c7751e9301ea67d8d">HyperEdge::HyperEdge</a></div><div class="ttdeci">HyperEdge(const boost::shared_ptr&lt; HypergrapheAbstrait &gt; &amp;, unsigned int &amp;identifier)</div></div>
+<div class="ttc" id="classHyperEdge_html_aba52d1c977dd16a0ad1dae841da31503"><div class="ttname"><a href="classHyperEdge.html#aba52d1c977dd16a0ad1dae841da31503">HyperEdge::addHyperVertex</a></div><div class="ttdeci">void addHyperVertex(HyperVertex &amp;)</div></div>
+<div class="ttc" id="classHyperEdge_html"><div class="ttname"><a href="classHyperEdge.html">HyperEdge</a></div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:15</div></div>
+<div class="ttc" id="classHyperEdge_html_a7dc05ca252749a6932370643f2cdc924"><div class="ttname"><a href="classHyperEdge.html#a7dc05ca252749a6932370643f2cdc924">HyperEdge::operator&gt;</a></div><div class="ttdeci">bool operator&gt;(const HyperEdge &amp;) const </div></div>
+<div class="ttc" id="classHyperVertex_html"><div class="ttname"><a href="classHyperVertex.html">HyperVertex</a></div><div class="ttdef"><b>Definition:</b> HyperVertex.hh:16</div></div>
+<div class="ttc" id="classHyperEdge_html_a626fe11d09c7d352c2214ec91b8d800a"><div class="ttname"><a href="classHyperEdge.html#a626fe11d09c7d352c2214ec91b8d800a">HyperEdge::containVertex</a></div><div class="ttdeci">bool containVertex(HyperVertex &amp;) const </div></div>
+<div class="ttc" id="classHyperEdge_html_ab3cf8e46e4feb169b0cde234598e7f1f"><div class="ttname"><a href="classHyperEdge.html#ab3cf8e46e4feb169b0cde234598e7f1f">HyperEdge::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const HyperEdge &amp;) const </div></div>
+<div class="ttc" id="classHyperEdge_html_a8a19d06b528adc44f079ae2c2425043c"><div class="ttname"><a href="classHyperEdge.html#a8a19d06b528adc44f079ae2c2425043c">HyperEdge::_ptrHypergraphe</a></div><div class="ttdeci">boost::shared_ptr&lt; HypergrapheAbstrait &gt; _ptrHypergraphe</div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:90</div></div>
+<div class="ttc" id="classHyperEdge_html_ae16c779442eea6e21a94b7c29702e345"><div class="ttname"><a href="classHyperEdge.html#ae16c779442eea6e21a94b7c29702e345">HyperEdge::getHyperVertexList</a></div><div class="ttdeci">LibType::ListHyperVertex &amp; getHyperVertexList()</div></div>
+<div class="ttc" id="classHyperEdge_html_a43a97a32f12e156b03e1aa2856f7157c"><div class="ttname"><a href="classHyperEdge.html#a43a97a32f12e156b03e1aa2856f7157c">HyperEdge::operator==</a></div><div class="ttdeci">bool operator==(const HyperEdge &amp;) const </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

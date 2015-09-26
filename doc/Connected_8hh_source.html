@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>HypergraphLib:  Fichier source de src/algorithm/include/Connected.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HypergraphLib
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fbc178c12bd249518b3c0868875b8083.html">algorithm</a></li><li class="navelem"><a class="el" href="dir_4111af61861b09da0c6085bd1c09c594.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Connected.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef ALGORITHM_INCLUDE_CONNECTED_HH_</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define ALGORITHM_INCLUDE_CONNECTED_HH_</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../../model/include/HypergrapheAbstrait.hh&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../../model/include/AlgorithmeAbstrait.hh&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;boost/shared_ptr.hpp&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stack&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classConnected.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConnected.html">Connected</a> : <span class="keyword">public</span> <a class="code" href="classAlgorithmeAbstrait.html">AlgorithmeAbstrait</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classConnected.html#ad6a232ff15d75687292c42bec4c21ebc">Connected</a>(boost::shared_ptr&lt;HypergrapheAbstrait&gt;&amp;);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classRStructure.html">RStructure</a> <a class="code" href="classConnected.html#acefb657de81046b41e3b4dd295b461e6">getResult</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classConnected.html#af06c88e985d8b1d03374a8e4db65ac21">~Connected</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConnected.html#ab5f277103c986bfa688b4401d7458379">runAlgorithme</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConnected.html#a45296b54d1ac5f04b85110c230c6868e">exploreVertical</a>(std::vector&lt;unsigned int&gt;&amp;, std::stack&lt;unsigned int&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConnected.html#a77e380f3e9d91bc63428b7b71b23d64c">exploreHorizontal</a>(std::vector&lt;unsigned int&gt;&amp;, std::stack&lt;unsigned int&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classConnected.html#a3a4bd191528a97b9dfc1c37b838f53cc">isVertexVisited</a>(std::vector&lt;unsigned int&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classConnected.html#a286f5da4b5e24e163f9e5ac1b6689e6b">isEdgeVisited</a>(std::vector&lt;unsigned int&gt;&amp;, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">    bool isPath(HyperVertex&amp;, HyperVertex&amp;) const;</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">    bool isVisited(std::vector&lt;HyperEdge&gt;&amp;, const HyperEdge&amp;) const;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    boost::shared_ptr&lt;HypergrapheAbstrait&gt;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classConnected.html#a8b230ab8a6ced13ef973b5cc5dcaf33b">   92</a></span>&#160;    <a class="code" href="classConnected.html#a8b230ab8a6ced13ef973b5cc5dcaf33b">_ptrHypergrapheAbstrait</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classConnected.html#a28ca8b5f9c0fbee2249bd0a6f5f1403d">   97</a></span>&#160;    <a class="code" href="classRStructure.html">RStructure</a> <a class="code" href="classConnected.html#a28ca8b5f9c0fbee2249bd0a6f5f1403d">_result</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ALGORITHM_INCLUDE_CONNECTED_HH_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="classConnected_html_af06c88e985d8b1d03374a8e4db65ac21"><div class="ttname"><a href="classConnected.html#af06c88e985d8b1d03374a8e4db65ac21">Connected::~Connected</a></div><div class="ttdeci">~Connected()</div></div>
+<div class="ttc" id="classAlgorithmeAbstrait_html"><div class="ttname"><a href="classAlgorithmeAbstrait.html">AlgorithmeAbstrait</a></div><div class="ttdef"><b>Definition:</b> AlgorithmeAbstrait.hh:16</div></div>
+<div class="ttc" id="classConnected_html_ab5f277103c986bfa688b4401d7458379"><div class="ttname"><a href="classConnected.html#ab5f277103c986bfa688b4401d7458379">Connected::runAlgorithme</a></div><div class="ttdeci">void runAlgorithme()</div></div>
+<div class="ttc" id="classConnected_html_acefb657de81046b41e3b4dd295b461e6"><div class="ttname"><a href="classConnected.html#acefb657de81046b41e3b4dd295b461e6">Connected::getResult</a></div><div class="ttdeci">RStructure getResult() const </div></div>
+<div class="ttc" id="classConnected_html_a8b230ab8a6ced13ef973b5cc5dcaf33b"><div class="ttname"><a href="classConnected.html#a8b230ab8a6ced13ef973b5cc5dcaf33b">Connected::_ptrHypergrapheAbstrait</a></div><div class="ttdeci">boost::shared_ptr&lt; HypergrapheAbstrait &gt; _ptrHypergrapheAbstrait</div><div class="ttdef"><b>Definition:</b> Connected.hh:92</div></div>
+<div class="ttc" id="classConnected_html_a45296b54d1ac5f04b85110c230c6868e"><div class="ttname"><a href="classConnected.html#a45296b54d1ac5f04b85110c230c6868e">Connected::exploreVertical</a></div><div class="ttdeci">void exploreVertical(std::vector&lt; unsigned int &gt; &amp;, std::stack&lt; unsigned int &gt; &amp;, unsigned int)</div></div>
+<div class="ttc" id="classRStructure_html"><div class="ttname"><a href="classRStructure.html">RStructure</a></div><div class="ttdef"><b>Definition:</b> RStructure.hh:14</div></div>
+<div class="ttc" id="classConnected_html_a77e380f3e9d91bc63428b7b71b23d64c"><div class="ttname"><a href="classConnected.html#a77e380f3e9d91bc63428b7b71b23d64c">Connected::exploreHorizontal</a></div><div class="ttdeci">void exploreHorizontal(std::vector&lt; unsigned int &gt; &amp;, std::stack&lt; unsigned int &gt; &amp;, unsigned int)</div></div>
+<div class="ttc" id="classConnected_html_a286f5da4b5e24e163f9e5ac1b6689e6b"><div class="ttname"><a href="classConnected.html#a286f5da4b5e24e163f9e5ac1b6689e6b">Connected::isEdgeVisited</a></div><div class="ttdeci">bool isEdgeVisited(std::vector&lt; unsigned int &gt; &amp;, unsigned int) const </div></div>
+<div class="ttc" id="classConnected_html"><div class="ttname"><a href="classConnected.html">Connected</a></div><div class="ttdef"><b>Definition:</b> Connected.hh:17</div></div>
+<div class="ttc" id="classConnected_html_ad6a232ff15d75687292c42bec4c21ebc"><div class="ttname"><a href="classConnected.html#ad6a232ff15d75687292c42bec4c21ebc">Connected::Connected</a></div><div class="ttdeci">Connected(boost::shared_ptr&lt; HypergrapheAbstrait &gt; &amp;)</div></div>
+<div class="ttc" id="classConnected_html_a28ca8b5f9c0fbee2249bd0a6f5f1403d"><div class="ttname"><a href="classConnected.html#a28ca8b5f9c0fbee2249bd0a6f5f1403d">Connected::_result</a></div><div class="ttdeci">RStructure _result</div><div class="ttdef"><b>Definition:</b> Connected.hh:97</div></div>
+<div class="ttc" id="classConnected_html_a3a4bd191528a97b9dfc1c37b838f53cc"><div class="ttname"><a href="classConnected.html#a3a4bd191528a97b9dfc1c37b838f53cc">Connected::isVertexVisited</a></div><div class="ttdeci">bool isVertexVisited(std::vector&lt; unsigned int &gt; &amp;, unsigned int) const </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>
