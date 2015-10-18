@@ -4,41 +4,45 @@
 #include "include/HyperEdge.hh"
 #include <boost/foreach.hpp>
 
+#include <iostream>
+
 Hypergraphe::Hypergraphe() : HypergrapheAbstrait() {
 
 }
 
 void
-Hypergraphe::addHyperVertex(const HyperVertex& hyperVertex) {
-	_indexHyperVertex[hyperVertex] = hyperVertex.getIdentifier();
-	_hyperVertexIndexer.insert( std::pair<unsigned int, HyperVertex>(hyperVertex.getIdentifier(), hyperVertex));
+Hypergraphe::addHyperVertex(const boost::shared_ptr<HyperVertex>& hyperVertex) {
+	std::cout << "Adding HyperVertex..." << std::endl;
+	_indexHyperVertex[hyperVertex] = hyperVertex->getIdentifier();
+	_hyperVertexIndexer.insert( std::pair<unsigned int, boost::shared_ptr<HyperVertex> >(hyperVertex->getIdentifier(), hyperVertex));
 	_listHyperVertex.push_back(hyperVertex);
 }
 
 void
-Hypergraphe::addHyperEdge(const HyperEdge& hyperEdge) {
-	_indexHyperEdge[hyperEdge] = hyperEdge.getIdentifier();
-	_hyperEdgeIndexer.insert( std::pair<unsigned int, HyperEdge>(hyperEdge.getIdentifier() ,hyperEdge));
+Hypergraphe::addHyperEdge(const boost::shared_ptr<HyperEdge>& hyperEdge) {
+	std::cout << "Adding HyperEdge..." << std::endl;
+	_indexHyperEdge[hyperEdge] = hyperEdge->getIdentifier();
+	_hyperEdgeIndexer.insert( std::pair<unsigned int, boost::shared_ptr<HyperEdge> >(hyperEdge->getIdentifier() ,hyperEdge));
 	_listHyperEdge.push_back(hyperEdge);
 }
 
-HyperVertex&
+boost::shared_ptr<HyperVertex>&
 Hypergraphe::getHyperVertexById(const unsigned int& id) {
 	return _hyperVertexIndexer.at(id);
-/*
+
 	BOOST_FOREACH(auto& e, _listHyperVertex) {
-		if(e.getIdentifier() == id )return e;
-	}*/
+		if(e->getIdentifier() == id )return e;
+	}
 	//return nullptr;
 }
 
-HyperEdge&
+boost::shared_ptr<HyperEdge>&
 Hypergraphe::getHyperEdgeById(const unsigned int& id) {
 	return _hyperEdgeIndexer.at(id);
-/*
+
 	BOOST_FOREACH(auto& e, _listHyperEdge) {
-		if(e.getIdentifier() == id )return e;
-	}*/
+		if(e->getIdentifier() == id )return e;
+	}
 	//return nullptr;
 }
 

@@ -27,10 +27,10 @@ Connected::runAlgorithme() {
 	std::vector<unsigned int>  listHyperEdgeVisited;
 
 	_result.setBooleanResult(false);
-	stackHyperVertex.push( _ptrHypergrapheAbstrait->getHyperVertexList().at(0).getIdentifier() );
+	stackHyperVertex.push( _ptrHypergrapheAbstrait->getHyperVertexList().at(0)->getIdentifier() );
 
 #if(TRACE_ALGORITHM_CONNECTED)
-	std::cout << "PUSH [vertex]: " << _ptrHypergrapheAbstrait->getHyperVertexList().at(0).getIdentifier() << std::endl;
+	std::cout << "PUSH [vertex]: " << _ptrHypergrapheAbstrait->getHyperVertexList().at(0)->getIdentifier() << std::endl;
 #endif
 
 	while( !stackHyperVertex.empty() || !stackHyperEdge.empty() ) {

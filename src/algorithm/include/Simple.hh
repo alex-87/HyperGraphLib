@@ -61,7 +61,7 @@ protected:
 	 * @param L'hyer-vertex.
 	 * @return True si c'est le cas, False sinon.
 	 */
-	bool contains(const LibType::ListHyperVertex&, const HyperVertex&) const;
+	bool contains(const LibType::ListHyperVertex&, const boost::shared_ptr<HyperVertex>&) const;
 
 
 protected:

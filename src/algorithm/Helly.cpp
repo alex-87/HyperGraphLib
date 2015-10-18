@@ -42,9 +42,9 @@ Helly::runAlgorithme() {
 }
 
 bool
-Helly::voisin(HyperVertex&v1, HyperVertex& v2) {
-	BOOST_FOREACH(auto& element1, v1.getHyperEdgeList() ) {
-		BOOST_FOREACH(auto& element2, v2.getHyperEdgeList() ) {
+Helly::voisin(boost::shared_ptr<HyperVertex>& v1, boost::shared_ptr<HyperVertex>& v2) {
+	BOOST_FOREACH(auto& element1, v1->getHyperEdgeList() ) {
+		BOOST_FOREACH(auto& element2, v2->getHyperEdgeList() ) {
 			if( element1==element2 ) {
 				return true;
 			}
@@ -72,9 +72,9 @@ Helly::nonEmptyIntersection(LibType::ListHyperEdge& ensemble) {
 }
 
 bool
-Helly::nonEmptyBetween(HyperEdge& e1, HyperEdge& e2) {
-	BOOST_FOREACH(auto& a, e1.getHyperVertexList()) {
-		BOOST_FOREACH(auto& b, e2.getHyperVertexList()) {
+Helly::nonEmptyBetween(boost::shared_ptr<HyperEdge>& e1, boost::shared_ptr<HyperEdge>& e2) {
+	BOOST_FOREACH(auto& a, e1->getHyperVertexList()) {
+		BOOST_FOREACH(auto& b, e2->getHyperVertexList()) {
 			if(a==b)return true;
 		}
 	}
@@ -82,10 +82,10 @@ Helly::nonEmptyBetween(HyperEdge& e1, HyperEdge& e2) {
 }
 
 LibType::ListHyperEdge&
-Helly::allContainXY(HyperVertex& v1, HyperVertex& v2) {
+Helly::allContainXY(boost::shared_ptr<HyperVertex>& v1, boost::shared_ptr<HyperVertex>& v2) {
 	LibType::ListHyperEdge * elist = new LibType::ListHyperEdge();
 	BOOST_FOREACH(auto& e, _ptrHypergrapheAbstrait->getHyperEdgeList()) {
-		if( e.containVertex(v1) && e.containVertex(v2) ) {
+		if( e->containVertex(v1) && e->containVertex(v2) ) {
 			elist->push_back(e);
 		}
 	}

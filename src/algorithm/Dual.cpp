@@ -31,19 +31,19 @@ Dual::runAlgorithme() {
 #pragma omp section
 		{
 	for(unsigned int i=0; i<indexVertex.size(); i++) {
-		listEdge.push_back( *HyperFactory::newHyperEdge().get() );
+		listEdge.push_back( HyperFactory::newHyperEdge() );
 	}
 		}
 #pragma omp section
 		{
 	for(unsigned int i=0; i<indexEdge.size(); i++) {
-		listVertex.push_back( *HyperFactory::newHyperVertex().get() );
+		listVertex.push_back( HyperFactory::newHyperVertex() );
 	}
 		}
 		}
 	BOOST_FOREACH(auto& itemVertex, listVertex) {
 		BOOST_FOREACH(auto& itemEdge, listEdge) {
-			if( _ptrHypergrapheAbstrait->getAdjacentMatrix().isVertexInEdge(itemEdge.getIdentifier(), itemVertex.getIdentifier())) {
+			if( _ptrHypergrapheAbstrait->getAdjacentMatrix().isVertexInEdge(itemEdge->getIdentifier(), itemVertex->getIdentifier())) {
 				HyperFactory::link(itemVertex, itemEdge);
 			}
 		}

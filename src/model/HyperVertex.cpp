@@ -10,7 +10,7 @@ HyperVertex::HyperVertex(const boost::shared_ptr<HypergrapheAbstrait>& ptrHyperg
 }
 
 void
-HyperVertex::addHyperEdge(HyperEdge& hyperEdge) {
+HyperVertex::addHyperEdge(boost::shared_ptr<HyperEdge>& hyperEdge) {
 	if( !containEdge(hyperEdge) ) {
 		_listHyperEdge.push_back( hyperEdge );
 	};
@@ -27,22 +27,22 @@ HyperVertex::getIdentifier() const {
 }
 
 bool
-HyperVertex::operator ==(const HyperVertex& hyperVertex) const {
-	return _identifier==hyperVertex.getIdentifier();
+HyperVertex::operator ==(const boost::shared_ptr<HyperVertex>& hyperVertex) const {
+	return _identifier==hyperVertex->getIdentifier();
 }
 
 bool
-HyperVertex::operator<(const HyperVertex& hyperVertex) const {
-	return _identifier < hyperVertex.getIdentifier();
+HyperVertex::operator<(const boost::shared_ptr<HyperVertex>& hyperVertex) const {
+	return _identifier < hyperVertex->getIdentifier();
 }
 
 bool
-HyperVertex::operator>(const HyperVertex& hyperVertex) const {
-	return _identifier > hyperVertex.getIdentifier();
+HyperVertex::operator>(const boost::shared_ptr<HyperVertex>& hyperVertex) const {
+	return _identifier > hyperVertex->getIdentifier();
 }
 
 bool
-HyperVertex::containEdge(HyperEdge& hyperEdge) const {
+HyperVertex::containEdge(boost::shared_ptr<HyperEdge>& hyperEdge) const {
 
 	int i = 0;
 	const int N = _listHyperEdge.size();

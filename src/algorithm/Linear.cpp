@@ -27,9 +27,9 @@ Linear::runAlgorithme() {
 	for(unsigned int i=0; i<listEdge.size(); i++) {
 		for(unsigned int j=i+1; j<listEdge.size(); j++) {
 			unsigned int counter( 0 );
-			LibType::ListHyperVertex subListVertex( listEdge.at(i).getHyperVertexList() );
+			LibType::ListHyperVertex subListVertex( listEdge.at(i)->getHyperVertexList() );
 			for(unsigned int k=0; k<subListVertex.size(); k++) {
-				if( listEdge.at(j).containVertex(subListVertex.at(k)) )counter++;
+				if( listEdge.at(j)->containVertex(subListVertex.at(k)) )counter++;
 			};
 			if( counter > 1 ) {
 				_result.setBooleanResult(false);

@@ -44,7 +44,7 @@ protected:
 	 * @param Le second hyper-vertex.
 	 * @return La liste des hyper-rêtes contennt les deux hyper-vertex.
 	 */
-	LibType::ListHyperEdge& allContainXY(HyperVertex&, HyperVertex&);
+	LibType::ListHyperEdge& allContainXY(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Vérifie si l'intersection entre les éléments de la liste n'est pas vide.
@@ -59,7 +59,7 @@ protected:
 	 * @param Seconde hyper-arête.
 	 * @return True s'il y a intersection non-vide, False sinon.
 	 */
-	bool nonEmptyBetween(HyperEdge&, HyperEdge&);
+	bool nonEmptyBetween(boost::shared_ptr<HyperEdge>&, boost::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Vérifie si les deux hyper-vertex sont voisins.
@@ -67,7 +67,7 @@ protected:
 	 * @param Second hyper-vertex
 	 * @return True s'il sont voisin, False sinon.
 	 */
-	bool voisin(HyperVertex&, HyperVertex&);
+	bool voisin(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Concaténation de deux listes d'hyper-arêtes.

@@ -17,7 +17,7 @@ Simple::runAlgorithme() {
 	unsigned int i( 0 ), j( 0 );
 	for(i=0; i < listEdge.size(); i++) {
 		for(j=i; j < listEdge.size(); j++) {
-			if( i!=j && subsetVertexList(listEdge.at(i).getHyperVertexList(), listEdge.at(j).getHyperVertexList()) ) {
+			if( i!=j && subsetVertexList(listEdge.at(i)->getHyperVertexList(), listEdge.at(j)->getHyperVertexList()) ) {
 				_result.setBooleanResult(false);
 				break;
 			};
@@ -58,7 +58,7 @@ Simple::subsetVertexList(const LibType::ListHyperVertex& vList1, const LibType::
 }
 
 bool
-Simple::contains(const LibType::ListHyperVertex& vList, const HyperVertex& v) const {
+Simple::contains(const LibType::ListHyperVertex& vList, const boost::shared_ptr<HyperVertex>& v) const {
 
 	bool ret( false );
 	BOOST_FOREACH(const auto& w, vList) {

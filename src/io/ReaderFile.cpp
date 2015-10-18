@@ -49,7 +49,8 @@ ReaderFile::readHypergrapheHyperVertex(std::istream& entree) {
 
 	unsigned int i( 0 );
 	while( k >> i ) {
-		_listHyperVertex.push_back( HyperVertex(_ptrHypergrapheAbstrait, i) );
+		boost::shared_ptr<HyperVertex> ptrHv( new HyperVertex(_ptrHypergrapheAbstrait, i) );
+		_listHyperVertex.push_back( ptrHv );
 	}
 }
 
@@ -63,7 +64,8 @@ ReaderFile::readHypergrapheHyperEdge(std::istream& entree) {
 
 	unsigned int i( 0 );
 	while( k >> i ) {
-		_listHyperEdge.push_back( HyperEdge(_ptrHypergrapheAbstrait, i) );
+		boost::shared_ptr<HyperEdge> ptrHe( new HyperEdge(_ptrHypergrapheAbstrait, i) );
+		_listHyperEdge.push_back( ptrHe );
 	}
 }
 
@@ -92,19 +94,19 @@ ReaderFile::flush() {
 	_ptrHypergrapheAbstrait->flush();
 }
 
-HyperVertex&
+boost::shared_ptr<HyperVertex>&
 ReaderFile::hyperVertexById(unsigned int& id) {
 	BOOST_FOREACH(auto& vertex, _listHyperVertex) {
-		if( id==vertex.getIdentifier() ) {
+		if( id==vertex->getIdentifier() ) {
 			return vertex;
 		}
 	}
 }
 
-HyperEdge&
+boost::shared_ptr<HyperEdge>&
 ReaderFile::hyperEdgeById(unsigned int& id) {
 	BOOST_FOREACH(auto& edge, _listHyperEdge) {
-		if( id==edge.getIdentifier() ) {
+		if( id==edge->getIdentifier() ) {
 			return edge;
 		}
 	}

@@ -44,13 +44,13 @@ public:
 	 * Ajouter un hyper-vertex à la matrice.
 	 * @param HyperVertex L'hyper-vertex à ajouter.
 	 */
-	void addHyperVertex(const HyperVertex&);
+	void addHyperVertex(const boost::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Ajouter une hyper-arête à la matrice.
 	 * @param HyperEdge L'hyper-arête à ajouter.
 	 */
-	void addHyperEdge(const HyperEdge&);
+	void addHyperEdge(const boost::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Vérifier si l'hyper-vertex est dans l'hyper-arête.
@@ -58,7 +58,7 @@ public:
 	 * @param L'hyper-arête dont la précence de l'hyper-vertex est à vérifier.
 	 * @return True si l'hyper-vertex est dans l'hyper-arête, False sinon.
 	 */
-	bool isVertexInEdge(const HyperVertex&, const HyperEdge&) const;
+	bool isVertexInEdge(const boost::shared_ptr<HyperVertex>&, const boost::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Vérifier si une hyper-arête est dans la liste des hyper-arêtes d'un hyper-vertex.
@@ -66,7 +66,7 @@ public:
 	 * @param L'hyper-vertex.
 	 * @return True si l'hyper-vertex contient l'hyper-arête dans sa liste, False sinon.
 	 */
-	bool isEdgeInVertex(const HyperEdge&, const HyperVertex&) const;
+	bool isEdgeInVertex(const boost::shared_ptr<HyperEdge>&, const boost::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Vérifier si l'hyper-vertex ayant l'identifiant i se trouve dans l'hyper-arête ayant l'identifiant j.
@@ -101,14 +101,14 @@ public:
 	 * @param L'hyper-vertex dont on souhaite obtenir le degré.
 	 * @return Nn entier positif correspondant au degrès de l'hyper-vertex.
 	 */
-	unsigned int getVertexDegree(const HyperVertex&) const;
+	unsigned int getVertexDegree(const boost::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Obtenir l'effectif d'une hyper-arête.
 	 * @param L'hyper-arête dont on souhaite obtenir l'effectif.
 	 * @return Un entier positif correspondant au nombre d'hyper-vertex dans l'hyper-arête.
 	 */
-	unsigned int getEdgeSize(const HyperEdge&) const;
+	unsigned int getEdgeSize(const boost::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Obtenir le co-rang de l'hypergraphe.

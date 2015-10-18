@@ -21,47 +21,55 @@ AdjacentMatrix::resize(const unsigned int& m, const unsigned int& n) {
 }
 
 void
-AdjacentMatrix::addHyperVertex(const HyperVertex& hyperVertex) {
+AdjacentMatrix::addHyperVertex(const boost::shared_ptr<HyperVertex>& hyperVertex) {
 
-	const unsigned int id( hyperVertex.getIdentifier() );
-	LibType::ListHyperEdge heList( hyperVertex.getHyperEdgeList() );
+	const unsigned int id( hyperVertex->getIdentifier() );
+	LibType::ListHyperEdge heList( hyperVertex->getHyperEdgeList() );
 
-	BOOST_FOREACH( auto& he, heList ) {
-		_adjacentMatrixBool[id][he.getIdentifier()] = true;
+	for(unsigned int u=0; u < heList.size(); u++)_adjacentMatrixBool[id][heList[u]->getIdentifier()] = true;
+
+/*
+	BOOST_FOREACH( auto he, heList ) {
+		_adjacentMatrixBool[id][he->getIdentifier()] = true;
 	};
+*/
 }
 
 void
-AdjacentMatrix::addHyperEdge(const HyperEdge& hyperEdge) {
+AdjacentMatrix::addHyperEdge(const boost::shared_ptr<HyperEdge>& hyperEdge) {
 
-	const unsigned int id( hyperEdge.getIdentifier() );
-	LibType::ListHyperVertex hvList( hyperEdge.getHyperVertexList() );
+	const unsigned int id( hyperEdge->getIdentifier() );
+	LibType::ListHyperVertex hvList( hyperEdge->getHyperVertexList() );
 
+	for(unsigned int u=0; u < hvList.size(); u++)_adjacentMatrixBool[hvList[u]->getIdentifier()][id] = true;
+
+/*
 	BOOST_FOREACH( HyperVertex& hv, hvList ) {
-		_adjacentMatrixBool[hv.getIdentifier()][id] = true;
+		_adjacentMatrixBool[hv->getIdentifier()][id] = true;
 	};
+*/
 }
 
-unsigned int AdjacentMatrix::getVertexDegree(const HyperVertex& hyperVertex) const {
+unsigned int AdjacentMatrix::getVertexDegree(const boost::shared_ptr<HyperVertex>& hyperVertex) const {
 
 	unsigned int sum( 0 );
 
 #pragma omp for schedule( dynamic )
 	for(unsigned int i=0; i < _m; i++) {
-		sum += _adjacentMatrixBool[hyperVertex.getIdentifier()][i];
+		sum += _adjacentMatrixBool[hyperVertex->getIdentifier()][i];
 	};
 
 	return sum;
 }
 
 unsigned int
-AdjacentMatrix::getEdgeSize(const HyperEdge& hyperEdge) const {
+AdjacentMatrix::getEdgeSize(const boost::shared_ptr<HyperEdge>& hyperEdge) const {
 
 	unsigned int sum( 0 );
 
 #pragma omp for schedule( dynamic )
 	for(unsigned int i=0; i < _n; i++) {
-		sum += _adjacentMatrixBool[i][hyperEdge.getIdentifier()];
+		sum += _adjacentMatrixBool[i][hyperEdge->getIdentifier()];
 	};
 
 	return sum;

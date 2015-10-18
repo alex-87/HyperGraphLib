@@ -28,7 +28,7 @@ public:
 	 * Ajouter une hyper-arête à l'hyper-vertex.
 	 * @param L'hyper-arête à ajouter.
 	 */
-	void addHyperEdge(HyperEdge&);
+	void addHyperEdge(boost::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Obtenir le nombre d'hyper-arêtes dans lequel l'hyper-vertex est inclus.
@@ -41,7 +41,7 @@ public:
 	 * @param L'hyper-arête
 	 * @return True si l'hyper-vertex est inclus dans l'hyper-arête.
 	 */
-	bool containEdge(HyperEdge&) const;
+	bool containEdge(boost::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Obtenir l'identifiant numérique de l'hyper-vertex.
@@ -52,17 +52,17 @@ public:
 	/**
 	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
 	 */
-	bool operator==(const HyperVertex&) const;
+	bool operator==(const boost::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
 	 */
-	bool operator<(const HyperVertex&) const;
+	bool operator<(const boost::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
 	 */
-	bool operator>(const HyperVertex&) const;
+	bool operator>(const boost::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Obtenir la liste des hyper-arêtes contenant l'hyper-vertex.

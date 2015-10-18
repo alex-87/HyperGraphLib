@@ -28,19 +28,19 @@ RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int nbEdg
 	for(unsigned int j=0; j<nbEdge; j++)
 		listEdge.push_back( HyperFactory::newHyperEdge() );
 
-	for(unsigned int u=0; u<(nbVertex * nbEdge); u++) {	
+	for(unsigned int u=0; u<(nbVertex * nbEdge) / 2; u++) {	
 		if( u % 3 == 0 ) {
 			int n = getRand();
-			HyperFactory::link( *listVertex.at((u+n)%nbVertex).get(), *listEdge.at((u*n)%nbEdge).get() );
+			HyperFactory::link( listVertex.at((u+n)%nbVertex), listEdge.at((u*n)%nbEdge) );
 		}
 	}
 
 	for(unsigned int i=0; i<nbVertex; i++) {
-		_ptrHypergrapheAbstrait->addHyperVertex( *listVertex.at(i).get() );
+		_ptrHypergrapheAbstrait->addHyperVertex( listVertex.at(i) );
 	}
 
 	for(unsigned int i=0; i<nbEdge; i++) {
-		_ptrHypergrapheAbstrait->addHyperEdge( *listEdge.at(i).get() );
+		_ptrHypergrapheAbstrait->addHyperEdge( listEdge.at(i) );
 	}
 
 	HyperFactory::closeSession();

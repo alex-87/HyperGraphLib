@@ -24,22 +24,22 @@ public:
 	typedef boost::multi_array<int, 2>
 	AdjacentMatrixContainerInt;
 
-	typedef boost::container::vector<HyperVertex>
+	typedef boost::container::vector<boost::shared_ptr<HyperVertex> >
 	ListHyperVertex;
 
-	typedef boost::container::vector<HyperEdge>
+	typedef boost::container::vector<boost::shared_ptr<HyperEdge> >
 	ListHyperEdge;
 
-	typedef std::map<HyperVertex, int>
+	typedef std::map<boost::shared_ptr<HyperVertex>, int>
 	IndexerHyperVertex;
 
-	typedef std::map<HyperEdge, int>
+	typedef std::map<boost::shared_ptr<HyperEdge>, int>
 	IndexerHyperEdge;
 
-	typedef std::map<unsigned int, HyperVertex>
+	typedef std::map<unsigned int, boost::shared_ptr<HyperVertex> >
 	HyperVertexIndexer;
 
-	typedef std::map<unsigned int, HyperEdge>
+	typedef std::map<unsigned int, boost::shared_ptr<HyperEdge> >
 	HyperEdgeIndexer;
 
 private:

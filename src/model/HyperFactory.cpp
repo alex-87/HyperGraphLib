@@ -1,6 +1,6 @@
 
 #include "include/HyperFactory.hh"
-
+#include <iostream>
 
 HyperFactory::HyperFactory() {
 }
@@ -33,9 +33,9 @@ HyperFactory::newHyperEdge() {
 }
 
 void
-HyperFactory::link(HyperVertex& hyperVertex, HyperEdge& hyperEdge) {
-	hyperVertex.addHyperEdge(hyperEdge);
-	hyperEdge.addHyperVertex(hyperVertex);
+HyperFactory::link(boost::shared_ptr<HyperVertex>& hyperVertex, boost::shared_ptr<HyperEdge>& hyperEdge) {
+	hyperVertex->addHyperEdge(hyperEdge);
+	hyperEdge->addHyperVertex(hyperVertex);
 }
 
 bool

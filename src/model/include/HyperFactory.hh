@@ -45,7 +45,7 @@ public:
 	 * @param L'hyper-vertex à relier.
 	 * @param L'hyper-arête à relier.
 	 */
-	static void link(HyperVertex&, HyperEdge&);
+	static void link(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Test si une session est déjà en cours.

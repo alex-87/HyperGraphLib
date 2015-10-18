@@ -41,9 +41,9 @@ WriterFile::writeHypergraph(std::ostream& sortie) const {
 	LibType::ListHyperEdge listEdge( _ptrHypergrapheAbstrait->getHyperEdgeList() );
 
 	BOOST_FOREACH(const auto& edge, listEdge) {
-		LibType::ListHyperVertex vertexList( edge.getHyperVertexList() );
+		LibType::ListHyperVertex vertexList( edge->getHyperVertexList() );
 		BOOST_FOREACH(const auto& vertex, vertexList) {
-			sortie << edge.getIdentifier() << " " << vertex.getIdentifier() << std::endl;
+			sortie << edge->getIdentifier() << " " << vertex->getIdentifier() << std::endl;
 		}
 	}
 }
@@ -54,7 +54,7 @@ WriterFile::writeHypergrapheHyperVertex(std::ostream& sortie) const {
 	LibType::ListHyperVertex listVertex( _ptrHypergrapheAbstrait->getHyperVertexList() );
 
 	BOOST_FOREACH(const auto& vertex, listVertex) {
-		sortie << vertex.getIdentifier() << " ";
+		sortie << vertex->getIdentifier() << " ";
 	}
 
 	sortie << "\n";
@@ -66,7 +66,7 @@ WriterFile::writeHypergrapheHyperEdge(std::ostream& sortie) const {
 	LibType::ListHyperEdge listEdge( _ptrHypergrapheAbstrait->getHyperEdgeList() );
 
 	BOOST_FOREACH(const auto& edge, listEdge) {
-		sortie << edge.getIdentifier() << " ";
+		sortie << edge->getIdentifier() << " ";
 	}
 
 	sortie << "\n";
