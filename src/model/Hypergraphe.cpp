@@ -12,7 +12,6 @@ Hypergraphe::Hypergraphe() : HypergrapheAbstrait() {
 
 void
 Hypergraphe::addHyperVertex(const boost::shared_ptr<HyperVertex>& hyperVertex) {
-	std::cout << "Adding HyperVertex..." << std::endl;
 	_indexHyperVertex[hyperVertex] = hyperVertex->getIdentifier();
 	_hyperVertexIndexer.insert( std::pair<unsigned int, boost::shared_ptr<HyperVertex> >(hyperVertex->getIdentifier(), hyperVertex));
 	_listHyperVertex.push_back(hyperVertex);
@@ -20,7 +19,6 @@ Hypergraphe::addHyperVertex(const boost::shared_ptr<HyperVertex>& hyperVertex) {
 
 void
 Hypergraphe::addHyperEdge(const boost::shared_ptr<HyperEdge>& hyperEdge) {
-	std::cout << "Adding HyperEdge..." << std::endl;
 	_indexHyperEdge[hyperEdge] = hyperEdge->getIdentifier();
 	_hyperEdgeIndexer.insert( std::pair<unsigned int, boost::shared_ptr<HyperEdge> >(hyperEdge->getIdentifier() ,hyperEdge));
 	_listHyperEdge.push_back(hyperEdge);
