@@ -28,7 +28,7 @@ RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int nbEdg
 	for(unsigned int j=0; j<nbEdge; j++)
 		listEdge.push_back( HyperFactory::newHyperEdge() );
 
-	for(unsigned int u=0; u<(nbVertex * nbEdge) / 2; u++) {	
+	for(unsigned int u=0; u<(nbVertex * nbEdge); u++) {	
 		if( u % 3 == 0 ) {
 			int n = getRand();
 			HyperFactory::link( listVertex.at((u+n)%nbVertex), listEdge.at((u*n)%nbEdge) );
