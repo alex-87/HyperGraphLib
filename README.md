@@ -28,4 +28,4 @@ To compile HyperGraphLib, you need:
 Boost Library
 -------------
 
-This software uses the [Boost](https://www.boost.org/) Library. Please see the Boost licence at http://www.boost.org/LICENSE_1_0.txt 
+This software uses the [Boost](https://www.boost.org/) Library. Please see the Boost license at http://www.boost.org/LICENSE_1_0.txt 
