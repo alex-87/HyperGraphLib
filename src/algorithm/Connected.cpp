@@ -101,9 +101,9 @@ Connected::exploreVertical(std::vector<unsigned int>& listVisited, std::stack<un
 	matrix( _ptrHypergrapheAbstrait->getAdjacentMatrix().getBoolAdjacentMatrix() );
 
 	boost::tuple<unsigned int, unsigned int>*
-	dim *_ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
+	dim = &_ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
 
-	for(unsigned int i=0; i<dim.get<0>(); i++) {
+	for(unsigned int i=0; i<dim->get<0>(); i++) {
 		if( matrix[idVert][i] && !isEdgeVisited(listVisited, i ) ) {
 #if(TRACE_ALGORITHM_CONNECTED)
 			std::cout << "-> PUSH [edge]: " << i << std::endl;
@@ -124,7 +124,7 @@ Connected::exploreHorizontal(std::vector<unsigned int>& listVisited, std::stack<
 	boost::tuple<unsigned int, unsigned int>*
 	dim = &_ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
 
-	for(unsigned int i=0; i<dim.get<1>(); i++) {
+	for(unsigned int i=0; i<dim->get<1>(); i++) {
 		if( matrix[i][idHor] && !isVertexVisited(listVisited, i ) ) {
 #if(TRACE_ALGORITHM_CONNECTED)
 			std::cout << "-> PUSH [vertex]: " << i << std::endl;
