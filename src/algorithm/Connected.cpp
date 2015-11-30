@@ -100,8 +100,8 @@ Connected::exploreVertical(std::vector<unsigned int>& listVisited, std::stack<un
 	LibType::AdjacentMatrixContainerBool
 	matrix( _ptrHypergrapheAbstrait->getAdjacentMatrix().getBoolAdjacentMatrix() );
 
-	boost::tuple<unsigned int, unsigned int>
-	dim( _ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension() );
+	boost::tuple<unsigned int, unsigned int>*
+	dim *_ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
 
 	for(unsigned int i=0; i<dim.get<0>(); i++) {
 		if( matrix[idVert][i] && !isEdgeVisited(listVisited, i ) ) {
@@ -111,6 +111,8 @@ Connected::exploreVertical(std::vector<unsigned int>& listVisited, std::stack<un
 			stack.push( i );
 		}
 	}
+	
+	delete( dim );
 }
 
 void
@@ -119,8 +121,8 @@ Connected::exploreHorizontal(std::vector<unsigned int>& listVisited, std::stack<
 	LibType::AdjacentMatrixContainerBool
 	matrix( _ptrHypergrapheAbstrait->getAdjacentMatrix().getBoolAdjacentMatrix() );
 
-	boost::tuple<unsigned int, unsigned int>
-	dim( _ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension() );
+	boost::tuple<unsigned int, unsigned int>*
+	dim = &_ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
 
 	for(unsigned int i=0; i<dim.get<1>(); i++) {
 		if( matrix[i][idHor] && !isVertexVisited(listVisited, i ) ) {
@@ -130,6 +132,8 @@ Connected::exploreHorizontal(std::vector<unsigned int>& listVisited, std::stack<
 			stack.push( i );
 		}
 	}
+	
+	delete( dim );
 }
 
 bool
