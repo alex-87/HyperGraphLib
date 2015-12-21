@@ -9,5 +9,4 @@
 #define NewAlgorithm(a, b, c) boost::shared_ptr<AlgorithmeAbstrait> a( new b( c ) );
 
 
-
 #endif /* CLIENT_INCLUDE_CLIENT_HH_ */

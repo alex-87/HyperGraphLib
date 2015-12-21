@@ -96,13 +96,4 @@ LibType::AdjacentMatrixContainerBool&
 AdjacentMatrix::getBoolAdjacentMatrix() {
 	return _adjacentMatrixBool;
 }
-/*
-void AdjacentMatrix::display() const {
-	for(unsigned int i=0; i<_n; i++) {
-		for(unsigned int j=0; j<_m; j++) {
-			std::cout << _adjacentMatrixBool[j][i] << " ";
-		}
-		std::cout << " " << std::endl;
-	}
-}*/
 

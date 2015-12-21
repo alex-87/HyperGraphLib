@@ -32,6 +32,7 @@
 #include "../algorithm/include/Simple.hh"
 #include "../algorithm/include/Linear.hh"
 #include "../algorithm/include/Connected.hh"
+#include "../algorithm/include/HyperGraphStat.hh"
 
 #include "../io/include/WriterFile.hh"
 #include "../io/include/ReaderFile.hh"
@@ -52,7 +53,8 @@ int main(int argc, char *argv[]) {
 					("kregular", "Décide si l'hypergraphe est k-regulier")
 					("simple", "Décide si l'hypergraphe est simple")
 					("helly", "Décide si un hypergraphe possède la propriété de Helly")
-					("connexe", "Décide si l'hypergraphe est connexe");
+					("connexe", "Décide si l'hypergraphe est connexe")
+					("stat", "Retourne les statistiques de l'hypergraphe");
 
 	boost::program_options::variables_map vm;
 	boost::program_options::store(boost::program_options::parse_command_line(argc, argv, desc), vm);
@@ -101,6 +103,23 @@ int main(int argc, char *argv[]) {
 		RandomHypergraphe rHyp;
 		rHyp.generateHypergraphe(vm["random"].as<int>(), vm["random"].as<int>());
 		ptrHpg = rHyp.getHypergraphe();
+	}
+
+	if( vm.count("stat") ) {
+		NewAlgorithm(statHpg, HyperGraphStat, ptrHpg);
+
+		MotorAlgorithm::setAlgorithme( statHpg );
+		MotorAlgorithm::runAlgorithme();
+
+		boost::shared_ptr<HyperGraphStat> s = boost::static_pointer_cast<HyperGraphStat>( statHpg );
+
+		std::cout << "Hyper-vertex : " << s->getNbrHyperVertex() << std::endl
+				  << "Hyper-edge   : " << s->getNbrHyperEdge()   << std::endl
+				  << "Nbr. links   : " << s->getNbrLinks()       << std::endl
+				  << "Rang         : " << s->getRang()           << std::endl
+				  << "Co-rang      : " << s->getCoRang()         << std::endl;
+
+		return 0;
 	}
 
 	if( vm.count("dual") ) {
