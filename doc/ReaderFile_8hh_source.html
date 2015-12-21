@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.9.1"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>HypergraphLib:  Fichier source de src/io/include/ReaderFile.hh</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">HypergraphLib
    </div>
   </td>
@@ -31,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.9.1 -->
+<!-- Généré par Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -112,9 +112,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classReaderFile.html#a40e89d3e350c54084bf225b7034a5ac0">readHypergrapheHyperEdge</a>(std::istream&amp;);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp; <a class="code" href="classReaderFile.html#aa1d1df955b4edcc07315fcf42fb97f30">hyperVertexById</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    boost::shared_ptr&lt;HyperVertex&gt;&amp; <a class="code" href="classReaderFile.html#a590923db01944a4d63385acfe85a5c8b">hyperVertexById</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp; <a class="code" href="classReaderFile.html#a1854d701db2cabf6aa10555d0dccbd6c">hyperEdgeById</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    boost::shared_ptr&lt;HyperEdge&gt;&amp; <a class="code" href="classReaderFile.html#a41c89f05de2c5fc74ca26fe082b98de0">hyperEdgeById</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classReaderFile.html#a8b9bcd0c246efc175e2acff1e129c89f">flush</a>();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
@@ -133,24 +133,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* IO_INCLUDE_READERFILE_HH_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="classReaderFile_html_aedf3dac215dac56b4b02e61a1c95f4c7"><div class="ttname"><a href="classReaderFile.html#aedf3dac215dac56b4b02e61a1c95f4c7">ReaderFile::~ReaderFile</a></div><div class="ttdeci">~ReaderFile()</div></div>
 <div class="ttc" id="classReaderFile_html"><div class="ttname"><a href="classReaderFile.html">ReaderFile</a></div><div class="ttdef"><b>Definition:</b> ReaderFile.hh:14</div></div>
-<div class="ttc" id="classReaderFile_html_aa1d1df955b4edcc07315fcf42fb97f30"><div class="ttname"><a href="classReaderFile.html#aa1d1df955b4edcc07315fcf42fb97f30">ReaderFile::hyperVertexById</a></div><div class="ttdeci">HyperVertex &amp; hyperVertexById(unsigned int &amp;)</div></div>
 <div class="ttc" id="classReaderFile_html_a8b9bcd0c246efc175e2acff1e129c89f"><div class="ttname"><a href="classReaderFile.html#a8b9bcd0c246efc175e2acff1e129c89f">ReaderFile::flush</a></div><div class="ttdeci">void flush()</div></div>
-<div class="ttc" id="classReaderFile_html_a1854d701db2cabf6aa10555d0dccbd6c"><div class="ttname"><a href="classReaderFile.html#a1854d701db2cabf6aa10555d0dccbd6c">ReaderFile::hyperEdgeById</a></div><div class="ttdeci">HyperEdge &amp; hyperEdgeById(unsigned int &amp;)</div></div>
 <div class="ttc" id="classReaderFile_html_a7a4879e664608e91c81d5bba3a2e7fc5"><div class="ttname"><a href="classReaderFile.html#a7a4879e664608e91c81d5bba3a2e7fc5">ReaderFile::_listHyperVertex</a></div><div class="ttdeci">LibType::ListHyperVertex _listHyperVertex</div><div class="ttdef"><b>Definition:</b> ReaderFile.hh:73</div></div>
 <div class="ttc" id="classReaderFile_html_a752a2bb17214663b54f0675073ac5726"><div class="ttname"><a href="classReaderFile.html#a752a2bb17214663b54f0675073ac5726">ReaderFile::_listHyperEdge</a></div><div class="ttdeci">LibType::ListHyperEdge _listHyperEdge</div><div class="ttdef"><b>Definition:</b> ReaderFile.hh:79</div></div>
-<div class="ttc" id="classHyperEdge_html"><div class="ttname"><a href="classHyperEdge.html">HyperEdge</a></div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:15</div></div>
 <div class="ttc" id="classReaderAbstrait_html"><div class="ttname"><a href="classReaderAbstrait.html">ReaderAbstrait</a></div><div class="ttdef"><b>Definition:</b> ReaderAbstrait.hh:13</div></div>
+<div class="ttc" id="classReaderFile_html_a590923db01944a4d63385acfe85a5c8b"><div class="ttname"><a href="classReaderFile.html#a590923db01944a4d63385acfe85a5c8b">ReaderFile::hyperVertexById</a></div><div class="ttdeci">boost::shared_ptr&lt; HyperVertex &gt; &amp; hyperVertexById(unsigned int &amp;)</div></div>
 <div class="ttc" id="classReaderFile_html_a02e725595dc9fa34a3aa4c80aead65dd"><div class="ttname"><a href="classReaderFile.html#a02e725595dc9fa34a3aa4c80aead65dd">ReaderFile::ReaderFile</a></div><div class="ttdeci">ReaderFile()</div></div>
 <div class="ttc" id="classReaderFile_html_a3644df15d0c728cf553691a96c25c30d"><div class="ttname"><a href="classReaderFile.html#a3644df15d0c728cf553691a96c25c30d">ReaderFile::readHypergrapheHyperVertex</a></div><div class="ttdeci">void readHypergrapheHyperVertex(std::istream &amp;)</div></div>
 <div class="ttc" id="classReaderFile_html_a723f759e87435699b550da356c3fb54b"><div class="ttname"><a href="classReaderFile.html#a723f759e87435699b550da356c3fb54b">ReaderFile::readHypergraphe</a></div><div class="ttdeci">void readHypergraphe(std::istream &amp;)</div></div>
-<div class="ttc" id="classHyperVertex_html"><div class="ttname"><a href="classHyperVertex.html">HyperVertex</a></div><div class="ttdef"><b>Definition:</b> HyperVertex.hh:16</div></div>
 <div class="ttc" id="classReaderFile_html_a40e89d3e350c54084bf225b7034a5ac0"><div class="ttname"><a href="classReaderFile.html#a40e89d3e350c54084bf225b7034a5ac0">ReaderFile::readHypergrapheHyperEdge</a></div><div class="ttdeci">void readHypergrapheHyperEdge(std::istream &amp;)</div></div>
+<div class="ttc" id="classReaderFile_html_a41c89f05de2c5fc74ca26fe082b98de0"><div class="ttname"><a href="classReaderFile.html#a41c89f05de2c5fc74ca26fe082b98de0">ReaderFile::hyperEdgeById</a></div><div class="ttdeci">boost::shared_ptr&lt; HyperEdge &gt; &amp; hyperEdgeById(unsigned int &amp;)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.9.1
+</a> 1.8.10
 </small></address>
 </body>
 </html>

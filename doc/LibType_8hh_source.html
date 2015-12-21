@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.9.1"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>HypergraphLib:  Fichier source de src/model/include/LibType.hh</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">HypergraphLib
    </div>
   </td>
@@ -31,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.9.1 -->
+<!-- Généré par Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -113,22 +113,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">typedef</span> boost::multi_array&lt;int, 2&gt;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    AdjacentMatrixContainerInt;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">typedef</span> boost::container::vector&lt;HyperVertex&gt;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">typedef</span> boost::container::vector&lt;boost::shared_ptr&lt;HyperVertex&gt; &gt;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    ListHyperVertex;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">typedef</span> boost::container::vector&lt;HyperEdge&gt;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">typedef</span> boost::container::vector&lt;boost::shared_ptr&lt;HyperEdge&gt; &gt;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    ListHyperEdge;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">typedef</span> std::map&lt;HyperVertex, int&gt;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">typedef</span> std::map&lt;boost::shared_ptr&lt;HyperVertex&gt;, <span class="keywordtype">int</span>&gt;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    IndexerHyperVertex;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">typedef</span> std::map&lt;HyperEdge, int&gt;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">typedef</span> std::map&lt;boost::shared_ptr&lt;HyperEdge&gt;, <span class="keywordtype">int</span>&gt;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    IndexerHyperEdge;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">typedef</span> std::map&lt;unsigned int, HyperVertex&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">typedef</span> std::map&lt;unsigned int, boost::shared_ptr&lt;HyperVertex&gt; &gt;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    HyperVertexIndexer;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">typedef</span> std::map&lt;unsigned int, HyperEdge&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">typedef</span> std::map&lt;unsigned int, boost::shared_ptr&lt;HyperEdge&gt; &gt;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    HyperEdgeIndexer;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
@@ -148,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.9.1
+</a> 1.8.10
 </small></address>
 </body>
 </html>

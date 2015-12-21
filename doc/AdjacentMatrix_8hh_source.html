@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.9.1"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>HypergraphLib:  Fichier source de src/model/include/AdjacentMatrix.hh</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">HypergraphLib
    </div>
   </td>
@@ -31,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.9.1 -->
+<!-- Généré par Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -113,25 +113,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#a3129f47ce926e95fea18930811a63816">resize</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>&amp;);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#af6a2ca9235c8fb2e52ffeb8462abee25">addHyperVertex</a>(<span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#a76d765733f7cbec2b11d9f5865fa2202">addHyperVertex</a>(<span class="keyword">const</span> boost::shared_ptr&lt;HyperVertex&gt;&amp;);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#a21554318b5ccb36d8ca89748033d297e">addHyperEdge</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAdjacentMatrix.html#a2d54d48b2eb3ef97e64f592dd1e5fe6c">addHyperEdge</a>(<span class="keyword">const</span> boost::shared_ptr&lt;HyperEdge&gt;&amp;);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a1c53ab1daaec81c49f2661e7d54678cc">isVertexInEdge</a>(<span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;, <span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a80bb1b1de64946e570ef5be374c05436">isVertexInEdge</a>(<span class="keyword">const</span> boost::shared_ptr&lt;HyperVertex&gt;&amp;, <span class="keyword">const</span> boost::shared_ptr&lt;HyperEdge&gt;&amp;) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a6a94758e5e824382c7d1772070d65937">isEdgeInVertex</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;, <span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a0e201356dd69d65f79f62d452c04f564">isEdgeInVertex</a>(<span class="keyword">const</span> boost::shared_ptr&lt;HyperEdge&gt;&amp;, <span class="keyword">const</span> boost::shared_ptr&lt;HyperVertex&gt;&amp;) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a1c53ab1daaec81c49f2661e7d54678cc">isVertexInEdge</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a80bb1b1de64946e570ef5be374c05436">isVertexInEdge</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp;) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a6a94758e5e824382c7d1772070d65937">isEdgeInVertex</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAdjacentMatrix.html#a0e201356dd69d65f79f62d452c04f564">isEdgeInVertex</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">int</span>&amp;) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    LibType::AdjacentMatrixContainerBool&amp; <a class="code" href="classAdjacentMatrix.html#a315845d3a01f738b5edcc209f6032aee">getBoolAdjacentMatrix</a>();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    LibType::AdjacentMatrixContainerInt&amp; <a class="code" href="classAdjacentMatrix.html#a45dd7071ce7a69b8e0fb11cc42eb1443">getUIntAdjacentMatrix</a>();</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#a9f25f6e88b3a19a26ebc45dfffe7db5d">getVertexDegree</a>(<span class="keyword">const</span> <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#a0030ce84bf4261ce75261022b8daecb6">getVertexDegree</a>(<span class="keyword">const</span> boost::shared_ptr&lt;HyperVertex&gt;&amp;) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#a4db5b2697694c75b75865dc62ee5dd07">getEdgeSize</a>(<span class="keyword">const</span> <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#ac8f310f9727c53598048e812d86baefe">getEdgeSize</a>(<span class="keyword">const</span> boost::shared_ptr&lt;HyperEdge&gt;&amp;) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classAdjacentMatrix.html#ae7a4e2fe4ff9d19aade991e5a5fce63f">getCoRank</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
@@ -161,30 +161,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="ttc" id="classAdjacentMatrix_html_ae7a4e2fe4ff9d19aade991e5a5fce63f"><div class="ttname"><a href="classAdjacentMatrix.html#ae7a4e2fe4ff9d19aade991e5a5fce63f">AdjacentMatrix::getCoRank</a></div><div class="ttdeci">int getCoRank() const </div></div>
 <div class="ttc" id="classAdjacentMatrix_html"><div class="ttname"><a href="classAdjacentMatrix.html">AdjacentMatrix</a></div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:20</div></div>
 <div class="ttc" id="classAdjacentMatrix_html_af1e872485fc6ad7cc3a3120fd09bb52c"><div class="ttname"><a href="classAdjacentMatrix.html#af1e872485fc6ad7cc3a3120fd09bb52c">AdjacentMatrix::getRank</a></div><div class="ttdeci">int getRank() const </div></div>
-<div class="ttc" id="classAdjacentMatrix_html_a21554318b5ccb36d8ca89748033d297e"><div class="ttname"><a href="classAdjacentMatrix.html#a21554318b5ccb36d8ca89748033d297e">AdjacentMatrix::addHyperEdge</a></div><div class="ttdeci">void addHyperEdge(const HyperEdge &amp;)</div></div>
-<div class="ttc" id="classAdjacentMatrix_html_a1c53ab1daaec81c49f2661e7d54678cc"><div class="ttname"><a href="classAdjacentMatrix.html#a1c53ab1daaec81c49f2661e7d54678cc">AdjacentMatrix::isVertexInEdge</a></div><div class="ttdeci">bool isVertexInEdge(const HyperVertex &amp;, const HyperEdge &amp;) const </div></div>
 <div class="ttc" id="classAdjacentMatrix_html_a5d5d4c921f7649baea50e6dee807232b"><div class="ttname"><a href="classAdjacentMatrix.html#a5d5d4c921f7649baea50e6dee807232b">AdjacentMatrix::display</a></div><div class="ttdeci">void display() const </div></div>
-<div class="ttc" id="classAdjacentMatrix_html_af6a2ca9235c8fb2e52ffeb8462abee25"><div class="ttname"><a href="classAdjacentMatrix.html#af6a2ca9235c8fb2e52ffeb8462abee25">AdjacentMatrix::addHyperVertex</a></div><div class="ttdeci">void addHyperVertex(const HyperVertex &amp;)</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a80bb1b1de64946e570ef5be374c05436"><div class="ttname"><a href="classAdjacentMatrix.html#a80bb1b1de64946e570ef5be374c05436">AdjacentMatrix::isVertexInEdge</a></div><div class="ttdeci">bool isVertexInEdge(const boost::shared_ptr&lt; HyperVertex &gt; &amp;, const boost::shared_ptr&lt; HyperEdge &gt; &amp;) const </div></div>
 <div class="ttc" id="classHyperEdge_html"><div class="ttname"><a href="classHyperEdge.html">HyperEdge</a></div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:15</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a76d765733f7cbec2b11d9f5865fa2202"><div class="ttname"><a href="classAdjacentMatrix.html#a76d765733f7cbec2b11d9f5865fa2202">AdjacentMatrix::addHyperVertex</a></div><div class="ttdeci">void addHyperVertex(const boost::shared_ptr&lt; HyperVertex &gt; &amp;)</div></div>
 <div class="ttc" id="classAdjacentMatrix_html_ae6737c737573488313c67040464065f8"><div class="ttname"><a href="classAdjacentMatrix.html#ae6737c737573488313c67040464065f8">AdjacentMatrix::_adjacentMatrixUInt</a></div><div class="ttdeci">LibType::AdjacentMatrixContainerInt _adjacentMatrixUInt</div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:157</div></div>
 <div class="ttc" id="classAdjacentMatrix_html_a5da1fb678f25de59cab46bb181cbfc35"><div class="ttname"><a href="classAdjacentMatrix.html#a5da1fb678f25de59cab46bb181cbfc35">AdjacentMatrix::AdjacentMatrix</a></div><div class="ttdeci">AdjacentMatrix()</div></div>
-<div class="ttc" id="classAdjacentMatrix_html_a9f25f6e88b3a19a26ebc45dfffe7db5d"><div class="ttname"><a href="classAdjacentMatrix.html#a9f25f6e88b3a19a26ebc45dfffe7db5d">AdjacentMatrix::getVertexDegree</a></div><div class="ttdeci">unsigned int getVertexDegree(const HyperVertex &amp;) const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a2d54d48b2eb3ef97e64f592dd1e5fe6c"><div class="ttname"><a href="classAdjacentMatrix.html#a2d54d48b2eb3ef97e64f592dd1e5fe6c">AdjacentMatrix::addHyperEdge</a></div><div class="ttdeci">void addHyperEdge(const boost::shared_ptr&lt; HyperEdge &gt; &amp;)</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_ac8f310f9727c53598048e812d86baefe"><div class="ttname"><a href="classAdjacentMatrix.html#ac8f310f9727c53598048e812d86baefe">AdjacentMatrix::getEdgeSize</a></div><div class="ttdeci">unsigned int getEdgeSize(const boost::shared_ptr&lt; HyperEdge &gt; &amp;) const </div></div>
 <div class="ttc" id="classAdjacentMatrix_html_a44c6efab4a83c8bd4d759f60f6aa30f0"><div class="ttname"><a href="classAdjacentMatrix.html#a44c6efab4a83c8bd4d759f60f6aa30f0">AdjacentMatrix::_m</a></div><div class="ttdeci">unsigned int _m</div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:142</div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a0e201356dd69d65f79f62d452c04f564"><div class="ttname"><a href="classAdjacentMatrix.html#a0e201356dd69d65f79f62d452c04f564">AdjacentMatrix::isEdgeInVertex</a></div><div class="ttdeci">bool isEdgeInVertex(const boost::shared_ptr&lt; HyperEdge &gt; &amp;, const boost::shared_ptr&lt; HyperVertex &gt; &amp;) const </div></div>
 <div class="ttc" id="classAdjacentMatrix_html_a4f38fc6fcabf5d7ab2e5e888098d94ed"><div class="ttname"><a href="classAdjacentMatrix.html#a4f38fc6fcabf5d7ab2e5e888098d94ed">AdjacentMatrix::_adjacentMatrixBool</a></div><div class="ttdeci">LibType::AdjacentMatrixContainerBool _adjacentMatrixBool</div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:152</div></div>
 <div class="ttc" id="classAdjacentMatrix_html_a45dd7071ce7a69b8e0fb11cc42eb1443"><div class="ttname"><a href="classAdjacentMatrix.html#a45dd7071ce7a69b8e0fb11cc42eb1443">AdjacentMatrix::getUIntAdjacentMatrix</a></div><div class="ttdeci">LibType::AdjacentMatrixContainerInt &amp; getUIntAdjacentMatrix()</div></div>
 <div class="ttc" id="classAdjacentMatrix_html_a3129f47ce926e95fea18930811a63816"><div class="ttname"><a href="classAdjacentMatrix.html#a3129f47ce926e95fea18930811a63816">AdjacentMatrix::resize</a></div><div class="ttdeci">void resize(const unsigned int &amp;, const unsigned int &amp;)</div></div>
 <div class="ttc" id="classHyperVertex_html"><div class="ttname"><a href="classHyperVertex.html">HyperVertex</a></div><div class="ttdef"><b>Definition:</b> HyperVertex.hh:16</div></div>
-<div class="ttc" id="classAdjacentMatrix_html_a6a94758e5e824382c7d1772070d65937"><div class="ttname"><a href="classAdjacentMatrix.html#a6a94758e5e824382c7d1772070d65937">AdjacentMatrix::isEdgeInVertex</a></div><div class="ttdeci">bool isEdgeInVertex(const HyperEdge &amp;, const HyperVertex &amp;) const </div></div>
 <div class="ttc" id="classAdjacentMatrix_html_aa3a4aadf374e76c50d3d1d59ce0eba9a"><div class="ttname"><a href="classAdjacentMatrix.html#aa3a4aadf374e76c50d3d1d59ce0eba9a">AdjacentMatrix::_n</a></div><div class="ttdeci">unsigned int _n</div><div class="ttdef"><b>Definition:</b> AdjacentMatrix.hh:147</div></div>
 <div class="ttc" id="classAdjacentMatrix_html_a315845d3a01f738b5edcc209f6032aee"><div class="ttname"><a href="classAdjacentMatrix.html#a315845d3a01f738b5edcc209f6032aee">AdjacentMatrix::getBoolAdjacentMatrix</a></div><div class="ttdeci">LibType::AdjacentMatrixContainerBool &amp; getBoolAdjacentMatrix()</div></div>
-<div class="ttc" id="classAdjacentMatrix_html_a4db5b2697694c75b75865dc62ee5dd07"><div class="ttname"><a href="classAdjacentMatrix.html#a4db5b2697694c75b75865dc62ee5dd07">AdjacentMatrix::getEdgeSize</a></div><div class="ttdeci">unsigned int getEdgeSize(const HyperEdge &amp;) const </div></div>
+<div class="ttc" id="classAdjacentMatrix_html_a0030ce84bf4261ce75261022b8daecb6"><div class="ttname"><a href="classAdjacentMatrix.html#a0030ce84bf4261ce75261022b8daecb6">AdjacentMatrix::getVertexDegree</a></div><div class="ttdeci">unsigned int getVertexDegree(const boost::shared_ptr&lt; HyperVertex &gt; &amp;) const </div></div>
 <div class="ttc" id="classAdjacentMatrix_html_affb19162f9c891d90b07e9ef60de503e"><div class="ttname"><a href="classAdjacentMatrix.html#affb19162f9c891d90b07e9ef60de503e">AdjacentMatrix::getMatrixDimension</a></div><div class="ttdeci">boost::tuple&lt; unsigned int, unsigned int &gt; &amp; getMatrixDimension()</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.9.1
+</a> 1.8.10
 </small></address>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.9.1"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>HypergraphLib:  Fichier source de src/model/include/HyperFactory.hh</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">HypergraphLib
    </div>
   </td>
@@ -31,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.9.1 -->
+<!-- Généré par Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> boost::shared_ptr&lt;HyperEdge&gt; <a class="code" href="classHyperFactory.html#a5b0bb8734c9cc25f287d22373409c85a">newHyperEdge</a>();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classHyperFactory.html#aa993dfd0958da3ef9ae805d598440aff">link</a>(<a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;, <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classHyperFactory.html#a5f467775bbd753bbb1015cebaff6fc36">link</a>(boost::shared_ptr&lt;HyperVertex&gt;&amp;, boost::shared_ptr&lt;HyperEdge&gt;&amp;);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classHyperFactory.html#a43bab25424045836a6276a79146acceb">isSession</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
@@ -146,19 +146,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="ttc" id="classHyperFactory_html_a43bab25424045836a6276a79146acceb"><div class="ttname"><a href="classHyperFactory.html#a43bab25424045836a6276a79146acceb">HyperFactory::isSession</a></div><div class="ttdeci">static bool isSession()</div></div>
 <div class="ttc" id="classHyperFactory_html_a971479511d56e4df2e11b83fc5542e08"><div class="ttname"><a href="classHyperFactory.html#a971479511d56e4df2e11b83fc5542e08">HyperFactory::newHyperVertex</a></div><div class="ttdeci">static const boost::shared_ptr&lt; HyperVertex &gt; newHyperVertex()</div></div>
 <div class="ttc" id="classHyperFactory_html"><div class="ttname"><a href="classHyperFactory.html">HyperFactory</a></div><div class="ttdef"><b>Definition:</b> HyperFactory.hh:13</div></div>
+<div class="ttc" id="classHyperFactory_html_a5f467775bbd753bbb1015cebaff6fc36"><div class="ttname"><a href="classHyperFactory.html#a5f467775bbd753bbb1015cebaff6fc36">HyperFactory::link</a></div><div class="ttdeci">static void link(boost::shared_ptr&lt; HyperVertex &gt; &amp;, boost::shared_ptr&lt; HyperEdge &gt; &amp;)</div></div>
 <div class="ttc" id="classHyperFactory_html_a2c181080ebae778511938895d9377120"><div class="ttname"><a href="classHyperFactory.html#a2c181080ebae778511938895d9377120">HyperFactory::closeSession</a></div><div class="ttdeci">static void closeSession()</div></div>
 <div class="ttc" id="classHyperFactory_html_a3ac2d3c1a5354e2522f728d397b247e1"><div class="ttname"><a href="classHyperFactory.html#a3ac2d3c1a5354e2522f728d397b247e1">HyperFactory::startSession</a></div><div class="ttdeci">static void startSession(boost::shared_ptr&lt; HypergrapheAbstrait &gt; &amp;ptrHypergrapheAbstrait)</div></div>
-<div class="ttc" id="classHyperFactory_html_aa993dfd0958da3ef9ae805d598440aff"><div class="ttname"><a href="classHyperFactory.html#aa993dfd0958da3ef9ae805d598440aff">HyperFactory::link</a></div><div class="ttdeci">static void link(HyperVertex &amp;, HyperEdge &amp;)</div></div>
-<div class="ttc" id="classHyperEdge_html"><div class="ttname"><a href="classHyperEdge.html">HyperEdge</a></div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:15</div></div>
 <div class="ttc" id="classHyperFactory_html_a5b0bb8734c9cc25f287d22373409c85a"><div class="ttname"><a href="classHyperFactory.html#a5b0bb8734c9cc25f287d22373409c85a">HyperFactory::newHyperEdge</a></div><div class="ttdeci">static const boost::shared_ptr&lt; HyperEdge &gt; newHyperEdge()</div></div>
-<div class="ttc" id="classHyperVertex_html"><div class="ttname"><a href="classHyperVertex.html">HyperVertex</a></div><div class="ttdef"><b>Definition:</b> HyperVertex.hh:16</div></div>
 <div class="ttc" id="classHyperFactory_html_a22ebaf16d020a6d369a04174d25c2745"><div class="ttname"><a href="classHyperFactory.html#a22ebaf16d020a6d369a04174d25c2745">HyperFactory::Instance</a></div><div class="ttdeci">static HyperFactory &amp; Instance()</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.9.1
+</a> 1.8.10
 </small></address>
 </body>
 </html>

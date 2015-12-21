@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.9.1"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
 <title>HypergraphLib:  Fichier source de src/algorithm/include/Helly.hh</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">HypergraphLib
    </div>
   </td>
@@ -31,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.9.1 -->
+<!-- Généré par Doxygen 1.8.10 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -108,13 +108,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHelly.html#ad2ddf7368b73cf2f2106de9c956837fa">runAlgorithme</a>();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    LibType::ListHyperEdge&amp; <a class="code" href="classHelly.html#a0daafb87c3aa08290f201381555d3eb9">allContainXY</a>(<a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;, <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    LibType::ListHyperEdge&amp; <a class="code" href="classHelly.html#aa0c5656dbf0a201a785c44fc1e480da5">allContainXY</a>(boost::shared_ptr&lt;HyperVertex&gt;&amp;, boost::shared_ptr&lt;HyperVertex&gt;&amp;);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHelly.html#a7d9b7b0c90902d1d9d9538942ffdc695">nonEmptyIntersection</a>(LibType::ListHyperEdge&amp;);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHelly.html#a745dc481a8908a41c95ad60397d452a4">nonEmptyBetween</a>(<a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;, <a class="code" href="classHyperEdge.html">HyperEdge</a>&amp;);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHelly.html#a99be7a666df31396c430e8192edd9086">nonEmptyBetween</a>(boost::shared_ptr&lt;HyperEdge&gt;&amp;, boost::shared_ptr&lt;HyperEdge&gt;&amp;);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHelly.html#a884b4b5497117b0e5422341527dc0c6d">voisin</a>(<a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;, <a class="code" href="classHyperVertex.html">HyperVertex</a>&amp;);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHelly.html#a14144109e162498f75a27ecaa7828717">voisin</a>(boost::shared_ptr&lt;HyperVertex&gt;&amp;, boost::shared_ptr&lt;HyperVertex&gt;&amp;);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHelly.html#afd5f4b6c9dc81a95379bfcd0f7499b9d">concatenate</a>(LibType::ListHyperEdge&amp;, LibType::ListHyperEdge&amp;);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
@@ -136,23 +136,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="ttc" id="classHelly_html_a7d9b7b0c90902d1d9d9538942ffdc695"><div class="ttname"><a href="classHelly.html#a7d9b7b0c90902d1d9d9538942ffdc695">Helly::nonEmptyIntersection</a></div><div class="ttdeci">bool nonEmptyIntersection(LibType::ListHyperEdge &amp;)</div></div>
 <div class="ttc" id="classHelly_html_ad2ddf7368b73cf2f2106de9c956837fa"><div class="ttname"><a href="classHelly.html#ad2ddf7368b73cf2f2106de9c956837fa">Helly::runAlgorithme</a></div><div class="ttdeci">void runAlgorithme()</div></div>
 <div class="ttc" id="classAlgorithmeAbstrait_html"><div class="ttname"><a href="classAlgorithmeAbstrait.html">AlgorithmeAbstrait</a></div><div class="ttdef"><b>Definition:</b> AlgorithmeAbstrait.hh:16</div></div>
-<div class="ttc" id="classHelly_html_a884b4b5497117b0e5422341527dc0c6d"><div class="ttname"><a href="classHelly.html#a884b4b5497117b0e5422341527dc0c6d">Helly::voisin</a></div><div class="ttdeci">bool voisin(HyperVertex &amp;, HyperVertex &amp;)</div></div>
 <div class="ttc" id="classHelly_html_afd5f4b6c9dc81a95379bfcd0f7499b9d"><div class="ttname"><a href="classHelly.html#afd5f4b6c9dc81a95379bfcd0f7499b9d">Helly::concatenate</a></div><div class="ttdeci">void concatenate(LibType::ListHyperEdge &amp;, LibType::ListHyperEdge &amp;)</div></div>
+<div class="ttc" id="classHelly_html_a14144109e162498f75a27ecaa7828717"><div class="ttname"><a href="classHelly.html#a14144109e162498f75a27ecaa7828717">Helly::voisin</a></div><div class="ttdeci">bool voisin(boost::shared_ptr&lt; HyperVertex &gt; &amp;, boost::shared_ptr&lt; HyperVertex &gt; &amp;)</div></div>
 <div class="ttc" id="classHelly_html_aafccc7f701c9009428053e6c359335b7"><div class="ttname"><a href="classHelly.html#aafccc7f701c9009428053e6c359335b7">Helly::Helly</a></div><div class="ttdeci">Helly(const boost::shared_ptr&lt; HypergrapheAbstrait &gt; &amp;)</div></div>
 <div class="ttc" id="classHelly_html_a00c7f907c93622dbee765a99f2c527af"><div class="ttname"><a href="classHelly.html#a00c7f907c93622dbee765a99f2c527af">Helly::_result</a></div><div class="ttdeci">RStructure _result</div><div class="ttdef"><b>Definition:</b> Helly.hh:91</div></div>
-<div class="ttc" id="classHelly_html_a0daafb87c3aa08290f201381555d3eb9"><div class="ttname"><a href="classHelly.html#a0daafb87c3aa08290f201381555d3eb9">Helly::allContainXY</a></div><div class="ttdeci">LibType::ListHyperEdge &amp; allContainXY(HyperVertex &amp;, HyperVertex &amp;)</div></div>
 <div class="ttc" id="classRStructure_html"><div class="ttname"><a href="classRStructure.html">RStructure</a></div><div class="ttdef"><b>Definition:</b> RStructure.hh:14</div></div>
-<div class="ttc" id="classHyperEdge_html"><div class="ttname"><a href="classHyperEdge.html">HyperEdge</a></div><div class="ttdef"><b>Definition:</b> HyperEdge.hh:15</div></div>
+<div class="ttc" id="classHelly_html_a99be7a666df31396c430e8192edd9086"><div class="ttname"><a href="classHelly.html#a99be7a666df31396c430e8192edd9086">Helly::nonEmptyBetween</a></div><div class="ttdeci">bool nonEmptyBetween(boost::shared_ptr&lt; HyperEdge &gt; &amp;, boost::shared_ptr&lt; HyperEdge &gt; &amp;)</div></div>
 <div class="ttc" id="classHelly_html_a76b1802b57fa00b8d6dadfbc11c5f21f"><div class="ttname"><a href="classHelly.html#a76b1802b57fa00b8d6dadfbc11c5f21f">Helly::getResult</a></div><div class="ttdeci">RStructure getResult() const </div></div>
 <div class="ttc" id="classHelly_html_a4d10697e9f6f9b46aae1f4f26a0fc5b6"><div class="ttname"><a href="classHelly.html#a4d10697e9f6f9b46aae1f4f26a0fc5b6">Helly::~Helly</a></div><div class="ttdeci">~Helly()</div></div>
-<div class="ttc" id="classHyperVertex_html"><div class="ttname"><a href="classHyperVertex.html">HyperVertex</a></div><div class="ttdef"><b>Definition:</b> HyperVertex.hh:16</div></div>
-<div class="ttc" id="classHelly_html_a745dc481a8908a41c95ad60397d452a4"><div class="ttname"><a href="classHelly.html#a745dc481a8908a41c95ad60397d452a4">Helly::nonEmptyBetween</a></div><div class="ttdeci">bool nonEmptyBetween(HyperEdge &amp;, HyperEdge &amp;)</div></div>
+<div class="ttc" id="classHelly_html_aa0c5656dbf0a201a785c44fc1e480da5"><div class="ttname"><a href="classHelly.html#aa0c5656dbf0a201a785c44fc1e480da5">Helly::allContainXY</a></div><div class="ttdeci">LibType::ListHyperEdge &amp; allContainXY(boost::shared_ptr&lt; HyperVertex &gt; &amp;, boost::shared_ptr&lt; HyperVertex &gt; &amp;)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.9.1
+</a> 1.8.10
 </small></address>
 </body>
 </html>
