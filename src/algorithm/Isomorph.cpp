@@ -10,7 +10,7 @@ Isomorph::runAlgorithme() {
 }
 
 RStructure
-Isomorph::getResult() {
+Isomorph::getResult() const {
 	return _result;
 }
 
