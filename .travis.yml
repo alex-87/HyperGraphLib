@@ -12,7 +12,7 @@ addons:
     - ubuntu-toolchain-r-test
     - boost-latest
     packages:
-    - libboost1.50-all-dev
+    - libboost1.54-all-dev
     - cmake
 
 install:
