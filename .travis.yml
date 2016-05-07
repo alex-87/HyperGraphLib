@@ -16,8 +16,8 @@ addons:
     - cmake
 
 install:
-  - sudo apt-get install -qq g++-5.3
-  - export CXX="g++-5.3"
+  - sudo apt-get install -qq g++-4.8
+  - export CXX="g++-4.8"
 
 before_script:
   - cmake CMakeLists.txt
