@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 2.8 )
 
-find_package( Boost 1.59 )
+find_package( Boost 1.58 )
 find_package( Boost COMPONENTS program_options REQUIRED )
 
 set(Boost_DEBUG off)
