@@ -101,6 +101,7 @@ ReaderFile::hyperVertexById(unsigned int& id) {
 			return vertex;
 		}
 	}
+	return nullptr;
 }
 
 boost::shared_ptr<HyperEdge>&
@@ -110,6 +111,7 @@ ReaderFile::hyperEdgeById(unsigned int& id) {
 			return edge;
 		}
 	}
+	return nullptr;
 }
 
 ReaderFile::~ReaderFile() {
