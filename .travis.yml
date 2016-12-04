@@ -13,7 +13,6 @@ addons:
     - boost-latest
     packages:
     - cmake
-    - libboost1.62-all-dev
 
 install:
   - sudo apt-get install -qq g++-4.8
