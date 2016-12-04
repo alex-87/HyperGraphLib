@@ -13,6 +13,7 @@ addons:
     - boost-latest
     packages:
     - cmake
+    - libboost1.62-all-dev
 
 install:
   - sudo apt-get install -qq g++-4.8
@@ -21,37 +22,4 @@ install:
 before_script:
   - cmake CMakeLists.txt
 
-matrix:
-  fast_finish: true
-
-    - env:    TEST_NAME="Boost 1.55"
-      compiler: g++
-      script: make
-      packages:
-       - libboost1.56-all-dev
-    - env:    TEST_NAME="Boost 1.56"
-      compiler: g++
-      script: make
-      packages:
-       - libboost1.57-all-dev
-    - env:    TEST_NAME="Boost 1.57"
-      compiler: g++
-      script: make
-      packages:
-       - libboost1.58-all-dev
-     - env:    TEST_NAME="Boost 1.58"
-      compiler: g++
-      script: make
-      packages:
-       - libboost1.59-all-dev
-     - env:    TEST_NAME="Boost 1.59"
-      compiler: g++
-      script: make
-      packages:
-       - libboost1.60-all-dev
-     - env:    TEST_NAME="Boost 1.60"
-      compiler: g++
-      script: make
-      packages:
-       - libboost1.55-all-dev
- 
+script: make
