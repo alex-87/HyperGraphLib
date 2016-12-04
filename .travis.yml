@@ -18,7 +18,7 @@ addons:
 install:
   - sudo apt-get install -qq g++-4.8
   - export CXX="g++-4.8"
-  - sudo apt-get install boost-defaults
+  - sudo apt-get install libboost-all-dev
 
 before_script:
   - cmake CMakeLists.txt
