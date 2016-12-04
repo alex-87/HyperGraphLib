@@ -13,12 +13,12 @@ addons:
     - boost-latest
     packages:
     - cmake
+    - libboost1.62-all-dev
 
 install:
   - sudo apt-get install -qq g++-4.8
   - export CXX="g++-4.8"
-  - wget http://ftp.debian.org/debian/pool/main/b/boost-defaults/libboost-all-dev_1.62.0.1_i386.deb
-  - sudo dpkg -i libboost-all-dev_1.62.0.1_i386.deb
+  - sudo apt-get install boost-defaults
 
 before_script:
   - cmake CMakeLists.txt
