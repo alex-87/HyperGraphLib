@@ -19,7 +19,7 @@ install:
 
 before_script:
   - wget https://sourceforge.net/projects/boost/files/latest/download?source=directory --output-document=boost.tar.bz2
-  - bzip2 -d boost.tar.bz2 && tar xf boost.tar && cd boost* && ./bootstrap.sh && ./b2 install
+  - bzip2 -d boost.tar.bz2 && tar xf boost.tar && cd boost* && ./bootstrap.sh && sudo ./b2 install
   - cmake CMakeLists.txt
 
 script: make
