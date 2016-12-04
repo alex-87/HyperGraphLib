@@ -12,7 +12,6 @@ addons:
     - ubuntu-toolchain-r-test
     - boost-latest
     packages:
-    - libboost1.54-all-dev
     - cmake
 
 install:
@@ -22,5 +21,37 @@ install:
 before_script:
   - cmake CMakeLists.txt
 
-script: make
+matrix:
+  fast_finish: true
 
+    - env:    TEST_NAME="Boost 1.55"
+      compiler: g++
+      script: make
+      packages:
+       - libboost1.56-all-dev
+    - env:    TEST_NAME="Boost 1.56"
+      compiler: g++
+      script: make
+      packages:
+       - libboost1.57-all-dev
+    - env:    TEST_NAME="Boost 1.57"
+      compiler: g++
+      script: make
+      packages:
+       - libboost1.58-all-dev
+     - env:    TEST_NAME="Boost 1.58"
+      compiler: g++
+      script: make
+      packages:
+       - libboost1.59-all-dev
+     - env:    TEST_NAME="Boost 1.59"
+      compiler: g++
+      script: make
+      packages:
+       - libboost1.60-all-dev
+     - env:    TEST_NAME="Boost 1.60"
+      compiler: g++
+      script: make
+      packages:
+       - libboost1.55-all-dev
+ 
