@@ -42,6 +42,9 @@ public:
 	typedef std::map<unsigned int, boost::shared_ptr<HyperEdge> >
 	HyperEdgeIndexer;
 
+	typedef boost::shared_ptr<boost::container::vector<LibType::ListHyperVertex> >
+	PathList;
+
 private:
 
 	LibType();
