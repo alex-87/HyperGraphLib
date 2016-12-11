@@ -25,4 +25,4 @@ before_script:
 script: make
 
 after_script:
-  - ./HypergraphLib --random 5 --path --source 4 --destination 0
+  - ./HypergraphLib --version
