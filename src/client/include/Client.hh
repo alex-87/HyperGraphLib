@@ -4,7 +4,7 @@
 
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 16
-#define VERSION_BUILD 1
+#define VERSION_BUILD 2
 
 #define NewAlgorithm(a, b, c) boost::shared_ptr<AlgorithmeAbstrait> a( new b( c ) );
 
