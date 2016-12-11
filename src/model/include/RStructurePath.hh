@@ -11,6 +11,8 @@ class RStructurePath : public RStructure {
 
 public:
 
+	RStructurePath();
+
 	void setPathResult(LibType::PathList&);
 
 	LibType::PathList getPathResult();

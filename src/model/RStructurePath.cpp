@@ -1,7 +1,8 @@
 
 #include "include/RStructurePath.hh"
 
-RStructurePath::RStructurePath() {
+RStructurePath::RStructurePath() : RStructure() {
+
 }
 
 void
