@@ -1,4 +1,5 @@
 
+#include <boost/foreach.hpp>
 #include "include/Path.hh"
 #include "../model/include/HyperVertex.hh"
 #include "../model/include/HyperEdge.hh"
@@ -70,6 +71,7 @@ void Path::runAlgorithme() {
 			addVertexList(visitedVertex, toVisitVertex, currentHyperVertex->getHyperEdgeList().at(cn) );
 		}
 
+		currentPath.push_back( currentHyperVertex );
 	}
 
 	_result.setPathResult(pathList);
@@ -78,6 +80,13 @@ void Path::runAlgorithme() {
 void
 Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVertex& vList) {
 
+	LibType::ListHyperVertex tmpList;
+
+	BOOST_FOREACH(boost::shared_ptr<HyperVertex> vPtr, vList) {
+		tmpList.push_back(vPtr);
+	}
+
+	pList->push_back(tmpList);
 }
 
 void
