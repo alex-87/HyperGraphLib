@@ -35,7 +35,7 @@ Path::setHyperVertex(boost::shared_ptr<HyperVertex>& source, boost::shared_ptr<H
 
 void Path::runAlgorithme() {
 
-	LibType::PathList pathList;
+	LibType::PathList pathList( new boost::container::vector<LibType::ListHyperVertex>() );
 
 	if( _source == _destination ) {
 		LibType::ListHyperVertex listHyperVertex;
@@ -59,10 +59,7 @@ void Path::runAlgorithme() {
 
 		if( currentHyperVertex == _destination ) {
 			currentPath.push_back( currentHyperVertex );
-			pathList->push_back( currentPath );
-
-			//currentPath( new boost::container::vector<boost::shared_ptr<HyperVertex> >() );
-
+			buildPathToPathList(pathList, currentPath);
 			currentPath.clear();
 			currentHyperVertex = _source;
 			toVisitVertex.clear();
@@ -75,8 +72,12 @@ void Path::runAlgorithme() {
 
 	}
 
-
 	_result.setPathResult(pathList);
+}
+
+void
+Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVertex& vList) {
+
 }
 
 void

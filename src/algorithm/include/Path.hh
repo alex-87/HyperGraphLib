@@ -69,6 +69,8 @@ protected:
 	void addVertexList(LibType::ListHyperVertex&, LibType::ListHyperVertex&, const boost::shared_ptr<HyperEdge>&) const;
 
 
+	void buildPathToPathList(LibType::PathList&, LibType::ListHyperVertex&);
+
 protected:
 
 	/**
