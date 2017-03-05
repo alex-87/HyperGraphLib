@@ -7,6 +7,7 @@
 #define VERSION_BUILD 1
 
 #define NewAlgorithm(a, b, c) boost::shared_ptr<AlgorithmeAbstrait> a( new b( c ) );
+#define NewAlgorithm2(a, b, c, d) boost::shared_ptr<AlgorithmeAbstrait> a( new b( c , d ) );
 
 
 #endif /* CLIENT_INCLUDE_CLIENT_HH_ */

@@ -33,6 +33,7 @@
 #include "../algorithm/include/Linear.hh"
 #include "../algorithm/include/Connected.hh"
 #include "../algorithm/include/HyperGraphStat.hh"
+#include "../algorithm/include/Isomorph.hh"
 
 #include "../io/include/WriterFile.hh"
 #include "../io/include/ReaderFile.hh"
@@ -102,6 +103,30 @@ int main(int argc, char *argv[]) {
 
 	// Isomorphism special parameters configuration
 	if( vm.count("isomorph") && vm.count("inputfile") ) {
+
+		boost::shared_ptr<HypergrapheAbstrait> ptrHpg2;
+
+		std::ifstream ifs(vm["isomorph"].as<std::string>(), std::ifstream::in);
+
+		ReaderFile fReader;
+		fReader.readHypergraphe( ifs );
+		ifs.close();
+
+		ptrHpg2 = fReader.getHypergraphe();
+
+		NewAlgorithm2(isomorphHpg, Isomorph, ptrHpg, ptrHpg2);
+
+		MotorAlgorithm::setAlgorithme( isomorphHpg );
+		MotorAlgorithm::runAlgorithme();
+
+		RStructure r( isomorphHpg->getResult() );
+
+		if( r.getBooleanResult() ) {
+			std::cout << "L'hypergraphe est isomorphe." << std::endl;
+		} else {
+			std::cout << "L'hypergraphe n'est pas isomorphe." << std::endl;
+		}
+
 		return 0;
 	}
 
