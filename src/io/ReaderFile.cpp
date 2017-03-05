@@ -96,20 +96,20 @@ ReaderFile::flush() {
 
 boost::shared_ptr<HyperVertex>&
 ReaderFile::hyperVertexById(unsigned int& id) {
-	BOOST_FOREACH(auto& vertex, _listHyperVertex) {
-		if( id==vertex->getIdentifier() ) {
-			return vertex;
-		}
-	}
+	int r = 0;
+	for(unsigned int i = 0; i < _listHyperVertex.size(); i++)
+			if( id == _listHyperVertex.at(i)->getIdentifier() )
+				r = i;
+	return _listHyperVertex.at( r );
 }
 
 boost::shared_ptr<HyperEdge>&
 ReaderFile::hyperEdgeById(unsigned int& id) {
-	BOOST_FOREACH(auto& edge, _listHyperEdge) {
-		if( id==edge->getIdentifier() ) {
-			return edge;
-		}
-	}
+	int r = 0;
+	for(unsigned int i = 0; i < _listHyperEdge.size(); i++)
+			if( id == _listHyperEdge.at(i)->getIdentifier() )
+				r = i;
+	return _listHyperEdge.at( r );
 }
 
 ReaderFile::~ReaderFile() {

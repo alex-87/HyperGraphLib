@@ -19,6 +19,7 @@
 #include "include/Client.hh"
 #include "include/RandomHypergraphe.hh"
 
+#include "../model/include/LibType.hh"
 #include "../model/include/Hypergraphe.hh"
 #include "../model/include/HyperFactory.hh"
 #include "../model/include/HyperVertex.hh"
@@ -26,6 +27,7 @@
 #include "../model/include/MotorAlgorithm.hh"
 
 #include "../algorithm/include/Dual.hh"
+#include "../algorithm/include/Path.hh"
 #include "../algorithm/include/Helly.hh"
 #include "../algorithm/include/kRegular.hh"
 #include "../algorithm/include/kUniform.hh"
@@ -56,7 +58,10 @@ int main(int argc, char *argv[]) {
 					("helly", "Décide si un hypergraphe possède la propriété de Helly")
 					("connexe", "Décide si l'hypergraphe est connexe")
 					("isomorph", boost::program_options::value<std::string>(), "Décide si deux hypergraphes sont isomorphe")
-					("stat", "Retourne les statistiques de l'hypergraphe");
+					("stat", "Retourne les statistiques de l'hypergraphe")
+					("path", "Retourne le chemins")
+					("source", boost::program_options::value<int>(), "Source de la reherche de chemins")
+					("destination", boost::program_options::value<int>(), "Destination de la recherche de chemins");
 
 	boost::program_options::variables_map vm;
 	boost::program_options::store(boost::program_options::parse_command_line(argc, argv, desc), vm);
@@ -249,6 +254,31 @@ int main(int argc, char *argv[]) {
 		}
 
 		return 0;
+	}
+
+	if(vm.count("path") ) {
+		boost::shared_ptr<Path> pathAlgo( new Path( ptrHpg ) );
+
+		pathAlgo->setHyperVertex(
+				ptrHpg->getHyperVertexById(vm["source"].as<int>()),
+				ptrHpg->getHyperVertexById(vm["destination"].as<int>() )
+			);
+
+		boost::shared_ptr<AlgorithmeAbstrait> algoPathAbstrait( pathAlgo );
+
+		MotorAlgorithm::setAlgorithme( algoPathAbstrait );
+		MotorAlgorithm::runAlgorithme();
+
+		RStructurePath r( pathAlgo->getPathResult() );
+
+		for(unsigned int i=0; i<r.getPathResult()->size(); i++) {
+			LibType::ListHyperVertex hvl( r.getPathResult()->at(i) );
+			for(unsigned int j=0; j<hvl.size(); j++) {
+				std::cout << hvl.at(j)->getIdentifier() << " ";
+			}
+			std::cout << std::endl;
+		}
+
 	}
 
 	if( vm.count("connexe") ) {
