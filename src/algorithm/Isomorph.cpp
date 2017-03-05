@@ -1,5 +1,8 @@
 
 #include "include/Isomorph.hh"
+#include "../model/include/Hypergraphe.hh"
+#include "../model/include/HyperVertex.hh"
+#include "../model/include/HyperEdge.hh"
 #include <boost/graph/isomorphism.hpp>
 
 Isomorph::Isomorph(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitA,
