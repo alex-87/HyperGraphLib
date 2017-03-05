@@ -16,19 +16,20 @@ void
 Isomorph::runAlgorithme() {
 
 	bool ret = false;
-	graph_t graphA, graphB;
+	graph_t graphA( _ptrHypergrapheAbstraitA->getHyperEdgeList().size() ),
+			graphB( _ptrHypergrapheAbstraitB->getHyperEdgeList().size() );
 
 #pragma omp parallel sections
 	{
 
 #pragma omp section
 		{
-			graph_t graphA = hypergraphTranspose(_ptrHypergrapheAbstraitA);
+			hypergraphTranspose(_ptrHypergrapheAbstraitA, graphA);
 		}
 
 #pragma omp section
 		{
-			graph_t graphB = hypergraphTranspose(_ptrHypergrapheAbstraitB);
+			hypergraphTranspose(_ptrHypergrapheAbstraitB, graphB);
 		}
 
 	}
@@ -49,13 +50,11 @@ Isomorph::runAlgorithme() {
 	_result.setBooleanResult( ret );
 }
 
-boost::adjacency_list<boost::vecS, boost::listS, boost::undirectedS, boost::property<boost::vertex_index_t, int> >&
-Isomorph::hypergraphTranspose(const boost::shared_ptr<HypergrapheAbstrait>& hpg) {
+void
+Isomorph::hypergraphTranspose(const boost::shared_ptr<HypergrapheAbstrait>& hpg, graph_t& graphOut) {
 
 	std::vector<boost::graph_traits<graph_t>::vertex_descriptor>
 	v(hpg->getHyperEdgeList().size());
-
-	graph_t graphOut( hpg->getHyperEdgeList().size() );
 
 	boost::property_map<graph_t, boost::vertex_index_t>::type
 	v_index_map = get(boost::vertex_index, graphOut);
@@ -76,8 +75,6 @@ Isomorph::hypergraphTranspose(const boost::shared_ptr<HypergrapheAbstrait>& hpg)
 			}
 		}
 	}
-
-	return graphOut;
 }
 
 RStructure
