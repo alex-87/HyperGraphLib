@@ -35,6 +35,7 @@
 #include "../algorithm/include/Linear.hh"
 #include "../algorithm/include/Connected.hh"
 #include "../algorithm/include/HyperGraphStat.hh"
+#include "../algorithm/include/Isomorph.hh"
 
 #include "../io/include/WriterFile.hh"
 #include "../io/include/ReaderFile.hh"
@@ -56,6 +57,7 @@ int main(int argc, char *argv[]) {
 					("simple", "Décide si l'hypergraphe est simple")
 					("helly", "Décide si un hypergraphe possède la propriété de Helly")
 					("connexe", "Décide si l'hypergraphe est connexe")
+					("isomorph", boost::program_options::value<std::string>(), "Décide si deux hypergraphes sont isomorphe")
 					("stat", "Retourne les statistiques de l'hypergraphe")
 					("path", "Retourne le chemins")
 					("source", boost::program_options::value<int>(), "Source de la reherche de chemins")
@@ -102,6 +104,35 @@ int main(int argc, char *argv[]) {
 		ReaderFile fReader;
 		fReader.readHypergraphe( std::cin );
 		ptrHpg = fReader.getHypergraphe();
+	}
+
+	// Isomorphism special parameters configuration
+	if( vm.count("isomorph") && vm.count("inputfile") ) {
+
+		boost::shared_ptr<HypergrapheAbstrait> ptrHpg2;
+
+		std::ifstream ifs(vm["isomorph"].as<std::string>(), std::ifstream::in);
+
+		ReaderFile fReader;
+		fReader.readHypergraphe( ifs );
+		ifs.close();
+
+		ptrHpg2 = fReader.getHypergraphe();
+
+		NewAlgorithm2(isomorphHpg, Isomorph, ptrHpg, ptrHpg2);
+
+		MotorAlgorithm::setAlgorithme( isomorphHpg );
+		MotorAlgorithm::runAlgorithme();
+
+		RStructure r( isomorphHpg->getResult() );
+
+		if( r.getBooleanResult() ) {
+			std::cout << "L'hypergraphe est isomorphe." << std::endl;
+		} else {
+			std::cout << "L'hypergraphe n'est pas isomorphe." << std::endl;
+		}
+
+		return 0;
 	}
 
 	if( vm.count("random") ) {

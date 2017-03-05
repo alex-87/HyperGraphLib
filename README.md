@@ -1,5 +1,6 @@
 HyperGraphLib [![Build Status](https://travis-ci.org/alex-87/HyperGraphLib.svg?branch=master)](https://travis-ci.org/alex-87/HyperGraphLib)
 -------------
+![hypergraph](http://alex-87.github.io/HyperGraphLib/images/hypergraph.png)
 
 How to compile HyperGraphLib
 -------------
