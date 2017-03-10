@@ -114,13 +114,13 @@ public:
 	 * Obtenir le co-rang de l'hypergraphe.
 	 * @return Un entie correspondant au co-rang.
 	 */
-	int getCoRank() const;
+	unsigned int getCoRank() const;
 
 	/**
 	 * Obtenir le rang de l'hypergraphe.
 	 * @return Un entie correspondant au rang.
 	 */
-	int getRank() const;
+	unsigned int getRank() const;
 
 	/**
 	 * Obtenir les dimensions de la matrice d'adjacence.

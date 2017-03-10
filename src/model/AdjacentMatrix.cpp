@@ -28,11 +28,6 @@ AdjacentMatrix::addHyperVertex(const boost::shared_ptr<HyperVertex>& hyperVertex
 
 	for(unsigned int u=0; u < heList.size(); u++)_adjacentMatrixBool[id][heList[u]->getIdentifier()] = true;
 
-/*
-	BOOST_FOREACH( auto he, heList ) {
-		_adjacentMatrixBool[id][he->getIdentifier()] = true;
-	};
-*/
 }
 
 void
@@ -43,11 +38,6 @@ AdjacentMatrix::addHyperEdge(const boost::shared_ptr<HyperEdge>& hyperEdge) {
 
 	for(unsigned int u=0; u < hvList.size(); u++)_adjacentMatrixBool[hvList[u]->getIdentifier()][id] = true;
 
-/*
-	BOOST_FOREACH( HyperVertex& hv, hvList ) {
-		_adjacentMatrixBool[hv->getIdentifier()][id] = true;
-	};
-*/
 }
 
 unsigned int AdjacentMatrix::getVertexDegree(const boost::shared_ptr<HyperVertex>& hyperVertex) const {
@@ -90,6 +80,55 @@ AdjacentMatrix::isVertexInEdge(const int& vertexId, const int& edgeId) const {
 bool
 AdjacentMatrix::isEdgeInVertex(const int& edgeId, const int& vertexId) const {
 	return _adjacentMatrixBool[edgeId][vertexId];
+}
+
+bool
+AdjacentMatrix::isEdgeInVertex(const boost::shared_ptr<HyperEdge>& hEdge, const boost::shared_ptr<HyperVertex>& hVertex) const {
+	return isEdgeInVertex(hEdge->getIdentifier(), hVertex->getIdentifier());
+}
+
+bool
+AdjacentMatrix::isVertexInEdge(const boost::shared_ptr<HyperVertex>& hVertex, const boost::shared_ptr<HyperEdge>& hEdge) const {
+	return isVertexInEdge(hVertex->getIdentifier(), hEdge->getIdentifier());
+}
+
+unsigned int
+AdjacentMatrix::getCoRank() const {
+
+	auto edgeSize = [&](const int& edgeId) {
+		unsigned int sum( 0 );
+		for(unsigned int i=0; i < _n; i++) {
+			sum += _adjacentMatrixBool[i][edgeId];
+		}
+		return sum;
+	};
+
+	unsigned int corank( -1 );
+	for(unsigned int i=0; i < _m; i++) {
+		corank = (edgeSize(i) < corank ? edgeSize(i) : corank);
+	}
+
+	return corank;
+}
+
+
+unsigned int
+AdjacentMatrix::getRank() const {
+
+	auto edgeSize = [&](const int& edgeId) {
+		unsigned int sum( 0 );
+		for(unsigned int i=0; i < _n; i++) {
+			sum += _adjacentMatrixBool[i][edgeId];
+		}
+		return sum;
+	};
+
+	unsigned int rank(0);
+	for(unsigned int i=0; i < _m; i++) {
+		rank = (edgeSize(i) > rank ? edgeSize(i) : rank);
+	}
+
+	return rank;
 }
 
 LibType::AdjacentMatrixContainerBool&

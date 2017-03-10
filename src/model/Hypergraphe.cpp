@@ -31,7 +31,6 @@ Hypergraphe::getHyperVertexById(const unsigned int& id) {
 	BOOST_FOREACH(auto& e, _listHyperVertex) {
 		if(e->getIdentifier() == id )return e;
 	}
-	//return nullptr;
 }
 
 boost::shared_ptr<HyperEdge>&
@@ -41,7 +40,6 @@ Hypergraphe::getHyperEdgeById(const unsigned int& id) {
 	BOOST_FOREACH(auto& e, _listHyperEdge) {
 		if(e->getIdentifier() == id )return e;
 	}
-	//return nullptr;
 }
 
 void

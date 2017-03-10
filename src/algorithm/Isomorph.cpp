@@ -66,9 +66,9 @@ Isomorph::hypergraphTranspose(const boost::shared_ptr<HypergrapheAbstrait>& hpg,
 		v[id] = *i;
 	}
 
-	for(int u=0; u<hpg->getHyperEdgeList().size(); u++ ) {
-		for(int h=0; h<hpg->getHyperEdgeList().at(u)->getHyperVertexList().size(); h++) {
-			for(int q=0; q<hpg->getHyperEdgeList().at(u)->getHyperVertexList().at(h)->getHyperEdgeList().size(); q++) {
+	for(unsigned int u=0; u<hpg->getHyperEdgeList().size(); u++ ) {
+		for(unsigned int h=0; h<hpg->getHyperEdgeList().at(u)->getHyperVertexList().size(); h++) {
+			for(unsigned int q=0; q<hpg->getHyperEdgeList().at(u)->getHyperVertexList().at(h)->getHyperEdgeList().size(); q++) {
 				boost::add_edge(v[hpg->getHyperEdgeList().at(u)->getHyperVertexList().at(h)->getIdentifier()],
 								v[hpg->getHyperEdgeList().at(u)->getHyperVertexList().at(h)->getHyperEdgeList().at(q)->getIdentifier()],
 								graphOut );

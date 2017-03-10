@@ -1,6 +1,7 @@
 
 #include <boost/foreach.hpp>
 #include "include/HyperGraphStat.hh"
+#include "../model/include/AdjacentMatrix.hh"
 
 HyperGraphStat::HyperGraphStat(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
 	_ptrHypergrapheAbstrait = ptrHypergrapheAbstrait;
@@ -46,14 +47,8 @@ HyperGraphStat::runAlgorithme() {
 	AdjacentMatrix m( _ptrHypergrapheAbstrait->getAdjacentMatrix() );
 	LibType::ListHyperEdge eList( _ptrHypergrapheAbstrait->getHyperEdgeList() );
 
-	_coRang = _nhEdge;
-
-	BOOST_FOREACH( auto& hEdge, eList ) {
-		_nhLink += m.getEdgeSize(hEdge);
-		if( m.getEdgeSize(hEdge) > _rang )   _rang   = m.getEdgeSize(hEdge);
-		if( m.getEdgeSize(hEdge) < _coRang ) _coRang = m.getEdgeSize(hEdge);
-	}
-
+	_rang   = m.getRank();
+	_coRang = m.getCoRank();
 }
 
 RStructure

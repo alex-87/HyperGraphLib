@@ -9,7 +9,7 @@
 #include <map>
 #include <boost/shared_ptr.hpp>
 
-template<class T>
+template<typename T>
 class LightTree {
 
 public:
