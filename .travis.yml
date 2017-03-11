@@ -28,7 +28,6 @@ before_script:
 script:
   - make demo
   - make hypergraph
-  - make install
-
+  - make test_model
 after_script:
   - ./demo --version
