@@ -2,12 +2,8 @@
 #ifndef CLIENT_INCLUDE_RANDOMHYPERGRAPHE_HH_
 #define CLIENT_INCLUDE_RANDOMHYPERGRAPHE_HH_
 
-#include "../../model/include/Hypergraphe.hh"
-#include "../../model/include/HyperFactory.hh"
-
 #include <boost/shared_ptr.hpp>
-
-
+#include "../../include/Hypergraph/model/HypergrapheAbstrait.hh"
 
 class RandomHypergraphe {
 

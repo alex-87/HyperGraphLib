@@ -4,8 +4,8 @@
 #ifndef ALGORITHM_INCLUDE_HELLY_HH_
 #define ALGORITHM_INCLUDE_HELLY_HH_
 
-#include "../../model/include/AlgorithmeAbstrait.hh"
-#include "../../model/include/RStructure.hh"
+#include "../model/AlgorithmeAbstrait.hh"
+#include "../model/RStructure.hh"
 
 /**
  * Algorithme vérifiant la propriété de Helly dans l'hypergraphe.

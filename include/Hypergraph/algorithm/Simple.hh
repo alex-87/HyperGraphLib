@@ -5,12 +5,12 @@
 #define ALGORITHM_INCLUDE_SIMPLE_HH_
 
 #include <boost/shared_ptr.hpp>
-#include "../../model/include/HypergrapheAbstrait.hh"
-#include "../../model/include/Hypergraphe.hh"
-#include "../../model/include/HyperVertex.hh"
-#include "../../model/include/HyperEdge.hh"
-#include "../../model/include/AlgorithmeAbstrait.hh"
-#include "../../model/include/RStructure.hh"
+#include "../model/HypergrapheAbstrait.hh"
+#include "../model/Hypergraphe.hh"
+#include "../model/HyperVertex.hh"
+#include "../model/HyperEdge.hh"
+#include "../model/AlgorithmeAbstrait.hh"
+#include "../model/RStructure.hh"
 #include "Linear.hh"
 
 /**

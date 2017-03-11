@@ -1,5 +1,7 @@
 
 #include "include/RandomHypergraphe.hh"
+#include "../include/Hypergraph/model/HyperFactory.hh"
+#include "../include/Hypergraph/model/Hypergraphe.hh"
 
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/random.hpp>

@@ -3,8 +3,8 @@
 #define ALGORITHM_INCLUDE_DIAMETER_HH_
 
 #include <boost/shared_ptr.hpp>
-#include "../../model/include/HypergrapheAbstrait.hh"
-#include "../../model/include/AlgorithmeAbstrait.hh"
+#include "../model/HypergrapheAbstrait.hh"
+#include "../model/AlgorithmeAbstrait.hh"
 
 
 class Diameter : public AlgorithmeAbstrait {

@@ -4,7 +4,7 @@
 #ifndef IO_INCLUDE_READERABSTRAIT_HH_
 #define IO_INCLUDE_READERABSTRAIT_HH_
 
-#include "../../model/include/HypergrapheAbstrait.hh"
+#include "../model/HypergrapheAbstrait.hh"
 #include <boost/shared_ptr.hpp>
 
 /**

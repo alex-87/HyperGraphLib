@@ -4,7 +4,7 @@
 #ifndef ALGORITHM_INCLUDE_LINEAR_HH_
 #define ALGORITHM_INCLUDE_LINEAR_HH_
 
-#include "../../model/include/AlgorithmeAbstrait.hh"
+#include "../model/AlgorithmeAbstrait.hh"
 
 /**
  * Algorithme linear sur l'hypergraphe.

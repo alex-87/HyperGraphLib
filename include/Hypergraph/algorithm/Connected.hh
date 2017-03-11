@@ -4,8 +4,8 @@
 #ifndef ALGORITHM_INCLUDE_CONNECTED_HH_
 #define ALGORITHM_INCLUDE_CONNECTED_HH_
 
-#include "../../model/include/HypergrapheAbstrait.hh"
-#include "../../model/include/AlgorithmeAbstrait.hh"
+#include "../model/HypergrapheAbstrait.hh"
+#include "../model/AlgorithmeAbstrait.hh"
 
 #include <boost/shared_ptr.hpp>
 #include <stack>

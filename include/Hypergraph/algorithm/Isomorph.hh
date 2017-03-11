@@ -7,8 +7,8 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_utility.hpp>
 
-#include "../../model/include/HypergrapheAbstrait.hh"
-#include "../../model/include/AlgorithmeAbstrait.hh"
+#include "../model/HypergrapheAbstrait.hh"
+#include "../model/AlgorithmeAbstrait.hh"
 
 class Isomorph : public AlgorithmeAbstrait {
 

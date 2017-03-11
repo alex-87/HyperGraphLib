@@ -22,7 +22,10 @@ install:
 before_script:
   - cmake CMakeLists.txt
 
-script: make
+script:
+  - make demo
+  - make hypergraph
+  - make install
 
 after_script:
-  - ./HypergraphLib --version
+  - ./demo --version

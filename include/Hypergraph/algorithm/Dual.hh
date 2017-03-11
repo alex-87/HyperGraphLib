@@ -6,8 +6,8 @@
 #define ALGORITHM_INCLUDE_DUAL_HH_
 
 #include <boost/shared_ptr.hpp>
-#include "../../model/include/HypergrapheAbstrait.hh"
-#include "../../model/include/AlgorithmeAbstrait.hh"
+#include "../model/HypergrapheAbstrait.hh"
+#include "../model/AlgorithmeAbstrait.hh"
 
 /**
  * Algorithme du Dual de l'hypergraphe.

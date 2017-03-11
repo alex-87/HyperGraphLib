@@ -6,9 +6,9 @@
 #ifndef ALGORITHM_INCLUDE_PATH_HH_
 #define ALGORITHM_INCLUDE_PATH_HH_
 
-#include "../../model/include/HypergrapheAbstrait.hh"
-#include "../../model/include/AlgorithmeAbstrait.hh"
-#include "../../model/include/RStructurePath.hh"
+#include "../model/HypergrapheAbstrait.hh"
+#include "../model/AlgorithmeAbstrait.hh"
+#include "../model/RStructurePath.hh"
 
 class Path : public AlgorithmeAbstrait {
 
