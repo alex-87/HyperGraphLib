@@ -7,6 +7,8 @@ boost::shared_ptr<HypergrapheAbstrait> ptrHpg ( new Hypergraphe );
 
 void setup(void) {
 
+	ptrHpg ( new Hypergraphe );
+
     HyperFactory::startSession(ptrHpg);
 
 	std::vector<boost::shared_ptr<HyperVertex>> listVertex;
@@ -33,9 +35,9 @@ void setup(void) {
     ptrHpg->addHyperEdge(ptrEdge1);
     ptrHpg->addHyperEdge(ptrEdge2);
 
-    HyperFactory::closeSession();
-
     ptrHpg->flush();
+
+    HyperFactory::closeSession();
 
 }
 
