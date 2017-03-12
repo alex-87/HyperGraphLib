@@ -51,10 +51,15 @@ void teardown(void) {
 
 Test(test_model, hpg_io, .init = setup, .fini = teardown) {
 
-	std::iostream trsf, trsf2;
+	std::istream trsf;
+	std::ostream trsf2;
+	std::string a, b;
 
 	WriterFile fWriter (ptrHpg);
-	fWriter.writeHypergraph( trsf );
+	fWriter.writeHypergraph( trsf2 );
+
+	trsf2 >> a;
+	a >> trsf;
 
 	ReaderFile fReader;
 	fReader.readHypergraphe( trsf );
@@ -62,8 +67,7 @@ Test(test_model, hpg_io, .init = setup, .fini = teardown) {
 	WriterFile fWriter2 (fReader.getHypergraphe() );
 	fWriter.writeHypergraph( trsf2 );
 
-	cr_expect(trsf == trsf2, "Input / Output not eqal");
+	trsf2 >> b;
+
+	cr_expect(a == b, "Input / Output not eqal");
 }
-
-
-
