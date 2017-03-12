@@ -1,7 +1,7 @@
-#include <criterion/criterion.h>
 #include "../include/Hypergraph/model/HyperFactory.hh"
 #include "../include/Hypergraph/model/HypergrapheAbstrait.hh"
 #include "../include/Hypergraph/model/Hypergraphe.hh"
+#include <criterion/criterion.h>
 
 Test(test_model, hpg_create) {
 
@@ -14,11 +14,11 @@ Test(test_model, hpg_create) {
 
     for(unsigned int i = 0; i < 50; i++) {
 
-    	boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperEdge() );
-    	boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperEdge() );
+    	boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
+    	boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
 
     	HyperFactory::link(ptrVertexA, ptrEdge1);
-    	HyperFactory::link(ptrVertexA, ptrEdge1);
+    	HyperFactory::link(ptrVertexB, ptrEdge1);
 
     	ptrHpg->addHyperVertex(ptrVertexA);
     	ptrHpg->addHyperVertex(ptrVertexB);
@@ -33,16 +33,16 @@ Test(test_model, hpg_create) {
     ptrHpg->flush();
 
     // Size of hpg's elements
-    cr_expect(ptrHpg->getHyperEdgeList().size() == 25, "Incorrect HyperEdgeList size");
-    cr_expect(ptrHpg->getHyperVertexList().size() == 25, "Incorrect HyperVertexList size");
+    cr_expect(ptrHpg->getHyperEdgeList().size() == 50, "Incorrect HyperEdgeList size");
+    cr_expect(ptrHpg->getHyperVertexList().size() == 50, "Incorrect HyperVertexList size");
 
 
     AdjacentMatrix m( ptrHpg->getAdjacentMatrix() );
 
     // Adjacent matrix
     cr_expect(m.getRank() == m.getCoRank(), "Rank != coRank - expected : 25=25");
-    cr_expect(m.getEdgeSize(ptrEdge1) == 25, "Incorrect Edge size");
-    cr_expect(m.getEdgeSize(ptrEdge2) == 25, "Incorrect Edge size");
+    cr_expect(m.getEdgeSize(ptrEdge1) == 50, "Incorrect Edge size");
+    cr_expect(m.getEdgeSize(ptrEdge2) == 50, "Incorrect Edge size");
 
 
     // Identifiers
