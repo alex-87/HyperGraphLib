@@ -3,11 +3,11 @@
 #include "../include/Hypergraph/model/Hypergraphe.hh"
 #include <criterion/criterion.h>
 
-boost::shared_ptr<HypergrapheAbstrait> ptrHpg ( new Hypergraphe );
+boost::shared_ptr<HypergrapheAbstrait> ptrHpg;
 
 void setup(void) {
 
-	ptrHpg ( new Hypergraphe );
+	ptrHpg.reset ( new Hypergraphe );
 
     HyperFactory::startSession(ptrHpg);
 
