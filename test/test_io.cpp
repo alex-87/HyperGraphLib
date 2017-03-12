@@ -59,7 +59,7 @@ Test(test_model, hpg_io, .init = setup, .fini = teardown) {
 	fWriter.writeHypergraph( trsf2 );
 
 	trsf2 >> a;
-	a >> trsf;
+	trsf << a;
 
 	ReaderFile fReader;
 	fReader.readHypergraphe( trsf );
