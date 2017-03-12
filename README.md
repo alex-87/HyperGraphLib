@@ -1,5 +1,7 @@
 HyperGraphLib [![Build Status](https://travis-ci.org/alex-87/HyperGraphLib.svg?branch=master)](https://travis-ci.org/alex-87/HyperGraphLib)
 -------------
+Hypergraphs modelisation library with algorithms, [the official page](https://alex-87.github.io/HyperGraphLib) for more informations.
+
 ![hypergraph](http://alex-87.github.io/HyperGraphLib/images/hypergraph.png)
 
 How to build and install HyperGraphLib
@@ -15,7 +17,7 @@ make
 make install #Some privileges could be required
 ```
 
-Hypergraphs modelisation library with algorithms. See [the official page](https://alex-87.github.io/HyperGraphLib) for more informations :)
+See [the official page](https://alex-87.github.io/HyperGraphLib) for more informations :)
 
 Where is the documentation ?
 -------------
