@@ -2,12 +2,18 @@ HyperGraphLib [![Build Status](https://travis-ci.org/alex-87/HyperGraphLib.svg?b
 -------------
 ![hypergraph](http://alex-87.github.io/HyperGraphLib/images/hypergraph.png)
 
-How to compile HyperGraphLib
+How to build and install HyperGraphLib
 -------------
 
 In a terminal:
 
-`git clone https://github.com/alex-87/HyperGraphLib.git && cd HyperGraphLib && cmake CMakeLists.txt && make && ./HypergraphLib --version`
+```shell
+git clone https://github.com/alex-87/HyperGraphLib.git
+cd HyperGraphLib
+cmake CMakeLists.txt
+make
+make install #Some privileges could be required
+```
 
 Hypergraphs modelisation library with algorithms. See [the official page](https://alex-87.github.io/HyperGraphLib) for more informations :)
 
@@ -25,6 +31,7 @@ To compile HyperGraphLib, you need:
   - [cmake](https://github.com/Kitware/CMake) (>= 2.8 ) 
   - [Boost](http://www.boost.org) (>= 1.55)
   - [g++](https://gcc.gnu.org)   (>= 4.8 )
+  - [Criterion](https://github.com/Snaipe/Criterion) (>=2.3.0)
 
 Boost Library
 -------------
