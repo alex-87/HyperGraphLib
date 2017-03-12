@@ -16,7 +16,7 @@ if (OPENMP_FOUND)
 endif()
 
 target_link_libraries(test_model criterion)
-
+target_link_libraries(test_algorithm criterion)
 
 enable_testing()
 add_test("Model creation" test_model)
