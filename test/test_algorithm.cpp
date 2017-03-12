@@ -11,10 +11,10 @@
 
 
 
-boost::shared_ptr<HypergrapheAbstrait> ptrHpg ( new Hypergraphe );
+boost::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm ( new Hypergraphe );
 
-void setup(void) {
-    HyperFactory::startSession(ptrHpg);
+void setupAlgorithm(void) {
+    HyperFactory::startSession(ptrHpgAlgorithm);
 
     boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
     boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
@@ -27,26 +27,26 @@ void setup(void) {
         HyperFactory::link(ptrVertexA, ptrEdge1);
         HyperFactory::link(ptrVertexB, ptrEdge2);
 
-        ptrHpg->addHyperVertex(ptrVertexA);
-        ptrHpg->addHyperVertex(ptrVertexB);
+        ptrHpgAlgorithm->addHyperVertex(ptrVertexA);
+        ptrHpgAlgorithm->addHyperVertex(ptrVertexB);
 
     }
 
-    ptrHpg->addHyperEdge(ptrEdge1);
-    ptrHpg->addHyperEdge(ptrEdge2);
+    ptrHpgAlgorithm->addHyperEdge(ptrEdge1);
+    ptrHpgAlgorithm->addHyperEdge(ptrEdge2);
 
     HyperFactory::closeSession();
 
-    ptrHpg->flush();
+    ptrHpgAlgorithm->flush();
 
 }
 
-void teardown(void) {
+void teardownAlgorithm(void) {
 }
 
-Test(test_model, hpg_connected, .init = setup, .fini = teardown) {
+Test(test_algorithm, hpg_connected, .init = setupAlgorithm, .fini = teardownAlgorithm) {
 
-	boost::shared_ptr<AlgorithmeAbstrait> cn( new Connected(ptrHpg) );
+	boost::shared_ptr<AlgorithmeAbstrait> cn( new Connected(ptrHpgAlgorithm) );
 	MotorAlgorithm::setAlgorithme( cn );
 
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
