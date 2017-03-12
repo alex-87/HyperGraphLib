@@ -7,6 +7,7 @@ target_link_libraries(test_algorithm hypergraph)
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
   target_link_libraries(test_model ${Boost_LIBRARIES})
+  target_link_libraries(test_algorithm ${Boost_LIBRARIES})
 endif()
 
 find_package(OpenMP)
