@@ -6,7 +6,7 @@
 #include <iostream>
 #include <stack>
 
-#define TRACE_ALGORITHM_CONNECTED 1
+#define TRACE_ALGORITHM_CONNECTED 0
 
 Connected::Connected(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
 			_ptrHypergrapheAbstrait(ptrHypergrapheAbstrait) {
