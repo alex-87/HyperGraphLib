@@ -37,14 +37,6 @@ Test(test_model, hpg_create) {
     cr_expect(ptrHpg->getHyperVertexList().size() == 50, "Incorrect HyperVertexList size");
 
 
-    AdjacentMatrix m( ptrHpg->getAdjacentMatrix() );
-
-    // Adjacent matrix
-    cr_expect(m.getRank() == m.getCoRank(), "Rank != coRank - expected : 25=25");
-    cr_expect(m.getEdgeSize(ptrEdge1) == 50, "Incorrect Edge size");
-    cr_expect(m.getEdgeSize(ptrEdge2) == 50, "Incorrect Edge size");
-
-
     // Identifiers
     for(unsigned int i=0; i < ptrHpg->getHyperVertexList().size(); i++) {
     	cr_expect(ptrHpg->getHyperVertexById(i)->getIdentifier() == i, "Incorrect Id");
