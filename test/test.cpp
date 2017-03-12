@@ -61,3 +61,12 @@ Test(test_model, hpg_mtx, .init = setup, .fini = teardown) {
 	cr_expect(ptrHpg->getAdjacentMatrix().getEdgeSize(e2) == e2->getEffectif(), "adj. mtx2 issue");
 }
 
+Test(test_model, hpg_rcr, .init = setup, .fini = teardown) {
+
+	unsigned int rank    ( ptrHpg->getAdjacentMatrix().getRank() );
+	unsigned int co_rank ( ptrHpg->getAdjacentMatrix().getCoRank() );
+
+	// Adjacent matrix
+	cr_expect( rank == co_rank, "rank / co-rank issue");
+}
+

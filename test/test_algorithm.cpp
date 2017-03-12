@@ -16,32 +16,66 @@
 
 
 boost::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm ( new Hypergraphe );
+boost::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm2 ( new Hypergraphe );
 
 void setupAlgorithm(void) {
-    HyperFactory::startSession(ptrHpgAlgorithm);
 
-    boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
-    boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
+	// First hpg
+	{
+		HyperFactory::startSession(ptrHpgAlgorithm);
 
-    for(unsigned int i = 0; i < 50; i++) {
+		boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
+		boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
 
-        boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
-        boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
+		for(unsigned int i = 0; i < 50; i++) {
 
-        HyperFactory::link(ptrVertexA, ptrEdge1);
-        HyperFactory::link(ptrVertexB, ptrEdge2);
+			boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
+			boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
 
-        ptrHpgAlgorithm->addHyperVertex(ptrVertexA);
-        ptrHpgAlgorithm->addHyperVertex(ptrVertexB);
+			HyperFactory::link(ptrVertexA, ptrEdge1);
+			HyperFactory::link(ptrVertexB, ptrEdge2);
 
-    }
+			ptrHpgAlgorithm->addHyperVertex(ptrVertexA);
+			ptrHpgAlgorithm->addHyperVertex(ptrVertexB);
 
-    ptrHpgAlgorithm->addHyperEdge(ptrEdge1);
-    ptrHpgAlgorithm->addHyperEdge(ptrEdge2);
+		}
 
-    HyperFactory::closeSession();
+		ptrHpgAlgorithm->addHyperEdge(ptrEdge1);
+		ptrHpgAlgorithm->addHyperEdge(ptrEdge2);
 
-    ptrHpgAlgorithm->flush();
+		HyperFactory::closeSession();
+
+		ptrHpgAlgorithm->flush();
+	}
+
+
+    // Second hpg
+	{
+		HyperFactory::startSession(ptrHpgAlgorithm2);
+
+		boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
+		boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
+
+		for(unsigned int i = 0; i < 50; i++) {
+
+			boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
+			boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
+
+			HyperFactory::link(ptrVertexA, ptrEdge1);
+			HyperFactory::link(ptrVertexB, ptrEdge2);
+
+			ptrHpgAlgorithm2->addHyperVertex(ptrVertexA);
+			ptrHpgAlgorithm2->addHyperVertex(ptrVertexB);
+
+		}
+
+		ptrHpgAlgorithm2->addHyperEdge(ptrEdge1);
+		ptrHpgAlgorithm2->addHyperEdge(ptrEdge2);
+
+		HyperFactory::closeSession();
+
+		ptrHpgAlgorithm2->flush();
+	}
 
 }
 
@@ -106,7 +140,7 @@ Test(test_algorithm, hpg_linear, .init = setupAlgorithm, .fini = teardownAlgorit
 
 Test(test_algorithm, hpg_isomorph, .init = setupAlgorithm, .fini = teardownAlgorithm) {
 
-	boost::shared_ptr<AlgorithmeAbstrait> cn( new Isomorph(ptrHpgAlgorithm, ptrHpgAlgorithm) );
+	boost::shared_ptr<AlgorithmeAbstrait> cn( new Isomorph(ptrHpgAlgorithm, ptrHpgAlgorithm2) );
 	MotorAlgorithm::setAlgorithme( cn );
 
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
