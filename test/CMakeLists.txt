@@ -1,4 +1,4 @@
-add_executable(test_model test.cpp)
+add_executable(test_model test.cpp test_algorithm.cpp)
 target_link_libraries(test_model hypergraph)
 
 if(Boost_FOUND)

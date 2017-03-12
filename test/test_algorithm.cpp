@@ -1,7 +1,15 @@
 #include "../include/Hypergraph/model/HyperFactory.hh"
 #include "../include/Hypergraph/model/HypergrapheAbstrait.hh"
 #include "../include/Hypergraph/model/Hypergraphe.hh"
+#include "../include/Hypergraph/model/MotorAlgorithm.hh"
+#include "../include/Hypergraph/model/RStructure.hh"
+#include "../include/Hypergraph/model/AlgorithmeAbstrait.hh"
+
+#include "../include/Hypergraph/algorithm/Connected.hh"
+
 #include <criterion/criterion.h>
+
+
 
 boost::shared_ptr<HypergrapheAbstrait> ptrHpg ( new Hypergraphe );
 
@@ -36,28 +44,16 @@ void setup(void) {
 void teardown(void) {
 }
 
-Test(test_model, hpg_create, .init = setup, .fini = teardown) {
+Test(test_model, hpg_connected, .init = setup, .fini = teardown) {
 
-    // Size of hpg's elements
-    cr_expect(ptrHpg->getHyperEdgeList().size() == 2, "Incorrect HyperEdgeList size");
-    cr_expect(ptrHpg->getHyperVertexList().size() == 100, "Incorrect HyperVertexList size");
+	boost::shared_ptr<AlgorithmeAbstrait> cn( new Connected(ptrHpg) );
+	MotorAlgorithm::setAlgorithme( cn );
+
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	MotorAlgorithm::runAlgorithme();
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+
+	RStructure r( cn->getResult() );
+	cr_expect( r.getBooleanResult() == false, "Graphe is connexe");
+
 }
-
-Test(test_model, hpg_ids, .init = setup, .fini = teardown) {
-
-    // Identifiers
-    for(unsigned int i=0; i < ptrHpg->getHyperVertexList().size(); i++) {
-        cr_expect(ptrHpg->getHyperVertexById(i)->getIdentifier() == i, "Incorrect Id");
-    }
-}
-
-Test(test_model, hpg_mtx, .init = setup, .fini = teardown) {
-
-	const boost::shared_ptr<HyperEdge> e1 = ptrHpg->getHyperEdgeById(0);
-	const boost::shared_ptr<HyperEdge> e2 = ptrHpg->getHyperEdgeById(1);
-
-	// Adjacent matrix
-	cr_expect(ptrHpg->getAdjacentMatrix().getEdgeSize(e1) == e1->getEffectif(), "adj. mtx1 issue");
-	cr_expect(ptrHpg->getAdjacentMatrix().getEdgeSize(e2) == e2->getEffectif(), "adj. mtx2 issue");
-}
-
