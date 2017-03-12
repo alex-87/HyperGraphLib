@@ -30,8 +30,10 @@ script:
   - make hypergraph
   - make test_model
   - make test_algorithm
+  - make test_io
 
 after_script:
   - test/test_model
   - test/test_algorithm
+  - test/test_io
   - ./demo/demo --version
