@@ -1,7 +1,7 @@
 #include <criterion/criterion.h>
-#include <Hypergraph/model/HyperFactory.hh>
-#include <Hypergraph/model/HypergrapheAbstrait.hh>
-#include <Hypergraph/model/Hypergraphe.hh>
+#include "../include/Hypergraph/model/HyperFactory.hh"
+#include "../include/Hypergraph/model/HypergrapheAbstrait.hh"
+#include "../include/Hypergraph/model/Hypergraphe.hh"
 
 Test(test_model, hpg_create) {
 
