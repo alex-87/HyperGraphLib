@@ -33,8 +33,8 @@ Test(test_model, hpg_create) {
     ptrHpg->flush();
 
     // Size of hpg's elements
-    cr_expect(ptrHpg->getHyperEdgeList().size() == 50, "Incorrect HyperEdgeList size");
-    cr_expect(ptrHpg->getHyperVertexList().size() == 50, "Incorrect HyperVertexList size");
+    cr_expect(ptrHpg->getHyperEdgeList().size() == 2, "Incorrect HyperEdgeList size");
+    cr_expect(ptrHpg->getHyperVertexList().size() == 100, "Incorrect HyperVertexList size");
 
 
     // Identifiers

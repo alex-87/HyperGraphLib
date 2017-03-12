@@ -14,5 +14,7 @@ endif()
 
 target_link_libraries(test_model criterion)
 
+
+enable_testing()
 add_test("Model creation" test_model)
 
