@@ -100,7 +100,7 @@ Test(test_algorithm, hpg_linear, .init = setupAlgorithm, .fini = teardownAlgorit
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
 
 	RStructure r( cn->getResult() );
-	cr_expect( r.getBooleanResult() == false, "Graphe is Linear");
+	cr_expect( r.getBooleanResult() == true, "Graphe is not Linear");
 
 }
 
@@ -114,6 +114,6 @@ Test(test_algorithm, hpg_isomorph, .init = setupAlgorithm, .fini = teardownAlgor
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
 
 	RStructure r( cn->getResult() );
-	cr_expect( r.getBooleanResult() == false, "Graphe is simple");
+	cr_expect( r.getBooleanResult() == true, "Graphe is not isomorph");
 
 }
