@@ -97,14 +97,14 @@ AdjacentMatrix::getCoRank() const {
 
 	auto edgeSize = [&](const int& edgeId) {
 		unsigned int sum( 0 );
-		for(unsigned int i=0; i < _n; i++) {
+		for(unsigned int i=0; i < _m; i++) {
 			sum += _adjacentMatrixBool[i][edgeId];
 		}
 		return sum;
 	};
 
 	unsigned int corank( -1 );
-	for(unsigned int k=0; k < _m; k++) {
+	for(unsigned int k=0; k < _n; k++) {
 		corank = (edgeSize(k) < corank ? edgeSize(k) : corank);
 	}
 
@@ -117,14 +117,14 @@ AdjacentMatrix::getRank() const {
 
 	auto edgeSize = [&](const int& edgeId) {
 		unsigned int sum( 0 );
-		for(unsigned int i=0; i < _n; i++) {
+		for(unsigned int i=0; i < _m; i++) {
 			sum += _adjacentMatrixBool[i][edgeId];
 		}
 		return sum;
 	};
 
 	unsigned int rank(0);
-	for(unsigned int k=0; k < _m; k++) {
+	for(unsigned int k=0; k < _n; k++) {
 		rank = (edgeSize(k) > rank ? edgeSize(k) : rank);
 	}
 
