@@ -6,6 +6,10 @@
 #include "../include/Hypergraph/model/AlgorithmeAbstrait.hh"
 
 #include "../include/Hypergraph/algorithm/Connected.hh"
+#include "../include/Hypergraph/algorithm/kRegular.hh"
+#include "../include/Hypergraph/algorithm/Isomorph.hh"
+#include "../include/Hypergraph/algorithm/Simple.hh"
+#include "../include/Hypergraph/algorithm/Linear.hh"
 
 #include <criterion/criterion.h>
 
@@ -55,5 +59,61 @@ Test(test_algorithm, hpg_connected, .init = setupAlgorithm, .fini = teardownAlgo
 
 	RStructure r( cn->getResult() );
 	cr_expect( r.getBooleanResult() == false, "Graphe is connexe");
+
+}
+
+Test(test_algorithm, hpg_kregular, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+
+	boost::shared_ptr<AlgorithmeAbstrait> cn( new kRegular(ptrHpgAlgorithm) );
+	MotorAlgorithm::setAlgorithme( cn );
+
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	MotorAlgorithm::runAlgorithme();
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+
+	RStructure r( cn->getResult() );
+	cr_expect( r.getBooleanResult() == true, "Graphe is not k-regular");
+
+}
+
+Test(test_algorithm, hpg_simple, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+
+	boost::shared_ptr<AlgorithmeAbstrait> cn( new Simple(ptrHpgAlgorithm) );
+	MotorAlgorithm::setAlgorithme( cn );
+
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	MotorAlgorithm::runAlgorithme();
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+
+	RStructure r( cn->getResult() );
+	cr_expect( r.getBooleanResult() == true, "Graphe not simple");
+
+}
+
+Test(test_algorithm, hpg_linear, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+
+	boost::shared_ptr<AlgorithmeAbstrait> cn( new Linear(ptrHpgAlgorithm) );
+	MotorAlgorithm::setAlgorithme( cn );
+
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	MotorAlgorithm::runAlgorithme();
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+
+	RStructure r( cn->getResult() );
+	cr_expect( r.getBooleanResult() == false, "Graphe is Linear");
+
+}
+
+Test(test_algorithm, hpg_isomorph, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+
+	boost::shared_ptr<AlgorithmeAbstrait> cn( new Isomorph(ptrHpgAlgorithm, ptrHpgAlgorithm) );
+	MotorAlgorithm::setAlgorithme( cn );
+
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	MotorAlgorithm::runAlgorithme();
+	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+
+	RStructure r( cn->getResult() );
+	cr_expect( r.getBooleanResult() == false, "Graphe is simple");
 
 }
