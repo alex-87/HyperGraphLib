@@ -29,6 +29,7 @@ script:
   - make demo
   - make hypergraph
   - make test_model
+  - make test_algorithm
 
 after_script:
   - test/test_model
