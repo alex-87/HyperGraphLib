@@ -1,5 +1,8 @@
-add_executable(test_model test.cpp test_algorithm.cpp)
+add_executable(test_model test.cpp)
+add_executable(test_algorithm test_algorithm.cpp)
+
 target_link_libraries(test_model hypergraph)
+target_link_libraries(test_algorithm hypergraph)
 
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
@@ -17,4 +20,4 @@ target_link_libraries(test_model criterion)
 
 enable_testing()
 add_test("Model creation" test_model)
-
+add_test("Algorithm results" test_algorithm)
