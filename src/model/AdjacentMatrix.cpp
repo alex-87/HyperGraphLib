@@ -45,7 +45,7 @@ unsigned int AdjacentMatrix::getVertexDegree(const boost::shared_ptr<HyperVertex
 	unsigned int sum( 0 );
 
 #pragma omp for schedule( dynamic )
-	for(unsigned int i=0; i < _n; i++) {
+	for(unsigned int i=0; i < _m; i++) {
 		sum += _adjacentMatrixBool[i][hyperVertex->getIdentifier()];
 	};
 
@@ -58,7 +58,7 @@ AdjacentMatrix::getEdgeSize(const boost::shared_ptr<HyperEdge>& hyperEdge) const
 	unsigned int sum( 0 );
 
 #pragma omp for schedule( dynamic )
-	for(unsigned int i=0; i < _m; i++) {
+	for(unsigned int i=0; i < _n; i++) {
 		sum += _adjacentMatrixBool[hyperEdge->getIdentifier()][i];
 	};
 
