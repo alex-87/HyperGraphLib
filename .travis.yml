@@ -31,4 +31,6 @@ script:
   - make test_model
 
 after_script:
+  - test/test_model
+  - test/test_algorithm
   - ./demo/demo --version
