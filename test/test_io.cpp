@@ -55,7 +55,7 @@ Test(test_model, hpg_io, .init = setup, .fini = teardown) {
 
 	std::stringstream trsf;
 	std::stringstream trsf2;
-	std::string a, b;
+	std::stringstream a, b;
 
 	WriterFile fWriter (ptrHpg);
 	fWriter.writeHypergraph( trsf );
@@ -70,5 +70,5 @@ Test(test_model, hpg_io, .init = setup, .fini = teardown) {
 
 	b << trsf2.str();
 
-	cr_expect(a == b, "Input / Output not eqal");
+	cr_expect(a.str() == b.str(), "Input / Output not eqal");
 }
