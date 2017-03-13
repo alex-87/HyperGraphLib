@@ -6,7 +6,9 @@
 #include "../include/Hypergraph/io/WriterFile.hh"
 
 #include <criterion/criterion.h>
-#include <string>
+#include <iostream>
+#include <sstream>
+
 
 boost::shared_ptr<HypergrapheAbstrait> ptrHpg;
 
@@ -51,15 +53,14 @@ void teardown(void) {
 
 Test(test_model, hpg_io, .init = setup, .fini = teardown) {
 
-	std::istream trsf;
-	std::ostream trsf2;
+	std::stringstream trsf;
+	std::stringstream trsf2;
 	std::string a, b;
 
 	WriterFile fWriter (ptrHpg);
-	fWriter.writeHypergraph( trsf2 );
+	fWriter.writeHypergraph( trsf );
 
-	trsf2 >> a;
-	trsf << a;
+	a << trsf.str();
 
 	ReaderFile fReader;
 	fReader.readHypergraphe( trsf );
@@ -67,7 +68,7 @@ Test(test_model, hpg_io, .init = setup, .fini = teardown) {
 	WriterFile fWriter2 (fReader.getHypergraphe() );
 	fWriter.writeHypergraph( trsf2 );
 
-	trsf2 >> b;
+	b << trsf2.str();
 
 	cr_expect(a == b, "Input / Output not eqal");
 }
