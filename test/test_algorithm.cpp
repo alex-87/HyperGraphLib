@@ -10,6 +10,7 @@
 #include "../include/Hypergraph/algorithm/Isomorph.hh"
 #include "../include/Hypergraph/algorithm/Simple.hh"
 #include "../include/Hypergraph/algorithm/Linear.hh"
+#include "../include/Hypergraph/algorithm/Path.hh"
 
 #include <criterion/criterion.h>
 
@@ -150,4 +151,23 @@ Test(test_algorithm, hpg_isomorph, .init = setupAlgorithm, .fini = teardownAlgor
 	RStructure r( cn->getResult() );
 	cr_expect( r.getBooleanResult() == true, "Graphe is not isomorph");
 
+}
+
+Test(test_algorithm, hpg_path, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+
+	boost::shared_ptr<Path> pathAlgo( new Path( ptrHpgAlgorithm ) );
+
+	pathAlgo->setHyperVertex(
+			ptrHpgAlgorithm->getHyperVertexById(0),
+			ptrHpgAlgorithm->getHyperVertexById(1)
+		);
+
+	boost::shared_ptr<AlgorithmeAbstrait> algoPathAbstrait( pathAlgo );
+
+	MotorAlgorithm::setAlgorithme( algoPathAbstrait );
+	MotorAlgorithm::runAlgorithme();
+
+	RStructurePath r( pathAlgo->getPathResult() );
+
+	cr_expect( r.getPathResult()->size() == 0, "Path issue");
 }
