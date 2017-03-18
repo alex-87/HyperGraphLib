@@ -28,6 +28,7 @@ install:
   - ./bootstrap
   - make
   - sudo make install
+  - cd ..
   - wget http://www.gecode.org/download/gecode-4.4.0.tar.gz
   - gunzip gecode-4.4.0.tar.gz
   - tar xf gecode-4.4.0.tar
@@ -36,6 +37,7 @@ install:
   - make
   - sudo make install
   - sudo ldconfig
+  - cd ..
 
 before_script:
   - cmake CMakeLists.txt
