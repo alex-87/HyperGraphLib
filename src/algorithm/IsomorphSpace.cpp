@@ -4,6 +4,7 @@
  */
 
 #include "include/IsomorphSpace.hh"
+#include <iostream>
 
 
 IsomorphSpace::IsomorphSpace(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitA,
@@ -39,14 +40,17 @@ IsomorphSpace::postConstraints() {
                                 Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 0);
                         }
 
-                        Gecode::element(*this, _bVarEdge, _varEdge[i], i);
-                        Gecode::element(*this, _bVarVertex, _varVertex[j], j);
+                        Gecode::element(*this, _varEdge, _varEdge[i], i);
+			Gecode::element(*this, _varVertex, _varVertex[j], j);
 
-                        i++;
+                        j++;
                 }
-
-                j++;
+		j = 0;
+                i++;
         }
+
+	i = 0;
+	j = 0;
 
         for(boost::shared_ptr<HyperEdge>& e : edgeB ) {
                 for(boost::shared_ptr<HyperVertex>& v : vertexB ) {
@@ -58,13 +62,13 @@ IsomorphSpace::postConstraints() {
                                 Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 0);
                         }
 
-                        Gecode::element(*this, _bVarEdge, _varEdge[i], i);
-                        Gecode::element(*this, _bVarVertex, _varVertex[j], j);
+                        Gecode::element(*this, _varEdge, _varEdge[i], i);
+			Gecode::element(*this, _varVertex, _varVertex[j], j);
 
-                        i++;
+                        j++;
                 }
-
-                j++;
+		j = 0;
+                i++;
         }
 
         Gecode::distinct(*this, _varVertex );
