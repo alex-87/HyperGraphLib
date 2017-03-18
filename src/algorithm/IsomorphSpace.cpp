@@ -24,11 +24,16 @@ IsomorphSpace::postConstraints() {
 	LibType::ListHyperEdge   edgeB  ( _ptrHypergrapheB->getHyperEdgeList()   );
 
 
-	_varVertex (*this, vertexA.size() );
-	_bVarVertex(*this, vertexA.size() );
+	/**/
+	Gecode::IntVarArray   _varEdge(*this, edgeA.size()   );
+	Gecode::BoolVarArray _bVarEdge(*this, edgeA.size()   );
 
-	_varEdge   (*this, edgeA.size()   );
-	_bVarEdge  (*this, edgeA.size()   );
+
+	Gecode::IntVarArray   _varVertex( (Gecode::Space&) *this, (int) vertexA.size() );;
+	Gecode::BoolVarArray _bVarVertex(*this, vertexA.size() );;
+
+	/**/
+
 
 	int i( 0), j( 0 );
 
@@ -48,14 +53,15 @@ IsomorphSpace::postConstraints() {
 		j++;
 	}
 
+	Gecode::distinct(*this, _varVertex );
+	Gecode::distinct(*this, _varEdge   );
+
 	for(unsigned int u=0; u<vertexA.size(); u++) {
 		Gecode::dom(*this, _varVertex[u], 0, vertexA.size() );
-		Gecode::distinct(*this, (const Gecode::IntVarArgs) _varVertex[u] );
 	}
 
 	for(unsigned int v=0; v<edgeA.size(); v++) {
 		Gecode::dom(*this, _varEdge[v], 0, edgeA.size() );
-		Gecode::distinct(*this, (const Gecode::IntVarArgs) _varEdge[v] );
 	}
 
 	Gecode::branch(*this, _solution, Gecode::INT_VAR_SIZE_MIN(), Gecode::INT_VAL_SPLIT_MIN());
@@ -67,5 +73,7 @@ IsomorphSpace::copy(bool share) {
 }
 
 IsomorphSpace::IsomorphSpace(bool share, IsomorphSpace& p) :
-		IsomorphSpace(share, p) {
+		Gecode::Space(share, p) {
+			_solution.update(*this, share, p._solution);
 }
+

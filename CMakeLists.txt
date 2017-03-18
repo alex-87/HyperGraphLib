@@ -7,7 +7,7 @@ find_package( Boost COMPONENTS program_options REQUIRED )
 
 set(Boost_DEBUG off)
 
-set( CMAKE_CXX_FLAGS "-O3 -std=c++11" )
+set( CMAKE_CXX_FLAGS "-O3 -std=c++11 -lgecodeflatzinc -lgecodedriver -lgecodesearch -lgecodeminimodel -lgecodeset -lgecodeint -lgecodefloat -lgecodekernel -lgecodesupport" )
 
 add_subdirectory(src)
 add_subdirectory(demo)

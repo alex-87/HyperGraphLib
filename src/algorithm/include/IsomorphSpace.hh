@@ -5,6 +5,10 @@
 #include <gecode/int.hh>
 #include <gecode/search.hh>
 #include <boost/shared_ptr.hpp>
+#include "../../model/include/LibType.hh"
+#include "../../model/include/Hypergraphe.hh"
+#include "../../model/include/HyperVertex.hh"
+#include "../../model/include/HyperEdge.hh"
 
 class HypergrapheAbstrait;
 
@@ -23,13 +27,7 @@ public:
 
 protected:
 
-	Gecode::IntVarArray _varEdge;
-	Gecode::BoolVarArray _bVarEdge;
-
-	Gecode::IntVarArray _varVertex;
-	Gecode::BoolVarArray _bVarVertex;
-
-	Gecode::IntVarArray _solution;
+	Gecode::IntVarArray   _solution;
 
 	boost::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheA;
 
