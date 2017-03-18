@@ -28,7 +28,7 @@ install:
   - ./configure
   - make
   - sudo make install
-  - ldconfig
+  - sudo ldconfig
 
 before_script:
   - cmake CMakeLists.txt
