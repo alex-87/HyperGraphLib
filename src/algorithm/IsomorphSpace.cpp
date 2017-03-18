@@ -9,10 +9,10 @@
 IsomorphSpace::IsomorphSpace(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitA,
 							 const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitB) :
 
-							 _varEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size() ),
-							 _bVarEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size() ),
-							 _varVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size() ),
-							 _bVarVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size() ),
+							 _varEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, ptrHypergrapheAbstraitA->getHyperEdgeList().size() - 1 ),
+							 _bVarEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, 1),
+							 _varVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, ptrHypergrapheAbstraitA->getHyperVertexList().size() - 1 ),
+							 _bVarVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1 ),
 							 _ptrHypergrapheA (ptrHypergrapheAbstraitA),
 							 _ptrHypergrapheB (ptrHypergrapheAbstraitB) {
 
@@ -27,7 +27,7 @@ IsomorphSpace::postConstraints() {
         LibType::ListHyperVertex vertexB( _ptrHypergrapheB->getHyperVertexList() );
         LibType::ListHyperEdge   edgeB  ( _ptrHypergrapheB->getHyperEdgeList()   );
 
-        int i( 0), j( 0 );
+        int i( 0 ), j( 0 );
 
         for(boost::shared_ptr<HyperEdge>& e : edgeA ) {
                 for(boost::shared_ptr<HyperVertex>& v : vertexA ) {
@@ -47,14 +47,6 @@ IsomorphSpace::postConstraints() {
 
         Gecode::distinct(*this, _varVertex );
         Gecode::distinct(*this, _varEdge   );
-
-        for(unsigned int u=0; u<vertexA.size(); u++) {
-                Gecode::dom(*this, _varVertex[u], 0, vertexA.size() );
-        }
-
-        for(unsigned int v=0; v<edgeA.size(); v++) {
-                Gecode::dom(*this, _varEdge[v], 0, edgeA.size() );
-        }
 
         Gecode::branch(*this, _varEdge, Gecode::INT_VAR_SIZE_MIN(), Gecode::INT_VAL_SPLIT_MIN());
         Gecode::branch(*this, _varVertex, Gecode::INT_VAR_SIZE_MIN(), Gecode::INT_VAL_SPLIT_MIN());
