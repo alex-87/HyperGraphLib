@@ -34,6 +34,7 @@ To compile HyperGraphLib, you need:
   - [Boost](http://www.boost.org) (>= 1.55)
   - [g++](https://gcc.gnu.org)   (>= 4.8 )
   - [Criterion](https://github.com/Snaipe/Criterion) (>=2.3.0)
+  - [Gecode](http://http://www.gecode.org) (>= 4.4.0)
 
 Boost Library
 -------------
