@@ -18,6 +18,13 @@ Isomorph::runAlgorithme() {
 
 	bool ret = false;
 
+	if( _ptrHypergrapheAbstraitA->getHyperEdgeList().size() != _ptrHypergrapheAbstraitB->getHyperEdgeList().size() ||
+		_ptrHypergrapheAbstraitA->getHyperVertexList().size() != _ptrHypergrapheAbstraitB->getHyperVertexList().size()
+	  ) {
+		_result.setBooleanResult( ret );
+		return;
+	}
+
 	IsomorphSpace * is = new IsomorphSpace(_ptrHypergrapheAbstraitA, _ptrHypergrapheAbstraitB);
 	is->postConstraints();
 
@@ -25,6 +32,8 @@ Isomorph::runAlgorithme() {
 
 	if( ensembleSolution.next() ) ret = true;
 	else ret = false;
+
+	delete is;
 
 	_result.setBooleanResult( ret );
 }

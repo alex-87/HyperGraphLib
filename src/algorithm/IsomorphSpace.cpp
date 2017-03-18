@@ -29,8 +29,8 @@ IsomorphSpace::postConstraints() {
         Gecode::BoolVarArray _bVarEdge(*this, edgeA.size()   );
 
 
-        Gecode::IntVarArray   _varVertex( (Gecode::Space&) *this, (int) vertexA.size() );;
-        Gecode::BoolVarArray _bVarVertex(*this, vertexA.size() );;
+        Gecode::IntVarArray   _varVertex( (Gecode::Space&) *this, (int) vertexA.size() );
+        Gecode::BoolVarArray _bVarVertex(*this, vertexA.size() );
 
         /**/
 
