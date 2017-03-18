@@ -25,7 +25,7 @@ install:
   - gunzip gecode-4.4.0.tar.gz
   - tar xf gecode-4.4.0.tar
   - cd gecode-4.4.0
-  - cmake CMakeLists.txt
+  - ./configure
   - make
   - sudo make install
   - ldconfig
