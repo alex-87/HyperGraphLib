@@ -22,11 +22,6 @@ public:
 
 protected:
 
-	typedef boost::adjacency_list<boost::vecS, boost::listS, boost::undirectedS, boost::property<boost::vertex_index_t, int> >
-	graph_t;
-
-	void hypergraphTranspose(const boost::shared_ptr<HypergrapheAbstrait>&, graph_t&);
-
 	void runAlgorithme();
 
 protected:
