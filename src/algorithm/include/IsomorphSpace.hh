@@ -25,9 +25,15 @@ public:
 
 	IsomorphSpace(bool share, IsomorphSpace& p);
 
-protected:
 
-	Gecode::IntVarArray   _solution;
+
+    Gecode::IntVarArray   _varEdge;
+    Gecode::BoolVarArray _bVarEdge;
+
+    Gecode::IntVarArray   _varVertex;
+    Gecode::BoolVarArray _bVarVertex;
+
+protected:
 
 	boost::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheA;
 
