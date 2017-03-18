@@ -21,10 +21,10 @@ addons:
 install:
   - sudo apt-get install -qq g++-4.8
   - export CXX="g++-4.8"
-  - wget http://www.gecode.org/download/gecode-5.0.0.tar.gz
-  - gunzip gecode-5.0.0.tar.gz
-  - tar xf gecode-5.0.0.tar
-  - cd gecode-5.0.0
+  - wget http://www.gecode.org/download/gecode-4.4.0.tar.gz
+  - gunzip gecode-4.4.0.tar.gz
+  - tar xf gecode-4.4.0.tar
+  - cd gecode-4.4.0
   - cmake CMakeLists.txt
   - make
   - sudo make install
