@@ -17,9 +17,15 @@ void
 Isomorph::runAlgorithme() {
 
 	bool ret = false;
+
 	IsomorphSpace * is = new IsomorphSpace(_ptrHypergrapheAbstraitA, _ptrHypergrapheAbstraitB);
+	is->postConstraints();
+
 	Gecode::DFS<IsomorphSpace> ensembleSolution( is );
-	ensembleSolution.next();
+
+	if( ensembleSolution.next() ) ret = true;
+	else ret = false;
+
 	_result.setBooleanResult( ret );
 }
 
