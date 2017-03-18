@@ -15,13 +15,21 @@ addons:
     - ubuntu-toolchain-r-test
     - boost-latest
     packages:
+    - libboost1.54-all-dev
     - cmake
 
 install:
-  - sudo apt-get install libboost-all-dev
-  - sudo apt-get install libgecode-dev
+  - sudo apt-get install -qq libgecode-dev
   - sudo apt-get install -qq g++-4.8
   - export CXX="g++-4.8"
+  - wget http://www.gecode.org/download/gecode-5.0.0.tar.gz
+  - gunzip gecode-5.0.0.tar.gz
+  - tar xf gecode-5.0.0.tar
+  - cd gecode-5.0.0
+  - cmake CMakeList.txt
+  - make
+  - sudo make install
+  - ldconfig
 
 before_script:
   - cmake CMakeLists.txt
