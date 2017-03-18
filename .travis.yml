@@ -21,6 +21,13 @@ addons:
 install:
   - sudo apt-get install -qq g++-4.8
   - export CXX="g++-4.8"
+  - wget https://cmake.org/files/v3.6/cmake-3.6.3.tar.gz
+  - gunzip cmake-3.6.3.tar.gz
+  - tar xf cmake-3.6.3.tar
+  - cd cmake-3.6.3
+  - ./bootstrap
+  - make
+  - sudo make install
   - wget http://www.gecode.org/download/gecode-4.4.0.tar.gz
   - gunzip gecode-4.4.0.tar.gz
   - tar xf gecode-4.4.0.tar
