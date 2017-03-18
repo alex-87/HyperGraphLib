@@ -25,7 +25,7 @@ install:
   - gunzip gecode-5.0.0.tar.gz
   - tar xf gecode-5.0.0.tar
   - cd gecode-5.0.0
-  - cmake CMakeList.txt
+  - cmake CMakeLists.txt
   - make
   - sudo make install
   - ldconfig
