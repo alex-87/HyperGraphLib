@@ -33,11 +33,33 @@ IsomorphSpace::postConstraints() {
                 for(boost::shared_ptr<HyperVertex>& v : vertexA ) {
 
                         if( e->containVertex(v) ) {
-                                Gecode::rel(*this, _bVarEdge[ _varEdge[i].val() ], Gecode::BOT_AND, _bVarVertex[ _varVertex[j].val() ], 1);
+                                Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 1);
                         }
                         else {
-                                Gecode::rel(*this, _bVarEdge[ _varEdge[i].val() ], Gecode::BOT_AND, _bVarVertex[ _varVertex[j].val() ], 0);
+                                Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 0);
                         }
+
+                        Gecode::element(*this, _bVarEdge, _varEdge[i], i);
+                        Gecode::element(*this, _bVarVertex, _varVertex[j], j);
+
+                        i++;
+                }
+
+                j++;
+        }
+
+        for(boost::shared_ptr<HyperEdge>& e : edgeB ) {
+                for(boost::shared_ptr<HyperVertex>& v : vertexB ) {
+
+                        if( e->containVertex(v) ) {
+                                Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 1);
+                        }
+                        else {
+                                Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 0);
+                        }
+
+                        Gecode::element(*this, _bVarEdge, _varEdge[i], i);
+                        Gecode::element(*this, _bVarVertex, _varVertex[j], j);
 
                         i++;
                 }
