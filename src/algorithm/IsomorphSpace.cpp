@@ -40,11 +40,9 @@ IsomorphSpace::postConstraints() {
                 for(boost::shared_ptr<HyperVertex>& v : vertexA ) {
 
                         if( e->containVertex(v) ) {
-				// edge(i) contient vertex(j) => boolean_edge(i) AND boolean_vertex(j) = true
                                 Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 1);
                         }
                         else {
-				// edge(i) ne contient pas vertex(j) => boolean_edge(i) AND boolean_vertex(j) = false
                                 Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 0);
                         }
 
@@ -76,7 +74,7 @@ IsomorphSpace::postConstraints() {
 	for(int g=0; g<_ptrHypergrapheA->getHyperEdgeList().size(); g++) {
 		for(int h=0; h<_ptrHypergrapheA->getHyperVertexList().size(); h++) {
 			Gecode::element(*this, _bVarEdge, _varEdge[g], _bVarEdge2[g]);
-			Gecode::element(*this, _bVarEdge, _varVertex[h], _bVarEdge2[h]);
+			Gecode::element(*this, _bVarEdge, _varVertex[h], _bVarVertex2[h]);
 		}
 	}
 
