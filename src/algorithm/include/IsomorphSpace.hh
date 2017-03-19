@@ -33,6 +33,9 @@ public:
     Gecode::IntVarArray   _varVertex;
     Gecode::BoolVarArray _bVarVertex;
 
+    Gecode::BoolVarArray _bVarEdge2;
+    Gecode::BoolVarArray _bVarVertex2;
+
 protected:
 
 	boost::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheA;

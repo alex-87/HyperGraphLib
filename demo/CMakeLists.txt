@@ -14,3 +14,5 @@ if (OPENMP_FOUND)
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g ${OpenMP_CXX_FLAGS}")
 endif()
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lgecodeflatzinc -lgecodedriver -lgecodesearch -lgecodeminimodel -lgecodeset -lgecodeint -lgecodefloat -lgecodekernel -lgecodesupport")
+

@@ -5,17 +5,23 @@
 
 #include "include/IsomorphSpace.hh"
 #include <iostream>
+#include <gecode/driver.hh>
 
 
 IsomorphSpace::IsomorphSpace(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitA,
 							 const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitB) :
 
-							 _varEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, ptrHypergrapheAbstraitA->getHyperEdgeList().size() - 1 ),
-							 _bVarEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, 1),
-							 _varVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, ptrHypergrapheAbstraitA->getHyperVertexList().size() - 1 ),
-							 _bVarVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1 ),
-							 _ptrHypergrapheA (ptrHypergrapheAbstraitA),
-							 _ptrHypergrapheB (ptrHypergrapheAbstraitB) {
+			_varEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, ptrHypergrapheAbstraitA->getHyperEdgeList().size() - 1 ),
+			_bVarEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, 1),
+
+			_varVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, ptrHypergrapheAbstraitA->getHyperVertexList().size() - 1 ),
+			_bVarVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1 ),
+
+			_bVarEdge2(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, 1),
+			_bVarVertex2(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1 ),
+
+			_ptrHypergrapheA (ptrHypergrapheAbstraitA),
+			_ptrHypergrapheB (ptrHypergrapheAbstraitB) {
 
 }
 
@@ -34,14 +40,13 @@ IsomorphSpace::postConstraints() {
                 for(boost::shared_ptr<HyperVertex>& v : vertexA ) {
 
                         if( e->containVertex(v) ) {
+				// edge(i) contient vertex(j) => boolean_edge(i) AND boolean_vertex(j) = true
                                 Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 1);
                         }
                         else {
+				// edge(i) ne contient pas vertex(j) => boolean_edge(i) AND boolean_vertex(j) = false
                                 Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 0);
                         }
-
-                        Gecode::element(*this, _varEdge, _varEdge[i], i);
-			Gecode::element(*this, _varVertex, _varVertex[j], j);
 
                         j++;
                 }
@@ -55,21 +60,25 @@ IsomorphSpace::postConstraints() {
         for(boost::shared_ptr<HyperEdge>& e : edgeB ) {
                 for(boost::shared_ptr<HyperVertex>& v : vertexB ) {
 
-                        if( e->containVertex(v) ) {
-                                Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 1);
+                       if( e->containVertex(v) ) {
+                                Gecode::rel(*this, _bVarEdge2[ i ], Gecode::BOT_AND, _bVarVertex2[ j ], 1);
                         }
                         else {
-                                Gecode::rel(*this, _bVarEdge[ i ], Gecode::BOT_AND, _bVarVertex[ j ], 0);
+                                Gecode::rel(*this, _bVarEdge2[ i ], Gecode::BOT_AND, _bVarVertex2[ j ], 0);
                         }
-
-                        Gecode::element(*this, _varEdge, _varEdge[i], i);
-			Gecode::element(*this, _varVertex, _varVertex[j], j);
 
                         j++;
                 }
 		j = 0;
                 i++;
         }
+
+	for(int g=0; g<_ptrHypergrapheA->getHyperEdgeList().size(); g++) {
+		for(int h=0; h<_ptrHypergrapheA->getHyperVertexList().size(); h++) {
+			Gecode::element(*this, _bVarEdge, _varEdge[g], _bVarEdge2[g]);
+			Gecode::element(*this, _bVarEdge, _varVertex[h], _bVarEdge2[h]);
+		}
+	}
 
         Gecode::distinct(*this, _varVertex );
         Gecode::distinct(*this, _varEdge   );
