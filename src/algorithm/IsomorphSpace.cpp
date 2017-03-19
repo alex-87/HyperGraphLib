@@ -74,7 +74,7 @@ IsomorphSpace::postConstraints() {
 	for(int g=0; g<_ptrHypergrapheA->getHyperEdgeList().size(); g++) {
 		for(int h=0; h<_ptrHypergrapheA->getHyperVertexList().size(); h++) {
 			Gecode::element(*this, _bVarEdge, _varEdge[g], _bVarEdge2[g]);
-			Gecode::element(*this, _bVarEdge, _varVertex[h], _bVarVertex2[h]);
+			Gecode::element(*this, _bVarVertex, _varVertex[h], _bVarVertex2[h]);
 		}
 	}
 
