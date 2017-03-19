@@ -5,6 +5,7 @@
 #include "../model/include/HyperVertex.hh"
 #include "../model/include/HyperEdge.hh"
 #include <boost/graph/isomorphism.hpp>
+#include <gecode/search.hh>
 
 Isomorph::Isomorph(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitA,
 				   const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitB)
@@ -28,7 +29,7 @@ Isomorph::runAlgorithme() {
 	IsomorphSpace * is = new IsomorphSpace(_ptrHypergrapheAbstraitA, _ptrHypergrapheAbstraitB);
 	is->postConstraints();
 
-	Gecode::DFS<IsomorphSpace> ensembleSolution( is );
+	Gecode::BAB<IsomorphSpace> ensembleSolution( is );
 
 	if( ensembleSolution.next() ) ret = true;
 	else ret = false;

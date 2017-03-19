@@ -20,21 +20,21 @@ public:
 
 	void postConstraints();
 
-	Gecode::Space*
-	copy(bool share);
+	Gecode::Space * copy(bool share);
 
 	IsomorphSpace(bool share, IsomorphSpace& p);
 
 
 
-    Gecode::IntVarArray   _varEdge;
-    Gecode::BoolVarArray _bVarEdge;
 
-    Gecode::IntVarArray   _varVertex;
-    Gecode::BoolVarArray _bVarVertex;
+	Gecode::IntVarArray   _varEdge;
+	Gecode::BoolVarArray _bVarEdge;
 
-    Gecode::BoolVarArray _bVarEdge2;
-    Gecode::BoolVarArray _bVarVertex2;
+	Gecode::IntVarArray   _varVertex;
+	Gecode::BoolVarArray _bVarVertex;
+
+	Gecode::BoolVarArray _bVarEdge2;
+	Gecode::BoolVarArray _bVarVertex2;
 
 protected:
 

@@ -12,13 +12,13 @@ IsomorphSpace::IsomorphSpace(const boost::shared_ptr<HypergrapheAbstrait>& ptrHy
 							 const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitB) :
 
 			_varEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, ptrHypergrapheAbstraitA->getHyperEdgeList().size() - 1 ),
-			_bVarEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, 1),
+			_bVarEdge(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size() * ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1),
 
 			_varVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, ptrHypergrapheAbstraitA->getHyperVertexList().size() - 1 ),
-			_bVarVertex(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1 ),
+			_bVarVertex(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size() * ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1 ),
 
-			_bVarEdge2(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size(), 0, 1),
-			_bVarVertex2(*this, ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1 ),
+			_bVarEdge2(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size() * ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1),
+			_bVarVertex2(*this, ptrHypergrapheAbstraitA->getHyperEdgeList().size() * ptrHypergrapheAbstraitA->getHyperVertexList().size(), 0, 1 ),
 
 			_ptrHypergrapheA (ptrHypergrapheAbstraitA),
 			_ptrHypergrapheB (ptrHypergrapheAbstraitB) {
@@ -48,7 +48,6 @@ IsomorphSpace::postConstraints() {
 
                         j++;
                 }
-		j = 0;
                 i++;
         }
 
@@ -67,16 +66,16 @@ IsomorphSpace::postConstraints() {
 
                         j++;
                 }
-		j = 0;
                 i++;
         }
 
 	for(int g=0; g<_ptrHypergrapheA->getHyperEdgeList().size(); g++) {
-		for(int h=0; h<_ptrHypergrapheA->getHyperVertexList().size(); h++) {
-			Gecode::element(*this, _bVarEdge, _varEdge[g], _bVarEdge2[g]);
-			Gecode::element(*this, _bVarVertex, _varVertex[h], _bVarVertex2[h]);
-		}
+		Gecode::element(*this, _bVarEdge, _varEdge[g], _bVarEdge2[g]);
 	}
+
+	for(int h=0; h<_ptrHypergrapheA->getHyperVertexList().size(); h++) {
+		Gecode::element(*this, _bVarVertex, _varVertex[h], _bVarVertex2[h]);
+	}        
 
         Gecode::distinct(*this, _varVertex );
         Gecode::distinct(*this, _varEdge   );
