@@ -33,7 +33,6 @@ script:
   - make demo
   - make hypergraph
   - make test_model
-  - make test_algorithm
   - make test_io
 
 after_script:
