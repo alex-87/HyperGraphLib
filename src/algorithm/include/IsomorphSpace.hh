@@ -28,13 +28,13 @@ public:
 
 
 	Gecode::IntVarArray   _varEdge;
-	Gecode::BoolVarArray _bVarEdge;
+	Gecode::IntVarArray _bVarEdge;
 
 	Gecode::IntVarArray   _varVertex;
-	Gecode::BoolVarArray _bVarVertex;
+	Gecode::IntVarArray _bVarVertex;
 
-	Gecode::BoolVarArray _bVarEdge2;
-	Gecode::BoolVarArray _bVarVertex2;
+	Gecode::IntVarArray _bVarEdge2;
+	Gecode::IntVarArray _bVarVertex2;
 
 protected:
 
