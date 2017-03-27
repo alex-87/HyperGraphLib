@@ -29,7 +29,7 @@ Isomorph::runAlgorithme() {
 	IsomorphSpace * is = new IsomorphSpace(_ptrHypergrapheAbstraitA, _ptrHypergrapheAbstraitB);
 	is->postConstraints();
 
-	Gecode::BAB<IsomorphSpace> ensembleSolution( is );
+	Gecode::DFS<IsomorphSpace> ensembleSolution( is );
 
 	if( ensembleSolution.next() ) ret = true;
 	else ret = false;

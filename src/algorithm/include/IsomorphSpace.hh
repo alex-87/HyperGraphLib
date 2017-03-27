@@ -27,14 +27,11 @@ public:
 
 
 
-	Gecode::IntVarArray   _varEdge;
+	Gecode::IntVarArray _varEdge;
+
 	Gecode::IntVarArray _bVarEdge;
 
-	Gecode::IntVarArray   _varVertex;
-	Gecode::IntVarArray _bVarVertex;
-
 	Gecode::IntVarArray _bVarEdge2;
-	Gecode::IntVarArray _bVarVertex2;
 
 protected:
 
