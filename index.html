@@ -48,7 +48,7 @@
         <h3>
 <a id="welcome-to-hypergraphlibs-page" class="anchor" href="#welcome-to-hypergraphlibs-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to HyperGraphLib's page.</h3>
 
-<p>HyperGraphLib is a C++ library which allows you to work with hypergraphs (a graphe which edges can contains more than 2 vertexes) using the HyperGraphLib in your C++ app. Easily :)</p>
+<p>HyperGraphLib is a C++ library for hypergraphs modelisation. The HyperGraphLib is designed to use hypergraphs inside your C++ app. Easily :)</p>
 
 <h3>
 <a id="hypergraph-structure" class="anchor" href="#hypergraph-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hypergraph structure</h3>
@@ -70,20 +70,41 @@
 <li>k-Uniform</li>
 <li>Linear</li>
 <li>Simple</li>
+<li>Path search</li>
+<li>Isomorphism</li>
 </ul>
 
-<p>Some of them only decide of the associated property.</p>
+<h2>Compiling and installing the library</h2>
+
+<p>To compile and install, you may need :</p>
+
+<ul>
+<li>cmake (>= 2.8)</li>
+<li>Boost (>= 1.55)</li>
+<li>g++ (>= 4.8)</li>
+<li>Gecode (>= 4.4.0)</li>
+<li>Criterion (>= 2.3.0)</li>
+</ul>
+
+<p>In a terminal :</p>
+<p><code>
+git clone https://github.com/alex-87/HyperGraphLib.git
+cd HyperGraphLib
+cmake CMakeLists.txt
+make
+make install #Some privileges could be required
+</code></p>
 
 <h2>
 <a id="application-instead-of-library" class="anchor" href="#application-instead-of-library" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application instead of library</h2>
 
-<p>With the <strong>client</strong> package (included by default), compile it with:</p>
+<p>With the <strong>demo</strong> package (included by default), compile it with:</p>
 
 <h3>
 <a id="compilation" class="anchor" href="#compilation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compilation</h3>
 
 <p><code>
-cmake CMakeLists.txt && make
+cmake CMakeLists.txt && make demo
 </code></p>
 
 <h1>
@@ -93,28 +114,28 @@ cmake CMakeLists.txt && make
 <a id="how-to-generate-a-random-hypergraph-with-5-vertexes-" class="anchor" href="#how-to-generate-a-random-hypergraph-with-5-vertexes-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to generate a random hypergraph with 5 vertexes ?</h3>
 
 <p><code>
-./HypergraphLib --random 5 &gt; myAwesomeHypergraph.txt
+./demo --random 5 &gt; myAwesomeHypergraph.txt
 </code></p>
 
 <h3>
 <a id="how-to-get-the-adjacent-matrix-" class="anchor" href="#how-to-get-the-adjacent-matrix-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to get the adjacent matrix ?</h3>
 
 <p><code>
-./HypergraphLib --inputfile myAwesomeHypergraph.txt --adjacence
+./demo --inputfile myAwesomeHypergraph.txt --adjacence
 </code></p>
 
 <h3>
 <a id="how-to-know-if-my-hypergraph-is-connected-each-vertex-can-be-reach-" class="anchor" href="#how-to-know-if-my-hypergraph-is-connected-each-vertex-can-be-reach-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to know if my hypergraph is connected (each vertex can be reach) ?</h3>
 
 <p><code>
-./HypergraphLib --inputfile myAwesomeHypergraph.txt --connexe
+./demo --inputfile myAwesomeHypergraph.txt --connexe
 </code></p>
 
 <h3>
 <a id="how-to-use-hypergraphlib-" class="anchor" href="#how-to-use-hypergraphlib-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use HyperGraphLib ?</h3>
 
 <p><code>
-./HypergraphLib --help
+./demo --help
 </code></p>
 
 <h2>
