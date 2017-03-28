@@ -78,3 +78,33 @@ Test(test_model, hpg_rcr, .init = setup, .fini = teardown) {
 	cr_expect( rank == co_rank, "rank / co-rank issue");
 }
 
+Test(test_model, hpg_create_modify, .init = setup, .fini = teardown) {
+
+    HyperFactory::startSession(ptrHpg);
+
+    boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
+    boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
+
+    boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
+    boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
+
+    HyperFactory::link(ptrVertexA, ptrEdge1);
+    HyperFactory::link(ptrVertexB, ptrEdge2);
+
+    ptrHpg->addHyperVertex( ptrVertexA );
+    ptrHpg->addHyperVertex( ptrVertexB );
+
+    ptrHpg->addHyperEdge(ptrEdge1);
+    ptrHpg->addHyperEdge(ptrEdge2);
+
+    ptrHpg->flush();
+
+    HyperFactory::closeSession();
+
+    // Identifiers
+    for(unsigned int i=0; i < ptrHpg->getHyperVertexList().size(); i++) {
+        cr_expect(ptrHpg->getHyperVertexById(i)->getIdentifier() == i, "Incorrect Id");
+    }
+
+}
+

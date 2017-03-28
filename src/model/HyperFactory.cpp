@@ -13,8 +13,8 @@ void
 HyperFactory::startSession(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
 
 	_ptrHypergrapheAbstrait = ptrHypergrapheAbstrait;
-	_indexVertex = 0;
-	_indexEdge = 0;
+	_indexVertex = _ptrHypergrapheAbstrait->getHyperVertexList().size();
+	_indexEdge   = _ptrHypergrapheAbstrait->getHyperEdgeList().size();
 	_isSession = true;
 }
 
