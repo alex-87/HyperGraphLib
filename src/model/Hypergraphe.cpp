@@ -48,6 +48,7 @@ Hypergraphe::flush() {
 	unsigned int m( _hyperVertexIndexer.size() );
 	unsigned int n( _hyperEdgeIndexer.size() );
 
+	_adjacentMatrix = AdjacentMatrix(0, 0);
 	_adjacentMatrix.resize(m, n);
 
 #pragma omp parallel sections
