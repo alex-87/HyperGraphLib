@@ -7,7 +7,7 @@ find_package( Boost COMPONENTS program_options REQUIRED )
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}")
 
-find_package(Gecode REQUIRED COMPONENTS kernel support int set driver flatzinc gist minimodel search)
+find_package(Gecode REQUIRED COMPONENTS kernel support int set driver flatzinc minimodel search)
 
 set(Boost_DEBUG off)
 
