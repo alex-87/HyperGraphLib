@@ -32,7 +32,7 @@ IsomorphSpace::postConstraints() {
         LibType::ListHyperVertex vertexB( _ptrHypergrapheB->getHyperVertexList() );
         LibType::ListHyperEdge   edgeB  ( _ptrHypergrapheB->getHyperEdgeList()   );
 
-        int i( 0 ), j( 0 );
+        int j( 0 );
 
         for(boost::shared_ptr<HyperEdge>& e : edgeA ) {
                 for(boost::shared_ptr<HyperVertex>& v : vertexA ) {
@@ -45,10 +45,8 @@ IsomorphSpace::postConstraints() {
 
                         j++;
                 }
-                i++;
         }
 
-	i = 0;
 	j = 0;
 
         for(boost::shared_ptr<HyperEdge>& e : edgeB ) {
@@ -62,7 +60,6 @@ IsomorphSpace::postConstraints() {
 
                         j++;
                 }
-                i++;
         }
 
 	int u( 0 );
