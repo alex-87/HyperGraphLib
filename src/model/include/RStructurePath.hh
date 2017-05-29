@@ -1,6 +1,5 @@
 /**
- * Structure de description du résultat. Cet objet
- * est la représentation du résultat produit par tout algorithme.
+ * Path result description structure
  */
 #ifndef MODEL_INCLUDE_RSTRUCTURE_PATH_HH_
 #define MODEL_INCLUDE_RSTRUCTURE_PATH_HH_
