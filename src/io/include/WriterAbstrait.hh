@@ -1,5 +1,5 @@
 /**
- * Interface du module d'écriture d'instance.
+ * Output interface
  */
 #ifndef IO_INCLUDE_WRITERABSTRAIT_HH_
 #define IO_INCLUDE_WRITERABSTRAIT_HH_
@@ -8,32 +8,32 @@
 #include <boost/shared_ptr.hpp>
 
 /**
- * Déclaration de l'interface du module d'écriture d'instance.
+ * Output interface
  */
 class WriterAbstrait {
 
 public:
 
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Constructor
+	 * @param HypergrapheAbstrait shared pointer
 	 */
 	WriterAbstrait(const boost::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Ecriture de la matrice d'adjacence sur la sortie indiquée.
-	 * @param Le flux de sortie.
+	 * Adajency matrix output
+	 * @param Output flow
 	 */
 	virtual void writeAdjacentMatrix(std::ostream&) const = 0;
 
 	/**
-	 * Ecriture de l'hypergraphe sur le flux de sortie.
-	 * @param Le flux de sortie.
+	 * Hypergraph output write
+	 * @param Output flow
 	 */
 	virtual void writeHypergraph(std::ostream&) const = 0;
 
 	/**
-	 * Destructeur virtuel.
+	 * Virtual destructor
 	 */
 	virtual ~WriterAbstrait();
 
@@ -41,14 +41,14 @@ public:
 protected:
 
 	/**
-	 * Ecriture des hyper-vertex sur le flux de sortie.
-	 * @param Le flux de sortie.
+	 * Output hyper-vertex write
+	 * @param Output flow
 	 */
 	virtual void writeHypergrapheHyperVertex(std::ostream&) const = 0;
 
 	/**
-	 * Ecriture des hyper-arêtes sur le flux de sortie.
-	 * @param Le flux de sortie.
+	 * Output hyper-edge write
+	 * @param Output flow
 	 */
 	virtual void writeHypergrapheHyperEdge(std::ostream&) const = 0;
 
@@ -56,7 +56,7 @@ protected:
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * HypergrapheAbstrait shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;

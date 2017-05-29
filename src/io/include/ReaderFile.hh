@@ -1,5 +1,5 @@
 /**
- * Module de lecture.
+ * Input module
  */
 #ifndef IO_INCLUDE_READERFILE_HH_
 #define IO_INCLUDE_READERFILE_HH_
@@ -9,25 +9,25 @@
 
 
 /**
- * Déclaration du module de lecture.
+ * Input module
  */
 class ReaderFile : public ReaderAbstrait {
 
 public:
 
 	/**
-	 * Constructeur.
+	 * Constructor
 	 */
 	ReaderFile();
 
 	/**
-	 * Lecture de l'instance de l'hypergraphe.
-	 * @param Le flux entrant.
+	 * Read and build the hypergraph
+	 * @param Input flow
 	 */
 	void readHypergraphe(std::istream&);
 
 	/**
-	 * Deestructeur.
+	 * Destructor
 	 */
 	~ReaderFile();
 
@@ -35,31 +35,31 @@ public:
 protected:
 
 	/**
-	 * Lecture des hyper-vertex de l'instance.
-	 * @param Le flux entrant.
+	 * Read hyper-vertex
+	 * @param Input flow
 	 */
 	void readHypergrapheHyperVertex(std::istream&);
 
 	/**
-	 * Lecture des hyper-arêtes de l'instance.
-	 * @param Le flux entrant.
+	 * Read hyper-edge
+	 * @param Input flow
 	 */
 	void readHypergrapheHyperEdge(std::istream&);
 
 	/**
-	 * Obtenir l'hyper-vertex via l'identifiant numérique.
-	 * @param L'identifiant numérique.
+	 * Get hyper-vertex by Id
+	 * @param Id
 	 */
 	boost::shared_ptr<HyperVertex>& hyperVertexById(unsigned int&);
 
 	/**
-	 * Obtenir l'hyper-arête via l'identifiant numérique.
-	 * @param L'identifiant numérique.
+	 * Get hyper-edge by Id
+	 * @param Id
 	 */
 	boost::shared_ptr<HyperEdge>& hyperEdgeById(unsigned int&);
 
 	/**
-	 * Construction de l'instance après lecture.
+	 * Build the hypergraph
 	 */
 	void flush();
 
@@ -67,13 +67,13 @@ protected:
 protected:
 
 	/**
-	 * Liste des hyper-vertex lus.
+	 * Read hyper-vertex
 	 */
 	LibType::ListHyperVertex
 	_listHyperVertex;
 
 	/**
-	 * Liste des hyper-arêtes lues.
+	 * Read hyper-edge
 	 */
 	LibType::ListHyperEdge
 	_listHyperEdge;
