@@ -1,5 +1,5 @@
 /**
- * Classe modélisant un hypergraphe.
+ * Hypergraph object
  */
 #ifndef MODEL_INCLUDE_HYPERGRAPHE_HH_
 #define MODEL_INCLUDE_HYPERGRAPHE_HH_
@@ -7,48 +7,48 @@
 #include "HypergrapheAbstrait.hh"
 
 /**
- * Modélisation de l'hypergraphe.
+ * Hypergraph object
  */
 class Hypergraphe : public HypergrapheAbstrait {
 
 public:
 
 	/**
-	 * Constructeur par défaut.
+	 * Default constructor
 	 */
 	Hypergraphe();
 
 	/**
-	 * Ajouter un hyper-vertex à l'hypergraphe.
-	 * @param L'hyper-vertex à ajouter.
+	 * Add hyper-vertex
+	 * @param Hyper-vertex to add
 	 */
 	void addHyperVertex(const boost::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Ajouter une hyper-arête à l'hypergraphe.
-	 * @param L'hyper-arête à ajouter.
+	 * Add hyper-edge
+	 * @param Hyper-edge to add
 	 */
 	void addHyperEdge(const boost::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Obtenir un hyper-vertex à l'aide de son identifiant.
-	 * @param L'identifiant de l'hyper-vertex à obtenir.
+	 * Get hyper-vertex by Id
+	 * @param Hyper-vertex's Id
 	 */
 	boost::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&);
 
 	/**
-	 * Obtenir une hyper-arête à l'aide de son identifiant.
-	 * @param L'identifiant de l'hyper-arête à obtenir.
+	 * Get hyper-edge by Id
+	 * @param Hyper-edge's Id
 	 */
 	boost::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&);
 
 	/**
-	 * Construction de l'hypergraphe, notamment de sa matrice d'adjacence.
+	 * Build the adjacency matrix
 	 */
 	void flush();
 
 	/**
-	 * Destructeur.
+	 * Destructor
 	 */
 	~Hypergraphe();
 

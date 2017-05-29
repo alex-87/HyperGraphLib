@@ -1,6 +1,5 @@
 /**
- * Structure de description du résultat. Cet objet
- * est la représentation du résultat produit par tout algorithme.
+ * Result description structure
  */
 #ifndef MODEL_INCLUDE_RSTRUCTURE_HH_
 #define MODEL_INCLUDE_RSTRUCTURE_HH_
@@ -9,63 +8,61 @@
 #include <boost/shared_ptr.hpp>
 
 /**
- * Structure de description du résultat.
+ * Result description structure
  */
 class RStructure {
 
 public:
 
 	/**
-	 * Ajouter un résultat entier.
+	 * Add integer result
 	 */
 	void setIntegerResult();
 
 	/**
-	 * Ajouter un résultat booléen.
-	 * @param Le résultat booléen.
+	 * Add boolean result
 	 */
 	void setBooleanResult(bool);
 
 	/**
-	 * Ajouter un résultat de type HypergrapheAbstrait.
-	 * @param L'hypergraphe faisant office de résultat.
+	 * Add HypergraphAbstrait result
 	 */
 	void setHypergrapheResult(const boost::shared_ptr<HypergrapheAbstrait>&);
 
 public:
 
 	/**
-	 * Lire un résultat entier.
-	 * @return Le résutat en tant que nombre entier.
+	 * Get integer result
+	 * @return Integer result
 	 */
 	int getIntegerResult() const;
 
 	/**
-	 * Lire un résutat booléen.
-	 * @return Le résultat en tant que valeur booléenne.
+	 * Get boolean result
+	 * @return Boolean result
 	 */
 	bool getBooleanResult() const;
 
 	/**
-	 * Lire un résultat de typ HypergrapheAbstrait
-	 * @return Le résultat de type HypergrapheAbstrait
+	 * Get HypergraphAbstrait result
+	 * @return HypergraphAbstrait result
 	 */
 	boost::shared_ptr<HypergrapheAbstrait> getHypergrapheResult() const;
 
 protected:
 
 	/**
-	 * La valeur du résultat entier.
+	 * Integer result value
 	 */
 	int _integerResult;
 
 	/**
-	 * La valeur du résultat booléen.
+	 * Boolean result value
 	 */
 	bool _booleanResult;
 
 	/**
-	 * L'hypergraphe faisant office de résultat.
+	 * HypergraphAbstrait result shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait> _hypergrapheResult;
 

@@ -1,5 +1,5 @@
 /**
- * Définition de la fabrique d'un hypergraphe.
+ * Hypergraph factory object
  */
 #ifndef MODEL_INCLUDE_HYPERFACTORY_HH_
 #define MODEL_INCLUDE_HYPERFACTORY_HH_
@@ -8,14 +8,14 @@
 #include "HyperEdge.hh"
 
 /**
- * Classe modélisant la fabrique de l'hypergraphe.
+ * Hypergraph factory object
  */
 class HyperFactory {
 
 public:
 
 	/**
-	 * Instance unique de la fabrique.
+	 * Singleton instance
 	 */
 	static HyperFactory& Instance();
 
@@ -23,38 +23,38 @@ public:
 public:
 
 	/**
-	 * Démarrer une session de fabrication d'un hypergraphe.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Start a factory session
+	 * @param Hypergraph shared pointer
 	 */
 	static void startSession(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait);
 
 	/**
-	 * Création d'un nouvel hyper-vertex.
-	 * @return Nouvel hyper-vertex.
+	 * Create a hyper-vertex
+	 * @return New hyper-vertex
 	 */
 	static const boost::shared_ptr<HyperVertex> newHyperVertex();
 
 	/**
-	 * Création d'une nouvelle hyper-arête.
-	 * @return Nouvelle hyper-arête.
+	 * Create a hyper-edge
+	 * @return New hyper-edge
 	 */
 	static const boost::shared_ptr<HyperEdge> newHyperEdge();
 
 	/**
-	 * Relier une hyper-arête à un hyper-vertex.
-	 * @param L'hyper-vertex à relier.
-	 * @param L'hyper-arête à relier.
+	 * Link hyper-edge to hyper-vertex
+	 * @param L'hyper-vertex
+	 * @param L'hyper-edge
 	 */
 	static void link(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Test si une session est déjà en cours.
-	 * @return True si c'est le cas, False sinon.
+	 * Check whether a session is already started
+	 * @return True or False
 	 */
 	static bool isSession();
 
 	/**
-	 * Terminer la session de construction.
+	 * End the factory session
 	 */
 	static void closeSession();
 
@@ -62,22 +62,22 @@ public:
 private:
 
 	/**
-	 * Constructeur
+	 * Constructor
 	 */
 	HyperFactory();
 
 	/**
-	 * Constructeur
+	 * Constructor
 	 */
 	HyperFactory(const HyperFactory&);
 
 	/**
-	 * Constructeur
+	 * Constructor
 	 */
 	HyperFactory& operator= (const HyperFactory&);
 
 	/**
-	 * Destructeur
+	 * Destructor
 	 */
 	~HyperFactory();
 
@@ -85,27 +85,27 @@ private:
 private:
 
 	/**
-	 * Instnce unique de la fabrique.
+	 * Singleton instance
 	 */
 	static HyperFactory _instance;
 
 	/**
-	 * Compteur des indexes des hyper-vertex.
+	 * Hyper-vertex counter
 	 */
 	static unsigned int _indexVertex;
 
 	/**
-	 * Compteur des indexes des hyper-arêtes.
+	 * Hyper-edge counter
 	 */
 	static unsigned int _indexEdge;
 
 	/**
-	 * Indicateur de session.
+	 * Session flag
 	 */
 	static bool         _isSession;
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * HypergrapheAbstrait shared pointer
 	 */
 	static boost::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheAbstrait;
 

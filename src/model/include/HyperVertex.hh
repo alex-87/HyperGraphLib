@@ -1,5 +1,5 @@
 /**
- * Modélisation de l'hyper-vertex.
+ * Hyper-vertex object
  */
 
 #ifndef HYPER_VERTEX_HH
@@ -11,62 +11,62 @@
 #include "HypergrapheAbstrait.hh"
 
 /**
- * Déclaration de la classe de l'hyper-vertex.
+ * Hyper-vertex object
  */
 class HyperVertex {
 
 public:
 
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe auquel appartient l'hyper-vertex.
-	 * @param L'identifiant numérique de l'hyper-vertex.
+	 * Constructor
+	 * @param Hypergraph shared pointer
+	 * @param Hyper-vertex Id
 	 */
 	HyperVertex(const boost::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
 
 	/**
-	 * Ajouter une hyper-arête à l'hyper-vertex.
-	 * @param L'hyper-arête à ajouter.
+	 * Add hyper-edge
+	 * @param Hyper-edge to add
 	 */
 	void addHyperEdge(boost::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Obtenir le nombre d'hyper-arêtes dans lequel l'hyper-vertex est inclus.
-	 * @return Le nombre d'hyper-arêtes dans lequel l'hyper-vertex est inclus.
+	 * Get the hyper-vertex's degree
+	 * @return The hyper-vertex's degree
 	 */
 	const unsigned int getVertexDegree() const;
 
 	/**
-	 * Vérifier si l'hyper-arête contient cet hyer-vertex.
-	 * @param L'hyper-arête
-	 * @return True si l'hyper-vertex est inclus dans l'hyper-arête.
+	 * Check whether the hyper-vertex is contained into the specified hyper-edge
+	 * @param Hyper-edge
+	 * @return True or False
 	 */
 	bool containEdge(boost::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Obtenir l'identifiant numérique de l'hyper-vertex.
-	 * @return L'identifiant numérique de l'hyper-vertex.
+	 * Get the hyper-vertex's Id
+	 * @return The hyper-vertex's Id
 	 */
 	const unsigned int& getIdentifier() const;
 
 	/**
-	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
+	 * Operator == overload. Based on the Id
 	 */
 	bool operator==(const boost::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
+	 * Operator < overload. Based on the Id
 	 */
 	bool operator<(const boost::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
+	 * Operator > overload. Based on the Id
 	 */
 	bool operator>(const boost::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Obtenir la liste des hyper-arêtes contenant l'hyper-vertex.
-	 * @return La liste des hyper-arêtes contenant l'hyper-vertex.
+	 * Get the hyper-edges list containing the hyper-vertex
+	 * @return The hyper-edges list containing the hyper-vertex
 	 */
 	const LibType::ListHyperEdge& getHyperEdgeList() const;
 
@@ -74,18 +74,18 @@ public:
 protected:
 
 	/**
-	 * Pointeur partagé sur l'hypergraphe.
+	 * HypergrapheAbstrait shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergraphe;
 
 	/**
-	 * Identifiant numérique.
+	 * Id
 	 */
 	unsigned int _identifier;
 
 	/**
-	 * Liste des hyper-arêtes contenant l'hyper-vertex.
+	 * Hyper-edges list containing the hyper-vertex
 	 */
 	LibType::ListHyperEdge
 	_listHyperEdge;

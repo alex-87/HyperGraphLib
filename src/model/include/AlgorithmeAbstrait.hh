@@ -1,7 +1,6 @@
 /**
- * Définition de l'interface d'un algorithme.
+ * Algorithm interface
  */
-
 
 #ifndef MODEL_INCLUDE_ALGORITHMEABSTRAIT_HH_
 #define MODEL_INCLUDE_ALGORITHMEABSTRAIT_HH_
@@ -11,20 +10,20 @@
 class MotorAlgorithm;
 
 /**
- * Classe abstraite définissant les méthodes obligatoires d'un algorithme.
+ * Algorithm interface
  */
 class AlgorithmeAbstrait {
 
 public:
 
 	/**
-	 * Obtenir la structure de description du résultat.
-	 * @return La structure de description du résultat.
+	 * Get the result structure
+	 * @return The result structure
 	 */
 	virtual RStructure getResult() const = 0;
 
 	/**
-	 * Destructeur abstrait.
+	 * Abstract destructor
 	 */
 	virtual ~AlgorithmeAbstrait();
 
@@ -34,7 +33,7 @@ protected:
 	friend class MotorAlgorithm;
 
 	/**
-	 * Fonction princiale de lancement de l'algorithme.
+	 * Run the algorithm
 	 */
 	virtual void runAlgorithme() = 0;
 

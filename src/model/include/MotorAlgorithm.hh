@@ -1,7 +1,5 @@
 /**
- * Moteur des algorithmes. Avant de lancer un algorithme,
- * on configure le moteur, qui fait office de lanceur, afin
- * d'éviter les erreurs lors du paraléllisme.
+ * Algorithmic engine
  */
 #ifndef MODEL_INCLUDE_MOTORALGORITHM_HH_
 #define MODEL_INCLUDE_MOTORALGORITHM_HH_
@@ -11,83 +9,85 @@
 #include "AlgorithmeAbstrait.hh"
 
 /**
- * Moteur algorithmique.
+ * Algorithmic engine
  */
 class MotorAlgorithm {
 
 public:
 
 	/**
-	 * Obtenir l'instance du moteur.
-	 * @return L'instance du moteur.
+	 * Get the instance
+	 * @return The instance
 	 */
 	static MotorAlgorithm& Instance();
 
 	/**
-	 * Insérer l'algorithme à lancer.
-	 * @param Pointeur partagé sur l'algorithme.
+	 * Set the algorithm
+	 * @param The algorithm
 	 */
 	static void setAlgorithme(boost::shared_ptr<AlgorithmeAbstrait>&);
 
 	/**
-	 * Lancer l'algorithme.
+	 * Run the algorithm
 	 */
 	static void runAlgorithme();
 
 	/**
-	 * Indicateur de bloquage du moteur.
-	 * @return True si le lanceur est bloqué, False sinon.
+	 * Check whether the engine is running
+	 * @return True or False
 	 */
 	static bool isLock();
 
 private:
 
 	/**
-	 * Bloquage des setters et du lanceur.
+	 * Lock the engine
 	 */
 	static void lock();
 
 	/**
-	 * Débloquage des setters et du lanceur.
+	 * Unlock the engine
 	 */
 	static void unlock();
 
 private:
 
 	/**
-	 * Constructeur (copie).
+	 * Constructor
+	 * @param The algorithm
 	 */
 	MotorAlgorithm(const MotorAlgorithm&);
 
 	/**
-	 * Constructeur.
+	 * Constructor
+	 * @param The algorithm
 	 */
 	MotorAlgorithm& operator= (const MotorAlgorithm&);
 
 	/**
-	 * Constructeur.
+	 * Constructor
 	 */
 	MotorAlgorithm();
 
 	/**
-	 * Déstructeur.
+	 * Destructor
 	 */
 	~MotorAlgorithm();
 
 private:
 
 	/**
-	 * Descripteur du statut bloquant.
+	 * Lock descriptor
 	 */
 	static bool               _lock;
 
 	/**
-	 * Instance unique du moteur.
+	 * Singleton instance
 	 */
 	static MotorAlgorithm     _instance;
 
 	/**
-	 * Pointeur partagé de l'algorithme.
+	 * The algorithm
 	 */
 	static boost::shared_ptr<AlgorithmeAbstrait> _algorithme;
 

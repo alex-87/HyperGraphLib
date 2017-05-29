@@ -1,5 +1,5 @@
 /**
- * Déclaraion de l'interface standard d'un hypergraphe
+ * Definition of the Hypergraphe's Interface
  */
 
 #ifndef HYPERGRAPHE_HH_
@@ -8,116 +8,116 @@
 #include "AdjacentMatrix.hh"
 
 /**
- * Définition de l'interface de l'hypergraphe.
+ * Definition of the Hypergraphe's Interface
  */
 class HypergrapheAbstrait {
 
 public:
 
 	/**
-	 * Constructeur.
+	 * Constructor
 	 */
 	HypergrapheAbstrait();
 
 	/**
-	 * Ajouter un hyper-vertex à l'hypergraphe.
-	 * @param L'hyper-vertex à ajouter.
+	 * Add hyper-vertex
+	 * @param Hyper-vertex to add
 	 */
 	virtual void addHyperVertex(const boost::shared_ptr<HyperVertex>&) = 0;
 
 	/**
-	 * Ajouter une hyper-arête à l'hypergraphe.
-	 * @param L'hyper-arête à ajouter.
+	 * Add hyper-edge
+	 * @param Hyper-edge to add
 	 */
 	virtual void addHyperEdge(const boost::shared_ptr<HyperEdge>&)     = 0;
 
 	/**
-	 * Obtenir la matrice d'adjacence de l'hypergraphe.
-	 * @return La matrice d'adjacence.
+	 * Get the the adjacency matrix
+	 * @return The adjacency matrix
 	 */
 	AdjacentMatrix& getAdjacentMatrix();
 
 	/**
-	 * Obtenir la table d'index des hyper-vertex.
-	 * @return la table d'index des hyper-vertex.
+	 * Get the hyper-vertex Id table
+	 * @return The hyper-vertex Id table
 	 */
 	LibType::IndexerHyperVertex& getIndexHyperVertex();
 
 	/**
-	 * Obtenir la table d'index des hyper-arêtes.
-	 * @return la table d'index des hyper-arêtes.
+	 * Get the hyper-edge Id table
+	 * @return The hyper-edge Id table
 	 */
 	LibType::IndexerHyperEdge& getIndexHyperEdge();
 
 	/**
-	 * Obtenir un hyper-vertex à l'aide de son identifiant.
-	 * @return L'hyper-vertex. Comportement indéfini sinon.
+	 * Get hyper-vertex by Id
+	 * @param Hyper-vertex's Id
 	 */
 	virtual boost::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&) = 0;
 
 	/**
-	 * Obtenir une hyper-arête à l'aide de son identifiant.
-	 * @return L'hyper-arête. Comportement indéfini sinon.
+	 * Get hyper-edge by Id
+	 * @param Hyper-edge's Id
 	 */
 	virtual boost::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&) = 0;
 
 	/**
-	 * Obtenir la liste des hyper-vertex de l'hypergraphe.
-	 * @return la liste des hyper-vertex de l'hypergraphe.
+	 * Get the hyper-vertex's list
+	 * @return The hyper-vertex's list
 	 */
 	LibType::ListHyperVertex& getHyperVertexList();
 
 
 	/**
-	 * Obtenir la liste des hyper-arêtes de l'hypergraphe.
-	 * @return la liste des hyper-arêtes de l'hypergraphe.
+	 * Get the hyper-edge list
+	 * @return The hyper-edge list
 	 */
 	LibType::ListHyperEdge&   getHyperEdgeList();
 
 	/**
-	 * Construction interne de l'hypergraphe après fabrication.
+	 * Build the adjacency matrix
 	 */
 	virtual void flush() = 0;
 
 	/**
-	 * Destructeur virtuel.
+	 * Virtual destructor
 	 */
 	virtual ~HypergrapheAbstrait();
 
 protected:
 
 	/**
-	 * La table des hyper-vertex (identifiant, hyper-vertex).
+	 * Hyper-vertex Id table
 	 */
 	LibType::IndexerHyperVertex _indexHyperVertex;
 
 	/**
-	 * La table des hyper-arêtes (identifiant, hyper-arête).
+	 * Hyper-edge Id table
 	 */
 	LibType::IndexerHyperEdge   _indexHyperEdge;
 
 	/**
-	 * Liste des hyper-vertex.
+	 * Hyper-vertex's list
 	 */
 	LibType::ListHyperVertex    _listHyperVertex;
 
 	/**
-	 * Liste des hyper-arêtes.
+	 * Hyper-edge's list
 	 */
 	LibType::ListHyperEdge      _listHyperEdge;
 
 	/**
-	 * La table des hyper-arêtes (hyper-vertex, identifiant).
+	 * Hyper-vertex Id table
 	 */
 	LibType::HyperVertexIndexer _hyperVertexIndexer;
 
 	/**
-	 * La table des hyper-arêtes (hyper-arête, identifiant).
+	 * Hyper-edge Id table
 	 */
 	LibType::HyperEdgeIndexer   _hyperEdgeIndexer;
 
 	/**
-	 * La matrice d'adjacence.
+	 * Adjacency matrix
 	 */
 	AdjacentMatrix 				_adjacentMatrix;
 
