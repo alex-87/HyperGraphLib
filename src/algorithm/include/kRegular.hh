@@ -1,5 +1,5 @@
 /**
- * Définition de la classe de l'algorithme k-regular sur l'hypergraphe.
+ * K-regular algorithm
  */
 #ifndef ALGORITHM_INCLUDE_KREGULAR_HH_
 #define ALGORITHM_INCLUDE_KREGULAR_HH_
@@ -13,46 +13,46 @@
 #include "../../model/include/RStructure.hh"
 
 /**
- * Algorithme k-regular sur l'hypergraphe.
+ * K-regular algorithm
  */
 class kRegular : public AlgorithmeAbstrait {
 
 public:
 
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param Hypergraph shared pointer
 	 */
 	kRegular(const boost::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résultats.
-	 * @return La structure des résultats.
+	 * Get result structure
+	 * @return Result structure
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
 	~kRegular();
 
 protected:
 
 	/**
-	 * Lancment de l'algorithme.
+	 * Run the algorithm
 	 */
 	void runAlgorithme();
 
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
-	 * La structure des résultats.
+	 * Result structure
 	 */
 	RStructure _result;
 

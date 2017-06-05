@@ -1,5 +1,5 @@
 /**
- * Définition de la classe de l'algorithme simple sur l'hypergraphe.
+ * Simple algorithm
  */
 #ifndef ALGORITHM_INCLUDE_SIMPLE_HH_
 #define ALGORITHM_INCLUDE_SIMPLE_HH_
@@ -14,26 +14,26 @@
 #include "Linear.hh"
 
 /**
- * Algorithme simple sur l'hypergraphe.
+ * Simple algorithm
  */
 class Simple : public AlgorithmeAbstrait {
 
 public:
 
 	/**
-	 * Constructeur
-	 * @param Pointeur partagé sur l'hypergraphe.
+	 * Constructor
+	 * @param Hypergraph shared pointer
 	 */
 	Simple(boost::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résultats.
-	 * @return La structure des résultats.
+	 * get result structure
+	 * @return Result structure
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
 	~Simple();
 
@@ -43,23 +43,23 @@ protected:
 	friend class Linear;
 
 	/**
-	 * Lancement de l'algorithme.
+	 * Run the algoithm
 	 */
 	void runAlgorithme();
 
 	/**
-	 * Vérification de l'inclusion entre hyper-arête via les vertex.
-	 * @param Première liste.
-	 * @param Seconde liste.
-	 * @return True si c'est le cas, False sinon.
+	 * Verification of inclusion between hyper-vertex via vertex
+	 * @param First list
+	 * @param Seconde list
+	 * @return True or False
 	 */
 	bool subsetVertexList(const LibType::ListHyperVertex&, const LibType::ListHyperVertex&) const;
 
 	/**
-	 * Vérifie si un hyper-vertex est contenu dans la liste.
-	 * @param Liste des hyper-vertex.
-	 * @param L'hyer-vertex.
-	 * @return True si c'est le cas, False sinon.
+	 * Checks if a hyper-vertex is contained in the list
+	 * @param Hyper-vertex list
+	 * @param The hyer-vertex.
+	 * @return True or False
 	 */
 	bool contains(const LibType::ListHyperVertex&, const boost::shared_ptr<HyperVertex>&) const;
 
@@ -67,13 +67,13 @@ protected:
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
-	 * Structure des résultats.
+	 * Result structure
 	 */
 	RStructure _result;
 

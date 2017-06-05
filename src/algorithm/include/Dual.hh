@@ -1,5 +1,5 @@
 /**
- * Définition de l'algorithme du Dual de l'hypergraphe.
+ * Hypergraph dual algorithm
  */
 
 #ifndef ALGORITHM_INCLUDE_DUAL_HH_
@@ -10,52 +10,52 @@
 #include "../../model/include/AlgorithmeAbstrait.hh"
 
 /**
- * Algorithme du Dual de l'hypergraphe.
+ * Hypergraph dual algorithm
  */
 class Dual : public AlgorithmeAbstrait {
 
 public:
 
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param Hypergraph shareedpointer
 	 */
 	Dual(const boost::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résultats.
-	 * @return La structure des résultats.
+	 * Get result structure
+	 * @return Result structure
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
 	~Dual();
 
 protected:
 
 	/**
-	 * Lancement de l'algorithme
+	 * Run the algorithm
 	 */
 	void runAlgorithme();
 
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
-	 * Pointeur partagé vers le dual de l'hypergraphe.
+	 * Dual hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrDualHypergraphe;
 
 	/**
-	 * Structure de résultat.
+	 * Result structure
 	 */
 	RStructure _result;
 

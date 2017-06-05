@@ -1,5 +1,5 @@
 /**
- * Définition de l'algorithme décidant la connexité d'un hypergraphe.
+ * Definition of the algorithm deciding the connectivity of a hypergraph.
  */
 #ifndef ALGORITHM_INCLUDE_CONNECTED_HH_
 #define ALGORITHM_INCLUDE_CONNECTED_HH_
@@ -12,25 +12,26 @@
 #include <vector>
 
 /**
- * Algorithme décidant la connexité d'un hypergraphe.
+ * Definition of the algorithm deciding the connectivity of a hypergraph.
  */
 class Connected : public AlgorithmeAbstrait {
 
 public:
 
 	/**
-	 * Constructeur.
-	 * @param boost::shared_ptr<HypergrapheAbstrait> Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param boost::shared_ptr<HypergrapheAbstrait> Hypergraph shared pointer
 	 */
 	Connected(boost::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure de résultats.
+	 * Get result structure
+	 * @return Result structure
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
 	~Connected();
 
@@ -38,61 +39,53 @@ public:
 protected:
 
 	/**
-	 * Fonction de lancement de l'algorithme.
+	 * Run the algorithm
 	 */
 	void runAlgorithme();
 
 	/**
-	 * Exploration verticale d'un chemin de la matrice.
-	 * @param Vecteur des visités.
-	 * @param Pile des "à visiter".
-	 * @param Identifiant de la ligne.
+	 * Vertical scan of a path of the matrix
+	 * @param Visited
+	 * @param To-visit stack
+	 * @param Row Id
 	 */
 	void exploreVertical(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
 
 	/**
-	 * Exploration horizontale d'un chemin dans la matrice.
-	 * @param Vecteur des visités.
-	 * @param Pile des "à visiter".
-	 * @param Identifiant de la colonne.
+	 * Horizontal  scan of a path of the matrix
+	 * @param Visited
+	 * @param To-visit stack
+	 * @param Column Id
 	 */
 	void exploreHorizontal(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
 
 	/**
-	 * Vérifier si un hyper-vertex a déjà été visité.
-	 * @param Vecteur des hyper-vertex visités.
-	 * @param Identifiant à vérifier.
-	 * @return True si déjà visité, False sinon.
+	 * Check whether hyper-vertex already visited
+	 * @param Visited
+	 * @param Hyper-vertex Id to visit
+	 * @return True or False
 	 */
 	bool isVertexVisited(std::vector<unsigned int>&, unsigned int) const;
 
 	/**
-	 * Vérifier si une hyper-arête a déjà été visitée.
-	 * @param Vecteur des hyper-arêtes visités.
-	 * @param Identifiant à vérifier.
-	 * @return True si déjà visité, False sinon.
+	 * Check whether hyper-edge already visited
+	 * @param Visited
+	 * @param Hyper-edge Id to visit
+	 * @return True or False
 	 */
 	bool isEdgeVisited(std::vector<unsigned int>&, unsigned int) const;
-
-/*
-
-	bool isPath(HyperVertex&, HyperVertex&) const;
-
-	bool isVisited(std::vector<HyperEdge>&, const HyperEdge&) const;
-
-*/
 
 
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
-	 * Structure de résultat.
+	 * Result structure
 	 */
 	RStructure _result;
 

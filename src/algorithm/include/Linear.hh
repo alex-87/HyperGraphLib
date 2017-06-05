@@ -1,5 +1,5 @@
 /**
- * Définition de la classe de l'algorithme linear sur l'hypergraphe.
+ * Linear algorithm
  */
 #ifndef ALGORITHM_INCLUDE_LINEAR_HH_
 #define ALGORITHM_INCLUDE_LINEAR_HH_
@@ -7,20 +7,21 @@
 #include "../../model/include/AlgorithmeAbstrait.hh"
 
 /**
- * Algorithme linear sur l'hypergraphe.
+ * Linear algorithm
  */
 class Linear : public AlgorithmeAbstrait {
 
 public:
 
 	/**
-	 * Constructeur
-	 * @param Pointeur partagé sur l'hypergraphe.
+	 * Constructor
+	 * @param Hypergraph shared pointer
 	 */
 	Linear(boost::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résutats.
+	 * get result structure
+	 * @return Result structure
 	 */
 	RStructure getResult() const;
 
@@ -33,7 +34,7 @@ public:
 protected:
 
 	/**
-	 * Lancement de l'algorithme.
+	 * Run the algorithm
 	 */
 	void runAlgorithme();
 
@@ -41,13 +42,13 @@ protected:
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
-	 * Structure des résutats.
+	 * Result structure
 	 */
 	RStructure _result;
 

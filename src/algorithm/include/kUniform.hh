@@ -1,5 +1,5 @@
 /**
- * Définition de la classe de l'algorithme k-uniforme sur l'hypergraphe.
+ * K-uniforme algorithm
  */
 #ifndef ALGORITHM_INCLUDE_KUNIFORM_HH_
 #define ALGORITHM_INCLUDE_KUNIFORM_HH_
@@ -13,27 +13,27 @@
 #include "../../model/include/RStructure.hh"
 
 /**
- * Algorithme k-uniforme sur l'hypergraphe.
+ * K-uniforme algorithm
  */
 class kUniform : public AlgorithmeAbstrait {
 
 public:
 
 	/**
-	 * Constructeur
-	 * @param Pointeur partagé sur l'hypergraphe.
-	 * @param Valeur de k.
+	 * Constructor
+	 * @param Hypergraph shared pointer
+	 * @param K value
 	 */
 	kUniform(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait, const unsigned int&);
 
 	/**
-	 * Obtenir la structure des résultats.
-	 * @return La structure des résultats.
+	 * Get result structure
+	 * @return Result structure
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
 	~kUniform();
 
@@ -41,7 +41,7 @@ public:
 protected:
 
 	/**
-	 * Lancement de l'algorithme.
+	 * Run the algorithm
 	 */
 	void runAlgorithme();
 
@@ -49,18 +49,18 @@ protected:
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
-	 * Valeur de k.
+	 * K value
 	 */
 	unsigned int _k;
 
 	/**
-	 * Structure des résultats.
+	 * Result structure
 	 */
 	RStructure _result;
 

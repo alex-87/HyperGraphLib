@@ -1,5 +1,5 @@
 /**
- * Définition de l'algorithme de génération des statistiques de l'hypergraphe.
+ * Stats on hypergraph
  */
 
 #ifndef ALGORITHM_INCLUDE_HPGSTAT
@@ -15,26 +15,25 @@
 
 
 /**
- * Algorithme de génération des statistiques de l'hypergraphe.
+ * Stats on hypergraph
  */
 class HyperGraphStat : public AlgorithmeAbstrait {
 
 public:
 
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param Hypergraph shared pointer
 	 */
 	HyperGraphStat(const boost::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résultats - inutilisé ici.
-	 * @return La structure des résultats - inutilisé ici.
+	 * Unused here
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
 	~HyperGraphStat();
 
@@ -42,72 +41,72 @@ public:
 public:
 
 	/**
-	 * Obtenir le nombre d'hyper-arêtes.
+	 * Get hyper-edge count
 	 */
 	unsigned int getNbrHyperEdge() const;
 
 	/**
-	 * Obtenir le nombre d'hyper-vertex.
+	 * Get hyper-vertex count
 	 */
 	unsigned int getNbrHyperVertex() const;
 
 	/**
-	 * Obtenir le nombre de connexions vertex-arêtes.
+	 * Get links count
 	 */
 	unsigned int getNbrLinks() const;
 
 	/**
-	 * Obtenir le rang de l'hypergraphe.
+	 * Get hypergraph's rank
 	 */
 	unsigned int getRang() const;
 
 	/**
-	 * Obtenir le co-rang de l'hypergraphe.
+	 * Get hypergraph's co-rank
 	 */
 	unsigned int getCoRang() const;
 
 protected:
 
 	/**
-	 * Lancment de l'algorithme.
+	 * Run the algorithm
 	 */
 	void runAlgorithme();
 
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
-	 * La structure des résultats - inutilisée ici.
+	 * Unused here
 	 */
 	RStructure _result;
 
 	/**
-	 * Le nombre d'hyper-arêtes.
+	 * Hyper-edge count
 	 */
 	unsigned int _nhEdge;
 
 	/**
-	 * Le nombre d'hyper-vertex.
+	 * Hyper-vertex count
 	 */
 	unsigned int _nhVertex;
 
 	/**
-	 * Le nombre de connexions vertex-arêtes
+	 * Links count
 	 */
 	unsigned int _nhLink;
 
 	/**
-	 * Le rang de l'hypergraphe
+	 * Hypergraph's rank
 	 */
 	unsigned int _rang;
 
 	/**
-	 * Le co-rang de l'hypergraphe
+	 * Hypergraph's co-rank
 	 */
 	unsigned int _coRang;
 
