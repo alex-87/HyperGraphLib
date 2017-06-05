@@ -1,6 +1,5 @@
 /**
- * Définition de l'algorithme décidant de l'ensemble des chemins dans un hypergraphe
- * reliant un Vertex e1 à un Vertex e2.
+ * Search algorithm for paths from hyper-vertex e1 to hyper-vertex e2
  */
 
 #ifndef ALGORITHM_INCLUDE_PATH_HH_
@@ -10,43 +9,48 @@
 #include "../../model/include/AlgorithmeAbstrait.hh"
 #include "../../model/include/RStructurePath.hh"
 
+/**
+ * Search algorithm for paths from hyper-vertex e1 to hyper-vertex e2
+ */
 class Path : public AlgorithmeAbstrait {
 
 public:
 
 	/*
-	 * Constructeur.
-	 * @param boost::shared_ptr<HypergrapheAbstrait> Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param boost::shared_ptr<HypergrapheAbstrait> Hypergraph shared pointer
 	 */
 	Path(boost::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Configurer les vertex à utiliser pour lister les chemins
+	 * Configure the vertices to use to list paths
 	 */
 	void setHyperVertex(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Obtenir la structure de résultats.
+	 * Get result structure
+	 * @return Result structure
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Obtenir la structure de résultats.
+	 * Get path result structure
+	 * @return Path result structure
 	 */
 	RStructurePath getPathResult() const;
 
 	/**
-	 * Fixer la limite du nombre de chemins. Par défaut 0, non-définit.
+	 * Set the limit of paths. Default 0 if not set
 	 */
 	void setLimit(unsigned int);
 
 	/**
-	 * Lire la valeur limite.
+	 * Get limit
 	 */
 	unsigned int getLimit() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
 	~Path();
 
@@ -54,17 +58,17 @@ public:
 protected:
 
 	/**
-	 * Lancement de l'algorithme
+	 * Run the algorithm
 	 */
 	void runAlgorithme();
 
 	/**
-	 * Vérifie si l'HyperVertex est contenu dans la liste
+	 * Checks if HyperVertex is contained in the list
 	 */
 	bool vertexContained(LibType::ListHyperVertex&, boost::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Ajoute les HyperVertex d'un HyperEdge dans la liste mentionnée.
+	 * Add the Hyper-vertex of an hyper-edge to the mentioned list
 	 */
 	void addVertexList(LibType::ListHyperVertex&, LibType::ListHyperVertex&, const boost::shared_ptr<HyperEdge>&) const;
 
@@ -74,28 +78,28 @@ protected:
 protected:
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Hypergraph shared pointer
 	 */
 	boost::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
-	 * Vertex source
+	 * Source hyper-vertex
 	 */
 	boost::shared_ptr<HyperVertex> _source;
 
 	/**
-	 * Vertex destination
+	 * Destination hyper-vertex
 	 */
 	boost::shared_ptr<HyperVertex> _destination;
 
 	/**
-	 * Structure de résultat.
+	 * Path result structure
 	 */
 	RStructurePath _result;
 
 	/**
-	 * Valeur limite.
+	 * Limit
 	 */
 	unsigned int _limite;
 };
