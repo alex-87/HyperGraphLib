@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['setalgorithme',['setAlgorithme',['../classMotorAlgorithm.html#ae9e7767b718eec0207b85e9f9b63e928',1,'MotorAlgorithm']]],
-  ['setbooleanresult',['setBooleanResult',['../classRStructure.html#a20bba874ca16639124a8ddb8bea31fa9',1,'RStructure']]],
-  ['sethypergrapheresult',['setHypergrapheResult',['../classRStructure.html#afe2b456688fb5438d670022f9bd5e47e',1,'RStructure']]],
-  ['sethypervertexlist',['setHyperVertexList',['../classHyperEdge.html#a65f434cceef01aef3edf098883d4f850',1,'HyperEdge']]],
-  ['setintegerresult',['setIntegerResult',['../classRStructure.html#a7ac849641030130642e1a764c5283c2c',1,'RStructure']]],
-  ['simple',['Simple',['../classSimple.html',1,'Simple'],['../classSimple.html#a282f04a422ab8168ca309fe4f46fdb0f',1,'Simple::Simple()']]],
-  ['startsession',['startSession',['../classHyperFactory.html#a3ac2d3c1a5354e2522f728d397b247e1',1,'HyperFactory']]],
-  ['subsetvertexlist',['subsetVertexList',['../classSimple.html#a745b8e5137e9a49c7d317589c4c86b8c',1,'Simple']]]
+  ['readerabstrait',['ReaderAbstrait',['../classReaderAbstrait.html',1,'ReaderAbstrait'],['../classReaderAbstrait.html#aee5919fcdbbdd5bba85a65d369277892',1,'ReaderAbstrait::ReaderAbstrait()']]],
+  ['readerfile',['ReaderFile',['../classReaderFile.html',1,'ReaderFile'],['../classReaderFile.html#a02e725595dc9fa34a3aa4c80aead65dd',1,'ReaderFile::ReaderFile()']]],
+  ['readhypergraphe',['readHypergraphe',['../classReaderAbstrait.html#ade9da1d8775c04a1c2052a62a0c6cc8b',1,'ReaderAbstrait::readHypergraphe()'],['../classReaderFile.html#a723f759e87435699b550da356c3fb54b',1,'ReaderFile::readHypergraphe()']]],
+  ['readhypergraphehyperedge',['readHypergrapheHyperEdge',['../classReaderAbstrait.html#ae108d7dfe9ac12c7a14ffbdd1a638c73',1,'ReaderAbstrait::readHypergrapheHyperEdge()'],['../classReaderFile.html#a40e89d3e350c54084bf225b7034a5ac0',1,'ReaderFile::readHypergrapheHyperEdge()']]],
+  ['readhypergraphehypervertex',['readHypergrapheHyperVertex',['../classReaderAbstrait.html#a79c0f5993769679545f9aa407af0da6e',1,'ReaderAbstrait::readHypergrapheHyperVertex()'],['../classReaderFile.html#a3644df15d0c728cf553691a96c25c30d',1,'ReaderFile::readHypergrapheHyperVertex()']]],
+  ['resize',['resize',['../classAdjacentMatrix.html#a3129f47ce926e95fea18930811a63816',1,'AdjacentMatrix']]],
+  ['rstructure',['RStructure',['../classRStructure.html',1,'']]],
+  ['rstructurepath',['RStructurePath',['../classRStructurePath.html',1,'']]],
+  ['runalgorithme',['runAlgorithme',['../classConnected.html#ab5f277103c986bfa688b4401d7458379',1,'Connected::runAlgorithme()'],['../classDiameter.html#ae5726ebea9d8b13a20666b6352a105b4',1,'Diameter::runAlgorithme()'],['../classDual.html#a760713cb6d9a2cf32877555b8ef2fd84',1,'Dual::runAlgorithme()'],['../classHelly.html#ad2ddf7368b73cf2f2106de9c956837fa',1,'Helly::runAlgorithme()'],['../classHyperGraphStat.html#abf08d1cbbcd453351c567c68fcb89f71',1,'HyperGraphStat::runAlgorithme()'],['../classIsomorph.html#ab0adcbbaa1c3782ec632cf6470526b5f',1,'Isomorph::runAlgorithme()'],['../classkRegular.html#a2326030b319ec2040bddfba1018f743e',1,'kRegular::runAlgorithme()'],['../classkUniform.html#ab4bec8dd8fa9e1cd92597e79c12b0574',1,'kUniform::runAlgorithme()'],['../classLinear.html#ae8418132785f87f6595427c879009928',1,'Linear::runAlgorithme()'],['../classPath.html#ab6f39aa52cbc702c27d26e6402701f42',1,'Path::runAlgorithme()'],['../classSimple.html#a18e3ad980d54a6de61358c9cd5bc3fc2',1,'Simple::runAlgorithme()'],['../classAlgorithmeAbstrait.html#ac614346072f3839dba1bb4239faeca06',1,'AlgorithmeAbstrait::runAlgorithme()'],['../classMotorAlgorithm.html#abb1da287e5930f848b73c73f19f9a4c3',1,'MotorAlgorithm::runAlgorithme()']]]
 ];

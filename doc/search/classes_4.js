@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['kregular',['kRegular',['../classkRegular.html',1,'']]],
-  ['kuniform',['kUniform',['../classkUniform.html',1,'']]]
+  ['isomorph',['Isomorph',['../classIsomorph.html',1,'']]],
+  ['isomorphspace',['IsomorphSpace',['../classIsomorphSpace.html',1,'']]]
 ];

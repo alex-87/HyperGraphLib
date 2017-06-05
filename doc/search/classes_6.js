@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['motoralgorithm',['MotorAlgorithm',['../classMotorAlgorithm.html',1,'']]]
+  ['libtype',['LibType',['../classLibType.html',1,'']]],
+  ['linear',['Linear',['../classLinear.html',1,'']]]
 ];

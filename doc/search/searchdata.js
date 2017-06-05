@@ -1,7 +1,7 @@
 var indexSectionsWithContent =
 {
-  0: "_acdefghiklmnorsvw~",
-  1: "acdhklmrsw",
+  0: "_acdefghiklmnoprsvw~",
+  1: "acdhiklmprsw",
   2: "acdefghiklnorsvw~",
   3: "_"
 };
@@ -16,9 +16,9 @@ var indexSectionNames =
 
 var indexSectionLabels =
 {
-  0: "Tout",
+  0: "All",
   1: "Classes",
-  2: "Fonctions",
+  2: "Functions",
   3: "Variables"
 };
 

@@ -1,17 +1,9 @@
 var searchData=
 [
-  ['_7ealgorithmeabstrait',['~AlgorithmeAbstrait',['../classAlgorithmeAbstrait.html#a6b6fada2bcb3fed2aba894202aaf32d5',1,'AlgorithmeAbstrait']]],
-  ['_7econnected',['~Connected',['../classConnected.html#af06c88e985d8b1d03374a8e4db65ac21',1,'Connected']]],
-  ['_7edual',['~Dual',['../classDual.html#a685872d18642e7a66474a803e2ccce91',1,'Dual']]],
-  ['_7ehelly',['~Helly',['../classHelly.html#a4d10697e9f6f9b46aae1f4f26a0fc5b6',1,'Helly']]],
-  ['_7ehypergraphe',['~Hypergraphe',['../classHypergraphe.html#a0feb76b272bbba665f96ff6e6cb6ba30',1,'Hypergraphe']]],
-  ['_7ehypergrapheabstrait',['~HypergrapheAbstrait',['../classHypergrapheAbstrait.html#a73996276a13337e2c12a6f9fb69b2a8a',1,'HypergrapheAbstrait']]],
-  ['_7ehypergraphstat',['~HyperGraphStat',['../classHyperGraphStat.html#a63c5878da82d22df165a07a0138e5dc2',1,'HyperGraphStat']]],
-  ['_7ekregular',['~kRegular',['../classkRegular.html#acfb7424a7e66bdc83a1779dd5a4cae53',1,'kRegular']]],
-  ['_7ekuniform',['~kUniform',['../classkUniform.html#af9471442da33f042e1621ff4d8076ab6',1,'kUniform']]],
-  ['_7elinear',['~Linear',['../classLinear.html#a6abe6c2b55a1e1c3e838aaf82e77e627',1,'Linear']]],
-  ['_7ereaderabstrait',['~ReaderAbstrait',['../classReaderAbstrait.html#a815578d2fb9ded951e4f1cc0d5d29b16',1,'ReaderAbstrait']]],
-  ['_7ereaderfile',['~ReaderFile',['../classReaderFile.html#aedf3dac215dac56b4b02e61a1c95f4c7',1,'ReaderFile']]],
-  ['_7esimple',['~Simple',['../classSimple.html#a922e57b961d5bf0472d3a0860b88f113',1,'Simple']]],
-  ['_7ewriterabstrait',['~WriterAbstrait',['../classWriterAbstrait.html#ab5766a9271dc0d7b897f1f41d70808ad',1,'WriterAbstrait']]]
+  ['writeadjacentmatrix',['writeAdjacentMatrix',['../classWriterAbstrait.html#a93b9d2fe7c266976851342cb13050c8c',1,'WriterAbstrait::writeAdjacentMatrix()'],['../classWriterFile.html#ac74c0ba6addda838aaabdde043cead84',1,'WriterFile::writeAdjacentMatrix()']]],
+  ['writehypergraph',['writeHypergraph',['../classWriterAbstrait.html#ae7f500b2857c69d460afacf5a4f76063',1,'WriterAbstrait::writeHypergraph()'],['../classWriterFile.html#a996e5c361d4b6ace52baaadb359c7e13',1,'WriterFile::writeHypergraph()']]],
+  ['writehypergraphehyperedge',['writeHypergrapheHyperEdge',['../classWriterAbstrait.html#aa08519c081b478941d275cae6df78c12',1,'WriterAbstrait::writeHypergrapheHyperEdge()'],['../classWriterFile.html#a94ba928e5870589c8b7979bb62439e63',1,'WriterFile::writeHypergrapheHyperEdge()']]],
+  ['writehypergraphehypervertex',['writeHypergrapheHyperVertex',['../classWriterAbstrait.html#a14f9527cddf21d08429b246eb0cc4051',1,'WriterAbstrait::writeHypergrapheHyperVertex()'],['../classWriterFile.html#a19d261f24b2d8072095aea40e59e5dc5',1,'WriterFile::writeHypergrapheHyperVertex()']]],
+  ['writerabstrait',['WriterAbstrait',['../classWriterAbstrait.html',1,'WriterAbstrait'],['../classWriterAbstrait.html#a6e5645fd14682171350ab9f94b9cce1f',1,'WriterAbstrait::WriterAbstrait()']]],
+  ['writerfile',['WriterFile',['../classWriterFile.html',1,'WriterFile'],['../classWriterFile.html#a71d89ac72e16a0e23d0415fa921d7164',1,'WriterFile::WriterFile()']]]
 ];

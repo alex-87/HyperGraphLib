@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['simple',['Simple',['../classSimple.html',1,'']]]
+  ['path',['Path',['../classPath.html',1,'']]]
 ];

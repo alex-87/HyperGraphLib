@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['libtype',['LibType',['../classLibType.html',1,'']]],
-  ['linear',['Linear',['../classLinear.html',1,'']]]
+  ['kregular',['kRegular',['../classkRegular.html',1,'']]],
+  ['kuniform',['kUniform',['../classkUniform.html',1,'']]]
 ];
