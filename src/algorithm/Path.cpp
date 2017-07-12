@@ -103,13 +103,15 @@ Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex&
 bool
 Path::vertexContained(LibType::ListHyperVertex& liste, boost::shared_ptr<HyperVertex>& vertex) const {
 
+	bool ret = false;
+
 #pragma omp for schedule( dynamic )
 	for(unsigned int i=0; i<liste.size(); i++) {
 		if( vertex == liste.at(i) ) {
-			return true;
+			ret = true;
 		}
 	}
-	return false;
+	return ret;
 }
 
 
