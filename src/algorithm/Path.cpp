@@ -91,6 +91,8 @@ Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVertex& vL
 
 void
 Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex& liste, const boost::shared_ptr<HyperEdge>& hyperEdge) const {
+
+#pragma omp for schedule( dynamic )
 	for(unsigned int i=0; i < hyperEdge->getHyperVertexList().size(); i++) {
 		if( !vertexContained(noListe, hyperEdge->getHyperVertexList().at(i)) ) {
 			liste.push_back( hyperEdge->getHyperVertexList().at(i) );
@@ -100,6 +102,8 @@ Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex&
 
 bool
 Path::vertexContained(LibType::ListHyperVertex& liste, boost::shared_ptr<HyperVertex>& vertex) const {
+
+#pragma omp for schedule( dynamic )
 	for(unsigned int i=0; i<liste.size(); i++) {
 		if( vertex == liste.at(i) ) {
 			return true;
