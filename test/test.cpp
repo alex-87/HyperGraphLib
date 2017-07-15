@@ -110,6 +110,8 @@ Test(test_model, hpg_create_modify, .init = setup, .fini = teardown) {
 
 Test(test_model, hpg_contain, .init = setup, .fini = teardown) {
 
+	ptrHpg.reset ( new Hypergraphe );
+
 	boost::shared_ptr<HypergrapheAbstrait> cptrHpg;
 	HyperFactory::startSession(cptrHpg);
 
