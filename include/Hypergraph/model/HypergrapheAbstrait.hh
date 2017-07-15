@@ -75,6 +75,14 @@ public:
 	LibType::ListHyperEdge&   getHyperEdgeList();
 
 	/**
+	 * Check whether the hyper-vertex is contained in the hyper-edge
+	 * @param Hyper-vertex
+	 * @param Hyper-edge
+	 * @return True or False
+	 */
+	bool isHyperVertexInHyperEdge(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperEdge>&) const;
+
+	/**
 	 * Construction interne de l'hypergraphe après fabrication.
 	 */
 	virtual void flush() = 0;
