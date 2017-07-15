@@ -47,7 +47,7 @@ IsomorphSpace::postConstraints() {
                 }
         }
 
-	j = 0;
+		j = 0;
 
         for(boost::shared_ptr<HyperEdge>& e : edgeB ) {
                 for(boost::shared_ptr<HyperVertex>& v : vertexB ) {
@@ -62,13 +62,13 @@ IsomorphSpace::postConstraints() {
                 }
         }
 
-	int u( 0 );
-	for(int g=0; g < edgeA.size(); g++) {
-		for(int h=0; h < vertexA.size(); h++) {
-			Gecode::element(*this, _bVarEdge, _varEdge[u], _bVarEdge2[u]);
-			u++;
+		int u( 0 );
+		for(int g=0; g < edgeA.size(); g++) {
+			for(int h=0; h < vertexA.size(); h++) {
+				Gecode::element(*this, _bVarEdge, _varEdge[u], _bVarEdge2[u]);
+				u++;
+			}
 		}
-	}
 
         Gecode::distinct(*this, _varEdge   );
 
@@ -84,4 +84,3 @@ IsomorphSpace::IsomorphSpace(bool share, IsomorphSpace& p) :
                 Gecode::Space(share, p) {
 		_varEdge.update(*this, share, p._varEdge);
 }
-

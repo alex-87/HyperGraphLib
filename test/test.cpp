@@ -108,3 +108,23 @@ Test(test_model, hpg_create_modify, .init = setup, .fini = teardown) {
 
 }
 
+Test(test_model, hpg_contain, .init = setup, .fini = teardown) {
+
+	boost::shared_ptr<HypergrapheAbstrait> cptrHpg;
+	HyperFactory::startSession(cptrHpg);
+
+	boost::shared_ptr<HyperEdge> ptrEdge ( HyperFactory::newHyperEdge() );
+	boost::shared_ptr<HyperVertex> ptrVertex( HyperFactory::newHyperVertex() );
+
+	HyperFactory::link(ptrVertex, ptrEdge);
+	cptrHpg->addHyperEdge(ptrEdge);
+	cptrHpg->addHyperVertex(ptrVertex);
+
+	cptrHpg->flush();
+
+	HyperFactory::closeSession();
+
+	cr_expect(cptrHpg->isHyperVertexInHyperEdge(ptrVertex, ptrEdge) == true, "ptrEdge should contain ptrVertex");
+}
+
+

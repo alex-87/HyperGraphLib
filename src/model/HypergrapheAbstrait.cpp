@@ -32,6 +32,11 @@ HypergrapheAbstrait::getAdjacentMatrix() {
 	return _adjacentMatrix;
 }
 
+bool
+HypergrapheAbstrait::isHyperVertexInHyperEdge(boost::shared_ptr<HyperVertex>& hv, boost::shared_ptr<HyperEdge>& he) const {
+	return _adjacentMatrix(hv->getIdentifier(), he->getIdentifier());
+}
+
 HypergrapheAbstrait::~HypergrapheAbstrait() {
 
 }
