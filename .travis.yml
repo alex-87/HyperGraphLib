@@ -20,7 +20,7 @@ install:
   - wget https://cmake.org/files/v2.8/cmake-2.8.12.2.tar.gz
   - gunzip cmake-2.8.12.2.tar.gz
   - tar xf cmake-2.8.12.2.tar
-  - cd cmake-3.8.12.2
+  - cd cmake-2.8.12.2
   - ./bootstrap
   - make
   - sudo make install
