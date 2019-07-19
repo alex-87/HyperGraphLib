@@ -75,6 +75,21 @@ IsomorphSpace::postConstraints() {
         Gecode::branch(*this, _varEdge, Gecode::INT_VAR_SIZE_MIN(), Gecode::INT_VAL_SPLIT_MIN());
 }
 
+
+#if GECODE_VERSION_NUMBER > 500100
+
+Gecode::Space*
+IsomorphSpace::copy() {
+        return new IsomorphSpace(*this);
+}
+
+IsomorphSpace::IsomorphSpace(IsomorphSpace& p) :
+                Gecode::Space(p) {
+		_varEdge.update(*this, p._varEdge);
+}
+
+#else
+
 Gecode::Space*
 IsomorphSpace::copy(bool share) {
         return new IsomorphSpace(share, *this);
@@ -84,3 +99,5 @@ IsomorphSpace::IsomorphSpace(bool share, IsomorphSpace& p) :
                 Gecode::Space(share, p) {
 		_varEdge.update(*this, share, p._varEdge);
 }
+
+#endif

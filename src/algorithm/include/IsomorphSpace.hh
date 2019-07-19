@@ -20,11 +20,19 @@ public:
 
 	void postConstraints();
 
+#if GECODE_VERSION_NUMBER > 500100
+
+	Gecode::Space * copy();
+
+	IsomorphSpace(IsomorphSpace& p);
+
+#else
+
 	Gecode::Space * copy(bool share);
 
 	IsomorphSpace(bool share, IsomorphSpace& p);
 
-
+#endif
 
 
 	Gecode::IntVarArray _varEdge;

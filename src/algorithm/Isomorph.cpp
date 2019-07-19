@@ -4,6 +4,7 @@
 #include "../model/include/Hypergraphe.hh"
 #include "../model/include/HyperVertex.hh"
 #include "../model/include/HyperEdge.hh"
+#include <thread>
 #include <boost/graph/isomorphism.hpp>
 #include <gecode/search.hh>
 
@@ -29,7 +30,16 @@ Isomorph::runAlgorithme() {
 	IsomorphSpace * is = new IsomorphSpace(_ptrHypergrapheAbstraitA, _ptrHypergrapheAbstraitB);
 	is->postConstraints();
 
-	Gecode::DFS<IsomorphSpace> ensembleSolution( is );
+	unsigned int nbrThreadsSupported( std::thread::hardware_concurrency() );
+
+	if( nbrThreadsSupported <= 0 ) {
+		nbrThreadsSupported = 1;
+	};
+
+	Gecode::Search::Options opt;
+	opt.threads = nbrThreadsSupported;
+
+	Gecode::DFS<IsomorphSpace> ensembleSolution(is, opt);
 
 	if( ensembleSolution.next() ) ret = true;
 	else ret = false;
