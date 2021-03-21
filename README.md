@@ -139,4 +139,18 @@ The hypergraph is simple.
 Boost Library
 -------------
 
-This software uses the [Boost](https://www.boost.org/) Library. Please see the Boost license at http://www.boost.org/LICENSE_1_0.txt 
+This software uses the [Boost](https://www.boost.org/) Library.
+Please see the Boost license at http://www.boost.org/LICENSE_1_0.txt 
+
+
+Gecode Library
+--------------
+
+This software uses the [Gecode](http://www.gecode.org) Library.
+Please see the Boost license at https://www.gecode.org/license.html
+
+
+License
+-------
+
+**This software is licensed under the MIT License.**
