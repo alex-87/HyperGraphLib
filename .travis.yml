@@ -1,4 +1,4 @@
-dist: trusty
+dist: focal
 sudo: required
 language: cpp
 
@@ -15,16 +15,6 @@ addons:
     - libboost-all-dev
     - cmake
     - libgecode-dev
-
-install:
-  - wget https://cmake.org/files/v2.8/cmake-2.8.12.2.tar.gz
-  - gunzip cmake-2.8.12.2.tar.gz
-  - tar xf cmake-2.8.12.2.tar
-  - cd cmake-2.8.12.2
-  - ./bootstrap
-  - make
-  - sudo make install
-  - cd ..
 
 before_script:
   - cmake CMakeLists.txt
