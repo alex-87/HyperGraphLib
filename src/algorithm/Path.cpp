@@ -24,12 +24,11 @@
  */
 
 
-#include <boost/foreach.hpp>
 #include "include/Path.hh"
 #include "../model/include/HyperVertex.hh"
 #include "../model/include/HyperEdge.hh"
 
-Path::Path(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
+Path::Path(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
 			_ptrHypergrapheAbstrait( ptrHypergrapheAbstrait ), _limite(0) {
 }
 
@@ -54,14 +53,14 @@ Path::getLimit() const {
 }
 
 void
-Path::setHyperVertex(boost::shared_ptr<HyperVertex>& source, boost::shared_ptr<HyperVertex>& destination) {
+Path::setHyperVertex(std::shared_ptr<HyperVertex>& source, std::shared_ptr<HyperVertex>& destination) {
 	_source = source;
 	_destination = destination;
 }
 
 void Path::runAlgorithme() {
 
-	LibType::PathList pathList( new boost::container::vector<LibType::ListHyperVertex>() );
+	LibType::PathList pathList( new std::vector<LibType::ListHyperVertex>() );
 
 	if( _source == _destination ) {
 		LibType::ListHyperVertex listHyperVertex;
@@ -79,7 +78,7 @@ void Path::runAlgorithme() {
 
 	while( (toVisitVertex.size() > 0) && (_limite > pathList->size() || _limite==0) ) {
 
-		boost::shared_ptr<HyperVertex> currentHyperVertex( toVisitVertex.back() );
+		std::shared_ptr<HyperVertex> currentHyperVertex( toVisitVertex.back() );
 		visitedVertex.push_back( currentHyperVertex );
 		toVisitVertex.pop_back();
 
@@ -107,7 +106,7 @@ Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVertex& vL
 
 	LibType::ListHyperVertex tmpList;
 
-	BOOST_FOREACH(boost::shared_ptr<HyperVertex> vPtr, vList) {
+	for(const auto& vPtr : vList) {
 		tmpList.push_back(vPtr);
 	}
 
@@ -115,7 +114,7 @@ Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVertex& vL
 }
 
 void
-Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex& liste, const boost::shared_ptr<HyperEdge>& hyperEdge) const {
+Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex& liste, const std::shared_ptr<HyperEdge>& hyperEdge) const {
 
 	for(unsigned int i=0; i < hyperEdge->getHyperVertexList().size(); i++) {
 		if( !vertexContained(noListe, hyperEdge->getHyperVertexList().at(i)) ) {
@@ -125,7 +124,7 @@ Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex&
 }
 
 bool
-Path::vertexContained(LibType::ListHyperVertex& liste, boost::shared_ptr<HyperVertex>& vertex) const {
+Path::vertexContained(LibType::ListHyperVertex& liste, std::shared_ptr<HyperVertex>& vertex) const {
 
 	for(unsigned int i=0; i<liste.size(); i++) {
 		if( vertex == liste.at(i) ) {

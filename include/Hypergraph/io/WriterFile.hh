@@ -42,7 +42,7 @@ public:
 	 * Constructeur.
 	 * @param Pointeur partagé vers l'hypergraphe.
 	 */
-	WriterFile(const boost::shared_ptr<HypergrapheAbstrait>&);
+	WriterFile(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Eciture de la matrice d'adjacence sur le flux de sortie.

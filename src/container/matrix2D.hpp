@@ -23,62 +23,60 @@
  *
  */
 
-/*
- * LightTreeLib - Small C++ Template library - Used in HypergraphLib
- *
- */
+#ifndef HYPERGRAPHLIB_CONTAINER_MATRIX2D
+#define HYPERGRAPHLIB_CONTAINER_MATRIX2D
 
-#ifndef LIGHTTREELIB_HPP_
-#define LIGHTTREELIB_HPP_
+#include <vector>
+#include <cstddef>
 
-#include <map>
-#include <boost/shared_ptr.hpp>
-
-template<typename T>
-class LightTree {
+template <typename T>
+class Matrix2D {
 
 public:
 
-        LightTree(const T& t) : _t( t ) {
-                _cnt = 0;
-        }
+    typedef typename std::vector<T>::reference reference;
+    typedef typename std::vector<T>::const_reference const_reference;
 
-        void
-        setElement(const T& t) {
-                _t = t;
-        }
+    Matrix2D() : _m(0), _n(0) {
 
-        void
-        addNode(boost::shared_ptr<LightTree<T> >& lightTree) {
-                _mapNode[_cnt] = lightTree;
-                _cnt++;
-        }
+    }
 
-        boost::shared_ptr<LightTree<T> >&
-        getNode(unsigned int nodeId) {
-                return _mapNode[nodeId];
-        }
+    Matrix2D(std::size_t m, std::size_t n) :
+        _m(m),
+        _n(n),
+        _data(m * n) {
 
-        unsigned int
-        getCardinal() const {
-                return _cnt;
-        }
+    }
 
-        T&
-        getElement() {
-                return _t;
-        }
+    void resize(std::size_t m, std::size_t n) {
+        _m = m;
+        _n = n;
+        _data.assign(m * n, T());
+    }
 
-        ~LightTree() {
-        }
+    reference operator()(std::size_t i, std::size_t j) {
+        return _data[i * _n + j];
+    }
+
+    const_reference operator()(std::size_t i, std::size_t j) const {
+        return _data[i * _n + j];
+    }
+
+    std::size_t rows() const {
+        return _m;
+    }
+
+    std::size_t cols() const {
+        return _n;
+    }
+
 
 private:
 
-	T _t;
-	unsigned int _cnt;
-	std::map<unsigned int, boost::shared_ptr<LightTree<T> > > _mapNode;
+    std::size_t _m, _n;
+
+    std::vector<T> _data;
 
 };
 
-
-#endif /* LIGHTTREELIB_HPP_ */
+#endif // HYPERGRAPHLIB_CONTAINER_MATRIX2D

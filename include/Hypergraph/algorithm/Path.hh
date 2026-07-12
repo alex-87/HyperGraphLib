@@ -41,14 +41,14 @@ public:
 
 	/*
 	 * Constructeur.
-	 * @param boost::shared_ptr<HypergrapheAbstrait> Pointeur partagé vers l'hypergraphe.
+	 * @param std::shared_ptr<HypergrapheAbstrait> Pointeur partagé vers l'hypergraphe.
 	 */
-	Path(boost::shared_ptr<HypergrapheAbstrait>&);
+	Path(std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Configurer les vertex à utiliser pour lister les chemins
 	 */
-	void setHyperVertex(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperVertex>&);
+	void setHyperVertex(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Obtenir la structure de résultats.
@@ -86,12 +86,12 @@ protected:
 	/**
 	 * Vérifie si l'HyperVertex est contenu dans la liste
 	 */
-	bool vertexContained(LibType::ListHyperVertex&, boost::shared_ptr<HyperVertex>&) const;
+	bool vertexContained(LibType::ListHyperVertex&, std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Ajoute les HyperVertex d'un HyperEdge dans la liste mentionnée.
 	 */
-	void addVertexList(LibType::ListHyperVertex&, LibType::ListHyperVertex&, const boost::shared_ptr<HyperEdge>&) const;
+	void addVertexList(LibType::ListHyperVertex&, LibType::ListHyperVertex&, const std::shared_ptr<HyperEdge>&) const;
 
 
 	void buildPathToPathList(LibType::PathList&, LibType::ListHyperVertex&);
@@ -101,18 +101,18 @@ protected:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
 	 * Vertex source
 	 */
-	boost::shared_ptr<HyperVertex> _source;
+	std::shared_ptr<HyperVertex> _source;
 
 	/**
 	 * Vertex destination
 	 */
-	boost::shared_ptr<HyperVertex> _destination;
+	std::shared_ptr<HyperVertex> _destination;
 
 	/**
 	 * Structure de résultat.

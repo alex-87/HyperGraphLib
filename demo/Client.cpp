@@ -24,23 +24,11 @@
  */
 
 
-#include <boost/program_options/cmdline.hpp>
-#include <boost/program_options/config.hpp>
-#include <boost/program_options/environment_iterator.hpp>
-#include <boost/program_options/eof_iterator.hpp>
-#include <boost/program_options/errors.hpp>
-#include <boost/program_options/option.hpp>
-#include <boost/program_options/options_description.hpp>
-#include <boost/program_options/parsers.hpp>
-#include <boost/program_options/positional_options.hpp>
-#include <boost/program_options/value_semantic.hpp>
-#include <boost/program_options/variables_map.hpp>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/version.hpp>
+#include <memory>
 #include <fstream>
 #include <iostream>
 
+#include "include/ProgramOptions.hh"
 #include "include/Client.hh"
 #include "include/RandomHypergraphe.hh"
 
@@ -68,29 +56,34 @@
 
 int main(int argc, char *argv[]) {
 
-	boost::program_options::options_description desc("Paramètres");
+	po::options_description desc("Paramètres");
 	desc.add_options()
 					("version", "Afficher la version")
 					("help", "Afficher l'aide")
-					("inputfile", boost::program_options::value<std::string>(), "Fichier d'entrée")
-					("random", boost::program_options::value<int>(), "Hypergraphe aléatoire de n vertex")
+					("inputfile", po::value<std::string>(), "Fichier d'entrée")
+					("random", po::value<int>(), "Hypergraphe aléatoire de n vertex")
 					("adjacence", "Affiche la matrice d'adjacence de l'hypergraphe")
 					("dual", "Produit le Dual de l'hypergraphe")
-					("kuniform", boost::program_options::value<int>(), "Décide si l'hypergraphe est k-uniforme")
+					("kuniform", po::value<int>(), "Décide si l'hypergraphe est k-uniforme")
 					("linear", "Décide si l'hypergraphe est linéaire")
 					("kregular", "Décide si l'hypergraphe est k-regulier")
 					("simple", "Décide si l'hypergraphe est simple")
 					("helly", "Décide si un hypergraphe possède la propriété de Helly")
 					("connexe", "Décide si l'hypergraphe est connexe")
-					("isomorph", boost::program_options::value<std::string>(), "Décide si deux hypergraphes sont isomorphe")
+					("isomorph", po::value<std::string>(), "Décide si deux hypergraphes sont isomorphe")
 					("stat", "Retourne les statistiques de l'hypergraphe")
 					("path", "Retourne le chemins")
-					("source", boost::program_options::value<int>(), "Source de la reherche de chemins")
-					("destination", boost::program_options::value<int>(), "Destination de la recherche de chemins");
+					("source", po::value<int>(), "Source de la reherche de chemins")
+					("destination", po::value<int>(), "Destination de la recherche de chemins");
 
-	boost::program_options::variables_map vm;
-	boost::program_options::store(boost::program_options::parse_command_line(argc, argv, desc), vm);
-	boost::program_options::notify(vm);
+	po::variables_map vm;
+	try {
+		po::store(po::parse_command_line(argc, argv, desc), vm);
+		po::notify(vm);
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
 
 	if (vm.count("help") || vm.empty()) {
 	    std::cout << desc << "\n";
@@ -105,7 +98,6 @@ int main(int argc, char *argv[]) {
 				  << std::endl
 				  << "Université de Caen Basse-Normandie, 2015 - Alexis LE GOADEC."
 				  << std::endl
-				  << "Boost version: " << BOOST_VERSION << std::endl
 				  << "GCC version: " << __VERSION__ << std::endl
 #ifdef __x86_64
 				  << "x86_64: " << __x86_64 << std::endl
@@ -114,7 +106,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 
-	boost::shared_ptr<HypergrapheAbstrait> ptrHpg;
+	std::shared_ptr<HypergrapheAbstrait> ptrHpg;
 
 	if( vm.count("inputfile") && vm.count("random")==0 ) {
 		std::ifstream ifs(vm["inputfile"].as<std::string>(), std::ifstream::in);
@@ -134,7 +126,7 @@ int main(int argc, char *argv[]) {
 	// Isomorphism special parameters configuration
 	if( vm.count("isomorph") && vm.count("inputfile") ) {
 
-		boost::shared_ptr<HypergrapheAbstrait> ptrHpg2;
+		std::shared_ptr<HypergrapheAbstrait> ptrHpg2;
 
 		std::ifstream ifs(vm["isomorph"].as<std::string>(), std::ifstream::in);
 
@@ -172,7 +164,7 @@ int main(int argc, char *argv[]) {
 		MotorAlgorithm::setAlgorithme( statHpg );
 		MotorAlgorithm::runAlgorithme();
 
-		boost::shared_ptr<HyperGraphStat> s = boost::static_pointer_cast<HyperGraphStat>( statHpg );
+		std::shared_ptr<HyperGraphStat> s = std::static_pointer_cast<HyperGraphStat>( statHpg );
 
 		std::cout << "Hyper-vertex : " << s->getNbrHyperVertex() << std::endl
 				  << "Hyper-edge   : " << s->getNbrHyperEdge()   << std::endl
@@ -203,7 +195,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	if( vm.count("kuniform") ) {
-		boost::shared_ptr<AlgorithmeAbstrait> kuniformAlgo( new kUniform( ptrHpg, vm["kuniform"].as<int>() ) );
+		std::shared_ptr<AlgorithmeAbstrait> kuniformAlgo( new kUniform( ptrHpg, vm["kuniform"].as<int>() ) );
 		MotorAlgorithm::setAlgorithme( kuniformAlgo );
 		MotorAlgorithm::runAlgorithme();
 
@@ -282,14 +274,14 @@ int main(int argc, char *argv[]) {
 	}
 
 	if(vm.count("path") ) {
-		boost::shared_ptr<Path> pathAlgo( new Path( ptrHpg ) );
+		std::shared_ptr<Path> pathAlgo( new Path( ptrHpg ) );
 
 		pathAlgo->setHyperVertex(
 				ptrHpg->getHyperVertexById(vm["source"].as<int>()),
 				ptrHpg->getHyperVertexById(vm["destination"].as<int>() )
 			);
 
-		boost::shared_ptr<AlgorithmeAbstrait> algoPathAbstrait( pathAlgo );
+		std::shared_ptr<AlgorithmeAbstrait> algoPathAbstrait( pathAlgo );
 
 		MotorAlgorithm::setAlgorithme( algoPathAbstrait );
 		MotorAlgorithm::runAlgorithme();

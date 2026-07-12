@@ -29,7 +29,7 @@
 #ifndef ALGORITHM_INCLUDE_KUNIFORM_HH_
 #define ALGORITHM_INCLUDE_KUNIFORM_HH_
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "../model/HypergrapheAbstrait.hh"
 #include "../model/Hypergraphe.hh"
 #include "../model/HyperVertex.hh"
@@ -49,7 +49,7 @@ public:
 	 * @param Pointeur partagé sur l'hypergraphe.
 	 * @param Valeur de k.
 	 */
-	kUniform(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait, const unsigned int&);
+	kUniform(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait, const unsigned int&);
 
 	/**
 	 * Obtenir la structure des résultats.
@@ -76,7 +76,7 @@ protected:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**

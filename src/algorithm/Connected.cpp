@@ -33,7 +33,7 @@
 
 #define TRACE_ALGORITHM_CONNECTED 0
 
-Connected::Connected(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
+Connected::Connected(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
 			_ptrHypergrapheAbstrait(ptrHypergrapheAbstrait) {
 
 }
@@ -125,19 +125,17 @@ Connected::exploreVertical(std::vector<unsigned int>& listVisited, std::stack<un
 	LibType::AdjacentMatrixContainerBool
 	matrix( _ptrHypergrapheAbstrait->getAdjacentMatrix().getBoolAdjacentMatrix() );
 
-	boost::tuple<unsigned int, unsigned int>*
-	dim = &_ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
+	std::tuple<unsigned int, unsigned int>
+	dim = _ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
 
-	for(unsigned int i=0; i<dim->get<0>(); i++) {
-		if( matrix[idVert][i] && !isEdgeVisited(listVisited, i ) ) {
+	for(unsigned int i=0; i<std::get<0>(dim); i++) {
+		if( matrix(idVert, i) && !isEdgeVisited(listVisited, i ) ) {
 #if(TRACE_ALGORITHM_CONNECTED)
 			std::cout << "-> PUSH [edge]: " << i << std::endl;
 #endif
 			stack.push( i );
 		}
 	}
-	
-	delete( dim );
 }
 
 void
@@ -146,26 +144,23 @@ Connected::exploreHorizontal(std::vector<unsigned int>& listVisited, std::stack<
 	LibType::AdjacentMatrixContainerBool
 	matrix( _ptrHypergrapheAbstrait->getAdjacentMatrix().getBoolAdjacentMatrix() );
 
-	boost::tuple<unsigned int, unsigned int>*
-	dim = &_ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
+	std::tuple<unsigned int, unsigned int>
+	dim = _ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension();
 
-	for(unsigned int i=0; i<dim->get<1>(); i++) {
-		if( matrix[i][idHor] && !isVertexVisited(listVisited, i ) ) {
+	for(unsigned int i=0; i<std::get<1>(dim); i++) {
+		if( matrix(i, idHor) && !isVertexVisited(listVisited, i ) ) {
 #if(TRACE_ALGORITHM_CONNECTED)
 			std::cout << "-> PUSH [vertex]: " << i << std::endl;
 #endif
 			stack.push( i );
 		}
 	}
-	
-	delete( dim );
 }
 
 bool
 Connected::isVertexVisited(std::vector<unsigned int>& list, unsigned int vertex) const {
 
 	bool ret( false );
-#pragma omp for schedule(dynamic)
 	for(unsigned int i=0; i<list.size(); i++) {
 		if(list[i]==vertex)ret = true;
 	}
@@ -176,7 +171,6 @@ bool
 Connected::isEdgeVisited(std::vector<unsigned int>& list, unsigned int edge) const {
 
 	bool ret( false );
-#pragma omp for schedule(dynamic)
 	for(unsigned int i=0; i<list.size(); i++) {
 		if(list[i]==edge)ret = true;
 	}

@@ -30,7 +30,7 @@
 #define IO_INCLUDE_WRITERABSTRAIT_HH_
 
 #include "../../model/include/HypergrapheAbstrait.hh"
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 /**
  * Output interface
@@ -43,7 +43,7 @@ public:
 	 * Constructor
 	 * @param HypergrapheAbstrait shared pointer
 	 */
-	WriterAbstrait(const boost::shared_ptr<HypergrapheAbstrait>&);
+	WriterAbstrait(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Adajency matrix output
@@ -83,7 +83,7 @@ protected:
 	/**
 	 * HypergrapheAbstrait shared pointer
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 };

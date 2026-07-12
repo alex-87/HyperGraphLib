@@ -30,10 +30,11 @@
 #include "../model/include/HyperVertex.hh"
 #include "../model/include/HyperEdge.hh"
 
-#include <boost/tuple/tuple.hpp>
-#include <boost/foreach.hpp>
+#include <tuple>
+#include <ostream>
+#include <string>
 
-WriterFile::WriterFile(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
+WriterFile::WriterFile(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
 				WriterAbstrait( ptrHypergrapheAbstrait ) {
 
 }
@@ -44,14 +45,14 @@ WriterFile::writeAdjacentMatrix(std::ostream& sortie) const {
 	LibType::AdjacentMatrixContainerBool
 	adjacentMatrixBool( _ptrHypergrapheAbstrait->getAdjacentMatrix().getBoolAdjacentMatrix() );
 
-	boost::tuple<unsigned int, unsigned int>
+	std::tuple<unsigned int, unsigned int>
 	matrixDimension( _ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension() );
 
-	unsigned int n( matrixDimension.get<0>() ), m( matrixDimension.get<1>() );
+	unsigned int n( std::get<0>(matrixDimension) ), m( std::get<1>(matrixDimension) );
 
 	for(unsigned int i=0; i<n; i++) {
 		for(unsigned int j=0; j<m; j++) {
-			sortie << adjacentMatrixBool[j][i] << " ";
+			sortie << adjacentMatrixBool(j, i) << " ";
 		}
 		sortie << " " << "\n";
 	}
@@ -65,9 +66,9 @@ WriterFile::writeHypergraph(std::ostream& sortie) const {
 
 	LibType::ListHyperEdge listEdge( _ptrHypergrapheAbstrait->getHyperEdgeList() );
 
-	BOOST_FOREACH(const auto& edge, listEdge) {
+	for(const auto& edge : listEdge) {
 		LibType::ListHyperVertex vertexList( edge->getHyperVertexList() );
-		BOOST_FOREACH(const auto& vertex, vertexList) {
+		for(const auto& vertex : vertexList) {
 			sortie << edge->getIdentifier() << " " << vertex->getIdentifier() << std::endl;
 		}
 	}
@@ -78,7 +79,7 @@ WriterFile::writeHypergrapheHyperVertex(std::ostream& sortie) const {
 
 	LibType::ListHyperVertex listVertex( _ptrHypergrapheAbstrait->getHyperVertexList() );
 
-	BOOST_FOREACH(const auto& vertex, listVertex) {
+	for(const auto& vertex : listVertex) {
 		sortie << vertex->getIdentifier() << " ";
 	}
 
@@ -90,10 +91,9 @@ WriterFile::writeHypergrapheHyperEdge(std::ostream& sortie) const {
 
 	LibType::ListHyperEdge listEdge( _ptrHypergrapheAbstrait->getHyperEdgeList() );
 
-	BOOST_FOREACH(const auto& edge, listEdge) {
+	for(const auto& edge : listEdge) {
 		sortie << edge->getIdentifier() << " ";
 	}
 
 	sortie << "\n";
-
 }

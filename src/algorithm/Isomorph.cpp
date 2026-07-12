@@ -24,17 +24,16 @@
  */
 
 
-#include "include/Isomorph.hh"
-#include "include/IsomorphSpace.hh"
-#include "../model/include/Hypergraphe.hh"
-#include "../model/include/HyperVertex.hh"
-#include "../model/include/HyperEdge.hh"
+#include "Hypergraph/algorithm/Isomorph.hh"
+#include "Hypergraph/algorithm/IsomorphSpace.hh"
+#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
 #include <thread>
-#include <boost/graph/isomorphism.hpp>
 #include <gecode/search.hh>
 
-Isomorph::Isomorph(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitA,
-				   const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitB)
+Isomorph::Isomorph(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitA,
+				   const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstraitB)
 				   : _ptrHypergrapheAbstraitA(ptrHypergrapheAbstraitA),
 					 _ptrHypergrapheAbstraitB(ptrHypergrapheAbstraitB) {
 
@@ -81,4 +80,3 @@ Isomorph::getResult() const {
 
 Isomorph::~Isomorph() {
 }
-

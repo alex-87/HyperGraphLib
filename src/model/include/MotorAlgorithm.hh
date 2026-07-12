@@ -29,7 +29,7 @@
 #ifndef MODEL_INCLUDE_MOTORALGORITHM_HH_
 #define MODEL_INCLUDE_MOTORALGORITHM_HH_
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "AlgorithmeAbstrait.hh"
 
@@ -50,7 +50,7 @@ public:
 	 * Set the algorithm
 	 * @param The algorithm
 	 */
-	static void setAlgorithme(boost::shared_ptr<AlgorithmeAbstrait>&);
+	static void setAlgorithme(std::shared_ptr<AlgorithmeAbstrait>&);
 
 	/**
 	 * Run the algorithm
@@ -114,7 +114,7 @@ private:
 	/**
 	 * The algorithm
 	 */
-	static boost::shared_ptr<AlgorithmeAbstrait> _algorithme;
+	static std::shared_ptr<AlgorithmeAbstrait> _algorithme;
 
 };
 

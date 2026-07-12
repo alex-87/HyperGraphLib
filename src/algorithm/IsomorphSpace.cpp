@@ -23,15 +23,15 @@
  *
  */
 
-#include "include/IsomorphSpace.hh"
+#include "Hypergraph/algorithm/IsomorphSpace.hh"
 #include <iostream>
 #include <gecode/driver.hh>
 #include <gecode/minimodel.hh>
 
 
 IsomorphSpace::IsomorphSpace(
-    const boost::shared_ptr<HypergrapheAbstrait>& h1,
-    const boost::shared_ptr<HypergrapheAbstrait>& h2) :
+    const std::shared_ptr<HypergrapheAbstrait>& h1,
+    const std::shared_ptr<HypergrapheAbstrait>& h2) :
     _edgeMapping (
         *this,
         h1->getHyperEdgeList().size(),
@@ -81,9 +81,9 @@ IsomorphSpace::postConstraints() {
 
     { // H1 hypergraph adjacency matrix
         unsigned int i = 0;
-        for (boost::shared_ptr<HyperEdge>& e : edgeH1) {
+        for (std::shared_ptr<HyperEdge>& e : edgeH1) {
             unsigned int j = 0;
-            for (boost::shared_ptr<HyperVertex>& v : vertexH1) {
+            for (std::shared_ptr<HyperVertex>& v : vertexH1) {
                 matrixH1[i][j] = e->containVertex(v) ? 1 : 0;
                 j++;
             }
@@ -92,9 +92,9 @@ IsomorphSpace::postConstraints() {
     }
     { // H2 hypergraph adjacency matrix (flat)
         unsigned int p = 0;
-        for (boost::shared_ptr<HyperEdge>& e : edgeH2) {
+        for (std::shared_ptr<HyperEdge>& e : edgeH2) {
             unsigned int q = 0;
-            for (boost::shared_ptr<HyperVertex>& v : vertexH2) {
+            for (std::shared_ptr<HyperVertex>& v : vertexH2) {
                 flatMatrixH2[q + nbr_vertex_h1 * p] = e->containVertex(v) ? 1 : 0;
                 q++;
             }
@@ -133,7 +133,7 @@ IsomorphSpace::postConstraints() {
     // the encoutered edges of same size: a mapping between two edges is possible
     // if these two edges are of the same size.
     for (unsigned int i = 0; i < nbr_edge_h1; i++) {
-        std::vector<unsigned int> candidate;
+        std::vector<int> candidate;
         for (unsigned int p = 0; p < nbr_edge_h1; p++) {
             if (edgeSizeH1[i] == edgeSizeH2[p]) {
                 // Same size ? Candidate for mapping !
@@ -164,7 +164,7 @@ IsomorphSpace::postConstraints() {
     // the encoutered vertex of same degree: a mapping between two vertex is possible
     // if these two vertex are of the same degree.
     for (unsigned int j = 0; j < nbr_vertex_h1; j++) {
-        std::vector<unsigned int> candidate;
+        std::vector<int> candidate;
         for (unsigned int q = 0; q < nbr_vertex_h1; q++) {
             if (degH1[j] == degH2[q]) {
                 // Same degree ? Candidate for mapping !
@@ -203,8 +203,8 @@ IsomorphSpace::postConstraints() {
     for (unsigned int i = 0; i < nbr_edge_h1; i++) {
         for (unsigned int j = 0; j < nbr_vertex_h1; j++) {
             Gecode::IntVar cell(*this, 0, 1);
-            //
-            Gecode::rel(*this, matrixH1[i][j], Gecode::IRT_EQ, cell);
+            // See https://www.gecode.dev/doc/6.2.0/reference/group__TaskModelIntRelInt.html#gadf3e5df4d490a72d12f4dbd12431f556
+            Gecode::rel(*this, cell, Gecode::IRT_EQ, static_cast<int>(matrixH1[i][j]));
             Gecode::element(
                 *this,
                 flatMatrixH2,

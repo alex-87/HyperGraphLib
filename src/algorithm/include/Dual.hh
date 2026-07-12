@@ -30,7 +30,7 @@
 #ifndef ALGORITHM_INCLUDE_DUAL_HH_
 #define ALGORITHM_INCLUDE_DUAL_HH_
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "../../model/include/HypergrapheAbstrait.hh"
 #include "../../model/include/AlgorithmeAbstrait.hh"
 
@@ -45,7 +45,7 @@ public:
 	 * Constructor.
 	 * @param Hypergraph shareedpointer
 	 */
-	Dual(const boost::shared_ptr<HypergrapheAbstrait>&);
+	Dual(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Get result structure
@@ -70,13 +70,13 @@ protected:
 	/**
 	 * Hypergraph shared pointer
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**
 	 * Dual hypergraph shared pointer
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrDualHypergraphe;
 
 	/**

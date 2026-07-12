@@ -30,7 +30,7 @@
 #ifndef HYPER_VERTEX_HH
 #define HYPER_VERTEX_HH
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "LibType.hh"
 #include "HypergrapheAbstrait.hh"
@@ -47,13 +47,13 @@ public:
 	 * @param Hypergraph shared pointer
 	 * @param Hyper-vertex Id
 	 */
-	HyperVertex(const boost::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
+	HyperVertex(const std::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
 
 	/**
 	 * Add hyper-edge
 	 * @param Hyper-edge to add
 	 */
-	void addHyperEdge(boost::shared_ptr<HyperEdge>&);
+	void addHyperEdge(std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Get the hyper-vertex's degree
@@ -66,7 +66,7 @@ public:
 	 * @param Hyper-edge
 	 * @return True or False
 	 */
-	bool containEdge(boost::shared_ptr<HyperEdge>&) const;
+	bool containEdge(std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Get the hyper-vertex's Id
@@ -77,17 +77,17 @@ public:
 	/**
 	 * Operator == overload. Based on the Id
 	 */
-	bool operator==(const boost::shared_ptr<HyperVertex>&) const;
+	bool operator==(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Operator < overload. Based on the Id
 	 */
-	bool operator<(const boost::shared_ptr<HyperVertex>&) const;
+	bool operator<(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Operator > overload. Based on the Id
 	 */
-	bool operator>(const boost::shared_ptr<HyperVertex>&) const;
+	bool operator>(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Get the hyper-edges list containing the hyper-vertex
@@ -101,7 +101,7 @@ protected:
 	/**
 	 * HypergrapheAbstrait shared pointer
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergraphe;
 
 	/**

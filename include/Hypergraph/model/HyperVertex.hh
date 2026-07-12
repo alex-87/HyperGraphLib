@@ -30,7 +30,7 @@
 #ifndef HYPER_VERTEX_HH
 #define HYPER_VERTEX_HH
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "LibType.hh"
 #include "HypergrapheAbstrait.hh"
@@ -47,13 +47,13 @@ public:
 	 * @param Pointeur partagé vers l'hypergraphe auquel appartient l'hyper-vertex.
 	 * @param L'identifiant numérique de l'hyper-vertex.
 	 */
-	HyperVertex(const boost::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
+	HyperVertex(const std::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
 
 	/**
 	 * Ajouter une hyper-arête à l'hyper-vertex.
 	 * @param L'hyper-arête à ajouter.
 	 */
-	void addHyperEdge(boost::shared_ptr<HyperEdge>&);
+	void addHyperEdge(std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Obtenir le nombre d'hyper-arêtes dans lequel l'hyper-vertex est inclus.
@@ -66,7 +66,7 @@ public:
 	 * @param L'hyper-arête
 	 * @return True si l'hyper-vertex est inclus dans l'hyper-arête.
 	 */
-	bool containEdge(boost::shared_ptr<HyperEdge>&) const;
+	bool containEdge(std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Obtenir l'identifiant numérique de l'hyper-vertex.
@@ -77,17 +77,17 @@ public:
 	/**
 	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
 	 */
-	bool operator==(const boost::shared_ptr<HyperVertex>&) const;
+	bool operator==(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
 	 */
-	bool operator<(const boost::shared_ptr<HyperVertex>&) const;
+	bool operator<(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Surcharge de l'opérateur, dont l'expression est basé sur l'identifiant numérique.
 	 */
-	bool operator>(const boost::shared_ptr<HyperVertex>&) const;
+	bool operator>(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Obtenir la liste des hyper-arêtes contenant l'hyper-vertex.
@@ -101,7 +101,7 @@ protected:
 	/**
 	 * Pointeur partagé sur l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergraphe;
 
 	/**

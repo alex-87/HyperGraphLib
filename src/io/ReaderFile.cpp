@@ -28,10 +28,10 @@
 #include "../model/include/HyperFactory.hh"
 #include "../model/include/Hypergraphe.hh"
 
-#include <boost/foreach.hpp>
 #include <string>
+#include <sstream>
 
-ReaderFile::ReaderFile() : ReaderAbstrait( boost::shared_ptr<HypergrapheAbstrait>( new Hypergraphe() ) ) {
+ReaderFile::ReaderFile() : ReaderAbstrait( std::shared_ptr<HypergrapheAbstrait>( new Hypergraphe() ) ) {
 
 }
 
@@ -74,7 +74,7 @@ ReaderFile::readHypergrapheHyperVertex(std::istream& entree) {
 
 	unsigned int i( 0 );
 	while( k >> i ) {
-		boost::shared_ptr<HyperVertex> ptrHv( new HyperVertex(_ptrHypergrapheAbstrait, i) );
+		std::shared_ptr<HyperVertex> ptrHv( new HyperVertex(_ptrHypergrapheAbstrait, i) );
 		_listHyperVertex.push_back( ptrHv );
 	}
 }
@@ -89,7 +89,7 @@ ReaderFile::readHypergrapheHyperEdge(std::istream& entree) {
 
 	unsigned int i( 0 );
 	while( k >> i ) {
-		boost::shared_ptr<HyperEdge> ptrHe( new HyperEdge(_ptrHypergrapheAbstrait, i) );
+		std::shared_ptr<HyperEdge> ptrHe( new HyperEdge(_ptrHypergrapheAbstrait, i) );
 		_listHyperEdge.push_back( ptrHe );
 	}
 }
@@ -97,29 +97,18 @@ ReaderFile::readHypergrapheHyperEdge(std::istream& entree) {
 void
 ReaderFile::flush() {
 
-#pragma omp parallel sections
-	{
-
-#pragma omp section
-	{
-	BOOST_FOREACH(auto& vertex, _listHyperVertex) {
+	for(auto& vertex : _listHyperVertex) {
 		_ptrHypergrapheAbstrait->addHyperVertex( vertex );
 	}
-	}
 
-#pragma omp section
-	{
-	BOOST_FOREACH(auto& edge, _listHyperEdge) {
+	for(auto& edge : _listHyperEdge) {
 		_ptrHypergrapheAbstrait->addHyperEdge( edge );
-	}
-	}
-
 	}
 
 	_ptrHypergrapheAbstrait->flush();
 }
 
-boost::shared_ptr<HyperVertex>&
+std::shared_ptr<HyperVertex>&
 ReaderFile::hyperVertexById(unsigned int& id) {
 	int r = 0;
 	for(unsigned int i = 0; i < _listHyperVertex.size(); i++)
@@ -128,7 +117,7 @@ ReaderFile::hyperVertexById(unsigned int& id) {
 	return _listHyperVertex.at( r );
 }
 
-boost::shared_ptr<HyperEdge>&
+std::shared_ptr<HyperEdge>&
 ReaderFile::hyperEdgeById(unsigned int& id) {
 	int r = 0;
 	for(unsigned int i = 0; i < _listHyperEdge.size(); i++)

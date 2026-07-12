@@ -29,6 +29,7 @@ Makefile
 *.dylib
 *.dll
 *.exe
+demo
 
 # Editor
 .vscode/

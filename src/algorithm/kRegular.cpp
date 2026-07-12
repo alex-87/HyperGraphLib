@@ -24,9 +24,8 @@
  */
 
 #include "include/kRegular.hh"
-#include <boost/foreach.hpp>
 
-kRegular::kRegular(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
+kRegular::kRegular(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
 	_ptrHypergrapheAbstrait = ptrHypergrapheAbstrait;
 }
 
@@ -37,7 +36,7 @@ kRegular::runAlgorithme() {
 	AdjacentMatrix matrix ( _ptrHypergrapheAbstrait->getAdjacentMatrix() );
 
 	int compteur = -1;
-	BOOST_FOREACH(const auto& e, _ptrHypergrapheAbstrait->getIndexHyperVertex() ) {
+	for(const auto& e : _ptrHypergrapheAbstrait->getIndexHyperVertex() ) {
 		if(compteur==-1) {
 			compteur = matrix.getVertexDegree(e.first);
 		} else {

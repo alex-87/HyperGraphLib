@@ -24,11 +24,10 @@
  */
 
 
-#include <boost/foreach.hpp>
 #include "include/HyperGraphStat.hh"
 #include "../model/include/AdjacentMatrix.hh"
 
-HyperGraphStat::HyperGraphStat(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
+HyperGraphStat::HyperGraphStat(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
 	_ptrHypergrapheAbstrait = ptrHypergrapheAbstrait;
 
 	_nhEdge   = 0;

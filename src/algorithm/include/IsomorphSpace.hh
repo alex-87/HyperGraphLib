@@ -29,7 +29,7 @@
 
 #include <gecode/int.hh>
 #include <gecode/search.hh>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "../../model/include/LibType.hh"
 #include "../../model/include/Hypergraphe.hh"
 #include "../../model/include/HyperVertex.hh"
@@ -41,7 +41,7 @@ class IsomorphSpace : public Gecode::Space {
 
 public:
 
-    IsomorphSpace(const boost::shared_ptr<HypergrapheAbstrait>&, const boost::shared_ptr<HypergrapheAbstrait>&);
+	IsomorphSpace(const std::shared_ptr<HypergrapheAbstrait>&, const std::shared_ptr<HypergrapheAbstrait>&);
 
     void postConstraints();
 
@@ -55,8 +55,8 @@ protected:
     Gecode::IntVarArray _edgeMapping;
     Gecode::IntVarArray _vertexMapping;
 
-    boost::shared_ptr<HypergrapheAbstrait> _ptrH1;
-    boost::shared_ptr<HypergrapheAbstrait> _ptrH2;
+    std::shared_ptr<HypergrapheAbstrait> _ptrH1;
+    std::shared_ptr<HypergrapheAbstrait> _ptrH2;
 
 };
 

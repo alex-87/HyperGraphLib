@@ -28,9 +28,8 @@
 #include "../model/include/Hypergraphe.hh"
 #include "../model/include/HyperVertex.hh"
 #include "../model/include/HyperEdge.hh"
-#include <boost/foreach.hpp>
 
-Helly::Helly(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
+Helly::Helly(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
 				_ptrHypergrapheAbstrait( ptrHypergrapheAbstrait ) {
 
 }
@@ -40,11 +39,11 @@ Helly::runAlgorithme() {
 
 	_result.setBooleanResult(true);
 
-	BOOST_FOREACH(auto& x, _ptrHypergrapheAbstrait->getHyperVertexList()) {
-		BOOST_FOREACH(auto& y, _ptrHypergrapheAbstrait->getHyperVertexList()) {
+	for(auto& x : _ptrHypergrapheAbstrait->getHyperVertexList()) {
+		for(auto& y : _ptrHypergrapheAbstrait->getHyperVertexList()) {
 
 			LibType::ListHyperEdge X_xy( allContainXY(x, y) );
-			BOOST_FOREACH(auto& v, _ptrHypergrapheAbstrait->getHyperVertexList()) {
+			for(auto& v : _ptrHypergrapheAbstrait->getHyperVertexList()) {
 
 				if( voisin(x, v) && voisin(y, v) ) {
 					LibType::ListHyperEdge X_xv( allContainXY(x, v) );
@@ -67,9 +66,9 @@ Helly::runAlgorithme() {
 }
 
 bool
-Helly::voisin(boost::shared_ptr<HyperVertex>& v1, boost::shared_ptr<HyperVertex>& v2) {
-	BOOST_FOREACH(auto& element1, v1->getHyperEdgeList() ) {
-		BOOST_FOREACH(auto& element2, v2->getHyperEdgeList() ) {
+Helly::voisin(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
+	for(auto& element1 : v1->getHyperEdgeList() ) {
+		for(auto& element2 : v2->getHyperEdgeList() ) {
 			if( element1==element2 ) {
 				return true;
 			}
@@ -80,7 +79,7 @@ Helly::voisin(boost::shared_ptr<HyperVertex>& v1, boost::shared_ptr<HyperVertex>
 
 void
 Helly::concatenate(LibType::ListHyperEdge& dest, LibType::ListHyperEdge& src) {
-	BOOST_FOREACH(auto& e, src) {
+	for(auto& e : src) {
 		dest.push_back(e);
 	}
 }
@@ -97,9 +96,9 @@ Helly::nonEmptyIntersection(LibType::ListHyperEdge& ensemble) {
 }
 
 bool
-Helly::nonEmptyBetween(boost::shared_ptr<HyperEdge>& e1, boost::shared_ptr<HyperEdge>& e2) {
-	BOOST_FOREACH(auto& a, e1->getHyperVertexList()) {
-		BOOST_FOREACH(auto& b, e2->getHyperVertexList()) {
+Helly::nonEmptyBetween(std::shared_ptr<HyperEdge>& e1, std::shared_ptr<HyperEdge>& e2) {
+	for(auto& a : e1->getHyperVertexList()) {
+		for(auto& b : e2->getHyperVertexList()) {
 			if(a==b)return true;
 		}
 	}
@@ -107,9 +106,9 @@ Helly::nonEmptyBetween(boost::shared_ptr<HyperEdge>& e1, boost::shared_ptr<Hyper
 }
 
 LibType::ListHyperEdge&
-Helly::allContainXY(boost::shared_ptr<HyperVertex>& v1, boost::shared_ptr<HyperVertex>& v2) {
+Helly::allContainXY(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
 	LibType::ListHyperEdge * elist = new LibType::ListHyperEdge();
-	BOOST_FOREACH(auto& e, _ptrHypergrapheAbstrait->getHyperEdgeList()) {
+	for(auto& e : _ptrHypergrapheAbstrait->getHyperEdgeList()) {
 		if( e->containVertex(v1) && e->containVertex(v2) ) {
 			elist->push_back(e);
 		}

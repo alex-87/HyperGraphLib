@@ -30,10 +30,7 @@
 #ifndef ALGORITHM_INCLUDE_ISOMORPHISM_HH_
 #define ALGORITHM_INCLUDE_ISOMORPHISM_HH_
 
-#include <boost/config.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/graph_utility.hpp>
+#include <memory>
 
 #include "../../model/include/HypergrapheAbstrait.hh"
 #include "../../model/include/AlgorithmeAbstrait.hh"
@@ -50,7 +47,7 @@ public:
 	 * @param Hypergraph shared pointer
 	 * @param Hypergraph shared pointer
 	 */
-	Isomorph(const boost::shared_ptr<HypergrapheAbstrait>&, const boost::shared_ptr<HypergrapheAbstrait>&);
+	Isomorph(const std::shared_ptr<HypergrapheAbstrait>&, const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Get result structure
@@ -75,13 +72,13 @@ protected:
 	/**
 	 * Hypergraph shared pointer
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstraitA;
 
 	/**
 	 * Hypergraph shared pointer
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstraitB;
 
 	/**

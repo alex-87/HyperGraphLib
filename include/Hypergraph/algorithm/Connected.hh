@@ -32,7 +32,7 @@
 #include "../model/HypergrapheAbstrait.hh"
 #include "../model/AlgorithmeAbstrait.hh"
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <stack>
 #include <vector>
 
@@ -45,9 +45,9 @@ public:
 
 	/**
 	 * Constructeur.
-	 * @param boost::shared_ptr<HypergrapheAbstrait> Pointeur partagé vers l'hypergraphe.
+	 * @param std::shared_ptr<HypergrapheAbstrait> Pointeur partagé vers l'hypergraphe.
 	 */
-	Connected(boost::shared_ptr<HypergrapheAbstrait>&);
+	Connected(std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Obtenir la structure de résultats.
@@ -113,7 +113,7 @@ protected:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**

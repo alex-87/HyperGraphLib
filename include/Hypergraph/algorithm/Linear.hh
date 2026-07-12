@@ -42,7 +42,7 @@ public:
 	 * Constructeur
 	 * @param Pointeur partagé sur l'hypergraphe.
 	 */
-	Linear(boost::shared_ptr<HypergrapheAbstrait>&);
+	Linear(std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Obtenir la structure des résutats.
@@ -68,7 +68,7 @@ protected:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**

@@ -75,13 +75,13 @@ protected:
 	 * Obtenir l'hyper-vertex via l'identifiant numérique.
 	 * @param L'identifiant numérique.
 	 */
-	boost::shared_ptr<HyperVertex>& hyperVertexById(unsigned int&);
+	std::shared_ptr<HyperVertex>& hyperVertexById(unsigned int&);
 
 	/**
 	 * Obtenir l'hyper-arête via l'identifiant numérique.
 	 * @param L'identifiant numérique.
 	 */
-	boost::shared_ptr<HyperEdge>& hyperEdgeById(unsigned int&);
+	std::shared_ptr<HyperEdge>& hyperEdgeById(unsigned int&);
 
 	/**
 	 * Construction de l'instance après lecture.

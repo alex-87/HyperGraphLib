@@ -29,10 +29,11 @@
 #include "../model/include/Hypergraphe.hh"
 #include "../model/include/HyperEdge.hh"
 #include "../model/include/HyperVertex.hh"
-#include <boost/foreach.hpp>
 
 
-Dual::Dual(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) : _ptrDualHypergraphe( new Hypergraphe() ) {
+Dual::Dual(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
+	_ptrDualHypergraphe( new Hypergraphe() ) {
+
 	_ptrHypergrapheAbstrait = ptrHypergrapheAbstrait;
 }
 
@@ -51,44 +52,31 @@ Dual::runAlgorithme() {
 	LibType::ListHyperEdge   listEdge;
 
 	HyperFactory::startSession(_ptrDualHypergraphe);
-#pragma omp parallel sections
-		{
-#pragma omp section
-		{
+
 	for(unsigned int i=0; i<indexVertex.size(); i++) {
 		listEdge.push_back( HyperFactory::newHyperEdge() );
 	}
-		}
-#pragma omp section
-		{
+
 	for(unsigned int i=0; i<indexEdge.size(); i++) {
 		listVertex.push_back( HyperFactory::newHyperVertex() );
 	}
-		}
-		}
-	BOOST_FOREACH(auto& itemVertex, listVertex) {
-		BOOST_FOREACH(auto& itemEdge, listEdge) {
+
+	for(auto& itemVertex : listVertex) {
+		for(auto& itemEdge : listEdge) {
 			if( _ptrHypergrapheAbstrait->getAdjacentMatrix().isVertexInEdge(itemEdge->getIdentifier(), itemVertex->getIdentifier())) {
 				HyperFactory::link(itemVertex, itemEdge);
 			}
 		}
 	}
 
-#pragma omp parallel sections
-		{
-#pragma omp section
-		{
-	BOOST_FOREACH(auto& itemVertex, listVertex) {
+	for(auto& itemVertex : listVertex) {
 		_ptrDualHypergraphe->addHyperVertex(itemVertex);
 	}
-		}
-#pragma omp section
-		{
-	BOOST_FOREACH(auto& itemEdge, listEdge) {
+
+	for(auto& itemEdge : listEdge) {
 		_ptrDualHypergraphe->addHyperEdge(itemEdge);
 	}
-		}
-		}
+
 	HyperFactory::closeSession();
 
 	_ptrDualHypergraphe->flush();

@@ -3,8 +3,9 @@
 #include "../include/Hypergraph/model/HyperFactory.hh"
 #include "../include/Hypergraph/model/Hypergraphe.hh"
 
-#include <boost/random/mersenne_twister.hpp>
-#include <boost/random.hpp>
+#include <random>
+#include <ctime>
+#include <limits>
 
 RandomHypergraphe::RandomHypergraphe() : _ptrHypergrapheAbstrait( new Hypergraphe ) {
 
@@ -13,14 +14,14 @@ RandomHypergraphe::RandomHypergraphe() : _ptrHypergrapheAbstrait( new Hypergraph
 void
 RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int nbEdge) {
 
-	std::vector<boost::shared_ptr<HyperVertex>> listVertex;
-	std::vector<boost::shared_ptr<HyperEdge>>   listEdge;
+	std::vector<std::shared_ptr<HyperVertex>> listVertex;
+	std::vector<std::shared_ptr<HyperEdge>>   listEdge;
 
-	boost::random::mt19937 gen;
-	gen.seed( std::time(0) );
+	std::mt19937 gen;
+	gen.seed( static_cast<std::mt19937::result_type>( std::time(0) ) );
 
-	boost::uniform_int<> uInt8Dist(0, std::numeric_limits<unsigned char>::max());
-	boost::variate_generator< boost::mt19937&, boost::uniform_int<> > getRand(gen, uInt8Dist);
+	std::uniform_int_distribution<int> uInt8Dist(0, std::numeric_limits<unsigned char>::max());
+	auto getRand = [&]() { return uInt8Dist(gen); };
 
 	HyperFactory::startSession( _ptrHypergrapheAbstrait );
 
@@ -51,7 +52,7 @@ RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int nbEdg
 
 }
 
-boost::shared_ptr<HypergrapheAbstrait>&
+std::shared_ptr<HypergrapheAbstrait>&
 RandomHypergraphe::getHypergraphe() {
 	return _ptrHypergrapheAbstrait;
 }

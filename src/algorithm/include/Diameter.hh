@@ -26,7 +26,7 @@
 #ifndef ALGORITHM_INCLUDE_DIAMETER_HH_
 #define ALGORITHM_INCLUDE_DIAMETER_HH_
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "../../model/include/HypergrapheAbstrait.hh"
 #include "../../model/include/AlgorithmeAbstrait.hh"
 
@@ -35,7 +35,7 @@ class Diameter : public AlgorithmeAbstrait {
 
 public:
 
-	Diameter(boost::shared_ptr<HypergrapheAbstrait>&);
+	Diameter(std::shared_ptr<HypergrapheAbstrait>&);
 
 	RStructure getResult() const;
 
@@ -49,7 +49,7 @@ protected:
 
 protected:
 
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	RStructure _result;

@@ -31,7 +31,7 @@
 #define MODEL_INCLUDE_RSTRUCTURE_HH_
 
 #include "HypergrapheAbstrait.hh"
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 /**
  * Structure de description du résultat.
@@ -55,7 +55,7 @@ public:
 	 * Ajouter un résultat de type HypergrapheAbstrait.
 	 * @param L'hypergraphe faisant office de résultat.
 	 */
-	void setHypergrapheResult(const boost::shared_ptr<HypergrapheAbstrait>&);
+	void setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>&);
 
 public:
 
@@ -75,7 +75,7 @@ public:
 	 * Lire un résultat de typ HypergrapheAbstrait
 	 * @return Le résultat de type HypergrapheAbstrait
 	 */
-	boost::shared_ptr<HypergrapheAbstrait> getHypergrapheResult() const;
+	std::shared_ptr<HypergrapheAbstrait> getHypergrapheResult() const;
 
 protected:
 
@@ -92,7 +92,7 @@ protected:
 	/**
 	 * L'hypergraphe faisant office de résultat.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait> _hypergrapheResult;
+	std::shared_ptr<HypergrapheAbstrait> _hypergrapheResult;
 
 };
 

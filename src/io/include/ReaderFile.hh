@@ -75,13 +75,13 @@ protected:
 	 * Get hyper-vertex by Id
 	 * @param Id
 	 */
-	boost::shared_ptr<HyperVertex>& hyperVertexById(unsigned int&);
+	std::shared_ptr<HyperVertex>& hyperVertexById(unsigned int&);
 
 	/**
 	 * Get hyper-edge by Id
 	 * @param Id
 	 */
-	boost::shared_ptr<HyperEdge>& hyperEdgeById(unsigned int&);
+	std::shared_ptr<HyperEdge>& hyperEdgeById(unsigned int&);
 
 	/**
 	 * Build the hypergraph

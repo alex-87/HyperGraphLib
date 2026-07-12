@@ -29,7 +29,7 @@
 #ifndef ALGORITHM_INCLUDE_KREGULAR_HH_
 #define ALGORITHM_INCLUDE_KREGULAR_HH_
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "../model/HypergrapheAbstrait.hh"
 #include "../model/Hypergraphe.hh"
 #include "../model/HyperVertex.hh"
@@ -48,7 +48,7 @@ public:
 	 * Constructeur.
 	 * @param Pointeur partagé vers l'hypergraphe.
 	 */
-	kRegular(const boost::shared_ptr<HypergrapheAbstrait>&);
+	kRegular(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Obtenir la structure des résultats.
@@ -73,7 +73,7 @@ protected:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**

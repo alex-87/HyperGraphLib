@@ -26,9 +26,8 @@
 
 #include "include/Linear.hh"
 #include "include/Simple.hh"
-#include <boost/foreach.hpp>
 
-Linear::Linear(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
+Linear::Linear(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
 				_ptrHypergrapheAbstrait( ptrHypergrapheAbstrait ) {
 
 }

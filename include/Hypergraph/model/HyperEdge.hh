@@ -29,7 +29,7 @@
 #ifndef _HYPEREDGE_HH
 #define _HYPEREDGE_HH
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "LibType.hh"
 #include "HypergrapheAbstrait.hh"
@@ -46,13 +46,13 @@ public:
 	 * @param Pointeur partagé vers l'hypergraphe.
 	 * @param Identifiant numérique de l'hyper-arête.
 	 */
-	HyperEdge(const boost::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
+	HyperEdge(const std::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
 
 	/**
 	 * Ajouter un hyper-vertex dans l'hyper-arête.
 	 * @param L'hyper-vertex à ajouter.
 	 */
-	void addHyperVertex(boost::shared_ptr<HyperVertex>&);
+	void addHyperVertex(std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Affectation de la liste des hyper-vertex contenu dans l'hyper-arête.
@@ -83,22 +83,22 @@ public:
 	 * @param Le vertex
 	 * @return True si l'hyper-vertex est présent dans l'hyper-arête, False sinon.
 	 */
-	bool containVertex(boost::shared_ptr<HyperVertex>&) const;
+	bool containVertex(std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Surcharge de l'opérateur, afin de vérifier l'expression à l'aide de l'identifiant numérique.
 	 */
-	bool operator==(const boost::shared_ptr<HyperEdge>&) const;
+	bool operator==(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Surcharge de l'opérateur, afin de vérifier l'expression à l'aide de l'identifiant numérique.
 	 */
-	bool operator<(const boost::shared_ptr<HyperEdge>&) const;
+	bool operator<(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Surcharge de l'opérateur, afin de vérifier l'expression à l'aide de l'identifiant numérique.
 	 */
-	bool operator>(const boost::shared_ptr<HyperEdge>&) const;
+	bool operator>(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Obtenir la liste des hyper-vertex contenu dans l'hyper-arête.
@@ -111,7 +111,7 @@ protected:
 	/**
 	 * Pointeur partagé sur l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergraphe;
 
 	/**

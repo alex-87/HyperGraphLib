@@ -27,7 +27,7 @@
 #include "include/Diameter.hh"
 
 
-Diameter::Diameter(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) : _ptrHypergrapheAbstrait(ptrHypergrapheAbstrait) {
+Diameter::Diameter(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) : _ptrHypergrapheAbstrait(ptrHypergrapheAbstrait) {
 
 }
 

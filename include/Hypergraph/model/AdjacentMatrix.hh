@@ -32,7 +32,7 @@
 #define MODEL_INCLUDE_ADJACENTMATRIX_HH_
 
 #include "LibType.hh"
-#include <boost/tuple/tuple.hpp>
+#include <tuple>
 
 class HyperEdge;
 
@@ -69,13 +69,13 @@ public:
 	 * Ajouter un hyper-vertex à la matrice.
 	 * @param HyperVertex L'hyper-vertex à ajouter.
 	 */
-	void addHyperVertex(const boost::shared_ptr<HyperVertex>&);
+	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Ajouter une hyper-arête à la matrice.
 	 * @param HyperEdge L'hyper-arête à ajouter.
 	 */
-	void addHyperEdge(const boost::shared_ptr<HyperEdge>&);
+	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Vérifier si l'hyper-vertex est dans l'hyper-arête.
@@ -83,7 +83,7 @@ public:
 	 * @param L'hyper-arête dont la précence de l'hyper-vertex est à vérifier.
 	 * @return True si l'hyper-vertex est dans l'hyper-arête, False sinon.
 	 */
-	bool isVertexInEdge(const boost::shared_ptr<HyperVertex>&, const boost::shared_ptr<HyperEdge>&) const;
+	bool isVertexInEdge(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Vérifier si une hyper-arête est dans la liste des hyper-arêtes d'un hyper-vertex.
@@ -91,7 +91,7 @@ public:
 	 * @param L'hyper-vertex.
 	 * @return True si l'hyper-vertex contient l'hyper-arête dans sa liste, False sinon.
 	 */
-	bool isEdgeInVertex(const boost::shared_ptr<HyperEdge>&, const boost::shared_ptr<HyperVertex>&) const;
+	bool isEdgeInVertex(const std::shared_ptr<HyperEdge>&, const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Vérifier si l'hyper-vertex ayant l'identifiant i se trouve dans l'hyper-arête ayant l'identifiant j.
@@ -126,14 +126,14 @@ public:
 	 * @param L'hyper-vertex dont on souhaite obtenir le degré.
 	 * @return Nn entier positif correspondant au degrès de l'hyper-vertex.
 	 */
-	unsigned int getVertexDegree(const boost::shared_ptr<HyperVertex>&) const;
+	unsigned int getVertexDegree(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Obtenir l'effectif d'une hyper-arête.
 	 * @param L'hyper-arête dont on souhaite obtenir l'effectif.
 	 * @return Un entier positif correspondant au nombre d'hyper-vertex dans l'hyper-arête.
 	 */
-	unsigned int getEdgeSize(const boost::shared_ptr<HyperEdge>&) const;
+	unsigned int getEdgeSize(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Obtenir le co-rang de l'hypergraphe.
@@ -151,7 +151,7 @@ public:
 	 * Obtenir les dimensions de la matrice d'adjacence.
 	 * @return Un tuple dont le premier nombre est l'abscisse, le second est l'ordonnée.
 	 */
-	boost::tuple<unsigned int, unsigned int>&
+	std::tuple<unsigned int, unsigned int>
 	getMatrixDimension();
 
 	/**

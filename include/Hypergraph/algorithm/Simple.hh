@@ -29,7 +29,7 @@
 #ifndef ALGORITHM_INCLUDE_SIMPLE_HH_
 #define ALGORITHM_INCLUDE_SIMPLE_HH_
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "../model/HypergrapheAbstrait.hh"
 #include "../model/Hypergraphe.hh"
 #include "../model/HyperVertex.hh"
@@ -49,7 +49,7 @@ public:
 	 * Constructeur
 	 * @param Pointeur partagé sur l'hypergraphe.
 	 */
-	Simple(boost::shared_ptr<HypergrapheAbstrait>&);
+	Simple(std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Obtenir la structure des résultats.
@@ -86,7 +86,7 @@ protected:
 	 * @param L'hyer-vertex.
 	 * @return True si c'est le cas, False sinon.
 	 */
-	bool contains(const LibType::ListHyperVertex&, const boost::shared_ptr<HyperVertex>&) const;
+	bool contains(const LibType::ListHyperVertex&, const std::shared_ptr<HyperVertex>&) const;
 
 
 protected:
@@ -94,7 +94,7 @@ protected:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**

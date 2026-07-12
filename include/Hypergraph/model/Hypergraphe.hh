@@ -47,25 +47,25 @@ public:
 	 * Ajouter un hyper-vertex à l'hypergraphe.
 	 * @param L'hyper-vertex à ajouter.
 	 */
-	void addHyperVertex(const boost::shared_ptr<HyperVertex>&);
+	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Ajouter une hyper-arête à l'hypergraphe.
 	 * @param L'hyper-arête à ajouter.
 	 */
-	void addHyperEdge(const boost::shared_ptr<HyperEdge>&);
+	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Obtenir un hyper-vertex à l'aide de son identifiant.
 	 * @param L'identifiant de l'hyper-vertex à obtenir.
 	 */
-	boost::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&);
+	std::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&);
 
 	/**
 	 * Obtenir une hyper-arête à l'aide de son identifiant.
 	 * @param L'identifiant de l'hyper-arête à obtenir.
 	 */
-	boost::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&);
+	std::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&);
 
 	/**
 	 * Construction de l'hypergraphe, notamment de sa matrice d'adjacence.

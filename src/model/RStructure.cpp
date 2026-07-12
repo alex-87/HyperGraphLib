@@ -37,11 +37,11 @@ RStructure::getBooleanResult() const {
 }
 
 void
-RStructure::setHypergrapheResult(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
+RStructure::setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
 	_hypergrapheResult = ptrHypergrapheAbstrait;
 }
 
-boost::shared_ptr<HypergrapheAbstrait>
+std::shared_ptr<HypergrapheAbstrait>
 RStructure::getHypergrapheResult() const {
 	return _hypergrapheResult;
 }

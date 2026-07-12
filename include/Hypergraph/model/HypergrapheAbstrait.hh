@@ -48,13 +48,13 @@ public:
 	 * Ajouter un hyper-vertex à l'hypergraphe.
 	 * @param L'hyper-vertex à ajouter.
 	 */
-	virtual void addHyperVertex(const boost::shared_ptr<HyperVertex>&) = 0;
+	virtual void addHyperVertex(const std::shared_ptr<HyperVertex>&) = 0;
 
 	/**
 	 * Ajouter une hyper-arête à l'hypergraphe.
 	 * @param L'hyper-arête à ajouter.
 	 */
-	virtual void addHyperEdge(const boost::shared_ptr<HyperEdge>&)     = 0;
+	virtual void addHyperEdge(const std::shared_ptr<HyperEdge>&)     = 0;
 
 	/**
 	 * Obtenir la matrice d'adjacence de l'hypergraphe.
@@ -78,13 +78,13 @@ public:
 	 * Obtenir un hyper-vertex à l'aide de son identifiant.
 	 * @return L'hyper-vertex. Comportement indéfini sinon.
 	 */
-	virtual boost::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&) = 0;
+	virtual std::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&) = 0;
 
 	/**
 	 * Obtenir une hyper-arête à l'aide de son identifiant.
 	 * @return L'hyper-arête. Comportement indéfini sinon.
 	 */
-	virtual boost::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&) = 0;
+	virtual std::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&) = 0;
 
 	/**
 	 * Obtenir la liste des hyper-vertex de l'hypergraphe.
@@ -105,7 +105,7 @@ public:
 	 * @param Hyper-edge
 	 * @return True or False
 	 */
-	bool isHyperVertexInHyperEdge(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperEdge>&) const;
+	bool isHyperVertexInHyperEdge(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Construction interne de l'hypergraphe après fabrication.

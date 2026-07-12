@@ -23,69 +23,60 @@
  *
  */
 
-/**
- * Définition de l'algorithme du Dual de l'hypergraphe.
- */
+#ifndef HYPERGRAPHLIB_CONTAINER_MATRIX2D
+#define HYPERGRAPHLIB_CONTAINER_MATRIX2D
 
-#ifndef ALGORITHM_INCLUDE_DUAL_HH_
-#define ALGORITHM_INCLUDE_DUAL_HH_
+#include <vector>
+#include <cstddef>
 
-#include <memory>
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/AlgorithmeAbstrait.hh"
-
-/**
- * Algorithme du Dual de l'hypergraphe.
- */
-class Dual : public AlgorithmeAbstrait {
+template <typename T>
+class Matrix2D {
 
 public:
 
-	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
-	 */
-	Dual(const std::shared_ptr<HypergrapheAbstrait>&);
+    typedef typename std::vector<T>::reference reference;
+    typedef typename std::vector<T>::const_reference const_reference;
 
-	/**
-	 * Obtenir la structure des résultats.
-	 * @return La structure des résultats.
-	 */
-	RStructure getResult() const;
+    Matrix2D() : _m(0), _n(0) {
 
-	/**
-	 * Destructeur.
-	 */
-	~Dual();
+    }
 
-protected:
+    Matrix2D(std::size_t m, std::size_t n) :
+        _m(m),
+        _n(n),
+        _data(m * n) {
 
-	/**
-	 * Lancement de l'algorithme
-	 */
-	void runAlgorithme();
+    }
 
-protected:
+    void resize(std::size_t m, std::size_t n) {
+        _m = m;
+        _n = n;
+        _data.assign(m * n, T());
+    }
 
-	/**
-	 * Pointeur partagé vers l'hypergraphe.
-	 */
-	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstrait;
+    reference operator()(std::size_t i, std::size_t j) {
+        return _data[i * _n + j];
+    }
 
-	/**
-	 * Pointeur partagé vers le dual de l'hypergraphe.
-	 */
-	std::shared_ptr<HypergrapheAbstrait>
-	_ptrDualHypergraphe;
+    const_reference operator()(std::size_t i, std::size_t j) const {
+        return _data[i * _n + j];
+    }
 
-	/**
-	 * Structure de résultat.
-	 */
-	RStructure _result;
+    std::size_t rows() const {
+        return _m;
+    }
+
+    std::size_t cols() const {
+        return _n;
+    }
+
+
+private:
+
+    std::size_t _m, _n;
+
+    std::vector<T> _data;
 
 };
 
-
-
-#endif
+#endif // HYPERGRAPHLIB_CONTAINER_MATRIX2D

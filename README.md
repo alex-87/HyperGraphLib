@@ -4,6 +4,19 @@ Hypergraphs modelling library with algorithms, [the official page](https://alex-
 
 ![hypergraph](http://alex-87.github.io/HyperGraphLib/images/hypergraph.png)
 
+## Implemented algorithms
+
+- Connected
+- Diameter
+- Dual
+- Helly
+- Isomorphism (*using Constraint-based programming and Depth-first Search*)
+- k-Regular
+- k-Uniform
+- Linear
+- Path finding
+- Simple
+
 How to build and install HyperGraphLib
 -------------
 
@@ -14,10 +27,10 @@ git clone https://github.com/alex-87/HyperGraphLib.git
 cd HyperGraphLib
 cmake CMakeLists.txt
 make
-make install #Some privileges could be required
+sudo make install
 ```
 
-See [the official page](https://alex-87.github.io/HyperGraphLib) for more informations :)
+See [the official page](https://alex-87.github.io/HyperGraphLib) for more informations.
 
 Where is the documentation ?
 -------------
@@ -30,9 +43,8 @@ Minimum required
 
 To compile HyperGraphLib, you need:
 
-  - [cmake](https://github.com/Kitware/CMake) (>= 2.8 ) 
-  - [Boost](http://www.boost.org) (>= 1.55)
-  - [g++](https://gcc.gnu.org)   (>= 4.8 )
+  - [cmake](https://github.com/Kitware/CMake) (>= 3.28)
+  - [g++](https://gcc.gnu.org) (>= 9.0)
   - [Criterion](https://github.com/Snaipe/Criterion) (>=2.3.0)
   - [Gecode](http://www.gecode.org) (>= 6.2.0)
 
@@ -40,7 +52,7 @@ Example
 -------
 ```cpp
 #include <iostream>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <Hypergraph/model/Hypergraphe.hh>
 #include <Hypergraph/model/HyperFactory.hh>
 #include <Hypergraph/model/MotorAlgorithm.hh>
@@ -50,18 +62,18 @@ Example
 int main(int argc, char * argv[]) {
 
     // Creating the hypergraph inside smart pointer
-    boost::shared_ptr<HypergrapheAbstrait> ptrHpg( new Hypergraphe() );
+    std::shared_ptr<HypergrapheAbstrait> ptrHpg( new Hypergraphe() );
 
     // Starting the create session
     HyperFactory::startSession(ptrHpg);
 
     // Creating the hyper-edges
-    boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
-    boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
+    std::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
+    std::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
 
     // Creating the hyper-vertexes
-    boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
-    boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
+    std::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
+    std::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
 
     // The hyper-vertex A is contained inside the hyper-edge 1
     HyperFactory::link(ptrVertexA, ptrEdge1);
@@ -82,12 +94,10 @@ int main(int argc, char * argv[]) {
     // Closing the session
     HyperFactory::closeSession();
 
-
     // -- -- --
 
-
     // Initializing the Isomorphism algorithm with ptrHpg (twice, just for the example)
-    boost::shared_ptr<AlgorithmeAbstrait> isomorphPtr( new Isomorph( ptrHpg , ptrHpg ) );
+    std::shared_ptr<AlgorithmeAbstrait> isomorphPtr( new Isomorph( ptrHpg , ptrHpg ) );
 
     // Setting the motor's algorithm
     MotorAlgorithm::setAlgorithme( isomorphPtr );
@@ -105,7 +115,7 @@ int main(int argc, char * argv[]) {
     // -- -- --
 
     // Initializing the Simple algorithm with ptrHpg (twice, just for the example)
-    boost::shared_ptr<AlgorithmeAbstrait> simplephPtr( new Simple( ptrHpg ) );
+    std::shared_ptr<AlgorithmeAbstrait> simplephPtr( new Simple( ptrHpg ) );
 
     // Setting the motor's algorithm
     MotorAlgorithm::setAlgorithme( simplephPtr );
@@ -135,20 +145,6 @@ $ ./example
 The hypergraph is isomorph with itself
 The hypergraph is simple.
 ```
-
-Boost Library
--------------
-
-This software uses the [Boost](https://www.boost.org/) Library.
-Please see the Boost license at http://www.boost.org/LICENSE_1_0.txt 
-
-
-Gecode Library
---------------
-
-This software uses the [Gecode](http://www.gecode.dev) Library.
-Please see the license at https://www.gecode.dev/license.html
-
 
 License
 -------

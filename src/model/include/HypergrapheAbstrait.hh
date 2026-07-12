@@ -48,13 +48,13 @@ public:
 	 * Add hyper-vertex
 	 * @param Hyper-vertex to add
 	 */
-	virtual void addHyperVertex(const boost::shared_ptr<HyperVertex>&) = 0;
+	virtual void addHyperVertex(const std::shared_ptr<HyperVertex>&) = 0;
 
 	/**
 	 * Add hyper-edge
 	 * @param Hyper-edge to add
 	 */
-	virtual void addHyperEdge(const boost::shared_ptr<HyperEdge>&)     = 0;
+	virtual void addHyperEdge(const std::shared_ptr<HyperEdge>&)     = 0;
 
 	/**
 	 * Get the the adjacency matrix
@@ -78,13 +78,13 @@ public:
 	 * Get hyper-vertex by Id
 	 * @param Hyper-vertex's Id
 	 */
-	virtual boost::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&) = 0;
+	virtual std::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&) = 0;
 
 	/**
 	 * Get hyper-edge by Id
 	 * @param Hyper-edge's Id
 	 */
-	virtual boost::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&) = 0;
+	virtual std::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&) = 0;
 
 	/**
 	 * Get the hyper-vertex's list
@@ -105,7 +105,7 @@ public:
 	 * @param Hyper-edge
 	 * @return True or False
 	 */
-	bool isHyperVertexInHyperEdge(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperEdge>&) const;
+	bool isHyperVertexInHyperEdge(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Build the adjacency matrix

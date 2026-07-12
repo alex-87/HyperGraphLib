@@ -30,7 +30,7 @@
 #ifndef ALGORITHM_INCLUDE_HPGSTAT
 #define ALGORITHM_INCLUDE_HPGSTAT
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "../../model/include/HypergrapheAbstrait.hh"
 #include "../../model/include/Hypergraphe.hh"
 #include "../../model/include/HyperVertex.hh"
@@ -50,7 +50,7 @@ public:
 	 * Constructor.
 	 * @param Hypergraph shared pointer
 	 */
-	HyperGraphStat(const boost::shared_ptr<HypergrapheAbstrait>&);
+	HyperGraphStat(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Unused here
@@ -102,7 +102,7 @@ protected:
 	/**
 	 * Hypergraph shared pointer
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**

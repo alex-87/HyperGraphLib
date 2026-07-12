@@ -30,7 +30,7 @@
 #define IO_INCLUDE_READERABSTRAIT_HH_
 
 #include "../model/HypergrapheAbstrait.hh"
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 /**
  * Dfinition de l'interface du module de lecture d'instance.
@@ -43,7 +43,7 @@ public:
 	 * Constructeur.
 	 * @param Pointeur partagé sur l'hypergrahe.
 	 */
-	ReaderAbstrait(const boost::shared_ptr<HypergrapheAbstrait>&);
+	ReaderAbstrait(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Lecture de l'instance et construction de l'hypergraphe.
@@ -54,7 +54,7 @@ public:
 	/**
 	 * Obtenir l'hypergraphe après construction.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>&
+	std::shared_ptr<HypergrapheAbstrait>&
 	getHypergraphe();
 
 	/**
@@ -83,7 +83,7 @@ protected:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 };

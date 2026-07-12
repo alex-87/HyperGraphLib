@@ -30,7 +30,7 @@
 #define IO_INCLUDE_WRITERABSTRAIT_HH_
 
 #include "../model/HypergrapheAbstrait.hh"
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 /**
  * Déclaration de l'interface du module d'écriture d'instance.
@@ -43,7 +43,7 @@ public:
 	 * Constructeur.
 	 * @param Pointeur partagé vers l'hypergraphe.
 	 */
-	WriterAbstrait(const boost::shared_ptr<HypergrapheAbstrait>&);
+	WriterAbstrait(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Ecriture de la matrice d'adjacence sur la sortie indiquée.
@@ -83,7 +83,7 @@ protected:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 };

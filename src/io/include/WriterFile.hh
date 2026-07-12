@@ -42,7 +42,7 @@ public:
 	 * Constructor
 	 * @param HypergrapheAbstrait shared pointer
 	 */
-	WriterFile(const boost::shared_ptr<HypergrapheAbstrait>&);
+	WriterFile(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Adajency matrix output

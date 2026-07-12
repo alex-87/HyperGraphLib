@@ -32,7 +32,7 @@
 #define MODEL_INCLUDE_ADJACENTMATRIX_HH_
 
 #include "LibType.hh"
-#include <boost/tuple/tuple.hpp>
+#include <tuple>
 
 class HyperEdge;
 
@@ -69,13 +69,13 @@ public:
 	 * Add hyper-vertex
 	 * @param HyperVertex Hyper-vertex to add
 	 */
-	void addHyperVertex(const boost::shared_ptr<HyperVertex>&);
+	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Add hyper-edge
 	 * @param HyperEdge Hyper-edge to add
 	 */
-	void addHyperEdge(const boost::shared_ptr<HyperEdge>&);
+	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Check whether the hyper-vertex is contained into the specified hyper-edge
@@ -83,7 +83,7 @@ public:
 	 * @param Hyper-edge
 	 * @return True or False
 	 */
-	bool isVertexInEdge(const boost::shared_ptr<HyperVertex>&, const boost::shared_ptr<HyperEdge>&) const;
+	bool isVertexInEdge(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Check whether the hyper-edge contains the specified hyper-vertex
@@ -91,7 +91,7 @@ public:
 	 * @param Hyper-vertex
 	 * @return True or False
 	 */
-	bool isEdgeInVertex(const boost::shared_ptr<HyperEdge>&, const boost::shared_ptr<HyperVertex>&) const;
+	bool isEdgeInVertex(const std::shared_ptr<HyperEdge>&, const std::shared_ptr<HyperVertex>&) const;
 
 
 	/**
@@ -127,14 +127,14 @@ public:
 	 * @param Hyper-vertex
 	 * @return The hyper-vertex's degree
 	 */
-	unsigned int getVertexDegree(const boost::shared_ptr<HyperVertex>&) const;
+	unsigned int getVertexDegree(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * Get the hyper-edge degree
 	 * @param Hyper-edge
 	 * @return The hyper-edge degree
 	 */
-	unsigned int getEdgeSize(const boost::shared_ptr<HyperEdge>&) const;
+	unsigned int getEdgeSize(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * Get co-rank
@@ -152,7 +152,7 @@ public:
 	 * Get the matrix's size
 	 * @return Tuple containing the abscissa and the ordinate
 	 */
-	boost::tuple<unsigned int, unsigned int>&
+	std::tuple<unsigned int, unsigned int>
 	getMatrixDimension();
 
 	/**
@@ -184,7 +184,4 @@ protected:
 
 };
 
-
-
 #endif
-

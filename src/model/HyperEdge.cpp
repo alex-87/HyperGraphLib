@@ -26,17 +26,16 @@
 
 #include "include/HyperEdge.hh"
 #include "include/HyperVertex.hh"
-#include <boost/foreach.hpp>
 
 
-HyperEdge::HyperEdge(const boost::shared_ptr<HypergrapheAbstrait>& ptrHypergraphe, unsigned int& identifier) :
+HyperEdge::HyperEdge(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergraphe, unsigned int& identifier) :
 	_ptrHypergraphe( ptrHypergraphe ),
 	_identifier( identifier ){
 
 }
 
 void
-HyperEdge::addHyperVertex(boost::shared_ptr<HyperVertex>& hyperVertex) {
+HyperEdge::addHyperVertex(std::shared_ptr<HyperVertex>& hyperVertex) {
 	if( !containVertex(hyperVertex) ) {
 		_listHyperVertex.push_back( hyperVertex );
 	};
@@ -57,34 +56,32 @@ HyperEdge::getIdentifier() const {
 	return _identifier;
 }
 
-bool HyperEdge::operator==(const boost::shared_ptr<HyperEdge>& hyperEdge) const {
+bool HyperEdge::operator==(const std::shared_ptr<HyperEdge>& hyperEdge) const {
 	return _identifier==hyperEdge->getIdentifier();
 }
 
 bool
-HyperEdge::operator<(const boost::shared_ptr<HyperEdge>& hyperEdge) const {
+HyperEdge::operator<(const std::shared_ptr<HyperEdge>& hyperEdge) const {
 	return _identifier < hyperEdge->getIdentifier();
 }
 
 bool
-HyperEdge::operator>(const boost::shared_ptr<HyperEdge>& hyperEdge) const {
+HyperEdge::operator>(const std::shared_ptr<HyperEdge>& hyperEdge) const {
 	return _identifier > hyperEdge->getIdentifier();
 }
 
-bool HyperEdge::containVertex(boost::shared_ptr<HyperVertex>& hyperVertex) const {
+bool HyperEdge::containVertex(std::shared_ptr<HyperVertex>& hyperVertex) const {
 
 	int i = 0;
 	const int N = _listHyperVertex.size();
-	bool ret = false;
 
-	#pragma omp parallel for schedule(dynamic)
 	for( i=0 ; i<N ; i++ ) {
 		if( _listHyperVertex[i]==hyperVertex) {
-			ret = true;
+			return true;
 		};
 	};
 
-	return ret;
+	return false;
 }
 
 LibType::ListHyperVertex&

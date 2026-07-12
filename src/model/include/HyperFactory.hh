@@ -51,26 +51,26 @@ public:
 	 * Start a factory session
 	 * @param Hypergraph shared pointer
 	 */
-	static void startSession(boost::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait);
+	static void startSession(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait);
 
 	/**
 	 * Create a hyper-vertex
 	 * @return New hyper-vertex
 	 */
-	static const boost::shared_ptr<HyperVertex> newHyperVertex();
+	static const std::shared_ptr<HyperVertex> newHyperVertex();
 
 	/**
 	 * Create a hyper-edge
 	 * @return New hyper-edge
 	 */
-	static const boost::shared_ptr<HyperEdge> newHyperEdge();
+	static const std::shared_ptr<HyperEdge> newHyperEdge();
 
 	/**
 	 * Link hyper-edge to hyper-vertex
 	 * @param L'hyper-vertex
 	 * @param L'hyper-edge
 	 */
-	static void link(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperEdge>&);
+	static void link(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Check whether a session is already started
@@ -132,7 +132,7 @@ private:
 	/**
 	 * HypergrapheAbstrait shared pointer
 	 */
-	static boost::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheAbstrait;
+	static std::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheAbstrait;
 
 };
 

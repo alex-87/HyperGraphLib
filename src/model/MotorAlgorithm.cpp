@@ -35,7 +35,7 @@ MotorAlgorithm::Instance() {
 }
 
 void
-MotorAlgorithm::setAlgorithme(boost::shared_ptr<AlgorithmeAbstrait>& algorithme) {
+MotorAlgorithm::setAlgorithme(std::shared_ptr<AlgorithmeAbstrait>& algorithme) {
 	if( MotorAlgorithm::isLock() )return;
 	_algorithme = algorithme;
 }
@@ -69,4 +69,4 @@ MotorAlgorithm::~MotorAlgorithm() {
 
 bool MotorAlgorithm::_lock = false;
 MotorAlgorithm MotorAlgorithm::_instance = MotorAlgorithm();
-boost::shared_ptr<AlgorithmeAbstrait> MotorAlgorithm::_algorithme = nullptr;
+std::shared_ptr<AlgorithmeAbstrait> MotorAlgorithm::_algorithme = nullptr;

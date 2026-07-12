@@ -43,7 +43,7 @@ public:
 	 * Constructor.
 	 * @param Hypergraph shared pointer
 	 */
-	Helly(const boost::shared_ptr<HypergrapheAbstrait>&);
+	Helly(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
 	 * Get result structure
@@ -69,7 +69,7 @@ protected:
 	 * @param Second hyper-vertex.
 	 * @return List containing the two hyper-vertices
 	 */
-	LibType::ListHyperEdge& allContainXY(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperVertex>&);
+	LibType::ListHyperEdge& allContainXY(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Checks whether the intersection between the elements in the list is not empty
@@ -84,7 +84,7 @@ protected:
 	 * @param Second hyper-edge
 	 * @return True or False
 	 */
-	bool nonEmptyBetween(boost::shared_ptr<HyperEdge>&, boost::shared_ptr<HyperEdge>&);
+	bool nonEmptyBetween(std::shared_ptr<HyperEdge>&, std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Checks whether the two hyper-vertexes are neighbors
@@ -92,7 +92,7 @@ protected:
 	 * @param Second hyper-vertex
 	 * @return True or False
 	 */
-	bool voisin(boost::shared_ptr<HyperVertex>&, boost::shared_ptr<HyperVertex>&);
+	bool voisin(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Concatenation of two lists of hyper-edges
@@ -107,7 +107,7 @@ protected:
 	/**
 	 * Hypergraph shared pointer
 	 */
-	boost::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergrapheAbstrait;
 
 	/**

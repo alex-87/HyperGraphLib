@@ -27,47 +27,43 @@
 #ifndef MODEL_INCLUDE_LIBTYPE_HH_
 #define MODEL_INCLUDE_LIBTYPE_HH_
 
-#include <map>
+#include <unordered_map>
 #include <vector>
-#include <boost/container/vector.hpp>
-#include <boost/multi_array.hpp>
-#include <boost/interprocess/allocators/allocator.hpp>
-
-
-class HyperVertex;
+#include <memory>
+#include "../container/matrix2D.hpp"
 
 class HyperEdge;
+class HyperVertex;
 
 class LibType {
 
 public:
 
-
-	typedef boost::multi_array<bool, 2>
+	typedef Matrix2D<bool>
 	AdjacentMatrixContainerBool;
 
-	typedef boost::multi_array<int, 2>
+	typedef Matrix2D<int>
 	AdjacentMatrixContainerInt;
 
-	typedef boost::container::vector<boost::shared_ptr<HyperVertex> >
+	typedef std::vector<std::shared_ptr<HyperVertex>>
 	ListHyperVertex;
 
-	typedef boost::container::vector<boost::shared_ptr<HyperEdge> >
+	typedef std::vector<std::shared_ptr<HyperEdge>>
 	ListHyperEdge;
 
-	typedef std::map<boost::shared_ptr<HyperVertex>, int>
+	typedef std::unordered_map<std::shared_ptr<HyperVertex>, int>
 	IndexerHyperVertex;
 
-	typedef std::map<boost::shared_ptr<HyperEdge>, int>
+	typedef std::unordered_map<std::shared_ptr<HyperEdge>, int>
 	IndexerHyperEdge;
 
-	typedef std::map<unsigned int, boost::shared_ptr<HyperVertex> >
+	typedef std::unordered_map<unsigned int, std::shared_ptr<HyperVertex>>
 	HyperVertexIndexer;
 
-	typedef std::map<unsigned int, boost::shared_ptr<HyperEdge> >
+	typedef std::unordered_map<unsigned int, std::shared_ptr<HyperEdge>>
 	HyperEdgeIndexer;
 
-	typedef boost::shared_ptr<boost::container::vector<LibType::ListHyperVertex> >
+	typedef std::shared_ptr<std::vector<LibType::ListHyperVertex>>
 	PathList;
 
 private:
