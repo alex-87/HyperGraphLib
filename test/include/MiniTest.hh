@@ -107,7 +107,8 @@ inline int runAll() {
 		}
 	}
 
-	std::cout << "\n" << passed << "/" << total << " tests passed." << std::endl;
+	std::cout << "\n"
+	          << passed << "/" << total << " tests passed." << std::endl;
 	return (passed == total) ? 0 : 1;
 }
 
@@ -128,6 +129,9 @@ inline int runAll() {
 #define cr_assert(cond, ...) \
 	minitest::check((cond), #cond, std::string("" __VA_ARGS__), __FILE__, __LINE__)
 
-#define MINITEST_MAIN int main() { return minitest::runAll(); }
+#define MINITEST_MAIN              \
+	int main() {                   \
+		return minitest::runAll(); \
+	}
 
 #endif /* TEST_INCLUDE_MINITEST_HH_ */

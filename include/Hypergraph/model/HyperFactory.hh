@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Définition de la fabrique d'un hypergraphe.
+ * Definition of the hypergraph factory.
  */
 #ifndef MODEL_INCLUDE_HYPERFACTORY_HH_
 #define MODEL_INCLUDE_HYPERFACTORY_HH_
@@ -33,47 +33,44 @@
 #include "HyperEdge.hh"
 
 /**
- * Classe modélisant la fabrique de l'hypergraphe.
+ * Class modelling the hypergraph factory.
  */
 class HyperFactory {
-
-public:
-
+  public:
 	/**
 	 * Instance unique de la fabrique.
 	 */
 	static HyperFactory& Instance();
 
 
-public:
-
+  public:
 	/**
-	 * Démarrer une session de fabrication d'un hypergraphe.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Start a hypergraph construction session.
+	 * @param shared pointer to the hypergraph.
 	 */
 	static void startSession(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph);
 
 	/**
-	 * Création d'un nouvel hyper-vertex.
-	 * @return Nouvel hyper-vertex.
+	 * Create a new hyper-vertex.
+	 * @return the new hyper-vertex.
 	 */
 	static const std::shared_ptr<HyperVertex> newHyperVertex();
 
 	/**
-	 * Création d'une nouvelle hyper-arête.
-	 * @return Nouvelle hyper-arête.
+	 * Create a new hyper-edge.
+	 * @return the new hyper-edge.
 	 */
 	static const std::shared_ptr<HyperEdge> newHyperEdge();
 
 	/**
-	 * Relier une hyper-arête à un hyper-vertex.
-	 * @param L'hyper-vertex à relier.
-	 * @param L'hyper-arête à relier.
+	 * Link a hyper-edge to a hyper-vertex.
+	 * @param the hyper-vertex to link.
+	 * @param the hyper-edge to link.
 	 */
 	static void link(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Test si une session est déjà en cours.
+	 * Test whether a session is already open.
 	 * @return True si c'est le cas, False sinon.
 	 */
 	static bool isSession();
@@ -84,53 +81,51 @@ public:
 	static void closeSession();
 
 
-private:
-
+  private:
 	/**
-	 * Constructeur
+	 * Constructor
 	 */
 	HyperFactory();
 
 	/**
-	 * Constructeur
+	 * Constructor
 	 */
 	HyperFactory(const HyperFactory&);
 
 	/**
-	 * Constructeur
+	 * Constructor
 	 */
-	HyperFactory& operator= (const HyperFactory&);
+	HyperFactory& operator=(const HyperFactory&);
 
 	/**
-	 * Destructeur
+	 * Destructor
 	 */
-	~HyperFactory();
+	~HyperFactory() = default;
 
 
-private:
-
+  private:
 	/**
 	 * Instnce unique de la fabrique.
 	 */
 	static HyperFactory _instance;
 
 	/**
-	 * Compteur des indexes des hyper-vertex.
+	 * Counter of hyper-vertex indices.
 	 */
 	static unsigned int _indexVertex;
 
 	/**
-	 * Compteur des indexes des hyper-arêtes.
+	 * Counter of hyper-edge indices.
 	 */
 	static unsigned int _indexEdge;
 
 	/**
 	 * Indicateur de session.
 	 */
-	static bool         _isSession;
+	static bool _isSession;
 
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	static std::shared_ptr<HypergrapheAbstrait> _ptrAbstractHypergraph;
 

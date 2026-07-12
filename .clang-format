@@ -1,0 +1,30 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# The codebase indents with tabs; keep it that way.
+UseTab: ForIndentation
+IndentWidth: 4
+TabWidth: 4
+
+# Braces stay attached: "void f() {" / "class X {".
+BreakBeforeBraces: Attach
+
+# Do not reflow long lines; only normalise spacing/indentation.
+ColumnLimit: 0
+
+# Normalise the inconsistent "if( x )return;" style into "if (x) return;".
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpaceInEmptyParentheses: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortBlocksOnASingleLine: Empty
+
+PointerAlignment: Left
+SortIncludes: false
+FixNamespaceComments: true
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 2
+...

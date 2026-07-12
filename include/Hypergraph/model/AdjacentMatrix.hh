@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /*
- * Modélisation de la matrice d'adjacence associée à l'hypergraphe.
+ * Model of the adjacency matrix associated with the hypergraph.
  *
  */
 
@@ -40,150 +40,144 @@ class HyperVertex;
 
 
 /**
- * Déclaration de la matrice d'adjacence.
+ * Declaration of the adjacency matrix.
  */
 class AdjacentMatrix {
-
-public:
-
+  public:
 	/**
-	 * Constructeur par défaut.
+	 * Default constructor.
 	 */
 	AdjacentMatrix();
 
 	/**
-	 * Constructeur de taille particulière.
+	 * Constructor with an explicit size.
 	 * @param x L'abscisse
-	 * @param y L'ordonnée de la matrice.
+	 * @param y the matrix ordinate.
 	 */
 	AdjacentMatrix(const unsigned int&, const unsigned int&);
 
 	/**
-	 * Modification de la taille de la matrice.
+	 * Resize the matrix.
 	 * @param x L'abscisse
-	 * @param y L'ordonnée de la matrice.
+	 * @param y the matrix ordinate.
 	 */
 	void resize(const unsigned int&, const unsigned int&);
 
 	/**
-	 * Ajouter un hyper-vertex à la matrice.
-	 * @param HyperVertex L'hyper-vertex à ajouter.
+	 * Add a hyper-vertex to the matrix.
+	 * @param hyperVertex the hyper-vertex to add.
 	 */
 	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Ajouter une hyper-arête à la matrice.
-	 * @param HyperEdge L'hyper-arête à ajouter.
+	 * Add a hyper-edge to the matrix.
+	 * @param hyperEdge the hyper-edge to add.
 	 */
 	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Vérifier si l'hyper-vertex est dans l'hyper-arête.
-	 * @param L'hyper-vertex à vérifier.
-	 * @param L'hyper-arête dont la précence de l'hyper-vertex est à vérifier.
-	 * @return True si l'hyper-vertex est dans l'hyper-arête, False sinon.
+	 * Check whether the hyper-vertex is in the hyper-edge.
+	 * @param the hyper-vertex to check.
+	 * @param the hyper-edge in which to check for the hyper-vertex.
+	 * @return true if the hyper-vertex is in the hyper-edge, false otherwise.
 	 */
 	bool isVertexInEdge(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Vérifier si une hyper-arête est dans la liste des hyper-arêtes d'un hyper-vertex.
-	 * @param L'hyper-arête à vérifier.
-	 * @param L'hyper-vertex.
-	 * @return True si l'hyper-vertex contient l'hyper-arête dans sa liste, False sinon.
+	 * Check whether a hyper-edge is in a hyper-vertex's edge list.
+	 * @param the hyper-edge to check.
+	 * @param the hyper-vertex.
+	 * @return true if the hyper-vertex has the hyper-edge in its list, false otherwise.
 	 */
 	bool isEdgeInVertex(const std::shared_ptr<HyperEdge>&, const std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Vérifier si l'hyper-vertex ayant l'identifiant i se trouve dans l'hyper-arête ayant l'identifiant j.
-	 * @param L'identifiant de l'hyper-vertex.
-	 * @param L'identifiant de l'hyper-arête.
+	 * Check whether hyper-vertex i is in hyper-edge j.
+	 * @param the hyper-vertex identifier.
+	 * @param the hyper-edge identifier.
 	 * @return True si c'est le cas, False sinon.
 	 */
 	bool isVertexInEdge(const int&, const int&) const;
 
 	/**
-	 * Vérifier si l'hyper-arête ayant l'identifiant i se trouve dans la liste de l'hyper-vertex ayant l'identifiant j.
-	 * @param L'identifiant de l'hyper-arête.
-	 * @param L'identifiant de l'hyper-vertex.
+	 * Check whether hyper-edge i is in the list of hyper-vertex j.
+	 * @param the hyper-edge identifier.
+	 * @param the hyper-vertex identifier.
 	 * @return True si c'est le cas, False sinon.
 	 */
 	bool isEdgeInVertex(const int&, const int&) const;
 
 	/**
-	 * Obtenir la matrice d'adjacence booléenne.
-	 * @return La matrice d'adjacence booléenne.
+	 * Get the boolean adjacency matrix.
+	 * @return the boolean adjacency matrix.
 	 */
 	LibType::AdjacentMatrixContainerBool& getBoolAdjacentMatrix();
 
 	/**
-	 * Obtenir la matrice d'adjacence entière.
-	 * @return La matrice d'adjacence entière.
+	 * Get the integer adjacency matrix.
+	 * @return the integer adjacency matrix.
 	 */
 	LibType::AdjacentMatrixContainerInt& getUIntAdjacentMatrix();
 
 	/**
-	 * Obtenir le degré d'un hyper-vertex.
-	 * @param L'hyper-vertex dont on souhaite obtenir le degré.
-	 * @return Nn entier positif correspondant au degrès de l'hyper-vertex.
+	 * Get the degree of a hyper-vertex.
+	 * @param the hyper-vertex whose degree is wanted.
+	 * @return a positive integer, the degree of the hyper-vertex.
 	 */
 	unsigned int getVertexDegree(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Obtenir l'effectif d'une hyper-arête.
-	 * @param L'hyper-arête dont on souhaite obtenir l'effectif.
-	 * @return Un entier positif correspondant au nombre d'hyper-vertex dans l'hyper-arête.
+	 * Get the cardinality of a hyper-edge.
+	 * @param the hyper-edge whose cardinality is wanted.
+	 * @return a positive integer, the number of hyper-vertices in the hyper-edge.
 	 */
 	unsigned int getEdgeSize(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Obtenir le co-rang de l'hypergraphe.
+	 * Get the co-rank of the hypergraph.
 	 * @return Un entie correspondant au co-rang.
 	 */
 	unsigned int getCoRank() const;
 
 	/**
-	 * Obtenir le rang de l'hypergraphe.
+	 * Get the rank of the hypergraph.
 	 * @return Un entie correspondant au rang.
 	 */
 	unsigned int getRank() const;
 
 	/**
-	 * Obtenir les dimensions de la matrice d'adjacence.
-	 * @return Un tuple dont le premier nombre est l'abscisse, le second est l'ordonnée.
+	 * Get the dimensions of the adjacency matrix.
+	 * @return a tuple whose first number is the abscissa and second the ordinate.
 	 */
 	std::tuple<unsigned int, unsigned int>
 	getMatrixDimension();
 
 	/**
-	 * Fonction-test affichant la matrice sur la sortie standard - NE PAS UTILISER.
+	 * Debug function printing the matrix to standard output - DO NOT USE.
 	 */
 	void display() const;
 
-protected:
-
+  protected:
 	/**
-	 * L'abscisse.
+	 * The abscissa.
 	 */
 	unsigned int _m;
 
 	/**
-	 * L'ordonnée.
+	 * The ordinate.
 	 */
 	unsigned int _n;
 
 	/**
-	 * Les données de la matrice d'adjacence booléenne.
+	 * The boolean adjacency matrix data.
 	 */
 	LibType::AdjacentMatrixContainerBool _adjacentMatrixBool;
 
 	/**
-	 * Les données de la matrice d'adjacence entière.
+	 * The integer adjacency matrix data.
 	 */
-	LibType::AdjacentMatrixContainerInt  _adjacentMatrixUInt;
-
+	LibType::AdjacentMatrixContainerInt _adjacentMatrixUInt;
 };
 
 
-
 #endif
-

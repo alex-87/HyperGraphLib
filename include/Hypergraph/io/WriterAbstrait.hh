@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Interface du module d'écriture d'instance.
+ * Instance writer module interface.
  */
 #ifndef IO_INCLUDE_WRITERABSTRAIT_HH_
 #define IO_INCLUDE_WRITERABSTRAIT_HH_
@@ -33,61 +33,56 @@
 #include <memory>
 
 /**
- * Déclaration de l'interface du module d'écriture d'instance.
+ * Declaration of the instance writer module interface.
  */
 class WriterAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param shared pointer to the hypergraph.
 	 */
 	WriterAbstrait(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Ecriture de la matrice d'adjacence sur la sortie indiquée.
+	 * Write the adjacency matrix to the given output stream.
 	 * @param Le flux de sortie.
 	 */
 	virtual void writeAdjacentMatrix(std::ostream&) const = 0;
 
 	/**
-	 * Ecriture de l'hypergraphe sur le flux de sortie.
+	 * Write the hypergraph to the output stream.
 	 * @param Le flux de sortie.
 	 */
 	virtual void writeHypergraph(std::ostream&) const = 0;
 
 	/**
-	 * Destructeur virtuel.
+	 * Virtual destructor.
 	 */
-	virtual ~WriterAbstrait();
+	virtual ~WriterAbstrait() = default;
 
 
-protected:
-
+  protected:
 	/**
-	 * Ecriture des hyper-vertex sur le flux de sortie.
+	 * Write the hyper-vertices to the output stream.
 	 * @param Le flux de sortie.
 	 */
 	virtual void writeHypergrapheHyperVertex(std::ostream&) const = 0;
 
 	/**
-	 * Ecriture des hyper-arêtes sur le flux de sortie.
+	 * Write the hyper-edges to the output stream.
 	 * @param Le flux de sortie.
 	 */
 	virtual void writeHypergrapheHyperEdge(std::ostream&) const = 0;
 
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrAbstractHypergraph;
 
 };
-
 
 
 #endif /* IO_INCLUDE_WRITERABSTRAIT_HH_ */

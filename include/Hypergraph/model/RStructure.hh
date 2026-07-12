@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,8 +24,8 @@
  */
 
 /**
- * Structure de description du résultat. Cet objet
- * est la représentation du résultat produit par tout algorithme.
+ * Result description structure. This object
+ * is the representation of the result produced by any algorithm.
  */
 #ifndef MODEL_INCLUDE_RSTRUCTURE_HH_
 #define MODEL_INCLUDE_RSTRUCTURE_HH_
@@ -34,69 +34,63 @@
 #include <memory>
 
 /**
- * Structure de description du résultat.
+ * Result description structure.
  */
 class RStructure {
-
-public:
-
+  public:
 	/**
-	 * Ajouter un résultat entier.
+	 * Set an integer result.
 	 */
 	void setIntegerResult();
 
 	/**
-	 * Ajouter un résultat booléen.
-	 * @param Le résultat booléen.
+	 * Set a boolean result.
+	 * @param the boolean result.
 	 */
 	void setBooleanResult(bool);
 
 	/**
-	 * Ajouter un résultat de type HypergrapheAbstrait.
-	 * @param L'hypergraphe faisant office de résultat.
+	 * Set a HypergrapheAbstrait result.
+	 * @param the hypergraph used as the result.
 	 */
 	void setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>&);
 
-public:
-
+  public:
 	/**
-	 * Lire un résultat entier.
-	 * @return Le résutat en tant que nombre entier.
+	 * Read an integer result.
+	 * @return the result as an integer.
 	 */
 	int getIntegerResult() const;
 
 	/**
-	 * Lire un résutat booléen.
-	 * @return Le résultat en tant que valeur booléenne.
+	 * Read a boolean result.
+	 * @return the result as a boolean value.
 	 */
 	bool getBooleanResult() const;
 
 	/**
-	 * Lire un résultat de typ HypergrapheAbstrait
-	 * @return Le résultat de type HypergrapheAbstrait
+	 * Read a HypergrapheAbstrait result.
+	 * @return the HypergrapheAbstrait result.
 	 */
 	std::shared_ptr<HypergrapheAbstrait> getHypergrapheResult() const;
 
-protected:
-
+  protected:
 	/**
-	 * La valeur du résultat entier.
+	 * The integer result value.
 	 */
 	int _integerResult;
 
 	/**
-	 * La valeur du résultat booléen.
+	 * The boolean result value.
 	 */
 	bool _booleanResult;
 
 	/**
-	 * L'hypergraphe faisant office de résultat.
+	 * The hypergraph used as the result.
 	 */
 	std::shared_ptr<HypergrapheAbstrait> _hypergraphResult;
 
 };
 
 
-
 #endif /* MODEL_INCLUDE_RSTRUCTURE_HH_ */
-

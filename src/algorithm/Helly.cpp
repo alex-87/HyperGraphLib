@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,9 +34,7 @@ Helly::Helly(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) 
 
 }
 
-void
-Helly::runAlgorithme() {
-
+void Helly::runAlgorithme() {
 	_result.setBooleanResult(true);
 
 	for(auto& x : _ptrAbstractHypergraph->getHyperVertexList()) {
@@ -54,22 +52,20 @@ Helly::runAlgorithme() {
 					concatenate(X, X_xv);
 					concatenate(X, X_yv);
 
-					if( !nonEmptyIntersection(X) ) {
+					if (!nonEmptyIntersection(X)) {
 						_result.setBooleanResult(false);
 						return;
 					}
 				}
 			}
-
 		}
 	}
 }
 
-bool
-Helly::areNeighbours(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
-	for(auto& element1 : v1->getHyperEdgeList() ) {
-		for(auto& element2 : v2->getHyperEdgeList() ) {
-			if( element1==element2 ) {
+bool Helly::areNeighbours(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
+	for (auto& element1 : v1->getHyperEdgeList()) {
+		for (auto& element2 : v2->getHyperEdgeList()) {
+			if (element1 == element2) {
 				return true;
 			}
 		}
@@ -77,27 +73,25 @@ Helly::areNeighbours(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVert
 	return false;
 }
 
-void
-Helly::concatenate(LibType::ListHyperEdge& dest, LibType::ListHyperEdge& src) {
+void Helly::concatenate(LibType::ListHyperEdge& dest, LibType::ListHyperEdge& src) {
 	dest.insert(dest.end(), src.begin(), src.end());
 }
 
-bool
-Helly::nonEmptyIntersection(LibType::ListHyperEdge& edges) {
-	for(unsigned int i=0; i<edges.size(); i++) {
-		for(unsigned int j=i+1; j<edges.size(); j++) {
-			if( !nonEmptyBetween(edges.at(i), edges.at(j)) )
+bool Helly::nonEmptyIntersection(LibType::ListHyperEdge& edges) {
+	for (unsigned int i = 0; i < edges.size(); i++) {
+		for (unsigned int j = i + 1; j < edges.size(); j++) {
+			if (!nonEmptyBetween(edges.at(i), edges.at(j)))
 				return false;
 		}
 	}
 	return true;
 }
 
-bool
-Helly::nonEmptyBetween(std::shared_ptr<HyperEdge>& e1, std::shared_ptr<HyperEdge>& e2) {
-	for(auto& a : e1->getHyperVertexList()) {
-		for(auto& b : e2->getHyperVertexList()) {
-			if(a==b)return true;
+bool Helly::nonEmptyBetween(std::shared_ptr<HyperEdge>& e1, std::shared_ptr<HyperEdge>& e2) {
+	for (auto& a : e1->getHyperVertexList()) {
+		for (auto& b : e2->getHyperVertexList()) {
+			if (a == b)
+				return true;
 		}
 	}
 	return false;
@@ -117,8 +111,4 @@ Helly::allContainXY(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVerte
 RStructure
 Helly::getResult() const {
 	return _result;
-}
-
-Helly::~Helly() {
-
 }

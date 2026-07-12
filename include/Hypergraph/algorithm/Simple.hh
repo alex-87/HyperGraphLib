@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Définition de la classe de l'algorithme simple sur l'hypergraphe.
+ * Definition of the simple algorithm class.
  */
 #ifndef ALGORITHM_INCLUDE_SIMPLE_HH_
 #define ALGORITHM_INCLUDE_SIMPLE_HH_
@@ -39,72 +39,65 @@
 #include "Linear.hh"
 
 /**
- * Algorithme simple sur l'hypergraphe.
+ * simple algorithm on the hypergraph.
  */
 class Simple : public AlgorithmeAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur
-	 * @param Pointeur partagé sur l'hypergraphe.
+	 * Constructor
+	 * @param shared pointer to the hypergraph.
 	 */
 	Simple(std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résultats.
-	 * @return La structure des résultats.
+	 * Get the result structure.
+	 * @return the result structure.
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
-	~Simple();
+	~Simple() = default;
 
 
-protected:
-
+  protected:
 	friend class Linear;
 
 	/**
-	 * Lancement de l'algorithme.
+	 * Run the algorithm.
 	 */
 	void runAlgorithme();
 
 	/**
-	 * Vérification de l'inclusion entre hyper-arête via les vertex.
-	 * @param Première liste.
-	 * @param Seconde liste.
+	 * Check inclusion between hyper-edges through their vertices.
+	 * @param the first list.
+	 * @param the second list.
 	 * @return True si c'est le cas, False sinon.
 	 */
 	bool subsetVertexList(const LibType::ListHyperVertex&, const LibType::ListHyperVertex&) const;
 
 	/**
-	 * Vérifie si un hyper-vertex est contenu dans la liste.
-	 * @param Liste des hyper-vertex.
+	 * Check whether a hyper-vertex is contained in the list.
+	 * @param list of hyper-vertices.
 	 * @param L'hyer-vertex.
 	 * @return True si c'est le cas, False sinon.
 	 */
 	bool contains(const LibType::ListHyperVertex&, const std::shared_ptr<HyperVertex>&) const;
 
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrAbstractHypergraph;
 
 	/**
-	 * Structure des résultats.
+	 * Result structure.
 	 */
 	RStructure _result;
-
-
 };
-
 
 
 #endif /* ALGORITHM_INCLUDE_SIMPLE_HH_ */

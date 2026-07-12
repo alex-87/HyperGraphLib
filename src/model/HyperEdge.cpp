@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,15 +36,13 @@ HyperEdge::HyperEdge(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph, 
 
 }
 
-void
-HyperEdge::addHyperVertex(std::shared_ptr<HyperVertex>& hyperVertex) {
-	if( !containVertex(hyperVertex) ) {
-		_listHyperVertex.push_back( hyperVertex );
+void HyperEdge::addHyperVertex(std::shared_ptr<HyperVertex>& hyperVertex) {
+	if (!containVertex(hyperVertex)) {
+		_listHyperVertex.push_back(hyperVertex);
 	};
 }
 
-void
-HyperEdge::setHyperVertexList(LibType::ListHyperVertex& listHyperVertex) {
+void HyperEdge::setHyperVertexList(LibType::ListHyperVertex& listHyperVertex) {
 	_listHyperVertex = listHyperVertex;
 }
 
@@ -59,16 +57,14 @@ HyperEdge::getIdentifier() const {
 }
 
 bool HyperEdge::operator==(const std::shared_ptr<HyperEdge>& hyperEdge) const {
-	return _identifier==hyperEdge->getIdentifier();
+	return _identifier == hyperEdge->getIdentifier();
 }
 
-bool
-HyperEdge::operator<(const std::shared_ptr<HyperEdge>& hyperEdge) const {
+bool HyperEdge::operator<(const std::shared_ptr<HyperEdge>& hyperEdge) const {
 	return _identifier < hyperEdge->getIdentifier();
 }
 
-bool
-HyperEdge::operator>(const std::shared_ptr<HyperEdge>& hyperEdge) const {
+bool HyperEdge::operator>(const std::shared_ptr<HyperEdge>& hyperEdge) const {
 	return _identifier > hyperEdge->getIdentifier();
 }
 

@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Définition de la classe de l'algorithme k-regular sur l'hypergraphe.
+ * Definition of the k-regular algorithm class.
  */
 #ifndef ALGORITHM_INCLUDE_KREGULAR_HH_
 #define ALGORITHM_INCLUDE_KREGULAR_HH_
@@ -38,49 +38,44 @@
 #include "../model/RStructure.hh"
 
 /**
- * Algorithme k-regular sur l'hypergraphe.
+ * k-regular algorithm on the hypergraph.
  */
 class kRegular : public AlgorithmeAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param shared pointer to the hypergraph.
 	 */
 	kRegular(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résultats.
-	 * @return La structure des résultats.
+	 * Get the result structure.
+	 * @return the result structure.
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
-	~kRegular();
+	~kRegular() = default;
 
-protected:
-
+  protected:
 	/**
 	 * Lancment de l'algorithme.
 	 */
 	void runAlgorithme();
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrAbstractHypergraph;
 
 	/**
-	 * La structure des résultats.
+	 * The result structure.
 	 */
 	RStructure _result;
-
 };
 
 

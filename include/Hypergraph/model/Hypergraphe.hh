@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Classe modélisant un hypergraphe.
+ * Class modelling a hypergraph.
  */
 #ifndef MODEL_INCLUDE_HYPERGRAPHE_HH_
 #define MODEL_INCLUDE_HYPERGRAPHE_HH_
@@ -32,55 +32,51 @@
 #include "HypergrapheAbstrait.hh"
 
 /**
- * Modélisation de l'hypergraphe.
+ * Model of the hypergraph.
  */
 class Hypergraphe : public HypergrapheAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur par défaut.
+	 * Default constructor.
 	 */
 	Hypergraphe();
 
 	/**
-	 * Ajouter un hyper-vertex à l'hypergraphe.
-	 * @param L'hyper-vertex à ajouter.
+	 * Add a hyper-vertex to the hypergraph.
+	 * @param the hyper-vertex to add.
 	 */
 	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Ajouter une hyper-arête à l'hypergraphe.
-	 * @param L'hyper-arête à ajouter.
+	 * Add a hyper-edge to the hypergraph.
+	 * @param the hyper-edge to add.
 	 */
 	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Obtenir un hyper-vertex à l'aide de son identifiant.
-	 * @param L'identifiant de l'hyper-vertex à obtenir.
+	 * Get a hyper-vertex by its identifier.
+	 * @param the identifier of the hyper-vertex to get.
 	 */
 	std::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&);
 
 	/**
-	 * Obtenir une hyper-arête à l'aide de son identifiant.
-	 * @param L'identifiant de l'hyper-arête à obtenir.
+	 * Get a hyper-edge by its identifier.
+	 * @param the identifier of the hyper-edge to get.
 	 */
 	std::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&);
 
 	/**
-	 * Construction de l'hypergraphe, notamment de sa matrice d'adjacence.
+	 * Build the hypergraph, in particular its adjacency matrix.
 	 */
 	void flush();
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
-	~Hypergraphe();
+	~Hypergraphe() = default;
 
-protected:
-
+  protected:
 };
-
 
 
 #endif /* MODEL_INCLUDE_HYPERGRAPHE_HH_ */

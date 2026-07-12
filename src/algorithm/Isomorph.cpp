@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -39,9 +39,7 @@ Isomorph::Isomorph(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHyperg
 
 }
 
-void
-Isomorph::runAlgorithme() {
-
+void Isomorph::runAlgorithme() {
 	bool ret = false;
 
 	if( _ptrAbstractHypergraphA->getHyperEdgeList().size() != _ptrAbstractHypergraphB->getHyperEdgeList().size() ||
@@ -54,9 +52,9 @@ Isomorph::runAlgorithme() {
 	IsomorphSpace * is = new IsomorphSpace(_ptrAbstractHypergraphA, _ptrAbstractHypergraphB);
 	is->postConstraints();
 
-	unsigned int nbrThreadsSupported( std::thread::hardware_concurrency() );
+	unsigned int nbrThreadsSupported(std::thread::hardware_concurrency());
 
-	if( nbrThreadsSupported <= 0 ) {
+	if (nbrThreadsSupported <= 0) {
 		nbrThreadsSupported = 1;
 	};
 
@@ -65,18 +63,17 @@ Isomorph::runAlgorithme() {
 
 	Gecode::DFS<IsomorphSpace> ensembleSolution(is, opt);
 
-	if( ensembleSolution.next() ) ret = true;
-	else ret = false;
+	if (ensembleSolution.next())
+		ret = true;
+	else
+		ret = false;
 
 	delete is;
 
-	_result.setBooleanResult( ret );
+	_result.setBooleanResult(ret);
 }
 
 RStructure
 Isomorph::getResult() const {
 	return _result;
-}
-
-Isomorph::~Isomorph() {
 }

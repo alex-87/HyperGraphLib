@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Définition de l'algorithme décidant la connexité d'un hypergraphe.
+ * Definition of the algorithm deciding the connectivity of a hypergraph.
  */
 #ifndef ALGORITHM_INCLUDE_CONNECTED_HH_
 #define ALGORITHM_INCLUDE_CONNECTED_HH_
@@ -37,82 +37,77 @@
 #include <vector>
 
 /**
- * Algorithme décidant la connexité d'un hypergraphe.
+ * Algorithm deciding the connectivity of a hypergraph.
  */
 class Connected : public AlgorithmeAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur.
-	 * @param std::shared_ptr<HypergrapheAbstrait> Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param std::shared_ptr<HypergrapheAbstrait> shared pointer to the hypergraph.
 	 */
 	Connected(std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure de résultats.
+	 * Get the result structure.
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
-	~Connected();
+	~Connected() = default;
 
 
-protected:
-
+  protected:
 	/**
-	 * Fonction de lancement de l'algorithme.
+	 * Run the algorithm.
 	 */
 	void runAlgorithme();
 
 	/**
 	 * Exploration verticale d'un chemin de la matrice.
-	 * @param Vecteur des visités.
-	 * @param Pile des "à visiter".
-	 * @param Identifiant de la ligne.
+	 * @param vector of visited elements.
+	 * @param stack of vertices to visit.
+	 * @param row identifier.
 	 */
 	void exploreVertical(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
 
 	/**
 	 * Exploration horizontale d'un chemin dans la matrice.
-	 * @param Vecteur des visités.
-	 * @param Pile des "à visiter".
-	 * @param Identifiant de la colonne.
+	 * @param vector of visited elements.
+	 * @param stack of vertices to visit.
+	 * @param column identifier.
 	 */
 	void exploreHorizontal(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
 
 	/**
-	 * Vérifier si un hyper-vertex a déjà été visité.
-	 * @param Vecteur des hyper-vertex visités.
-	 * @param Identifiant à vérifier.
-	 * @return True si déjà visité, False sinon.
+	 * Check whether a hyper-vertex has already been visited.
+	 * @param vector of visited hyper-vertices.
+	 * @param identifier to check.
+	 * @return true if already visited, false otherwise.
 	 */
 	bool isVertexVisited(std::vector<unsigned int>&, unsigned int) const;
 
 	/**
-	 * Vérifier si une hyper-arête a déjà été visitée.
-	 * @param Vecteur des hyper-arêtes visités.
-	 * @param Identifiant à vérifier.
-	 * @return True si déjà visité, False sinon.
+	 * Check whether a hyper-edge has already been visited.
+	 * @param vector of visited hyper-edges.
+	 * @param identifier to check.
+	 * @return true if already visited, false otherwise.
 	 */
 	bool isEdgeVisited(std::vector<unsigned int>&, unsigned int) const;
 
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrAbstractHypergraph;
 
 	/**
-	 * Structure de résultat.
+	 * Result structure.
 	 */
 	RStructure _result;
-
 };
 
 

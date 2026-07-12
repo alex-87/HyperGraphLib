@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Modélisation d'une hyper-arête.
+ * Model of a hyper-edge.
  */
 #ifndef _HYPEREDGE_HH
 #define _HYPEREDGE_HH
@@ -35,96 +35,92 @@
 #include "HypergrapheAbstrait.hh"
 
 /**
- * Définition de l'hyper-arête.
+ * Definition of the hyper-edge.
  */
 class HyperEdge {
-
-public:
-
+  public:
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
-	 * @param Identifiant numérique de l'hyper-arête.
+	 * Constructor.
+	 * @param shared pointer to the hypergraph.
+	 * @param numeric identifier of the hyper-edge.
 	 */
 	HyperEdge(const std::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
 
 	/**
-	 * Ajouter un hyper-vertex dans l'hyper-arête.
-	 * @param L'hyper-vertex à ajouter.
+	 * Add a hyper-vertex to the hyper-edge.
+	 * @param the hyper-vertex to add.
 	 */
 	void addHyperVertex(std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Affectation de la liste des hyper-vertex contenu dans l'hyper-arête.
-	 * @param Liste des hyper-vertex.
+	 * Set the list of hyper-vertices contained in the hyper-edge.
+	 * @param list of hyper-vertices.
 	 */
 	void setHyperVertexList(LibType::ListHyperVertex&);
 
 	/**
-	 * Obtenir la liste des hyper-vertex contenu dans l'hyper-arête.
-	 * @return La liste des hyper-vertex.
+	 * Get the list of hyper-vertices contained in the hyper-edge.
+	 * @return the list of hyper-vertices.
 	 */
 	LibType::ListHyperVertex& getHyperVertexList();
 
 	/**
-	 * Obtenir l'effectif de l'hyper-arête.
+	 * Get the cardinality of the hyper-edge.
 	 * @return L'effectif.
 	 */
 	const unsigned int getEffectif() const;
 
 	/**
-	 * Obtenir l'identifiant numérique de l'hyper-arête.
-	 * @return L'identifiant de l'hyper-arête.
+	 * Get the numeric identifier of the hyper-edge.
+	 * @return the hyper-edge identifier.
 	 */
 	const unsigned int& getIdentifier() const;
 
 	/**
-	 * Vérifie l'appartenance d'un hyper-vertex dans l'hyper-arête.
+	 * Check whether a hyper-vertex belongs to the hyper-edge.
 	 * @param Le vertex
-	 * @return True si l'hyper-vertex est présent dans l'hyper-arête, False sinon.
+	 * @return true if the hyper-vertex is present in the hyper-edge, false otherwise.
 	 */
 	bool containVertex(std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Surcharge de l'opérateur, afin de vérifier l'expression à l'aide de l'identifiant numérique.
+	 * Operator overload comparing on the numeric identifier.
 	 */
 	bool operator==(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Surcharge de l'opérateur, afin de vérifier l'expression à l'aide de l'identifiant numérique.
+	 * Operator overload comparing on the numeric identifier.
 	 */
 	bool operator<(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Surcharge de l'opérateur, afin de vérifier l'expression à l'aide de l'identifiant numérique.
+	 * Operator overload comparing on the numeric identifier.
 	 */
 	bool operator>(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Obtenir la liste des hyper-vertex contenu dans l'hyper-arête.
-	 * @return La liste des hyper-vertex.
+	 * Get the list of hyper-vertices contained in the hyper-edge.
+	 * @return the list of hyper-vertices.
 	 */
 	const LibType::ListHyperVertex& getHyperVertexList() const;
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé sur l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrHypergraph;
 
 	/**
-	 * L'identifiant numérique.
+	 * The numeric identifier.
 	 */
 	unsigned int _identifier;
 
 	/**
-	 * Liste des hyper-vertex.
+	 * List of hyper-vertices.
 	 */
 	LibType::ListHyperVertex
-	_listHyperVertex;
-
+	    _listHyperVertex;
 };
 
 #endif

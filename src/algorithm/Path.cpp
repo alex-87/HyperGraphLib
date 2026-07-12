@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -42,8 +42,7 @@ Path::getPathResult() const {
 	return _result;
 }
 
-void
-Path::setLimit(unsigned int limit) {
+void Path::setLimit(unsigned int limit) {
 	_limit = limit;
 }
 
@@ -52,20 +51,18 @@ Path::getLimit() const {
 	return _limit;
 }
 
-void
-Path::setHyperVertex(std::shared_ptr<HyperVertex>& source, std::shared_ptr<HyperVertex>& destination) {
+void Path::setHyperVertex(std::shared_ptr<HyperVertex>& source, std::shared_ptr<HyperVertex>& destination) {
 	_source = source;
 	_destination = destination;
 }
 
 void Path::runAlgorithme() {
+	LibType::PathList pathList(new std::vector<LibType::ListHyperVertex>());
 
-	LibType::PathList pathList( new std::vector<LibType::ListHyperVertex>() );
-
-	if( _source == _destination ) {
+	if (_source == _destination) {
 		LibType::ListHyperVertex listHyperVertex;
-		listHyperVertex.push_back( _source );
-		listHyperVertex.push_back( _destination );
+		listHyperVertex.push_back(_source);
+		listHyperVertex.push_back(_destination);
 		_result.setPathResult(pathList);
 		return;
 	}
@@ -76,14 +73,13 @@ void Path::runAlgorithme() {
 
 	toVisitVertex.push_back(_source);
 
-	while( (toVisitVertex.size() > 0) && (_limit > pathList->size() || _limit==0) ) {
-
-		std::shared_ptr<HyperVertex> currentHyperVertex( toVisitVertex.back() );
-		visitedVertex.push_back( currentHyperVertex );
+	while ((toVisitVertex.size() > 0) && (_limit > pathList->size() || _limit == 0)) {
+		std::shared_ptr<HyperVertex> currentHyperVertex(toVisitVertex.back());
+		visitedVertex.push_back(currentHyperVertex);
 		toVisitVertex.pop_back();
 
-		if( currentHyperVertex == _destination ) {
-			currentPath.push_back( currentHyperVertex );
+		if (currentHyperVertex == _destination) {
+			currentPath.push_back(currentHyperVertex);
 			buildPathToPathList(pathList, currentPath);
 			currentPath.clear();
 			currentHyperVertex = _source;
@@ -91,22 +87,20 @@ void Path::runAlgorithme() {
 			toVisitVertex.push_back(_source);
 		}
 
-		for(unsigned int cn = 0; cn < currentHyperVertex->getHyperEdgeList().size(); cn++) {
-			addVertexList(visitedVertex, toVisitVertex, currentHyperVertex->getHyperEdgeList().at(cn) );
+		for (unsigned int cn = 0; cn < currentHyperVertex->getHyperEdgeList().size(); cn++) {
+			addVertexList(visitedVertex, toVisitVertex, currentHyperVertex->getHyperEdgeList().at(cn));
 		}
 
-		currentPath.push_back( currentHyperVertex );
+		currentPath.push_back(currentHyperVertex);
 	}
 
 	_result.setPathResult(pathList);
 }
 
-void
-Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVertex& vList) {
-
+void Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVertex& vList) {
 	LibType::ListHyperVertex tmpList;
 
-	for(const auto& vPtr : vList) {
+	for (const auto& vPtr : vList) {
 		tmpList.push_back(vPtr);
 	}
 
@@ -130,8 +124,4 @@ Path::vertexContained(LibType::ListHyperVertex& liste, std::shared_ptr<HyperVert
 		}
 	}
 	return false;
-}
-
-
-Path::~Path() {
 }

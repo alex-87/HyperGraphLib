@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Définition de la classe de l'algorithme linear sur l'hypergraphe.
+ * Definition of the linear algorithm class.
  */
 #ifndef ALGORITHM_INCLUDE_LINEAR_HH_
 #define ALGORITHM_INCLUDE_LINEAR_HH_
@@ -32,52 +32,46 @@
 #include "../model/AlgorithmeAbstrait.hh"
 
 /**
- * Algorithme linear sur l'hypergraphe.
+ * linear algorithm on the hypergraph.
  */
 class Linear : public AlgorithmeAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur
-	 * @param Pointeur partagé sur l'hypergraphe.
+	 * Constructor
+	 * @param shared pointer to the hypergraph.
 	 */
 	Linear(std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résutats.
+	 * Get the result structure.
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
-	~Linear();
+	~Linear() = default;
 
 
-protected:
-
+  protected:
 	/**
-	 * Lancement de l'algorithme.
+	 * Run the algorithm.
 	 */
 	void runAlgorithme();
 
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrAbstractHypergraph;
 
 	/**
-	 * Structure des résutats.
+	 * Result structure.
 	 */
 	RStructure _result;
-
 };
-
 
 
 #endif /* ALGORITHM_INCLUDE_LINEAR_HH_ */

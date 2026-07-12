@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Définition de l'algorithme de génération des statistiques de l'hypergraphe.
+ * Definition of the algorithm generating the hypergraph statistics.
  */
 
 #ifndef ALGORITHM_INCLUDE_HPGSTAT
@@ -40,99 +40,94 @@
 
 
 /**
- * Algorithme de génération des statistiques de l'hypergraphe.
+ * Algorithm generating the hypergraph statistics.
  */
 class HyperGraphStat : public AlgorithmeAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé vers l'hypergraphe.
+	 * Constructor.
+	 * @param shared pointer to the hypergraph.
 	 */
 	HyperGraphStat(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Obtenir la structure des résultats - inutilisé ici.
-	 * @return La structure des résultats - inutilisé ici.
+	 * Get the result structure - unused here.
+	 * @return the result structure - unused here.
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
-	~HyperGraphStat();
+	~HyperGraphStat() = default;
 
 
-public:
-
+  public:
 	/**
-	 * Obtenir le nombre d'hyper-arêtes.
+	 * Get the number of hyper-edges.
 	 */
 	unsigned int getNbrHyperEdge() const;
 
 	/**
-	 * Obtenir le nombre d'hyper-vertex.
+	 * Get the number of hyper-vertices.
 	 */
 	unsigned int getNbrHyperVertex() const;
 
 	/**
-	 * Obtenir le nombre de connexions vertex-arêtes.
+	 * Get the number of vertex-edge connections.
 	 */
 	unsigned int getNbrLinks() const;
 
 	/**
-	 * Obtenir le rang de l'hypergraphe.
+	 * Get the rank of the hypergraph.
 	 */
 	unsigned int getRang() const;
 
 	/**
-	 * Obtenir le co-rang de l'hypergraphe.
+	 * Get the co-rank of the hypergraph.
 	 */
 	unsigned int getCoRang() const;
 
-protected:
-
+  protected:
 	/**
 	 * Lancment de l'algorithme.
 	 */
 	void runAlgorithme();
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrAbstractHypergraph;
 
 	/**
-	 * La structure des résultats - inutilisée ici.
+	 * The result structure - unused here.
 	 */
 	RStructure _result;
 
 	/**
-	 * Le nombre d'hyper-arêtes.
+	 * The number of hyper-edges.
 	 */
 	unsigned int _nhEdge;
 
 	/**
-	 * Le nombre d'hyper-vertex.
+	 * The number of hyper-vertices.
 	 */
 	unsigned int _nhVertex;
 
 	/**
-	 * Le nombre de connexions vertex-arêtes
+	 * The number of vertex-edge connections.
 	 */
 	unsigned int _nhLink;
 
 	/**
-	 * Le rang de l'hypergraphe
+	 * The rank of the hypergraph.
 	 */
 	unsigned int _rank;
 
 	/**
-	 * Le co-rang de l'hypergraphe
+	 * The co-rank of the hypergraph.
 	 */
 	unsigned int _coRank;
 

@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,58 +36,53 @@
  * Dfinition de l'interface du module de lecture d'instance.
  */
 class ReaderAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur.
-	 * @param Pointeur partagé sur l'hypergrahe.
+	 * Constructor.
+	 * @param shared pointer to the hypergraph.
 	 */
 	ReaderAbstrait(const std::shared_ptr<HypergrapheAbstrait>&);
 
 	/**
-	 * Lecture de l'instance et construction de l'hypergraphe.
+	 * Read the instance and build the hypergraph.
 	 * @param Le flux entrant.
 	 */
 	virtual void readHypergraphe(std::istream&) = 0;
 
 	/**
-	 * Obtenir l'hypergraphe après construction.
+	 * Get the hypergraph after construction.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>&
 	getHypergraphe();
 
 	/**
-	 * Déstructeur virtuel.
+	 * Virtual destructor.
 	 */
-	virtual ~ReaderAbstrait();
+	virtual ~ReaderAbstrait() = default;
 
 
-protected:
-
+  protected:
 	/**
-	 * Lire les hyper-vertex de l'instance.
+	 * Read the hyper-vertices of the instance.
 	 * @param Le flux entrant.
 	 */
 	virtual void readHypergrapheHyperVertex(std::istream&) = 0;
 
 	/**
-	 * Lire les hyper-arêtes de l'instance.
+	 * Read the hyper-edges of the instance.
 	 * @param Le flux entrant.
 	 */
 	virtual void readHypergrapheHyperEdge(std::istream&) = 0;
 
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrAbstractHypergraph;
 
 };
-
 
 
 #endif /* IO_INCLUDE_READERABSTRAIT_HH_ */

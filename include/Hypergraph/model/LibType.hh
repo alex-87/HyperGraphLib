@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,38 +36,35 @@ class HyperEdge;
 class HyperVertex;
 
 class LibType {
-
-public:
-
+  public:
 	typedef Matrix2D<bool>
-	AdjacentMatrixContainerBool;
+	    AdjacentMatrixContainerBool;
 
 	typedef Matrix2D<int>
-	AdjacentMatrixContainerInt;
+	    AdjacentMatrixContainerInt;
 
 	typedef std::vector<std::shared_ptr<HyperVertex>>
-	ListHyperVertex;
+	    ListHyperVertex;
 
 	typedef std::vector<std::shared_ptr<HyperEdge>>
-	ListHyperEdge;
+	    ListHyperEdge;
 
 	typedef std::unordered_map<std::shared_ptr<HyperVertex>, int>
-	IndexerHyperVertex;
+	    IndexerHyperVertex;
 
 	typedef std::unordered_map<std::shared_ptr<HyperEdge>, int>
-	IndexerHyperEdge;
+	    IndexerHyperEdge;
 
 	typedef std::unordered_map<unsigned int, std::shared_ptr<HyperVertex>>
-	HyperVertexIndexer;
+	    HyperVertexIndexer;
 
 	typedef std::unordered_map<unsigned int, std::shared_ptr<HyperEdge>>
-	HyperEdgeIndexer;
+	    HyperEdgeIndexer;
 
 	typedef std::shared_ptr<std::vector<LibType::ListHyperVertex>>
-	PathList;
+	    PathList;
 
-private:
-
+  private:
 	LibType();
 	LibType(const LibType&) = delete;
 	LibType& operator=(const LibType&) = delete;

@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,7 +26,7 @@
 /**
  * Moteur des algorithmes. Avant de lancer un algorithme,
  * on configure le moteur, qui fait office de lanceur, afin
- * d'éviter les erreurs lors du paraléllisme.
+ * to avoid errors during parallelism.
  */
 #ifndef MODEL_INCLUDE_MOTORALGORITHM_HH_
 #define MODEL_INCLUDE_MOTORALGORITHM_HH_
@@ -39,18 +39,16 @@
  * Moteur algorithmique.
  */
 class MotorAlgorithm {
-
-public:
-
+  public:
 	/**
-	 * Obtenir l'instance du moteur.
+	 * Get the engine instance.
 	 * @return L'instance du moteur.
 	 */
 	static MotorAlgorithm& Instance();
 
 	/**
-	 * Insérer l'algorithme à lancer.
-	 * @param Pointeur partagé sur l'algorithme.
+	 * Set the algorithm to run.
+	 * @param shared pointer to the algorithm.
 	 */
 	static void setAlgorithme(std::shared_ptr<AlgorithmeAbstrait>&);
 
@@ -61,46 +59,43 @@ public:
 
 	/**
 	 * Indicateur de bloquage du moteur.
-	 * @return True si le lanceur est bloqué, False sinon.
+	 * @return true if the runner is locked, false otherwise.
 	 */
 	static bool isLock();
 
-private:
-
+  private:
 	/**
 	 * Bloquage des setters et du lanceur.
 	 */
 	static void lock();
 
 	/**
-	 * Débloquage des setters et du lanceur.
+	 * Unlock the setters and the runner.
 	 */
 	static void unlock();
 
-private:
-
+  private:
 	/**
-	 * Constructeur (copie).
+	 * Copy constructor.
 	 */
 	MotorAlgorithm(const MotorAlgorithm&);
 
 	/**
-	 * Constructeur.
+	 * Constructor.
 	 */
-	MotorAlgorithm& operator= (const MotorAlgorithm&);
+	MotorAlgorithm& operator=(const MotorAlgorithm&);
 
 	/**
-	 * Constructeur.
+	 * Constructor.
 	 */
 	MotorAlgorithm();
 
 	/**
-	 * Déstructeur.
+	 * Destructor.
 	 */
-	~MotorAlgorithm();
+	~MotorAlgorithm() = default;
 
-private:
-
+  private:
 	/**
 	 * Descripteur du statut bloquant.
 	 */
@@ -112,12 +107,11 @@ private:
 	static MotorAlgorithm _instance;
 
 	/**
-	 * Pointeur partagé de l'algorithme.
+	 * Shared pointer to the algorithm.
 	 */
 	static std::shared_ptr<AlgorithmeAbstrait> _algorithm;
 
 };
-
 
 
 #endif /* MODEL_INCLUDE_MOTORALGORITHM_HH_ */

@@ -54,8 +54,7 @@ public:
 	template <typename T>
 	T as() const;
 
-private:
-
+  private:
 	std::string _value;
 
 	bool _set;
@@ -80,9 +79,7 @@ inline value_semantic value() {
 
 
 class options_description {
-
-public:
-
+  public:
 	struct option {
 		std::string name;
 		std::string help;
@@ -128,12 +125,12 @@ public:
 
 	const option* find(const std::string& name) const {
 		for (const option& o : _options)
-			if (o.name == name) return &o;
+			if (o.name == name)
+				return &o;
 		return nullptr;
 	}
 
-private:
-
+  private:
 	std::string _caption;
 
 	std::vector<option> _options;
@@ -149,9 +146,7 @@ inline std::ostream& operator<<(std::ostream& os, const options_description& des
 }
 
 class variables_map {
-
-public:
-
+  public:
 	std::size_t count(const std::string& name) const {
 		return _values.count(name);
 	}
@@ -168,8 +163,7 @@ public:
 		return _values;
 	}
 
-private:
-
+  private:
 	std::map<std::string, OptionValue> _values;
 };
 

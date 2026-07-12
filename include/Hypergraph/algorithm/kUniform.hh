@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
  */
 
 /**
- * Définition de la classe de l'algorithme k-uniforme sur l'hypergraphe.
+ * Definition of the k-uniform algorithm class.
  */
 #ifndef ALGORITHM_INCLUDE_KUNIFORM_HH_
 #define ALGORITHM_INCLUDE_KUNIFORM_HH_
@@ -38,43 +38,39 @@
 #include "../model/RStructure.hh"
 
 /**
- * Algorithme k-uniforme sur l'hypergraphe.
+ * k-uniform algorithm on the hypergraph.
  */
 class kUniform : public AlgorithmeAbstrait {
-
-public:
-
+  public:
 	/**
-	 * Constructeur
-	 * @param Pointeur partagé sur l'hypergraphe.
+	 * Constructor
+	 * @param shared pointer to the hypergraph.
 	 * @param Valeur de k.
 	 */
 	kUniform(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph, const unsigned int&);
 
 	/**
-	 * Obtenir la structure des résultats.
-	 * @return La structure des résultats.
+	 * Get the result structure.
+	 * @return the result structure.
 	 */
 	RStructure getResult() const;
 
 	/**
-	 * Destructeur.
+	 * Destructor.
 	 */
-	~kUniform();
+	~kUniform() = default;
 
 
-protected:
-
+  protected:
 	/**
-	 * Lancement de l'algorithme.
+	 * Run the algorithm.
 	 */
 	void runAlgorithme();
 
 
-protected:
-
+  protected:
 	/**
-	 * Pointeur partagé vers l'hypergraphe.
+	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
 	_ptrAbstractHypergraph;
@@ -85,12 +81,10 @@ protected:
 	unsigned int _k;
 
 	/**
-	 * Structure des résultats.
+	 * Result structure.
 	 */
 	RStructure _result;
-
 };
-
 
 
 #endif /* ALGORITHM_INCLUDE_KUNIFORM_HH_ */

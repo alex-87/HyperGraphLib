@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2015 Alexis LE GOADEC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -35,10 +35,9 @@ HyperVertex::HyperVertex(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergra
 	_identifier( identifier ){
 }
 
-void
-HyperVertex::addHyperEdge(std::shared_ptr<HyperEdge>& hyperEdge) {
-	if( !containEdge(hyperEdge) ) {
-		_listHyperEdge.push_back( hyperEdge );
+void HyperVertex::addHyperEdge(std::shared_ptr<HyperEdge>& hyperEdge) {
+	if (!containEdge(hyperEdge)) {
+		_listHyperEdge.push_back(hyperEdge);
 	};
 }
 
@@ -52,23 +51,19 @@ HyperVertex::getIdentifier() const {
 	return _identifier;
 }
 
-bool
-HyperVertex::operator ==(const std::shared_ptr<HyperVertex>& hyperVertex) const {
-	return _identifier==hyperVertex->getIdentifier();
+bool HyperVertex::operator==(const std::shared_ptr<HyperVertex>& hyperVertex) const {
+	return _identifier == hyperVertex->getIdentifier();
 }
 
-bool
-HyperVertex::operator<(const std::shared_ptr<HyperVertex>& hyperVertex) const {
+bool HyperVertex::operator<(const std::shared_ptr<HyperVertex>& hyperVertex) const {
 	return _identifier < hyperVertex->getIdentifier();
 }
 
-bool
-HyperVertex::operator>(const std::shared_ptr<HyperVertex>& hyperVertex) const {
+bool HyperVertex::operator>(const std::shared_ptr<HyperVertex>& hyperVertex) const {
 	return _identifier > hyperVertex->getIdentifier();
 }
 
-bool
-HyperVertex::containEdge(std::shared_ptr<HyperEdge>& hyperEdge) const {
+bool HyperVertex::containEdge(std::shared_ptr<HyperEdge>& hyperEdge) const {
 	return std::find(_listHyperEdge.begin(), _listHyperEdge.end(), hyperEdge) != _listHyperEdge.end();
 }
 
