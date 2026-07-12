@@ -117,7 +117,7 @@ class AdjacentMatrix {
 	 * Get the integer adjacency matrix.
 	 * @return the integer adjacency matrix.
 	 */
-	LibType::AdjacentMatrixContainerInt& getUIntAdjacentMatrix();
+	LibType::AdjacentMatrixContainerUInt& getUIntAdjacentMatrix();
 
 	/**
 	 * Get the degree of a hyper-vertex.
@@ -176,7 +176,7 @@ class AdjacentMatrix {
 	/**
 	 * The integer adjacency matrix data.
 	 */
-	LibType::AdjacentMatrixContainerInt _adjacentMatrixUInt;
+	LibType::AdjacentMatrixContainerUInt _adjacentMatrixUInt;
 };
 
 

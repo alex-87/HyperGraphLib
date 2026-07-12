@@ -39,11 +39,6 @@
 class RStructure {
   public:
 	/**
-	 * Set an integer result.
-	 */
-	void setIntegerResult();
-
-	/**
 	 * Set a boolean result.
 	 * @param the boolean result.
 	 */
@@ -54,13 +49,6 @@ class RStructure {
 	 * @param the hypergraph used as the result.
 	 */
 	void setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>&);
-
-  public:
-	/**
-	 * Read an integer result.
-	 * @return the result as an integer.
-	 */
-	int getIntegerResult() const;
 
 	/**
 	 * Read a boolean result.
