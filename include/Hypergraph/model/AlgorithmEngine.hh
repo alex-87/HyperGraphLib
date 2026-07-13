@@ -24,48 +24,47 @@
  */
 
 /**
- * Moteur des algorithmes. Avant de lancer un algorithme,
- * on configure le moteur, qui fait office de lanceur, afin
- * to avoid errors during parallelism.
+ * Algorithm engine. The engine is configured before running an algorithm
+ * to act as a runner and avoid errors during concurrent execution.
  */
-#ifndef MODEL_INCLUDE_MOTORALGORITHM_HH_
-#define MODEL_INCLUDE_MOTORALGORITHM_HH_
+#ifndef MODEL_INCLUDE_AlgorithmEngine_HH_
+#define MODEL_INCLUDE_AlgorithmEngine_HH_
 
 #include <memory>
 
-#include "AlgorithmeAbstrait.hh"
+#include "AbstractAlgorithm.hh"
 
 /**
- * Moteur algorithmique.
+ * Algorithm execution engine.
  */
-class MotorAlgorithm {
+class AlgorithmEngine {
   public:
 	/**
 	 * Get the engine instance.
-	 * @return L'instance du moteur.
+	 * @return the engine instance.
 	 */
-	static MotorAlgorithm& Instance();
+	static AlgorithmEngine& getInstance();
 
 	/**
 	 * Set the algorithm to run.
 	 * @param shared pointer to the algorithm.
 	 */
-	static void setAlgorithme(std::shared_ptr<AlgorithmeAbstrait>&);
+	static void set(std::shared_ptr<AbstractAlgorithm>&);
 
 	/**
-	 * Lancer l'algorithme.
+	 * Execute the configured algorithm.
 	 */
-	static void runAlgorithme();
+	static void run();
 
 	/**
-	 * Indicateur de bloquage du moteur.
+	 * Check whether the engine is locked.
 	 * @return true if the runner is locked, false otherwise.
 	 */
 	static bool isLock();
 
   private:
 	/**
-	 * Bloquage des setters et du lanceur.
+	 * Lock the setters and runner.
 	 */
 	static void lock();
 
@@ -78,39 +77,39 @@ class MotorAlgorithm {
 	/**
 	 * Copy constructor.
 	 */
-	MotorAlgorithm(const MotorAlgorithm&);
+	AlgorithmEngine(const AlgorithmEngine&);
 
 	/**
 	 * Constructor.
 	 */
-	MotorAlgorithm& operator=(const MotorAlgorithm&);
+	AlgorithmEngine& operator=(const AlgorithmEngine&);
 
 	/**
 	 * Constructor.
 	 */
-	MotorAlgorithm();
+	AlgorithmEngine();
 
 	/**
 	 * Destructor.
 	 */
-	~MotorAlgorithm() = default;
+	~AlgorithmEngine() = default;
 
   private:
 	/**
-	 * Descripteur du statut bloquant.
+	 * Lock status flag.
 	 */
 	static bool _lock;
 
 	/**
-	 * Instance unique du moteur.
+	 * Unique engine instance.
 	 */
-	static MotorAlgorithm _instance;
+	static AlgorithmEngine _instance;
 
 	/**
 	 * Shared pointer to the algorithm.
 	 */
-	static std::shared_ptr<AlgorithmeAbstrait> _algorithm;
+	static std::shared_ptr<AbstractAlgorithm> _algorithme;
 };
 
 
-#endif /* MODEL_INCLUDE_MOTORALGORITHM_HH_ */
+#endif /* MODEL_INCLUDE_AlgorithmEngine_HH_ */

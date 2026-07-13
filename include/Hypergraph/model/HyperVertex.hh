@@ -33,7 +33,7 @@
 #include <memory>
 
 #include "LibType.hh"
-#include "HypergrapheAbstrait.hh"
+#include "AbstractHypergraph.hh"
 
 /**
  * Declaration of the hyper-vertex class.
@@ -45,7 +45,7 @@ class HyperVertex {
 	 * @param shared pointer to the hypergraph the hyper-vertex belongs to.
 	 * @param the numeric identifier of the hyper-vertex.
 	 */
-	HyperVertex(const std::shared_ptr<HypergrapheAbstrait>&, unsigned int&);
+	HyperVertex(const std::shared_ptr<AbstractHypergraph>&, unsigned int& identifier);
 
 	/**
 	 * Add a hyper-edge to the hyper-vertex.
@@ -98,7 +98,7 @@ class HyperVertex {
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrHypergraph;
 
 	/**

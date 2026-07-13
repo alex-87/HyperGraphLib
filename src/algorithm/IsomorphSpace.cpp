@@ -25,13 +25,12 @@
 
 #include "Hypergraph/algorithm/IsomorphSpace.hh"
 #include <iostream>
-#include <gecode/driver.hh>
 #include <gecode/minimodel.hh>
 
 
 IsomorphSpace::IsomorphSpace(
-    const std::shared_ptr<HypergrapheAbstrait>& h1,
-    const std::shared_ptr<HypergrapheAbstrait>& h2)
+    const std::shared_ptr<AbstractHypergraph>& h1,
+    const std::shared_ptr<AbstractHypergraph>& h2)
     : _edgeMapping(
           *this,
           h1->getHyperEdgeList().size(),

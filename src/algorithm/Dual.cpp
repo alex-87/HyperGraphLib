@@ -26,22 +26,22 @@
 
 #include "Hypergraph/algorithm/Dual.hh"
 #include "Hypergraph/model/HyperFactory.hh"
-#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/Hypergraph.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 #include "Hypergraph/model/HyperVertex.hh"
 
 
-Dual::Dual(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
-    : _ptrDualHypergraph(new Hypergraphe()) {
+Dual::Dual(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
+    : _ptrDualHypergraph(new Hypergraph()) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 }
 
-RStructure
+ResultStructure
 Dual::getResult() const {
 	return _result;
 }
 
-void Dual::runAlgorithme() {
+void Dual::run() {
 	LibType::IndexerHyperVertex indexVertex(_ptrAbstractHypergraph->getIndexHyperVertex());
 	LibType::IndexerHyperEdge indexEdge(_ptrAbstractHypergraph->getIndexHyperEdge());
 
@@ -77,5 +77,5 @@ void Dual::runAlgorithme() {
 	HyperFactory::closeSession();
 
 	_ptrDualHypergraph->flush();
-	_result.setHypergrapheResult(_ptrDualHypergraph);
+	_result.setHypergraphResult(_ptrDualHypergraph);
 }

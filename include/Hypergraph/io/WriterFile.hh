@@ -29,28 +29,28 @@
 #ifndef IO_INCLUDE_WRITERFILE_HH_
 #define IO_INCLUDE_WRITERFILE_HH_
 
-#include "WriterAbstrait.hh"
+#include "AbstractWriter.hh"
 
 /**
  * Declaration of the hypergraph instance writer module.
  */
-class WriterFile : public WriterAbstrait {
+class WriterFile : public AbstractWriter {
   public:
 	/**
 	 * Constructor.
 	 * @param shared pointer to the hypergraph.
 	 */
-	WriterFile(const std::shared_ptr<HypergrapheAbstrait>&);
+	WriterFile(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Eciture de la matrice d'adjacence sur le flux de sortie.
-	 * @param Le flux de sortie.
+	 * Write the adjacency matrix to the output stream.
+	 * @param output stream.
 	 */
 	void writeAdjacentMatrix(std::ostream&) const;
 
 	/**
 	 * Write the hypergraph instance to the output stream.
-	 * @param Le flux de sortie.
+	 * @param output stream.
 	 */
 	void writeHypergraph(std::ostream&) const;
 
@@ -58,19 +58,19 @@ class WriterFile : public WriterAbstrait {
   protected:
 	/**
 	 * Write the hyper-vertices to the output stream.
-	 * @param Le flux de sortie.
+	 * @param output stream.
 	 */
-	void writeHypergrapheHyperVertex(std::ostream&) const;
+	void writeHypergraphHyperVertex(std::ostream&) const;
 
 	/**
 	 * Write the hyper-edges to the output stream.
-	 * @param Le flux de sortie.
+	 * @param output stream.
 	 */
-	void writeHypergrapheHyperEdge(std::ostream&) const;
+	void writeHypergraphHyperEdge(std::ostream&) const;
 
 
   protected:
 };
 
 
-#endif /* IO_INCLUDE_READERFILE_HH_ */
+#endif /* IO_INCLUDE_WRITERFILE_HH_ */

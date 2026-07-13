@@ -26,22 +26,22 @@
 
 #include "Hypergraph/io/ReaderFile.hh"
 #include "Hypergraph/model/HyperFactory.hh"
-#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/Hypergraph.hh"
 
 #include <string>
 #include <sstream>
 
 ReaderFile::ReaderFile()
-    : ReaderAbstrait(std::shared_ptr<HypergrapheAbstrait>(new Hypergraphe())) {
+    : AbstractReader(std::shared_ptr<AbstractHypergraph>(new Hypergraph())) {
 }
 
-void ReaderFile::readHypergraphe(std::istream& input) {
+void ReaderFile::readHypergraph(std::istream& input) {
 	while (HyperFactory::isSession())
 		;
 	HyperFactory::startSession(_ptrAbstractHypergraph);
 
-	readHypergrapheHyperVertex(input);
-	readHypergrapheHyperEdge(input);
+	readHypergraphHyperVertex(input);
+	readHypergraphHyperEdge(input);
 
 	unsigned int vertex(0);
 	unsigned int edge(0);
@@ -61,7 +61,7 @@ void ReaderFile::readHypergraphe(std::istream& input) {
 	HyperFactory::closeSession();
 }
 
-void ReaderFile::readHypergrapheHyperVertex(std::istream& input) {
+void ReaderFile::readHypergraphHyperVertex(std::istream& input) {
 	std::string s;
 	std::getline(input, s);
 
@@ -74,7 +74,7 @@ void ReaderFile::readHypergrapheHyperVertex(std::istream& input) {
 	}
 }
 
-void ReaderFile::readHypergrapheHyperEdge(std::istream& input) {
+void ReaderFile::readHypergraphHyperEdge(std::istream& input) {
 	std::string s;
 	std::getline(input, s);
 
@@ -96,6 +96,7 @@ void ReaderFile::flush() {
 		_ptrAbstractHypergraph->addHyperEdge(edge);
 	}
 
+	_ptrAbstractHypergraph->flush();
 	_ptrAbstractHypergraph->flush();
 }
 

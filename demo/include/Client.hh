@@ -30,7 +30,7 @@
 #include <memory>
 #include <utility>
 
-#include "../../include/Hypergraph/model/AlgorithmeAbstrait.hh"
+#include "../../include/Hypergraph/model/AbstractAlgorithm.hh"
 
 #define VERSION_MAJOR 3
 #define VERSION_MINOR 0
@@ -41,7 +41,7 @@
  * Replaces the former NewAlgorithm / NewAlgorithm2 macros.
  */
 template <typename Algorithm, typename... Args>
-std::shared_ptr<AlgorithmeAbstrait> makeAlgorithm(Args&&... args) {
+std::shared_ptr<AbstractAlgorithm> makeAlgorithm(Args&&... args) {
 	return std::make_shared<Algorithm>(std::forward<Args>(args)...);
 }
 

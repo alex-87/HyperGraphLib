@@ -31,25 +31,25 @@
 #define ALGORITHM_INCLUDE_DUAL_HH_
 
 #include <memory>
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/AlgorithmeAbstrait.hh"
+#include "../model/AbstractHypergraph.hh"
+#include "../model/AbstractAlgorithm.hh"
 
 /**
  * Dual algorithm of the hypergraph.
  */
-class Dual : public AlgorithmeAbstrait {
+class Dual : public AbstractAlgorithm {
   public:
 	/**
 	 * Constructor.
 	 * @param shared pointer to the hypergraph.
 	 */
-	Dual(const std::shared_ptr<HypergrapheAbstrait>&);
+	Dual(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
 	 * Get the result structure.
 	 * @return the result structure.
 	 */
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	/**
 	 * Destructor.
@@ -60,25 +60,25 @@ class Dual : public AlgorithmeAbstrait {
 	/**
 	 * Run the algorithm.
 	 */
-	void runAlgorithme();
+	void run();
 
   protected:
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
 	/**
 	 * Shared pointer to the dual hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrDualHypergraph;
 
 	/**
 	 * Result structure.
 	 */
-	RStructure _result;
+	ResultStructure _result;
 };
 
 

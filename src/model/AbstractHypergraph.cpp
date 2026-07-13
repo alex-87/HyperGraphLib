@@ -24,27 +24,39 @@
  */
 
 
-#include "Hypergraph/algorithm/kUniform.hh"
+#include "Hypergraph/model/AbstractHypergraph.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
 
-
-kUniform::kUniform(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph, const unsigned int& k)
-    : _ptrAbstractHypergraph(ptrAbstractHypergraph),
-      _k(k) {
+AbstractHypergraph::AbstractHypergraph()
+    : _adjacentMatrix(0, 0) {
 }
 
-ResultStructure
-kUniform::getResult() const {
-	return _result;
+LibType::IndexerHyperVertex&
+AbstractHypergraph::getIndexHyperVertex() {
+	return _indexHyperVertex;
 }
 
-void kUniform::run() {
-	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
-	_result.setBooleanResult(true);
+LibType::IndexerHyperEdge&
+AbstractHypergraph::getIndexHyperEdge() {
+	return _indexHyperEdge;
+}
 
-	for (const auto& e : _ptrAbstractHypergraph->getIndexHyperEdge()) {
-		if (matrix.getEdgeSize(e.first) != _k) {
-			_result.setBooleanResult(false);
-			break;
-		};
-	}
+LibType::ListHyperVertex&
+AbstractHypergraph::getHyperVertexList() {
+	return _listHyperVertex;
+}
+
+LibType::ListHyperEdge&
+AbstractHypergraph::getHyperEdgeList() {
+	return _listHyperEdge;
+}
+
+AdjacentMatrix&
+AbstractHypergraph::getAdjacentMatrix() {
+	return _adjacentMatrix;
+}
+
+bool AbstractHypergraph::isHyperVertexInHyperEdge(std::shared_ptr<HyperVertex>& hv, std::shared_ptr<HyperEdge>& he) const {
+	return _adjacentMatrix.isVertexInEdge(hv->getIdentifier(), he->getIdentifier());
 }

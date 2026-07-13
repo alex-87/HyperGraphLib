@@ -40,9 +40,6 @@ class LibType {
 	typedef Matrix2D<bool>
 	    AdjacentMatrixContainerBool;
 
-	typedef Matrix2D<unsigned int>
-	    AdjacentMatrixContainerUInt;
-
 	typedef std::vector<std::shared_ptr<HyperVertex>>
 	    ListHyperVertex;
 

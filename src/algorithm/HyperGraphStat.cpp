@@ -27,7 +27,7 @@
 #include "Hypergraph/algorithm/HyperGraphStat.hh"
 #include "Hypergraph/model/AdjacentMatrix.hh"
 
-HyperGraphStat::HyperGraphStat(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
+HyperGraphStat::HyperGraphStat(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 	_nhEdge = 0;
 	_nhVertex = 0;
@@ -61,18 +61,17 @@ HyperGraphStat::getCoRang() const {
 	return _coRank;
 }
 
-void HyperGraphStat::runAlgorithme() {
+void HyperGraphStat::run() {
 	_nhEdge = _ptrAbstractHypergraph->getHyperEdgeList().size();
 	_nhVertex = _ptrAbstractHypergraph->getHyperVertexList().size();
 
 	AdjacentMatrix m(_ptrAbstractHypergraph->getAdjacentMatrix());
-	LibType::ListHyperEdge eList(_ptrAbstractHypergraph->getHyperEdgeList());
 
 	_rank = m.getRank();
 	_coRank = m.getCoRank();
 }
 
-RStructure
+ResultStructure
 HyperGraphStat::getResult() const {
 	return _result;
 }

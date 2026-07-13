@@ -1,4 +1,4 @@
-# HyperGraphLib 
+# HyperGraphLib
 
 Hypergraphs modelling library with algorithms, [the official page](https://alex-87.github.io/HyperGraphLib) for more informations.
 
@@ -45,16 +45,16 @@ Reference documentation, generated using [Doxygen](http://www.doxygen.org) is av
 ```cpp
 #include <iostream>
 #include <memory>
-#include <Hypergraph/model/Hypergraphe.hh>
+#include <Hypergraph/model/Hypergraph.hh>
 #include <Hypergraph/model/HyperFactory.hh>
-#include <Hypergraph/model/MotorAlgorithm.hh>
+#include <Hypergraph/model/AlgorithmEngine.hh>
 #include <Hypergraph/algorithm/Isomorph.hh>
 #include <Hypergraph/algorithm/Simple.hh>
 
 int main(int argc, char * argv[]) {
 
     // Creating the hypergraph inside smart pointer
-    std::shared_ptr<HypergrapheAbstrait> ptrHpg( new Hypergraphe() );
+    std::shared_ptr<AbstractHypergraph> ptrHpg( new Hypergraph() );
 
     // Starting the create session
     HyperFactory::startSession(ptrHpg);
@@ -73,8 +73,8 @@ int main(int argc, char * argv[]) {
     HyperFactory::link(ptrVertexB, ptrEdge2);
 
     // Adding the hyper-vertexes in the hypergraph
-    ptrHpg->addHyperVertex( ptrVertexA );
-    ptrHpg->addHyperVertex( ptrVertexB );
+    ptrHpg->addHyperVertex(ptrVertexA);
+    ptrHpg->addHyperVertex(ptrVertexB);
 
     // Adding the hyper-edges in the hypergraph
     ptrHpg->addHyperEdge(ptrEdge1);
@@ -89,16 +89,16 @@ int main(int argc, char * argv[]) {
     // -- -- --
 
     // Initializing the Isomorphism algorithm with ptrHpg (twice, just for the example)
-    std::shared_ptr<AlgorithmeAbstrait> isomorphPtr( new Isomorph( ptrHpg , ptrHpg ) );
+    std::shared_ptr<AbstractAlgorithm> isomorphPtr( new Isomorph(ptrHpg, ptrHpg) );
 
-    // Setting the motor's algorithm
-    MotorAlgorithm::setAlgorithme( isomorphPtr );
+    // Setting the engine's algorithm
+    AlgorithmEngine::setAlgorithme(isomorphPtr);
 
-    // Running the motor
-    MotorAlgorithm::runAlgorithme();
+    // Running the engine
+    AlgorithmEngine::runAlgorithme();
 
     // Getting the result
-    RStructure r1( isomorphPtr->getResult() );
+    ResultStructure r1( isomorphPtr->getResult() );
 
     if( r1.getBooleanResult() ) {
     	std::cout << "The hypergraph is isomorph with itself" << std::endl;
@@ -107,16 +107,16 @@ int main(int argc, char * argv[]) {
     // -- -- --
 
     // Initializing the Simple algorithm with ptrHpg (twice, just for the example)
-    std::shared_ptr<AlgorithmeAbstrait> simplephPtr( new Simple( ptrHpg ) );
+    std::shared_ptr<AbstractAlgorithm> simplephPtr( new Simple( ptrHpg ) );
 
-    // Setting the motor's algorithm
-    MotorAlgorithm::setAlgorithme( simplephPtr );
+    // Setting the engine's algorithm
+    AlgorithmEngine::set(simplephPtr);
 
-    // Running the motor
-    MotorAlgorithm::runAlgorithme();
+    // Running the engine
+    AlgorithmEngine::run();
 
     // Getting the result
-    RStructure r2( simplephPtr->getResult() );
+    ResultStructure r2( simplephPtr->getResult() );
 
     if( r2.getBooleanResult() ) {
         std::cout << "The hypergraph is simple." << std::endl;
@@ -126,7 +126,7 @@ int main(int argc, char * argv[]) {
 }
 ```
 
-### Build the Example
+### Building the Example
 
 ```shell
 g++ example.cpp -std=c++17 -o example -lhypergraph

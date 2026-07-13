@@ -28,16 +28,16 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
-Path::Path(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
-    : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
+Path::Path(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
+    : _ptrAbstractHypergraph(ptrAbstractHypergraph), _limit(0) {
 }
 
-RStructure
+ResultStructure
 Path::getResult() const {
 	return _result;
 }
 
-RStructurePath
+ResultStructurePath
 Path::getPathResult() const {
 	return _result;
 }
@@ -56,7 +56,7 @@ void Path::setHyperVertex(std::shared_ptr<HyperVertex>& source, std::shared_ptr<
 	_destination = destination;
 }
 
-void Path::runAlgorithme() {
+void Path::run() {
 	LibType::PathList pathList(new std::vector<LibType::ListHyperVertex>());
 
 	if (_source == _destination) {

@@ -27,14 +27,14 @@
 #include "Hypergraph/algorithm/Diameter.hh"
 
 
-Diameter::Diameter(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+Diameter::Diameter(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
-void Diameter::runAlgorithme() {
+void Diameter::run() {
 }
 
-RStructure
+ResultStructure
 Diameter::getResult() const {
 	return _result;
 }

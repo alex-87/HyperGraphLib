@@ -23,43 +23,22 @@
  *
  */
 
-/**
- * Definition of the algorithm interface.
- */
 
+#include "Hypergraph/model/ResultStructure.hh"
 
-#ifndef MODEL_INCLUDE_ALGORITHMEABSTRAIT_HH_
-#define MODEL_INCLUDE_ALGORITHMEABSTRAIT_HH_
+void ResultStructure::setBooleanResult(bool result) {
+	_booleanResult = result;
+}
 
-#include "RStructure.hh"
+bool ResultStructure::getBooleanResult() const {
+	return _booleanResult;
+}
 
-class MotorAlgorithm;
+void ResultStructure::setHypergraphResult(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph) {
+	_hypergraphResult = ptrAbstractHypergraph;
+}
 
-/**
- * Abstract class defining the mandatory methods of an algorithm.
- */
-class AlgorithmeAbstrait {
-  public:
-	/**
-	 * Get the result description structure.
-	 * @return the result description structure.
-	 */
-	virtual RStructure getResult() const = 0;
-
-	/**
-	 * Abstract destructor.
-	 */
-	virtual ~AlgorithmeAbstrait() = default;
-
-
-  protected:
-	friend class MotorAlgorithm;
-
-	/**
-	 * Main entry point running the algorithm.
-	 */
-	virtual void runAlgorithme() = 0;
-};
-
-
-#endif /* MODEL_INCLUDE_ALGORITHMEABSTRAIT_HH_ */
+std::shared_ptr<AbstractHypergraph>
+ResultStructure::getHypergraphResult() const {
+	return _hypergraphResult;
+}

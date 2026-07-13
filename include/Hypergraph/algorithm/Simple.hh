@@ -30,30 +30,30 @@
 #define ALGORITHM_INCLUDE_SIMPLE_HH_
 
 #include <memory>
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/Hypergraphe.hh"
+#include "../model/AbstractHypergraph.hh"
+#include "../model/Hypergraph.hh"
 #include "../model/HyperVertex.hh"
 #include "../model/HyperEdge.hh"
-#include "../model/AlgorithmeAbstrait.hh"
-#include "../model/RStructure.hh"
+#include "../model/AbstractAlgorithm.hh"
+#include "../model/ResultStructure.hh"
 #include "Linear.hh"
 
 /**
  * simple algorithm on the hypergraph.
  */
-class Simple : public AlgorithmeAbstrait {
+class Simple : public AbstractAlgorithm {
   public:
 	/**
 	 * Constructor
 	 * @param shared pointer to the hypergraph.
 	 */
-	Simple(std::shared_ptr<HypergrapheAbstrait>&);
+	Simple(std::shared_ptr<AbstractHypergraph>&);
 
 	/**
 	 * Get the result structure.
 	 * @return the result structure.
 	 */
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	/**
 	 * Destructor.
@@ -67,13 +67,13 @@ class Simple : public AlgorithmeAbstrait {
 	/**
 	 * Run the algorithm.
 	 */
-	void runAlgorithme();
+	void run();
 
 	/**
 	 * Check inclusion between hyper-edges through their vertices.
 	 * @param the first list.
 	 * @param the second list.
-	 * @return True si c'est le cas, False sinon.
+	 * @return True if included; False otherwise.
 	 */
 	bool subsetVertexList(const LibType::ListHyperVertex&, const LibType::ListHyperVertex&) const;
 
@@ -81,7 +81,7 @@ class Simple : public AlgorithmeAbstrait {
 	 * Check whether a hyper-vertex is contained in the list.
 	 * @param list of hyper-vertices.
 	 * @param L'hyer-vertex.
-	 * @return True si c'est le cas, False sinon.
+	 * @return True if contained; False otherwise.
 	 */
 	bool contains(const LibType::ListHyperVertex&, const std::shared_ptr<HyperVertex>&) const;
 
@@ -90,13 +90,13 @@ class Simple : public AlgorithmeAbstrait {
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
 	/**
 	 * Result structure.
 	 */
-	RStructure _result;
+	ResultStructure _result;
 };
 
 

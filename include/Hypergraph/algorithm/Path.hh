@@ -31,17 +31,17 @@
 #ifndef ALGORITHM_INCLUDE_PATH_HH_
 #define ALGORITHM_INCLUDE_PATH_HH_
 
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/AlgorithmeAbstrait.hh"
-#include "../model/RStructurePath.hh"
+#include "../model/AbstractHypergraph.hh"
+#include "../model/AbstractAlgorithm.hh"
+#include "../model/ResultStructurePath.hh"
 
-class Path : public AlgorithmeAbstrait {
+class Path : public AbstractAlgorithm {
   public:
 	/*
 	 * Constructor.
-	 * @param std::shared_ptr<HypergrapheAbstrait> shared pointer to the hypergraph.
+	 * @param std::shared_ptr<AbstractHypergraph> shared pointer to the hypergraph.
 	 */
-	Path(std::shared_ptr<HypergrapheAbstrait>&);
+	Path(std::shared_ptr<AbstractHypergraph>&);
 
 	/**
 	 * Configure the vertices used to list the paths.
@@ -51,12 +51,12 @@ class Path : public AlgorithmeAbstrait {
 	/**
 	 * Get the result structure.
 	 */
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	/**
 	 * Get the result structure.
 	 */
-	RStructurePath getPathResult() const;
+	ResultStructurePath getPathResult() const;
 
 	/**
 	 * Set the maximum number of paths. Default 0, meaning unbounded.
@@ -78,7 +78,7 @@ class Path : public AlgorithmeAbstrait {
 	/**
 	 * Run the algorithm.
 	 */
-	void runAlgorithme();
+	void run();
 
 	/**
 	 * Check whether the hyper-vertex is contained in the list.
@@ -97,7 +97,7 @@ class Path : public AlgorithmeAbstrait {
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
 	/**
@@ -113,7 +113,7 @@ class Path : public AlgorithmeAbstrait {
 	/**
 	 * Result structure.
 	 */
-	RStructurePath _result;
+	ResultStructurePath _result;
 
 	/**
 	 * Valeur limite.

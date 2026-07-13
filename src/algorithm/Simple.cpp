@@ -25,14 +25,13 @@
 
 #include "Hypergraph/algorithm/Simple.hh"
 
-Simple::Simple(std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph)
+Simple::Simple(std::shared_ptr<AbstractHypergraph>& ptrHypergraph)
     : _ptrAbstractHypergraph(ptrHypergraph) {
 }
 
-void Simple::runAlgorithme() {
+void Simple::run() {
 	_result.setBooleanResult(true);
 
-	LibType::ListHyperVertex listVertex(_ptrAbstractHypergraph->getHyperVertexList());
 	LibType::ListHyperEdge listEdge(_ptrAbstractHypergraph->getHyperEdgeList());
 
 	for (unsigned int i = 0; i < listEdge.size(); i++) {
@@ -66,7 +65,7 @@ bool Simple::contains(const LibType::ListHyperVertex& vList, const std::shared_p
 	return false;
 }
 
-RStructure
+ResultStructure
 Simple::getResult() const {
 	return _result;
 }

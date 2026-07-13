@@ -24,27 +24,43 @@
  */
 
 
-#include "Hypergraph/algorithm/kUniform.hh"
+#include "Hypergraph/model/AlgorithmEngine.hh"
 
-
-kUniform::kUniform(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph, const unsigned int& k)
-    : _ptrAbstractHypergraph(ptrAbstractHypergraph),
-      _k(k) {
+AlgorithmEngine::AlgorithmEngine() {
 }
 
-ResultStructure
-kUniform::getResult() const {
-	return _result;
+AlgorithmEngine&
+AlgorithmEngine::getInstance() {
+	return _instance;
 }
 
-void kUniform::run() {
-	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
-	_result.setBooleanResult(true);
-
-	for (const auto& e : _ptrAbstractHypergraph->getIndexHyperEdge()) {
-		if (matrix.getEdgeSize(e.first) != _k) {
-			_result.setBooleanResult(false);
-			break;
-		};
-	}
+void AlgorithmEngine::set(std::shared_ptr<AbstractAlgorithm>& algorithme) {
+	if (isLock())
+		return;
+	_algorithme = algorithme;
 }
+
+void AlgorithmEngine::run() {
+	if (isLock())
+		return;
+	lock();
+	_algorithme->run();
+	unlock();
+}
+
+bool AlgorithmEngine::isLock() {
+	return _lock;
+}
+
+void AlgorithmEngine::lock() {
+	_lock = true;
+}
+
+void AlgorithmEngine::unlock() {
+	_lock = false;
+}
+
+
+bool AlgorithmEngine::_lock = false;
+AlgorithmEngine AlgorithmEngine::_instance = AlgorithmEngine();
+std::shared_ptr<AbstractAlgorithm> AlgorithmEngine::_algorithme = nullptr;

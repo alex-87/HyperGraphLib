@@ -24,4 +24,17 @@
  */
 
 
-#include "Hypergraph/model/AlgorithmeAbstrait.hh"
+#include "Hypergraph/model/ResultStructurePath.hh"
+
+ResultStructurePath::ResultStructurePath()
+    : ResultStructure() {
+}
+
+void ResultStructurePath::setPathResult(LibType::PathList& pathList) {
+	_pathList = pathList;
+}
+
+LibType::PathList
+ResultStructurePath::getPathResult() {
+	return _pathList;
+}

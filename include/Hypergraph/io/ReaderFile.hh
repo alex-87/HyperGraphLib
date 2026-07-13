@@ -29,14 +29,14 @@
 #ifndef IO_INCLUDE_READERFILE_HH_
 #define IO_INCLUDE_READERFILE_HH_
 
-#include "ReaderAbstrait.hh"
+#include "AbstractReader.hh"
 #include <istream>
 
 
 /**
  * Declaration of the reader module.
  */
-class ReaderFile : public ReaderAbstrait {
+class ReaderFile : public AbstractReader {
   public:
 	/**
 	 * Constructor.
@@ -45,12 +45,12 @@ class ReaderFile : public ReaderAbstrait {
 
 	/**
 	 * Read the hypergraph instance.
-	 * @param Le flux entrant.
+	 * @param input stream.
 	 */
-	void readHypergraphe(std::istream&);
+	void readHypergraph(std::istream&);
 
 	/**
-	 * Deestructeur.
+	 * Destructor.
 	 */
 	~ReaderFile() = default;
 
@@ -58,15 +58,15 @@ class ReaderFile : public ReaderAbstrait {
   protected:
 	/**
 	 * Read the hyper-vertices of the instance.
-	 * @param Le flux entrant.
+	 * @param input stream.
 	 */
-	void readHypergrapheHyperVertex(std::istream&);
+	void readHypergraphHyperVertex(std::istream&);
 
 	/**
 	 * Read the hyper-edges of the instance.
-	 * @param Le flux entrant.
+	 * @param input stream.
 	 */
-	void readHypergrapheHyperEdge(std::istream&);
+	void readHypergraphHyperEdge(std::istream&);
 
 	/**
 	 * Get the hyper-vertex by its numeric identifier.

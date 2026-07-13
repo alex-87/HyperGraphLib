@@ -31,30 +31,30 @@
 #define ALGORITHM_INCLUDE_HPGSTAT
 
 #include <memory>
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/Hypergraphe.hh"
+#include "../model/AbstractHypergraph.hh"
+#include "../model/Hypergraph.hh"
 #include "../model/HyperVertex.hh"
 #include "../model/HyperEdge.hh"
-#include "../model/AlgorithmeAbstrait.hh"
-#include "../model/RStructure.hh"
+#include "../model/AbstractAlgorithm.hh"
+#include "../model/ResultStructure.hh"
 
 
 /**
  * Algorithm generating the hypergraph statistics.
  */
-class HyperGraphStat : public AlgorithmeAbstrait {
+class HyperGraphStat : public AbstractAlgorithm {
   public:
 	/**
 	 * Constructor.
 	 * @param shared pointer to the hypergraph.
 	 */
-	HyperGraphStat(const std::shared_ptr<HypergrapheAbstrait>&);
+	HyperGraphStat(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
 	 * Get the result structure - unused here.
 	 * @return the result structure - unused here.
 	 */
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	/**
 	 * Destructor.
@@ -90,21 +90,21 @@ class HyperGraphStat : public AlgorithmeAbstrait {
 
   protected:
 	/**
-	 * Lancment de l'algorithme.
+	 * Run the algorithm.
 	 */
-	void runAlgorithme();
+	void run();
 
   protected:
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
 	/**
 	 * The result structure - unused here.
 	 */
-	RStructure _result;
+	ResultStructure _result;
 
 	/**
 	 * The number of hyper-edges.

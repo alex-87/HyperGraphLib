@@ -26,16 +26,15 @@
 #include <memory>
 
 #include "../include/Hypergraph/model/HyperFactory.hh"
-#include "../include/Hypergraph/model/HypergrapheAbstrait.hh"
-#include "../include/Hypergraph/model/Hypergraphe.hh"
-
+#include "../include/Hypergraph/model/AbstractHypergraph.hh"
+#include "../include/Hypergraph/model/Hypergraph.hh"
 #include "include/MiniTest.hh"
 
 
-std::shared_ptr<HypergrapheAbstrait> ptrHpg;
+std::shared_ptr<AbstractHypergraph> ptrHpg;
 
 void setup(void) {
-	ptrHpg.reset(new Hypergraphe);
+	ptrHpg.reset(new Hypergraph);
 
 	HyperFactory::startSession(ptrHpg);
 
@@ -129,7 +128,7 @@ TEST(test_model, hpg_create_modify, setup, teardown) {
 }
 
 TEST(test_model, hpg_contain, setup, teardown) {
-	std::shared_ptr<HypergrapheAbstrait> cptrHpg(new Hypergraphe);
+	std::shared_ptr<AbstractHypergraph> cptrHpg(new Hypergraph);
 	HyperFactory::startSession(cptrHpg);
 
 	std::shared_ptr<HyperEdge> ptrEdge(HyperFactory::newHyperEdge());

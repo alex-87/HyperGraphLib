@@ -28,28 +28,28 @@
 #define ALGORITHM_INCLUDE_DIAMETER_HH_
 
 #include <memory>
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/AlgorithmeAbstrait.hh"
+#include "../model/AbstractHypergraph.hh"
+#include "../model/AbstractAlgorithm.hh"
 
 
-class Diameter : public AlgorithmeAbstrait {
+class Diameter : public AbstractAlgorithm {
   public:
-	Diameter(std::shared_ptr<HypergrapheAbstrait>&);
+	Diameter(std::shared_ptr<AbstractHypergraph>&);
 
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	~Diameter() = default;
 
 
   protected:
-	void runAlgorithme();
+	void run();
 
 
   protected:
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
-	RStructure _result;
+	ResultStructure _result;
 };
 
 

@@ -26,7 +26,7 @@
 
 #include "Hypergraph/io/WriterFile.hh"
 
-#include "Hypergraph/model/HypergrapheAbstrait.hh"
+#include "Hypergraph/model/AbstractHypergraph.hh"
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
@@ -34,8 +34,8 @@
 #include <ostream>
 #include <string>
 
-WriterFile::WriterFile(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
-    : WriterAbstrait(ptrAbstractHypergraph) {
+WriterFile::WriterFile(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
+    : AbstractWriter(ptrAbstractHypergraph) {
 }
 
 void WriterFile::writeAdjacentMatrix(std::ostream& output) const {
@@ -56,8 +56,8 @@ void WriterFile::writeAdjacentMatrix(std::ostream& output) const {
 }
 
 void WriterFile::writeHypergraph(std::ostream& output) const {
-	writeHypergrapheHyperVertex(output);
-	writeHypergrapheHyperEdge(output);
+	writeHypergraphHyperVertex(output);
+	writeHypergraphHyperEdge(output);
 
 	LibType::ListHyperEdge listEdge(_ptrAbstractHypergraph->getHyperEdgeList());
 
@@ -69,7 +69,7 @@ void WriterFile::writeHypergraph(std::ostream& output) const {
 	}
 }
 
-void WriterFile::writeHypergrapheHyperVertex(std::ostream& output) const {
+void WriterFile::writeHypergraphHyperVertex(std::ostream& output) const {
 	LibType::ListHyperVertex listVertex(_ptrAbstractHypergraph->getHyperVertexList());
 
 	for (const auto& vertex : listVertex) {
@@ -79,7 +79,7 @@ void WriterFile::writeHypergrapheHyperVertex(std::ostream& output) const {
 	output << "\n";
 }
 
-void WriterFile::writeHypergrapheHyperEdge(std::ostream& output) const {
+void WriterFile::writeHypergraphHyperEdge(std::ostream& output) const {
 	LibType::ListHyperEdge listEdge(_ptrAbstractHypergraph->getHyperEdgeList());
 
 	for (const auto& edge : listEdge) {

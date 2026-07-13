@@ -23,28 +23,42 @@
  *
  */
 
+/**
+ * Definition of the algorithm interface.
+ */
 
-#include "Hypergraph/algorithm/kUniform.hh"
+#ifndef MODEL_INCLUDE_ABSTRACT_ALGORITHM_HH_
+#define MODEL_INCLUDE_ABSTRACT_ALGORITHM_HH_
+
+#include "ResultStructure.hh"
+
+class AlgorithmEngine;
+
+/**
+ * Abstract class defining the mandatory methods of an algorithm.
+ */
+class AbstractAlgorithm {
+  public:
+	/**
+	 * Get the result description structure.
+	 * @return the result description structure.
+	 */
+	virtual ResultStructure getResult() const = 0;
+
+	/**
+	 * Abstract destructor.
+	 */
+	virtual ~AbstractAlgorithm() = default;
 
 
-kUniform::kUniform(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph, const unsigned int& k)
-    : _ptrAbstractHypergraph(ptrAbstractHypergraph),
-      _k(k) {
-}
+  protected:
+	friend class AlgorithmEngine;
 
-ResultStructure
-kUniform::getResult() const {
-	return _result;
-}
+	/**
+	 * Main entry point running the algorithm.
+	 */
+	virtual void run() = 0;
+};
 
-void kUniform::run() {
-	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
-	_result.setBooleanResult(true);
 
-	for (const auto& e : _ptrAbstractHypergraph->getIndexHyperEdge()) {
-		if (matrix.getEdgeSize(e.first) != _k) {
-			_result.setBooleanResult(false);
-			break;
-		};
-	}
-}
+#endif /* MODEL_INCLUDE_ABSTRACT_ALGORITHM_HH_ */

@@ -38,17 +38,10 @@
 class HyperFactory {
   public:
 	/**
-	 * Instance unique de la fabrique.
-	 */
-	static HyperFactory& Instance();
-
-
-  public:
-	/**
 	 * Start a hypergraph construction session.
 	 * @param shared pointer to the hypergraph.
 	 */
-	static void startSession(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph);
+	static void startSession(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph);
 
 	/**
 	 * Create a new hyper-vertex.
@@ -102,13 +95,7 @@ class HyperFactory {
 	 */
 	~HyperFactory() = default;
 
-
   private:
-	/**
-	 * Instnce unique de la fabrique.
-	 */
-	static HyperFactory _instance;
-
 	/**
 	 * Counter of hyper-vertex indices.
 	 */
@@ -120,14 +107,14 @@ class HyperFactory {
 	static unsigned int _indexEdge;
 
 	/**
-	 * Indicateur de session.
+	 * Session state flag.
 	 */
 	static bool _isSession;
 
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	static std::shared_ptr<HypergrapheAbstrait> _ptrAbstractHypergraph;
+	static std::shared_ptr<AbstractHypergraph> _ptrAbstractHypergraph;
 };
 
 

@@ -24,64 +24,56 @@
  */
 
 /**
- * Instance writer module interface.
+ * Result description structure. This object
+ * is the representation of the result produced by any algorithm.
  */
-#ifndef IO_INCLUDE_WRITERABSTRAIT_HH_
-#define IO_INCLUDE_WRITERABSTRAIT_HH_
+#ifndef MODEL_INCLUDE_RESULT_STRUCTURE_HH_
+#define MODEL_INCLUDE_RESULT_STRUCTURE_HH_
 
-#include "../model/HypergrapheAbstrait.hh"
+#include "AbstractHypergraph.hh"
 #include <memory>
 
 /**
- * Declaration of the instance writer module interface.
+ * Result description structure.
  */
-class WriterAbstrait {
+class ResultStructure {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
+	 * Set a boolean result.
+	 * @param the boolean result.
 	 */
-	WriterAbstrait(const std::shared_ptr<HypergrapheAbstrait>&);
+	void setBooleanResult(bool);
 
 	/**
-	 * Write the adjacency matrix to the given output stream.
-	 * @param Le flux de sortie.
+	 * Set a AbstractHypergraph result.
+	 * @param the hypergraph used as the result.
 	 */
-	virtual void writeAdjacentMatrix(std::ostream&) const = 0;
+	void setHypergraphResult(const std::shared_ptr<AbstractHypergraph>&);
+
+  public:
+	/**
+	 * Read a boolean result.
+	 * @return the result as a boolean value.
+	 */
+	bool getBooleanResult() const;
 
 	/**
-	 * Write the hypergraph to the output stream.
-	 * @param Le flux de sortie.
+	 * Read a AbstractHypergraph result.
+	 * @return the AbstractHypergraph result.
 	 */
-	virtual void writeHypergraph(std::ostream&) const = 0;
-
-	/**
-	 * Virtual destructor.
-	 */
-	virtual ~WriterAbstrait() = default;
-
+	std::shared_ptr<AbstractHypergraph> getHypergraphResult() const;
 
   protected:
 	/**
-	 * Write the hyper-vertices to the output stream.
-	 * @param Le flux de sortie.
+	 * The boolean result value.
 	 */
-	virtual void writeHypergrapheHyperVertex(std::ostream&) const = 0;
+	bool _booleanResult;
 
 	/**
-	 * Write the hyper-edges to the output stream.
-	 * @param Le flux de sortie.
+	 * The hypergraph used as the result.
 	 */
-	virtual void writeHypergrapheHyperEdge(std::ostream&) const = 0;
-
-
-  protected:
-	/**
-	 * Shared pointer to the hypergraph.
-	 */
-	std::shared_ptr<HypergrapheAbstrait>
-	    _ptrAbstractHypergraph;
+	std::shared_ptr<AbstractHypergraph> _hypergraphResult;
 };
 
 
-#endif /* IO_INCLUDE_WRITERABSTRAIT_HH_ */
+#endif /* MODEL_INCLUDE_RESULT_STRUCTURE_HH_ */

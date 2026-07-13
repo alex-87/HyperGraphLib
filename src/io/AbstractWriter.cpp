@@ -24,13 +24,8 @@
  */
 
 
-#include "Hypergraph/io/ReaderAbstrait.hh"
+#include "Hypergraph/io/AbstractWriter.hh"
 
-ReaderAbstrait::ReaderAbstrait(const std::shared_ptr<HypergrapheAbstrait>& p) {
-	_ptrAbstractHypergraph = p;
-}
-
-std::shared_ptr<HypergrapheAbstrait>&
-ReaderAbstrait::getHypergraphe() {
-	return _ptrAbstractHypergraph;
+AbstractWriter::AbstractWriter(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
+    : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }

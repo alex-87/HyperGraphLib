@@ -24,64 +24,64 @@
  */
 
 /**
- * Interface du module de lecture d'instance.
+ * Instance writer module interface.
  */
-#ifndef IO_INCLUDE_READERABSTRAIT_HH_
-#define IO_INCLUDE_READERABSTRAIT_HH_
+#ifndef IO_INCLUDE_ABSTRACT_WRITER_HH_
+#define IO_INCLUDE_ABSTRACT_WRITER_HH_
 
-#include "../model/HypergrapheAbstrait.hh"
+#include "../model/AbstractHypergraph.hh"
 #include <memory>
 
 /**
- * Dfinition de l'interface du module de lecture d'instance.
+ * Declaration of the instance writer module interface.
  */
-class ReaderAbstrait {
+class AbstractWriter {
   public:
 	/**
 	 * Constructor.
 	 * @param shared pointer to the hypergraph.
 	 */
-	ReaderAbstrait(const std::shared_ptr<HypergrapheAbstrait>&);
+	AbstractWriter(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Read the instance and build the hypergraph.
-	 * @param Le flux entrant.
+	 * Write the adjacency matrix to the given output stream.
+	 * @param output stream.
 	 */
-	virtual void readHypergraphe(std::istream&) = 0;
+	virtual void writeAdjacentMatrix(std::ostream&) const = 0;
 
 	/**
-	 * Get the hypergraph after construction.
+	 * Write the hypergraph to the output stream.
+	 * @param output stream.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>&
-	getHypergraphe();
+	virtual void writeHypergraph(std::ostream&) const = 0;
 
 	/**
 	 * Virtual destructor.
 	 */
-	virtual ~ReaderAbstrait() = default;
+	virtual ~AbstractWriter() = default;
 
 
   protected:
 	/**
-	 * Read the hyper-vertices of the instance.
-	 * @param Le flux entrant.
+	 * Write the hyper-vertices to the output stream.
+	 * @param output stream.
 	 */
-	virtual void readHypergrapheHyperVertex(std::istream&) = 0;
+	virtual void writeHypergraphHyperVertex(std::ostream&) const = 0;
 
 	/**
-	 * Read the hyper-edges of the instance.
-	 * @param Le flux entrant.
+	 * Write the hyper-edges to the output stream.
+	 * @param output stream.
 	 */
-	virtual void readHypergrapheHyperEdge(std::istream&) = 0;
+	virtual void writeHypergraphHyperEdge(std::ostream&) const = 0;
 
 
   protected:
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 };
 
 
-#endif /* IO_INCLUDE_READERABSTRAIT_HH_ */
+#endif /* IO_INCLUDE_ABSTRACT_WRITER_HH_ */

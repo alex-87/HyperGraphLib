@@ -30,7 +30,7 @@
 #include <algorithm>
 
 
-HyperEdge::HyperEdge(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph, unsigned int& identifier)
+HyperEdge::HyperEdge(const std::shared_ptr<AbstractHypergraph>& ptrHypergraph, unsigned int& identifier)
     : _ptrHypergraph(ptrHypergraph),
       _identifier(identifier) {
 }

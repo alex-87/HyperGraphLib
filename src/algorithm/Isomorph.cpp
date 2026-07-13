@@ -26,19 +26,19 @@
 
 #include "Hypergraph/algorithm/Isomorph.hh"
 #include "Hypergraph/algorithm/IsomorphSpace.hh"
-#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/Hypergraph.hh"
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 #include <thread>
 #include <gecode/search.hh>
 
-Isomorph::Isomorph(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraphA,
-                   const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraphB)
+Isomorph::Isomorph(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraphA,
+                   const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraphB)
     : _ptrAbstractHypergraphA(ptrAbstractHypergraphA),
       _ptrAbstractHypergraphB(ptrAbstractHypergraphB) {
 }
 
-void Isomorph::runAlgorithme() {
+void Isomorph::run() {
 	bool ret = false;
 
 	if (_ptrAbstractHypergraphA->getHyperEdgeList().size() != _ptrAbstractHypergraphB->getHyperEdgeList().size() ||
@@ -61,17 +61,14 @@ void Isomorph::runAlgorithme() {
 
 	Gecode::DFS<IsomorphSpace> ensembleSolution(is, opt);
 
-	if (ensembleSolution.next())
-		ret = true;
-	else
-		ret = false;
+	ret = ensembleSolution.next();
 
 	delete is;
 
 	_result.setBooleanResult(ret);
 }
 
-RStructure
+ResultStructure
 Isomorph::getResult() const {
 	return _result;
 }

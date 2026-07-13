@@ -27,13 +27,13 @@
 #include "Hypergraph/algorithm/Linear.hh"
 #include "Hypergraph/algorithm/Simple.hh"
 
-Linear::Linear(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+Linear::Linear(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
-void Linear::runAlgorithme() {
+void Linear::run() {
 	Simple a(_ptrAbstractHypergraph);
-	a.runAlgorithme();
+	a.run();
 
 	if (!a.getResult().getBooleanResult()) {
 		_result.setBooleanResult(false);
@@ -61,7 +61,7 @@ void Linear::runAlgorithme() {
 	}
 }
 
-RStructure
+ResultStructure
 Linear::getResult() const {
 	return _result;
 }

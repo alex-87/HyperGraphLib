@@ -23,26 +23,60 @@
  *
  */
 
+/**
+ * Class modelling a hypergraph.
+ */
+#ifndef MODEL_INCLUDE_HYPERGRAPH_HH_
+#define MODEL_INCLUDE_HYPERGRAPH_HH_
 
-#ifndef CLIENT_INCLUDE_RANDOMHYPERGRAPHE_HH_
-#define CLIENT_INCLUDE_RANDOMHYPERGRAPHE_HH_
+#include "AbstractHypergraph.hh"
 
-#include <memory>
-#include "../../include/Hypergraph/model/HypergrapheAbstrait.hh"
-
-class RandomHypergraphe {
+/**
+ * Model of the hypergraph.
+ */
+class Hypergraph : public AbstractHypergraph {
   public:
-	RandomHypergraphe();
+	/**
+	 * Default constructor.
+	 */
+	Hypergraph();
 
-	void generateHypergraphe(unsigned int, unsigned int);
+	/**
+	 * Add a hyper-vertex to the hypergraph.
+	 * @param the hyper-vertex to add.
+	 */
+	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
 
-	std::shared_ptr<HypergrapheAbstrait>&
-	getHypergraphe();
+	/**
+	 * Add a hyper-edge to the hypergraph.
+	 * @param the hyper-edge to add.
+	 */
+	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
+
+	/**
+	 * Get a hyper-vertex by its identifier.
+	 * @param the identifier of the hyper-vertex to get.
+	 */
+	std::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&);
+
+	/**
+	 * Get a hyper-edge by its identifier.
+	 * @param the identifier of the hyper-edge to get.
+	 */
+	std::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&);
+
+	/**
+	 * Build the hypergraph, in particular its adjacency matrix.
+	 */
+	void flush();
+
+	/**
+	 * Destructor.
+	 */
+	~Hypergraph() = default;
 
   protected:
-	std::shared_ptr<HypergrapheAbstrait>
-	    _ptrAbstractHypergraph;
 };
 
 
-#endif /* CLIENT_INCLUDE_RANDOMHYPERGRAPHE_HH_ */
+#endif /* MODEL_INCLUDE_HYPERGRAPH_HH_ */

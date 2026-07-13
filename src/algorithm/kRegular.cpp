@@ -25,13 +25,13 @@
 
 #include "Hypergraph/algorithm/kRegular.hh"
 
-kRegular::kRegular(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
+kRegular::kRegular(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 }
 
-void kRegular::runAlgorithme() {
-	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
+void kRegular::run() {
 	_result.setBooleanResult(true);
+	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
 
 	int count = -1;
 	for (const auto& e : _ptrAbstractHypergraph->getIndexHyperVertex()) {
@@ -48,7 +48,7 @@ void kRegular::runAlgorithme() {
 		_result.setBooleanResult(true);
 }
 
-RStructure
+ResultStructure
 kRegular::getResult() const {
 	return _result;
 }

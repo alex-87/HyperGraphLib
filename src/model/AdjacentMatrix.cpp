@@ -90,14 +90,6 @@ bool AdjacentMatrix::isVertexInEdge(const int& vertexId, const int& edgeId) cons
 	return _adjacentMatrixBool(vertexId, edgeId);
 }
 
-bool AdjacentMatrix::isEdgeInVertex(const int& edgeId, const int& vertexId) const {
-	return _adjacentMatrixBool(edgeId, vertexId);
-}
-
-bool AdjacentMatrix::isEdgeInVertex(const std::shared_ptr<HyperEdge>& hEdge, const std::shared_ptr<HyperVertex>& hVertex) const {
-	return isEdgeInVertex(hEdge->getIdentifier(), hVertex->getIdentifier());
-}
-
 bool AdjacentMatrix::isVertexInEdge(const std::shared_ptr<HyperVertex>& hVertex, const std::shared_ptr<HyperEdge>& hEdge) const {
 	return isVertexInEdge(hVertex->getIdentifier(), hEdge->getIdentifier());
 }

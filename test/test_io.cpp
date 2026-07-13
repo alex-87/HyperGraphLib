@@ -24,8 +24,8 @@
  */
 
 #include "../include/Hypergraph/model/HyperFactory.hh"
-#include "../include/Hypergraph/model/HypergrapheAbstrait.hh"
-#include "../include/Hypergraph/model/Hypergraphe.hh"
+#include "../include/Hypergraph/model/AbstractHypergraph.hh"
+#include "../include/Hypergraph/model/Hypergraph.hh"
 
 #include "../include/Hypergraph/io/ReaderFile.hh"
 #include "../include/Hypergraph/io/WriterFile.hh"
@@ -35,10 +35,10 @@
 #include <sstream>
 
 
-std::shared_ptr<HypergrapheAbstrait> ptrHpg;
+std::shared_ptr<AbstractHypergraph> ptrHpg;
 
 void setup(void) {
-	ptrHpg.reset(new Hypergraphe);
+	ptrHpg.reset(new Hypergraph);
 
 	HyperFactory::startSession(ptrHpg);
 
@@ -84,9 +84,9 @@ TEST(test_model, hpg_io, setup, teardown) {
 	a << trsf.str();
 
 	ReaderFile fReader;
-	fReader.readHypergraphe(trsf);
+	fReader.readHypergraph(trsf);
 
-	WriterFile fWriter2(fReader.getHypergraphe());
+	WriterFile fWriter2(fReader.getHypergraph());
 	fWriter.writeHypergraph(trsf2);
 
 	b << trsf2.str();

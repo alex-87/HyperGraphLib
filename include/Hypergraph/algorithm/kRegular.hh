@@ -30,29 +30,29 @@
 #define ALGORITHM_INCLUDE_KREGULAR_HH_
 
 #include <memory>
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/Hypergraphe.hh"
+#include "../model/AbstractHypergraph.hh"
+#include "../model/Hypergraph.hh"
 #include "../model/HyperVertex.hh"
 #include "../model/HyperEdge.hh"
-#include "../model/AlgorithmeAbstrait.hh"
-#include "../model/RStructure.hh"
+#include "../model/AbstractAlgorithm.hh"
+#include "../model/ResultStructure.hh"
 
 /**
  * k-regular algorithm on the hypergraph.
  */
-class kRegular : public AlgorithmeAbstrait {
+class kRegular : public AbstractAlgorithm {
   public:
 	/**
 	 * Constructor.
 	 * @param shared pointer to the hypergraph.
 	 */
-	kRegular(const std::shared_ptr<HypergrapheAbstrait>&);
+	kRegular(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
 	 * Get the result structure.
 	 * @return the result structure.
 	 */
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	/**
 	 * Destructor.
@@ -61,21 +61,21 @@ class kRegular : public AlgorithmeAbstrait {
 
   protected:
 	/**
-	 * Lancment de l'algorithme.
+	 * Run the algorithm.
 	 */
-	void runAlgorithme();
+	void run();
 
   protected:
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
 	/**
 	 * The result structure.
 	 */
-	RStructure _result;
+	ResultStructure _result;
 };
 
 

@@ -24,11 +24,11 @@
  */
 
 #include "../include/Hypergraph/model/HyperFactory.hh"
-#include "../include/Hypergraph/model/HypergrapheAbstrait.hh"
-#include "../include/Hypergraph/model/Hypergraphe.hh"
-#include "../include/Hypergraph/model/MotorAlgorithm.hh"
-#include "../include/Hypergraph/model/RStructure.hh"
-#include "../include/Hypergraph/model/AlgorithmeAbstrait.hh"
+#include "../include/Hypergraph/model/AbstractHypergraph.hh"
+#include "../include/Hypergraph/model/Hypergraph.hh"
+#include "../include/Hypergraph/model/AlgorithmEngine.hh"
+#include "../include/Hypergraph/model/ResultStructure.hh"
+#include "../include/Hypergraph/model/AbstractAlgorithm.hh"
 
 #include "../include/Hypergraph/algorithm/Connected.hh"
 #include "../include/Hypergraph/algorithm/kRegular.hh"
@@ -40,8 +40,8 @@
 #include "include/MiniTest.hh"
 
 
-std::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm(new Hypergraphe);
-std::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm2(new Hypergraphe);
+std::shared_ptr<AbstractHypergraph> ptrHpgAlgorithm(new Hypergraph);
+std::shared_ptr<AbstractHypergraph> ptrHpgAlgorithm2(new Hypergraph);
 
 void setupAlgorithm(void) {
 	// First hpg
@@ -102,62 +102,62 @@ void teardownAlgorithm(void) {
 }
 
 TEST(test_algorithm, hpg_connected, setupAlgorithm, teardownAlgorithm) {
-	std::shared_ptr<AlgorithmeAbstrait> cn(new Connected(ptrHpgAlgorithm));
-	MotorAlgorithm::setAlgorithme(cn);
+	std::shared_ptr<AbstractAlgorithm> cn(new Connected(ptrHpgAlgorithm));
+	AlgorithmEngine::set(cn);
 
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
-	MotorAlgorithm::runAlgorithme();
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	AlgorithmEngine::run();
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
 
-	RStructure r(cn->getResult());
+	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == false, "Graphe is connexe");
 }
 
 TEST(test_algorithm, hpg_kregular, setupAlgorithm, teardownAlgorithm) {
-	std::shared_ptr<AlgorithmeAbstrait> cn(new kRegular(ptrHpgAlgorithm));
-	MotorAlgorithm::setAlgorithme(cn);
+	std::shared_ptr<AbstractAlgorithm> cn(new kRegular(ptrHpgAlgorithm));
+	AlgorithmEngine::set(cn);
 
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
-	MotorAlgorithm::runAlgorithme();
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	AlgorithmEngine::run();
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
 
-	RStructure r(cn->getResult());
+	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == true, "Graphe is not k-regular");
 }
 
 TEST(test_algorithm, hpg_simple, setupAlgorithm, teardownAlgorithm) {
-	std::shared_ptr<AlgorithmeAbstrait> cn(new Simple(ptrHpgAlgorithm));
-	MotorAlgorithm::setAlgorithme(cn);
+	std::shared_ptr<AbstractAlgorithm> cn(new Simple(ptrHpgAlgorithm));
+	AlgorithmEngine::set(cn);
 
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
-	MotorAlgorithm::runAlgorithme();
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	AlgorithmEngine::run();
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
 
-	RStructure r(cn->getResult());
+	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == true, "Graphe not simple");
 }
 
 TEST(test_algorithm, hpg_linear, setupAlgorithm, teardownAlgorithm) {
-	std::shared_ptr<AlgorithmeAbstrait> cn(new Linear(ptrHpgAlgorithm));
-	MotorAlgorithm::setAlgorithme(cn);
+	std::shared_ptr<AbstractAlgorithm> cn(new Linear(ptrHpgAlgorithm));
+	AlgorithmEngine::set(cn);
 
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
-	MotorAlgorithm::runAlgorithme();
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	AlgorithmEngine::run();
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
 
-	RStructure r(cn->getResult());
+	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == true, "Graphe is not Linear");
 }
 
 TEST(test_algorithm, hpg_isomorph, setupAlgorithm, teardownAlgorithm) {
-	std::shared_ptr<AlgorithmeAbstrait> cn(new Isomorph(ptrHpgAlgorithm, ptrHpgAlgorithm2));
-	MotorAlgorithm::setAlgorithme(cn);
+	std::shared_ptr<AbstractAlgorithm> cn(new Isomorph(ptrHpgAlgorithm, ptrHpgAlgorithm2));
+	AlgorithmEngine::set(cn);
 
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
-	MotorAlgorithm::runAlgorithme();
-	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	AlgorithmEngine::run();
+	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
 
-	RStructure r(cn->getResult());
+	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == true, "Graphe is not isomorph");
 }
 
@@ -168,12 +168,12 @@ TEST(test_algorithm, hpg_path, setupAlgorithm, teardownAlgorithm) {
 	    ptrHpgAlgorithm->getHyperVertexById(0),
 	    ptrHpgAlgorithm->getHyperVertexById(1));
 
-	std::shared_ptr<AlgorithmeAbstrait> algoPathAbstrait(pathAlgo);
+	std::shared_ptr<AbstractAlgorithm> algoPathAbstract(pathAlgo);
 
-	MotorAlgorithm::setAlgorithme(algoPathAbstrait);
-	MotorAlgorithm::runAlgorithme();
+	AlgorithmEngine::set(algoPathAbstract);
+	AlgorithmEngine::run();
 
-	RStructurePath r(pathAlgo->getPathResult());
+	ResultStructurePath r(pathAlgo->getPathResult());
 
 	cr_expect(r.getPathResult()->size() == 0, "Path issue");
 }

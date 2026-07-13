@@ -29,8 +29,8 @@
 #ifndef ALGORITHM_INCLUDE_CONNECTED_HH_
 #define ALGORITHM_INCLUDE_CONNECTED_HH_
 
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/AlgorithmeAbstrait.hh"
+#include "../model/AbstractHypergraph.hh"
+#include "../model/AbstractAlgorithm.hh"
 
 #include <memory>
 #include <stack>
@@ -39,18 +39,18 @@
 /**
  * Algorithm deciding the connectivity of a hypergraph.
  */
-class Connected : public AlgorithmeAbstrait {
+class Connected : public AbstractAlgorithm {
   public:
 	/**
 	 * Constructor.
-	 * @param std::shared_ptr<HypergrapheAbstrait> shared pointer to the hypergraph.
+	 * @param std::shared_ptr<AbstractHypergraph> shared pointer to the hypergraph.
 	 */
-	Connected(std::shared_ptr<HypergrapheAbstrait>&);
+	Connected(std::shared_ptr<AbstractHypergraph>&);
 
 	/**
 	 * Get the result structure.
 	 */
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	/**
 	 * Destructor.
@@ -62,10 +62,10 @@ class Connected : public AlgorithmeAbstrait {
 	/**
 	 * Run the algorithm.
 	 */
-	void runAlgorithme();
+	void run();
 
 	/**
-	 * Exploration verticale d'un chemin de la matrice.
+	 * Explore vertically through the adjacency matrix.
 	 * @param vector of visited elements.
 	 * @param stack of vertices to visit.
 	 * @param row identifier.
@@ -73,7 +73,7 @@ class Connected : public AlgorithmeAbstrait {
 	void exploreVertical(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
 
 	/**
-	 * Exploration horizontale d'un chemin dans la matrice.
+	 * Explore horizontally through the adjacency matrix.
 	 * @param vector of visited elements.
 	 * @param stack of vertices to visit.
 	 * @param column identifier.
@@ -101,13 +101,13 @@ class Connected : public AlgorithmeAbstrait {
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
 	/**
 	 * Result structure.
 	 */
-	RStructure _result;
+	ResultStructure _result;
 };
 
 

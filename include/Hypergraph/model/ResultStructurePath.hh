@@ -24,59 +24,24 @@
  */
 
 /**
- * Class modelling a hypergraph.
+ * Result description structure. This object
+ * is the representation of the result produced by any algorithm.
  */
-#ifndef MODEL_INCLUDE_HYPERGRAPHE_HH_
-#define MODEL_INCLUDE_HYPERGRAPHE_HH_
+#ifndef MODEL_INCLUDE_RESULT_STRUCTURE_PATH_HH_
+#define MODEL_INCLUDE_RESULT_STRUCTURE_PATH_HH_
 
-#include "HypergrapheAbstrait.hh"
+#include "ResultStructure.hh"
 
-/**
- * Model of the hypergraph.
- */
-class Hypergraphe : public HypergrapheAbstrait {
+class ResultStructurePath : public ResultStructure {
   public:
-	/**
-	 * Default constructor.
-	 */
-	Hypergraphe();
+	ResultStructurePath();
 
-	/**
-	 * Add a hyper-vertex to the hypergraph.
-	 * @param the hyper-vertex to add.
-	 */
-	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
+	void setPathResult(LibType::PathList&);
 
-	/**
-	 * Add a hyper-edge to the hypergraph.
-	 * @param the hyper-edge to add.
-	 */
-	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
-
-	/**
-	 * Get a hyper-vertex by its identifier.
-	 * @param the identifier of the hyper-vertex to get.
-	 */
-	std::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&);
-
-	/**
-	 * Get a hyper-edge by its identifier.
-	 * @param the identifier of the hyper-edge to get.
-	 */
-	std::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&);
-
-	/**
-	 * Build the hypergraph, in particular its adjacency matrix.
-	 */
-	void flush();
-
-	/**
-	 * Destructor.
-	 */
-	~Hypergraphe() = default;
+	LibType::PathList getPathResult();
 
   protected:
+	LibType::PathList _pathList;
 };
 
-
-#endif /* MODEL_INCLUDE_HYPERGRAPHE_HH_ */
+#endif // MODEL_INCLUDE_RESULT_STRUCTURE_PATH_HH_

@@ -25,15 +25,15 @@
 
 
 #include "Hypergraph/algorithm/Helly.hh"
-#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/Hypergraph.hh"
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
-Helly::Helly(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+Helly::Helly(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
-void Helly::runAlgorithme() {
+void Helly::run() {
 	_result.setBooleanResult(true);
 
 	for (auto& x : _ptrAbstractHypergraph->getHyperVertexList()) {
@@ -98,14 +98,16 @@ LibType::ListHyperEdge
 Helly::allContainXY(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
 	LibType::ListHyperEdge elist;
 	for (auto& e : _ptrAbstractHypergraph->getHyperEdgeList()) {
-		if (e->containVertex(v1) && e->containVertex(v2)) {
-			elist.push_back(e);
+		for (auto& e : _ptrAbstractHypergraph->getHyperEdgeList()) {
+			if (e->containVertex(v1) && e->containVertex(v2)) {
+				elist.push_back(e);
+			}
 		}
 	}
 	return elist;
 }
 
-RStructure
+ResultStructure
 Helly::getResult() const {
 	return _result;
 }

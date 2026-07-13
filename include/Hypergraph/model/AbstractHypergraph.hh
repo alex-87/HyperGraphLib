@@ -27,20 +27,20 @@
  * Declaration of the standard hypergraph interface.
  */
 
-#ifndef HYPERGRAPHE_HH_
-#define HYPERGRAPHE_HH_
+#ifndef ABSTRACT_HYPERGRAPH_HH_
+#define ABSTRACT_HYPERGRAPH_HH_
 
 #include "AdjacentMatrix.hh"
 
 /**
  * Definition of the hypergraph interface.
  */
-class HypergrapheAbstrait {
+class AbstractHypergraph {
   public:
 	/**
 	 * Constructor.
 	 */
-	HypergrapheAbstrait();
+	AbstractHypergraph();
 
 	/**
 	 * Add a hyper-vertex to the hypergraph.
@@ -113,7 +113,7 @@ class HypergrapheAbstrait {
 	/**
 	 * Virtual destructor.
 	 */
-	virtual ~HypergrapheAbstrait() = default;
+	virtual ~AbstractHypergraph() = default;
 
   protected:
 	/**
@@ -152,4 +152,4 @@ class HypergrapheAbstrait {
 	AdjacentMatrix _adjacentMatrix;
 };
 
-#endif
+#endif // ABSTRACT_HYPERGRAPH_HH_

@@ -30,20 +30,17 @@
 #include <gecode/int.hh>
 #include <gecode/search.hh>
 #include <memory>
+
 #include "../model/LibType.hh"
-#include "../model/Hypergraphe.hh"
-#include "../model/HyperVertex.hh"
-#include "../model/HyperEdge.hh"
-#include "../model/LibType.hh"
-#include "../model/Hypergraphe.hh"
+#include "../model/Hypergraph.hh"
 #include "../model/HyperVertex.hh"
 #include "../model/HyperEdge.hh"
 
-class HypergrapheAbstrait;
+class AbstractHypergraph;
 
 class IsomorphSpace : public Gecode::Space {
   public:
-	IsomorphSpace(const std::shared_ptr<HypergrapheAbstrait>&, const std::shared_ptr<HypergrapheAbstrait>&);
+	IsomorphSpace(const std::shared_ptr<AbstractHypergraph>&, const std::shared_ptr<AbstractHypergraph>&);
 
 	void postConstraints();
 
@@ -56,8 +53,8 @@ class IsomorphSpace : public Gecode::Space {
 	Gecode::IntVarArray _edgeMapping;
 	Gecode::IntVarArray _vertexMapping;
 
-	std::shared_ptr<HypergrapheAbstrait> _ptrH1;
-	std::shared_ptr<HypergrapheAbstrait> _ptrH2;
+	std::shared_ptr<AbstractHypergraph> _ptrH1;
+	std::shared_ptr<AbstractHypergraph> _ptrH2;
 };
 
 #endif

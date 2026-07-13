@@ -24,39 +24,39 @@
  */
 
 
-#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/Hypergraph.hh"
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
 #include <iostream>
 
-Hypergraphe::Hypergraphe()
-    : HypergrapheAbstrait() {
+Hypergraph::Hypergraph()
+    : AbstractHypergraph() {
 }
 
-void Hypergraphe::addHyperVertex(const std::shared_ptr<HyperVertex>& hyperVertex) {
+void Hypergraph::addHyperVertex(const std::shared_ptr<HyperVertex>& hyperVertex) {
 	_indexHyperVertex[hyperVertex] = hyperVertex->getIdentifier();
 	_hyperVertexIndexer.insert(std::pair<unsigned int, std::shared_ptr<HyperVertex>>(hyperVertex->getIdentifier(), hyperVertex));
 	_listHyperVertex.push_back(hyperVertex);
 }
 
-void Hypergraphe::addHyperEdge(const std::shared_ptr<HyperEdge>& hyperEdge) {
+void Hypergraph::addHyperEdge(const std::shared_ptr<HyperEdge>& hyperEdge) {
 	_indexHyperEdge[hyperEdge] = hyperEdge->getIdentifier();
 	_hyperEdgeIndexer.insert(std::pair<unsigned int, std::shared_ptr<HyperEdge>>(hyperEdge->getIdentifier(), hyperEdge));
 	_listHyperEdge.push_back(hyperEdge);
 }
 
 std::shared_ptr<HyperVertex>&
-Hypergraphe::getHyperVertexById(const unsigned int& id) {
+Hypergraph::getHyperVertexById(const unsigned int& id) {
 	return _hyperVertexIndexer.at(id);
 }
 
 std::shared_ptr<HyperEdge>&
-Hypergraphe::getHyperEdgeById(const unsigned int& id) {
+Hypergraph::getHyperEdgeById(const unsigned int& id) {
 	return _hyperEdgeIndexer.at(id);
 }
 
-void Hypergraphe::flush() {
+void Hypergraph::flush() {
 	unsigned int m(_hyperVertexIndexer.size());
 	unsigned int n(_hyperEdgeIndexer.size());
 

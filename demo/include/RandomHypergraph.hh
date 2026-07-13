@@ -24,27 +24,25 @@
  */
 
 
-#include "Hypergraph/algorithm/kUniform.hh"
+#ifndef CLIENT_INCLUDE_RANDOM_HYPERGRAPH_HH_
+#define CLIENT_INCLUDE_RANDOM_HYPERGRAPH_HH_
+
+#include <memory>
+#include "../../include/Hypergraph/model/AbstractHypergraph.hh"
+
+class RandomHypergraph {
+  public:
+	RandomHypergraph();
+
+	void generateHypergraph(unsigned int, unsigned int);
+
+	std::shared_ptr<AbstractHypergraph>&
+	getHypergraph();
+
+  protected:
+	std::shared_ptr<AbstractHypergraph>
+	    _ptrAbstractHypergraph;
+};
 
 
-kUniform::kUniform(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph, const unsigned int& k)
-    : _ptrAbstractHypergraph(ptrAbstractHypergraph),
-      _k(k) {
-}
-
-ResultStructure
-kUniform::getResult() const {
-	return _result;
-}
-
-void kUniform::run() {
-	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
-	_result.setBooleanResult(true);
-
-	for (const auto& e : _ptrAbstractHypergraph->getIndexHyperEdge()) {
-		if (matrix.getEdgeSize(e.first) != _k) {
-			_result.setBooleanResult(false);
-			break;
-		};
-	}
-}
+#endif // CLIENT_INCLUDE_RANDOM_HYPERGRAPH_HH

@@ -29,28 +29,28 @@
 
 #include <memory>
 
-#include "../model/HypergrapheAbstrait.hh"
-#include "../model/AlgorithmeAbstrait.hh"
+#include "../model/AbstractHypergraph.hh"
+#include "../model/AbstractAlgorithm.hh"
 
-class Isomorph : public AlgorithmeAbstrait {
+class Isomorph : public AbstractAlgorithm {
   public:
-	Isomorph(const std::shared_ptr<HypergrapheAbstrait>&, const std::shared_ptr<HypergrapheAbstrait>&);
+	Isomorph(const std::shared_ptr<AbstractHypergraph>&, const std::shared_ptr<AbstractHypergraph>&);
 
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	~Isomorph() = default;
 
   protected:
-	void runAlgorithme();
+	void run();
 
   protected:
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraphA;
 
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraphB;
 
-	RStructure _result;
+	ResultStructure _result;
 };
 
 

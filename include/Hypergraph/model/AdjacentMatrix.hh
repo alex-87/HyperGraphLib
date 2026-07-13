@@ -51,15 +51,15 @@ class AdjacentMatrix {
 
 	/**
 	 * Constructor with an explicit size.
-	 * @param x L'abscisse
-	 * @param y the matrix ordinate.
+	 * @param x the number of vertices (rows).
+	 * @param y the number of edges (columns).
 	 */
 	AdjacentMatrix(const unsigned int&, const unsigned int&);
 
 	/**
 	 * Resize the matrix.
-	 * @param x L'abscisse
-	 * @param y the matrix ordinate.
+	 * @param x the number of vertices (rows).
+	 * @param y the number of edges (columns).
 	 */
 	void resize(const unsigned int&, const unsigned int&);
 
@@ -84,14 +84,6 @@ class AdjacentMatrix {
 	bool isVertexInEdge(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Check whether a hyper-edge is in a hyper-vertex's edge list.
-	 * @param the hyper-edge to check.
-	 * @param the hyper-vertex.
-	 * @return true if the hyper-vertex has the hyper-edge in its list, false otherwise.
-	 */
-	bool isEdgeInVertex(const std::shared_ptr<HyperEdge>&, const std::shared_ptr<HyperVertex>&) const;
-
-	/**
 	 * Check whether hyper-vertex i is in hyper-edge j.
 	 * @param the hyper-vertex identifier.
 	 * @param the hyper-edge identifier.
@@ -100,24 +92,10 @@ class AdjacentMatrix {
 	bool isVertexInEdge(const int&, const int&) const;
 
 	/**
-	 * Check whether hyper-edge i is in the list of hyper-vertex j.
-	 * @param the hyper-edge identifier.
-	 * @param the hyper-vertex identifier.
-	 * @return True si c'est le cas, False sinon.
-	 */
-	bool isEdgeInVertex(const int&, const int&) const;
-
-	/**
 	 * Get the boolean adjacency matrix.
 	 * @return the boolean adjacency matrix.
 	 */
 	LibType::AdjacentMatrixContainerBool& getBoolAdjacentMatrix();
-
-	/**
-	 * Get the integer adjacency matrix.
-	 * @return the integer adjacency matrix.
-	 */
-	LibType::AdjacentMatrixContainerUInt& getUIntAdjacentMatrix();
 
 	/**
 	 * Get the degree of a hyper-vertex.
@@ -152,11 +130,6 @@ class AdjacentMatrix {
 	std::tuple<unsigned int, unsigned int>
 	getMatrixDimension();
 
-	/**
-	 * Debug function printing the matrix to standard output - DO NOT USE.
-	 */
-	void display() const;
-
   protected:
 	/**
 	 * The abscissa.
@@ -172,11 +145,6 @@ class AdjacentMatrix {
 	 * The boolean adjacency matrix data.
 	 */
 	LibType::AdjacentMatrixContainerBool _adjacentMatrixBool;
-
-	/**
-	 * The integer adjacency matrix data.
-	 */
-	LibType::AdjacentMatrixContainerUInt _adjacentMatrixUInt;
 };
 
 

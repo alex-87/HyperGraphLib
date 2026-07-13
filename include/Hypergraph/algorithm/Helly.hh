@@ -29,25 +29,25 @@
 #ifndef ALGORITHM_INCLUDE_HELLY_HH_
 #define ALGORITHM_INCLUDE_HELLY_HH_
 
-#include "../model/AlgorithmeAbstrait.hh"
-#include "../model/RStructure.hh"
+#include "../model/AbstractAlgorithm.hh"
+#include "../model/ResultStructure.hh"
 
 /**
  * Algorithm checking the Helly property of the hypergraph.
  */
-class Helly : public AlgorithmeAbstrait {
+class Helly : public AbstractAlgorithm {
   public:
 	/**
 	 * Constructor.
 	 * @param shared pointer to the hypergraph.
 	 */
-	Helly(const std::shared_ptr<HypergrapheAbstrait>&);
+	Helly(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
 	 * Get the result structure.
 	 * @return the result structure.
 	 */
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	/**
 	 * Destructor.
@@ -58,7 +58,7 @@ class Helly : public AlgorithmeAbstrait {
 	/**
 	 * Run the algorithm.
 	 */
-	void runAlgorithme();
+	void run();
 
 	/**
 	 * Build the list of hyper-edges containing both hyper-vertices.
@@ -71,7 +71,7 @@ class Helly : public AlgorithmeAbstrait {
 	/**
 	 * Check whether the intersection of the list elements is non-empty.
 	 * @param the list of hyper-edges.
-	 * @return True s'il n'y a aucune intersection vide, False sinon.
+	 * @return true if no empty intersections, false otherwise.
 	 */
 	bool nonEmptyIntersection(LibType::ListHyperEdge&);
 
@@ -79,7 +79,7 @@ class Helly : public AlgorithmeAbstrait {
 	 * Check whether the intersection of these two hyper-edges is non-empty.
 	 * @param the first hyper-edge.
 	 * @param the second hyper-edge.
-	 * @return True s'il y a intersection non-vide, False sinon.
+	 * @return true if non-empty intersection, false otherwise.
 	 */
 	bool nonEmptyBetween(std::shared_ptr<HyperEdge>&, std::shared_ptr<HyperEdge>&);
 
@@ -87,7 +87,7 @@ class Helly : public AlgorithmeAbstrait {
 	 * Check whether the two hyper-vertices are neighbours.
 	 * @param the first hyper-vertex.
 	 * @param the second hyper-vertex.
-	 * @return True s'il sont voisin, False sinon.
+	 * @return true if neighbours, false otherwise.
 	 */
 	bool areNeighbours(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
@@ -103,13 +103,13 @@ class Helly : public AlgorithmeAbstrait {
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
 	/**
 	 * Result structure.
 	 */
-	RStructure _result;
+	ResultStructure _result;
 };
 
 

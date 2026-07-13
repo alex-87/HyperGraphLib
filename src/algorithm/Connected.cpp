@@ -25,7 +25,7 @@
 
 
 #include "Hypergraph/algorithm/Connected.hh"
-#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/Hypergraph.hh"
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 #include <iostream>
@@ -33,11 +33,11 @@
 #include <algorithm>
 
 
-Connected::Connected(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+Connected::Connected(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
-void Connected::runAlgorithme() {
+void Connected::run() {
 	if (_ptrAbstractHypergraph->getHyperVertexList().size() == 0)
 		return;
 
@@ -74,7 +74,6 @@ void Connected::runAlgorithme() {
 			listHyperEdgeVisited.push_back(v);
 		}
 	}
-
 	_result.setBooleanResult(listConnectedVisited.size() == _ptrAbstractHypergraph->getHyperVertexList().size());
 }
 
@@ -114,7 +113,7 @@ bool Connected::isEdgeVisited(std::vector<unsigned int>& list, unsigned int edge
 	return std::find(list.begin(), list.end(), edge) != list.end();
 }
 
-RStructure
+ResultStructure
 Connected::getResult() const {
 	return _result;
 }

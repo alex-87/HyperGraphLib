@@ -1,17 +1,17 @@
 
-#include "include/RandomHypergraphe.hh"
+#include "include/RandomHypergraph.hh"
 #include "../include/Hypergraph/model/HyperFactory.hh"
-#include "../include/Hypergraph/model/Hypergraphe.hh"
+#include "../include/Hypergraph/model/Hypergraph.hh"
 
 #include <random>
 #include <ctime>
 #include <limits>
 
-RandomHypergraphe::RandomHypergraphe()
-    : _ptrAbstractHypergraph(new Hypergraphe) {
+RandomHypergraph::RandomHypergraph()
+    : _ptrAbstractHypergraph(new Hypergraph) {
 }
 
-void RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int nbEdge) {
+void RandomHypergraph::generateHypergraph(unsigned int nbVertex, unsigned int nbEdge) {
 	std::vector<std::shared_ptr<HyperVertex>> listVertex;
 	std::vector<std::shared_ptr<HyperEdge>> listEdge;
 
@@ -49,7 +49,7 @@ void RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int 
 	_ptrAbstractHypergraph->flush();
 }
 
-std::shared_ptr<HypergrapheAbstrait>&
-RandomHypergraphe::getHypergraphe() {
+std::shared_ptr<AbstractHypergraph>&
+RandomHypergraph::getHypergraph() {
 	return _ptrAbstractHypergraph;
 }

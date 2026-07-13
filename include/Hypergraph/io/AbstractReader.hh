@@ -24,60 +24,64 @@
  */
 
 /**
- * Result description structure. This object
- * is the representation of the result produced by any algorithm.
+ * Instance reader module interface.
  */
-#ifndef MODEL_INCLUDE_RSTRUCTURE_HH_
-#define MODEL_INCLUDE_RSTRUCTURE_HH_
+#ifndef IO_INCLUDE_ABSTRACT_READER_HH_
+#define IO_INCLUDE_ABSTRACT_READER_HH_
 
-#include "HypergrapheAbstrait.hh"
+#include "../model/AbstractHypergraph.hh"
 #include <memory>
 
 /**
- * Result description structure.
+ * Interface for the instance reader module.
  */
-class RStructure {
+class AbstractReader {
   public:
 	/**
-	 * Set a boolean result.
-	 * @param the boolean result.
+	 * Constructor.
+	 * @param shared pointer to the hypergraph.
 	 */
-	void setBooleanResult(bool);
+	AbstractReader(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Set a HypergrapheAbstrait result.
-	 * @param the hypergraph used as the result.
+	 * Read the instance and build the hypergraph.
+	 * @param input stream.
 	 */
-	void setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>&);
+	virtual void readHypergraph(std::istream&) = 0;
 
 	/**
-	 * Read a boolean result.
-	 * @return the result as a boolean value.
+	 * Get the hypergraph after construction.
 	 */
-	bool getBooleanResult() const;
+	std::shared_ptr<AbstractHypergraph>&
+	getHypergraph();
 
 	/**
-	 * Read a HypergrapheAbstrait result.
-	 * @return the HypergrapheAbstrait result.
+	 * Virtual destructor.
 	 */
-	std::shared_ptr<HypergrapheAbstrait> getHypergrapheResult() const;
+	virtual ~AbstractReader() = default;
+
 
   protected:
 	/**
-	 * The integer result value.
+	 * Read the hyper-vertices of the instance.
+	 * @param input stream.
 	 */
-	int _integerResult;
+	virtual void readHypergraphHyperVertex(std::istream&) = 0;
 
 	/**
-	 * The boolean result value.
+	 * Read the hyper-edges of the instance.
+	 * @param input stream.
 	 */
-	bool _booleanResult;
+	virtual void readHypergraphHyperEdge(std::istream&) = 0;
 
+
+  protected:
 	/**
-	 * The hypergraph used as the result.
+	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait> _hypergraphResult;
+	std::shared_ptr<AbstractHypergraph>
+	    _ptrAbstractHypergraph;
 };
 
 
-#endif /* MODEL_INCLUDE_RSTRUCTURE_HH_ */
+#endif /* IO_INCLUDE_ABSTRACT_READER_HH_ */

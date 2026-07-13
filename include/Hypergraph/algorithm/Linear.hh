@@ -29,23 +29,23 @@
 #ifndef ALGORITHM_INCLUDE_LINEAR_HH_
 #define ALGORITHM_INCLUDE_LINEAR_HH_
 
-#include "../model/AlgorithmeAbstrait.hh"
+#include "../model/AbstractAlgorithm.hh"
 
 /**
  * linear algorithm on the hypergraph.
  */
-class Linear : public AlgorithmeAbstrait {
+class Linear : public AbstractAlgorithm {
   public:
 	/**
 	 * Constructor
 	 * @param shared pointer to the hypergraph.
 	 */
-	Linear(std::shared_ptr<HypergrapheAbstrait>&);
+	Linear(std::shared_ptr<AbstractHypergraph>&);
 
 	/**
 	 * Get the result structure.
 	 */
-	RStructure getResult() const;
+	ResultStructure getResult() const;
 
 	/**
 	 * Destructor.
@@ -57,20 +57,20 @@ class Linear : public AlgorithmeAbstrait {
 	/**
 	 * Run the algorithm.
 	 */
-	void runAlgorithme();
+	void run();
 
 
   protected:
 	/**
 	 * Shared pointer to the hypergraph.
 	 */
-	std::shared_ptr<HypergrapheAbstrait>
+	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
 	/**
 	 * Result structure.
 	 */
-	RStructure _result;
+	ResultStructure _result;
 };
 
 
