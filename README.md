@@ -147,7 +147,7 @@ Gecode Library
 --------------
 
 This software uses the [Gecode](http://www.gecode.org) Library.
-Please see the Boost license at https://www.gecode.org/license.html
+Please see the license at https://www.gecode.org/license.html
 
 
 License
