@@ -146,8 +146,8 @@ Please see the Boost license at http://www.boost.org/LICENSE_1_0.txt
 Gecode Library
 --------------
 
-This software uses the [Gecode](http://www.gecode.org) Library.
-Please see the license at https://www.gecode.org/license.html
+This software uses the [Gecode](http://www.gecode.dev) Library.
+Please see the license at https://www.gecode.dev/license.html
 
 
 License
