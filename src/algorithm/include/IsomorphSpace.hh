@@ -41,36 +41,22 @@ class IsomorphSpace : public Gecode::Space {
 
 public:
 
-	IsomorphSpace(const boost::shared_ptr<HypergrapheAbstrait>&, const boost::shared_ptr<HypergrapheAbstrait>&);
+    IsomorphSpace(const boost::shared_ptr<HypergrapheAbstrait>&, const boost::shared_ptr<HypergrapheAbstrait>&);
 
-	void postConstraints();
+    void postConstraints();
 
-#if GECODE_VERSION_NUMBER > 500100
+    Gecode::Space * copy();
 
-	Gecode::Space * copy();
+    IsomorphSpace(IsomorphSpace& p);
 
-	IsomorphSpace(IsomorphSpace& p);
-
-#else
-
-	Gecode::Space * copy(bool share);
-
-	IsomorphSpace(bool share, IsomorphSpace& p);
-
-#endif
-
-
-	Gecode::IntVarArray _varEdge;
-
-	Gecode::IntVarArray _bVarEdge;
-
-	Gecode::IntVarArray _bVarEdge2;
 
 protected:
 
-	boost::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheA;
+    Gecode::IntVarArray _edgeMapping;
+    Gecode::IntVarArray _vertexMapping;
 
-	boost::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheB;
+    boost::shared_ptr<HypergrapheAbstrait> _ptrH1;
+    boost::shared_ptr<HypergrapheAbstrait> _ptrH2;
 
 };
 
