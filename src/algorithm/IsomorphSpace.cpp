@@ -150,11 +150,11 @@ IsomorphSpace::postConstraints() {
         }
 
         // Domain constraint on the list of possible mapping destinations for _edgeMapping[i]
-        // See https://www.gecode.dev/doc-latest/reference/group__TaskModelIntDomain.html#ga66976d758bbdbdfaf4eb2a8d59d3e4d0
+        // See https://www.gecode.dev/doc/6.2.0/reference/group__TaskModelIntDomain.html#ga66976d758bbdbdfaf4eb2a8d59d3e4d0
         Gecode::dom(
             *this,
             _edgeMapping[i],
-            // See https://www.gecode.dev/doc-latest/reference/classGecode_1_1IntSet.html#ac7917f4d0977fbbebb1a8386ef61a9af
+            // See https://www.gecode.dev/doc/6.2.0/reference/classGecode_1_1IntSet.html#ac7917f4d0977fbbebb1a8386ef61a9af
             Gecode::IntSet(candidate.data(), candidate.size())
         );
     }
@@ -181,11 +181,11 @@ IsomorphSpace::postConstraints() {
         }
 
         // Domain constraint on the list of possible mapping destinations for  for _vertexMapping[j]
-        // See https://www.gecode.dev/doc-latest/reference/group__TaskModelIntDomain.html#ga66976d758bbdbdfaf4eb2a8d59d3e4d0
+        // See https://www.gecode.dev/doc/6.2.0/reference/group__TaskModelIntDomain.html#ga66976d758bbdbdfaf4eb2a8d59d3e4d0
         Gecode::dom(
             *this,
             _vertexMapping[j],
-            // See https://www.gecode.dev/doc-latest/reference/classGecode_1_1IntSet.html#ac7917f4d0977fbbebb1a8386ef61a9af
+            // See https://www.gecode.dev/doc/6.2.0/reference/classGecode_1_1IntSet.html#ac7917f4d0977fbbebb1a8386ef61a9af
             Gecode::IntSet(candidate.data(), candidate.size())
         );
     }
@@ -194,7 +194,7 @@ IsomorphSpace::postConstraints() {
     // flatMatrixH2[nbr_vertex_h1 * _edgeMapping[i] + _vertexMapping[j] ] == cell
     //
     // For the Element constraint specification,
-    // see https://www.gecode.dev/doc-latest/reference/group__TaskModelIntElement.html#ga0e909a81b9429d91bf2cf8a8ec23dd11
+    // see https://www.gecode.dev/doc/6.2.0/reference/group__TaskModelIntElement.html#ga0e909a81b9429d91bf2cf8a8ec23dd11
     //
     // This contraints makes sure the matrix of H1 equals the MAPPED matrix of H2,
     // mapping occuring through the _edgeMapping[i] and _vertexMapping[j] maps.
@@ -218,7 +218,7 @@ IsomorphSpace::postConstraints() {
     }
 
     // Enforces bijection
-    // See https://www.gecode.dev/doc-latest/reference/group__TaskModelIntDistinct.html#ga4b178060150e551615bf637c0846f1eb
+    // See https://www.gecode.dev/doc/6.2.0/reference/group__TaskModelIntDistinct.html#ga4b178060150e551615bf637c0846f1eb
     Gecode::distinct(*this, _edgeMapping);
     Gecode::distinct(*this, _vertexMapping);
 
