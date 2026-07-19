@@ -30,12 +30,12 @@
 #include "../include/Hypergraph/io/ReaderFile.hh"
 #include "../include/Hypergraph/io/WriterFile.hh"
 
-#include <criterion/criterion.h>
+#include "include/MiniTest.hh"
 #include <iostream>
 #include <sstream>
 
 
-boost::shared_ptr<HypergrapheAbstrait> ptrHpg;
+std::shared_ptr<HypergrapheAbstrait> ptrHpg;
 
 void setup(void) {
 
@@ -43,15 +43,15 @@ void setup(void) {
 
     HyperFactory::startSession(ptrHpg);
 
-	std::vector<boost::shared_ptr<HyperVertex>> listVertex;
+	std::vector<std::shared_ptr<HyperVertex>> listVertex;
 
-    boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
-    boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
+    std::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
+    std::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
 
     for(unsigned int i = 0; i < 50; i++) {
 
-        boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
-        boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
+        std::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
+        std::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
 
         HyperFactory::link(ptrVertexA, ptrEdge1);
         HyperFactory::link(ptrVertexB, ptrEdge2);
@@ -76,7 +76,7 @@ void setup(void) {
 void teardown(void) {
 }
 
-Test(test_model, hpg_io, .init = setup, .fini = teardown) {
+TEST(test_model, hpg_io, setup, teardown) {
 
 	std::stringstream trsf;
 	std::stringstream trsf2;
@@ -97,3 +97,5 @@ Test(test_model, hpg_io, .init = setup, .fini = teardown) {
 
 	cr_expect(a.str() == b.str(), "Input / Output not eqal");
 }
+
+MINITEST_MAIN

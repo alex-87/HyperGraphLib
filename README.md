@@ -1,5 +1,5 @@
-HyperGraphLib 
--------------
+# HyperGraphLib 
+
 Hypergraphs modelling library with algorithms, [the official page](https://alex-87.github.io/HyperGraphLib) for more informations.
 
 ![hypergraph](http://alex-87.github.io/HyperGraphLib/images/hypergraph.png)
@@ -17,39 +17,40 @@ Hypergraphs modelling library with algorithms, [the official page](https://alex-
 - Path finding
 - Simple
 
-How to build and install HyperGraphLib
--------------
+## Build & Install
 
-In a terminal:
-
-```shell
-git clone https://github.com/alex-87/HyperGraphLib.git
-cd HyperGraphLib
-cmake CMakeLists.txt
-make
-sudo make install
-```
-
-See [the official page](https://alex-87.github.io/HyperGraphLib) for more informations.
-
-Where is the documentation ?
--------------
-
-The documentation, generated using [Doxygen](http://www.doxygen.org) is available at [the technical documentation page](https://alex-87.github.io/HyperGraphLib/doc).
-
-
-Minimum required
--------------
+### Requirements
 
 To compile HyperGraphLib, you need:
 
   - [cmake](https://github.com/Kitware/CMake) (>= 3.28)
   - [g++](https://gcc.gnu.org) (>= 9.0)
-  - [Criterion](https://github.com/Snaipe/Criterion) (>=2.3.0)
-  - [Gecode](http://www.gecode.org) (>= 6.2.0)
+  - [Gecode](http://www.gecode.dev) (>= 6.2.0)
 
-Example
--------
+### Build
+
+```shell
+git clone https://github.com/alex-87/HyperGraphLib.git
+cd HyperGraphLib
+cmake -B build
+cmake --build build -j
+ctest --test-dir build
+```
+
+### Install
+
+```shell
+sudo cmake --install build
+```
+
+## Documentation
+
+See the [Official page](https://alex-87.github.io/HyperGraphLib);
+
+Reference documentation, generated using [Doxygen](http://www.doxygen.org) is available at [the technical documentation page](https://alex-87.github.io/HyperGraphLib/doc).
+
+## Example
+
 ```cpp
 #include <iostream>
 #include <memory>
@@ -134,19 +135,19 @@ int main(int argc, char * argv[]) {
 }
 ```
 
-Compiling the example (Unix / Linux)
-------------------------------------
+### Compiling the example (Unix / Linux)
+
 ```shell
-g++ example.cpp -o example -lhypergraph
+g++ example.cpp -std=c++17 -o example -lhypergraph
 ```
-The output is:
+#### Output
+
 ```
 $ ./example
 The hypergraph is isomorph with itself
 The hypergraph is simple.
 ```
 
-License
--------
+## License
 
-**This software is licensed under the MIT License.**
+This software is licensed under the **[MIT License](LICENSE)**.

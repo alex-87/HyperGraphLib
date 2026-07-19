@@ -30,6 +30,12 @@ Makefile
 *.dll
 *.exe
 demo
+test/test_model
+test/test_io
+test/test_algorithm
+
+# CTest output
+Testing/
 
 # Editor
 .vscode/

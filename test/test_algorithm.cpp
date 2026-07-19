@@ -37,12 +37,12 @@
 #include "../include/Hypergraph/algorithm/Linear.hh"
 #include "../include/Hypergraph/algorithm/Path.hh"
 
-#include <criterion/criterion.h>
+#include "include/MiniTest.hh"
 
 
 
-boost::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm ( new Hypergraphe );
-boost::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm2 ( new Hypergraphe );
+std::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm ( new Hypergraphe );
+std::shared_ptr<HypergrapheAbstrait> ptrHpgAlgorithm2 ( new Hypergraphe );
 
 void setupAlgorithm(void) {
 
@@ -50,13 +50,13 @@ void setupAlgorithm(void) {
 	{
 		HyperFactory::startSession(ptrHpgAlgorithm);
 
-		boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
-		boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
+		std::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
+		std::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
 
 		for(unsigned int i = 0; i < 50; i++) {
 
-			boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
-			boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
+			std::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
+			std::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
 
 			HyperFactory::link(ptrVertexA, ptrEdge1);
 			HyperFactory::link(ptrVertexB, ptrEdge2);
@@ -79,13 +79,13 @@ void setupAlgorithm(void) {
 	{
 		HyperFactory::startSession(ptrHpgAlgorithm2);
 
-		boost::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
-		boost::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
+		std::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
+		std::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
 
 		for(unsigned int i = 0; i < 50; i++) {
 
-			boost::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
-			boost::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
+			std::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
+			std::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
 
 			HyperFactory::link(ptrVertexA, ptrEdge1);
 			HyperFactory::link(ptrVertexB, ptrEdge2);
@@ -108,9 +108,9 @@ void setupAlgorithm(void) {
 void teardownAlgorithm(void) {
 }
 
-Test(test_algorithm, hpg_connected, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+TEST(test_algorithm, hpg_connected, setupAlgorithm, teardownAlgorithm) {
 
-	boost::shared_ptr<AlgorithmeAbstrait> cn( new Connected(ptrHpgAlgorithm) );
+	std::shared_ptr<AlgorithmeAbstrait> cn( new Connected(ptrHpgAlgorithm) );
 	MotorAlgorithm::setAlgorithme( cn );
 
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
@@ -122,9 +122,9 @@ Test(test_algorithm, hpg_connected, .init = setupAlgorithm, .fini = teardownAlgo
 
 }
 
-Test(test_algorithm, hpg_kregular, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+TEST(test_algorithm, hpg_kregular, setupAlgorithm, teardownAlgorithm) {
 
-	boost::shared_ptr<AlgorithmeAbstrait> cn( new kRegular(ptrHpgAlgorithm) );
+	std::shared_ptr<AlgorithmeAbstrait> cn( new kRegular(ptrHpgAlgorithm) );
 	MotorAlgorithm::setAlgorithme( cn );
 
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
@@ -136,9 +136,9 @@ Test(test_algorithm, hpg_kregular, .init = setupAlgorithm, .fini = teardownAlgor
 
 }
 
-Test(test_algorithm, hpg_simple, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+TEST(test_algorithm, hpg_simple, setupAlgorithm, teardownAlgorithm) {
 
-	boost::shared_ptr<AlgorithmeAbstrait> cn( new Simple(ptrHpgAlgorithm) );
+	std::shared_ptr<AlgorithmeAbstrait> cn( new Simple(ptrHpgAlgorithm) );
 	MotorAlgorithm::setAlgorithme( cn );
 
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
@@ -150,9 +150,9 @@ Test(test_algorithm, hpg_simple, .init = setupAlgorithm, .fini = teardownAlgorit
 
 }
 
-Test(test_algorithm, hpg_linear, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+TEST(test_algorithm, hpg_linear, setupAlgorithm, teardownAlgorithm) {
 
-	boost::shared_ptr<AlgorithmeAbstrait> cn( new Linear(ptrHpgAlgorithm) );
+	std::shared_ptr<AlgorithmeAbstrait> cn( new Linear(ptrHpgAlgorithm) );
 	MotorAlgorithm::setAlgorithme( cn );
 
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
@@ -164,9 +164,9 @@ Test(test_algorithm, hpg_linear, .init = setupAlgorithm, .fini = teardownAlgorit
 
 }
 
-Test(test_algorithm, hpg_isomorph, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+TEST(test_algorithm, hpg_isomorph, setupAlgorithm, teardownAlgorithm) {
 
-	boost::shared_ptr<AlgorithmeAbstrait> cn( new Isomorph(ptrHpgAlgorithm, ptrHpgAlgorithm2) );
+	std::shared_ptr<AlgorithmeAbstrait> cn( new Isomorph(ptrHpgAlgorithm, ptrHpgAlgorithm2) );
 	MotorAlgorithm::setAlgorithme( cn );
 
 	cr_expect(MotorAlgorithm::isLock() == false, "Should be false");
@@ -178,16 +178,16 @@ Test(test_algorithm, hpg_isomorph, .init = setupAlgorithm, .fini = teardownAlgor
 
 }
 
-Test(test_algorithm, hpg_path, .init = setupAlgorithm, .fini = teardownAlgorithm) {
+TEST(test_algorithm, hpg_path, setupAlgorithm, teardownAlgorithm) {
 
-	boost::shared_ptr<Path> pathAlgo( new Path( ptrHpgAlgorithm ) );
+	std::shared_ptr<Path> pathAlgo( new Path( ptrHpgAlgorithm ) );
 
 	pathAlgo->setHyperVertex(
 			ptrHpgAlgorithm->getHyperVertexById(0),
 			ptrHpgAlgorithm->getHyperVertexById(1)
 		);
 
-	boost::shared_ptr<AlgorithmeAbstrait> algoPathAbstrait( pathAlgo );
+	std::shared_ptr<AlgorithmeAbstrait> algoPathAbstrait( pathAlgo );
 
 	MotorAlgorithm::setAlgorithme( algoPathAbstrait );
 	MotorAlgorithm::runAlgorithme();
@@ -196,3 +196,5 @@ Test(test_algorithm, hpg_path, .init = setupAlgorithm, .fini = teardownAlgorithm
 
 	cr_expect( r.getPathResult()->size() == 0, "Path issue");
 }
+
+MINITEST_MAIN
