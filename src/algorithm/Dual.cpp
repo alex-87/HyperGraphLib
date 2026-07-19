@@ -24,17 +24,15 @@
  */
 
 
-#include "include/Dual.hh"
-#include "../model/include/HyperFactory.hh"
-#include "../model/include/Hypergraphe.hh"
-#include "../model/include/HyperEdge.hh"
-#include "../model/include/HyperVertex.hh"
+#include "Hypergraph/algorithm/Dual.hh"
+#include "Hypergraph/model/HyperFactory.hh"
+#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/HyperEdge.hh"
+#include "Hypergraph/model/HyperVertex.hh"
 
 
-Dual::Dual(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
-	_ptrDualHypergraphe( new Hypergraphe() ) {
-
-	_ptrHypergrapheAbstrait = ptrHypergrapheAbstrait;
+Dual::Dual(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) : _ptrDualHypergraph( new Hypergraphe() ) {
+	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 }
 
 RStructure
@@ -45,13 +43,13 @@ Dual::getResult() const {
 void
 Dual::runAlgorithme() {
 
-	LibType::IndexerHyperVertex indexVertex ( _ptrHypergrapheAbstrait->getIndexHyperVertex() );
-	LibType::IndexerHyperEdge   indexEdge   ( _ptrHypergrapheAbstrait->getIndexHyperEdge()   );
+	LibType::IndexerHyperVertex indexVertex ( _ptrAbstractHypergraph->getIndexHyperVertex() );
+	LibType::IndexerHyperEdge   indexEdge   ( _ptrAbstractHypergraph->getIndexHyperEdge()   );
 
 	LibType::ListHyperVertex listVertex;
 	LibType::ListHyperEdge   listEdge;
 
-	HyperFactory::startSession(_ptrDualHypergraphe);
+	HyperFactory::startSession(_ptrDualHypergraph);
 
 	for(unsigned int i=0; i<indexVertex.size(); i++) {
 		listEdge.push_back( HyperFactory::newHyperEdge() );
@@ -63,24 +61,24 @@ Dual::runAlgorithme() {
 
 	for(auto& itemVertex : listVertex) {
 		for(auto& itemEdge : listEdge) {
-			if( _ptrHypergrapheAbstrait->getAdjacentMatrix().isVertexInEdge(itemEdge->getIdentifier(), itemVertex->getIdentifier())) {
+			if( _ptrAbstractHypergraph->getAdjacentMatrix().isVertexInEdge(itemEdge->getIdentifier(), itemVertex->getIdentifier())) {
 				HyperFactory::link(itemVertex, itemEdge);
 			}
 		}
 	}
 
 	for(auto& itemVertex : listVertex) {
-		_ptrDualHypergraphe->addHyperVertex(itemVertex);
+		_ptrDualHypergraph->addHyperVertex(itemVertex);
 	}
 
 	for(auto& itemEdge : listEdge) {
-		_ptrDualHypergraphe->addHyperEdge(itemEdge);
+		_ptrDualHypergraph->addHyperEdge(itemEdge);
 	}
 
 	HyperFactory::closeSession();
 
-	_ptrDualHypergraphe->flush();
-	_result.setHypergrapheResult( _ptrDualHypergraphe );
+	_ptrDualHypergraph->flush();
+	_result.setHypergrapheResult( _ptrDualHypergraph );
 }
 
 Dual::~Dual() {

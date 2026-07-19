@@ -24,11 +24,11 @@
  */
 
 
-#include "include/kUniform.hh"
+#include "Hypergraph/algorithm/kUniform.hh"
 
 
-kUniform::kUniform(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait, const unsigned int& k) :
-					_ptrHypergrapheAbstrait( ptrHypergrapheAbstrait ),
+kUniform::kUniform(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph, const unsigned int& k) :
+					_ptrAbstractHypergraph( ptrAbstractHypergraph ),
 					_k( k ) {
 }
 
@@ -40,12 +40,13 @@ kUniform::getResult() const {
 void
 kUniform::runAlgorithme() {
 
-	AdjacentMatrix matrix ( _ptrHypergrapheAbstrait->getAdjacentMatrix() );
+	AdjacentMatrix matrix ( _ptrAbstractHypergraph->getAdjacentMatrix() );
 	_result.setBooleanResult(true);
 
-	for(const auto& e : _ptrHypergrapheAbstrait->getIndexHyperEdge() ) {
+	for(const auto& e : _ptrAbstractHypergraph->getIndexHyperEdge() ) {
 		if( matrix.getEdgeSize(e.first) != _k ) {
 			_result.setBooleanResult(false);
+			break;
 		};
 	}
 }

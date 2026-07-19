@@ -49,10 +49,10 @@ protected:
 protected:
 
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstraitA;
+	_ptrAbstractHypergraphA;
 
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstraitB;
+	_ptrAbstractHypergraphB;
 
 	RStructure _result;
 

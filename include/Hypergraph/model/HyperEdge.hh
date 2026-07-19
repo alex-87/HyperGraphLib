@@ -112,7 +112,7 @@ protected:
 	 * Pointeur partagé sur l'hypergraphe.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergraphe;
+	_ptrHypergraph;
 
 	/**
 	 * L'identifiant numérique.

@@ -24,7 +24,7 @@
  */
 
 
-#include "include/RStructure.hh"
+#include "Hypergraph/model/RStructure.hh"
 
 void
 RStructure::setBooleanResult(bool result) {
@@ -37,11 +37,11 @@ RStructure::getBooleanResult() const {
 }
 
 void
-RStructure::setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
-	_hypergrapheResult = ptrHypergrapheAbstrait;
+RStructure::setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
+	_hypergraphResult = ptrAbstractHypergraph;
 }
 
 std::shared_ptr<HypergrapheAbstrait>
 RStructure::getHypergrapheResult() const {
-	return _hypergrapheResult;
+	return _hypergraphResult;
 }

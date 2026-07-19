@@ -24,7 +24,7 @@
  */
 
 
-#include "include/RStructurePath.hh"
+#include "Hypergraph/model/RStructurePath.hh"
 
 RStructurePath::RStructurePath() : RStructure() {
 

@@ -24,9 +24,9 @@
  */
 
 
-#include "include/Hypergraphe.hh"
-#include "include/HyperVertex.hh"
-#include "include/HyperEdge.hh"
+#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
 
 #include <iostream>
 

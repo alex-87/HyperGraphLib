@@ -24,9 +24,9 @@
  */
 
 
-#include "include/AdjacentMatrix.hh"
-#include "include/HyperVertex.hh"
-#include "include/HyperEdge.hh"
+#include "Hypergraph/model/AdjacentMatrix.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
 
 
 AdjacentMatrix::AdjacentMatrix() : AdjacentMatrix(0, 0) {

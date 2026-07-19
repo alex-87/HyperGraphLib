@@ -24,12 +24,14 @@
  */
 
 
-#include "include/HyperVertex.hh"
-#include "include/HyperEdge.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
+
+#include <algorithm>
 
 
-HyperVertex::HyperVertex(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergraphe, unsigned int& identifier) :
-	_ptrHypergraphe( ptrHypergraphe ),
+HyperVertex::HyperVertex(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph, unsigned int& identifier) :
+	_ptrHypergraph( ptrHypergraph ),
 	_identifier( identifier ){
 }
 
@@ -67,18 +69,7 @@ HyperVertex::operator>(const std::shared_ptr<HyperVertex>& hyperVertex) const {
 
 bool
 HyperVertex::containEdge(std::shared_ptr<HyperEdge>& hyperEdge) const {
-
-	int i = 0;
-	const int N = _listHyperEdge.size();
-	bool ret = false;
-
-	for( i=0 ; i<N ; i++ ) {
-		if( _listHyperEdge[i]==hyperEdge) {
-			ret = true;
-		};
-	};
-
-	return ret;
+	return std::find(_listHyperEdge.begin(), _listHyperEdge.end(), hyperEdge) != _listHyperEdge.end();
 }
 
 const LibType::ListHyperEdge&

@@ -99,14 +99,6 @@ protected:
 	 */
 	bool isEdgeVisited(std::vector<unsigned int>&, unsigned int) const;
 
-/*
-
-	bool isPath(HyperVertex&, HyperVertex&) const;
-
-	bool isVisited(std::vector<HyperEdge>&, const HyperEdge&) const;
-
-*/
-
 
 protected:
 
@@ -114,7 +106,7 @@ protected:
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstrait;
+	_ptrAbstractHypergraph;
 
 	/**
 	 * Structure de résultat.

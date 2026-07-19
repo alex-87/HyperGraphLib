@@ -54,6 +54,24 @@
 #include "../include/Hypergraph/io/ReaderFile.hh"
 
 
+/**
+ * Run an algorithm whose result is a single boolean, print the matching
+ * message and return the process exit code. Factorises the identical
+ * set/run/report sequence shared by the boolean predicates below.
+ */
+template <typename Algorithm>
+static int runBooleanAlgorithm(std::shared_ptr<HypergrapheAbstrait>& ptrHpg,
+                               const std::string& whenTrue,
+                               const std::string& whenFalse) {
+	auto algo = makeAlgorithm<Algorithm>(ptrHpg);
+	MotorAlgorithm::setAlgorithme( algo );
+	MotorAlgorithm::runAlgorithme();
+
+	RStructure r( algo->getResult() );
+	std::cout << (r.getBooleanResult() ? whenTrue : whenFalse) << std::endl;
+	return 0;
+}
+
 int main(int argc, char *argv[]) {
 
 	po::options_description desc("Paramètres");
@@ -136,7 +154,7 @@ int main(int argc, char *argv[]) {
 
 		ptrHpg2 = fReader.getHypergraphe();
 
-		NewAlgorithm2(isomorphHpg, Isomorph, ptrHpg, ptrHpg2);
+		auto isomorphHpg = makeAlgorithm<Isomorph>(ptrHpg, ptrHpg2);
 
 		MotorAlgorithm::setAlgorithme( isomorphHpg );
 		MotorAlgorithm::runAlgorithme();
@@ -159,7 +177,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	if( vm.count("stat") ) {
-		NewAlgorithm(statHpg, HyperGraphStat, ptrHpg);
+		auto statHpg = makeAlgorithm<HyperGraphStat>(ptrHpg);
 
 		MotorAlgorithm::setAlgorithme( statHpg );
 		MotorAlgorithm::runAlgorithme();
@@ -177,7 +195,7 @@ int main(int argc, char *argv[]) {
 
 	if( vm.count("dual") ) {
 
-		NewAlgorithm(dualAlgo, Dual, ptrHpg);
+		auto dualAlgo = makeAlgorithm<Dual>(ptrHpg);
 
 		MotorAlgorithm::setAlgorithme( dualAlgo );
 		MotorAlgorithm::runAlgorithme();
@@ -209,69 +227,21 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 
-	if( vm.count("linear") ) {
+	if( vm.count("linear") )
+		return runBooleanAlgorithm<Linear>(ptrHpg,
+				"L'hypergraphe est Linéaire.", "L'hypergraphe n'est pas Linéaire.");
 
-		NewAlgorithm(linearAlgo, Linear, ptrHpg);
+	if( vm.count("helly") )
+		return runBooleanAlgorithm<Helly>(ptrHpg,
+				"L'hypergraphe est Helly.", "L'hypergraphe n'est pas Helly.");
 
-		MotorAlgorithm::setAlgorithme( linearAlgo );
-		MotorAlgorithm::runAlgorithme();
+	if( vm.count("kregular") )
+		return runBooleanAlgorithm<kRegular>(ptrHpg,
+				"L'hypergraphe est k-regulier.", "L'hypergraphe n'est pas k-regulier.");
 
-		RStructure r( linearAlgo->getResult() );
-		if( r.getBooleanResult() ) {
-			std::cout << "L'hypergraphe est Linéaire." << std::endl;
-		} else {
-			std::cout << "L'hypergraphe n'est pas Linéaire." << std::endl;
-		}
-
-		return 0;
-	}
-
-	if( vm.count("helly") ) {
-		NewAlgorithm(hellyAlgo, Helly, ptrHpg);
-
-		MotorAlgorithm::setAlgorithme( hellyAlgo );
-		MotorAlgorithm::runAlgorithme();
-
-		RStructure r( hellyAlgo->getResult() );
-		if( r.getBooleanResult() ) {
-			std::cout << "L'hypergraphe est Helly." << std::endl;
-		} else {
-			std::cout << "L'hypergraphe n'est pas Helly." << std::endl;
-		}
-		return 0;
-	}
-
-	if( vm.count("kregular") ) {
-		NewAlgorithm(kregularAlgo, kRegular, ptrHpg);
-
-		MotorAlgorithm::setAlgorithme( kregularAlgo );
-		MotorAlgorithm::runAlgorithme();
-
-		RStructure r( kregularAlgo->getResult() );
-		if( r.getBooleanResult() ) {
-			std::cout << "L'hypergraphe est k-regulier." << std::endl;
-		} else {
-			std::cout << "L'hypergraphe n'est pas k-regulier." << std::endl;
-		}
-
-		return 0;
-	}
-
-	if( vm.count("simple") ) {
-		NewAlgorithm(simpleAlgo, Simple, ptrHpg);
-
-		MotorAlgorithm::setAlgorithme( simpleAlgo );
-		MotorAlgorithm::runAlgorithme();
-
-		RStructure r( simpleAlgo->getResult() );
-		if( r.getBooleanResult() ) {
-			std::cout << "L'hypergraphe est simple." << std::endl;
-		} else {
-			std::cout << "L'hypergraphe n'est pas simple." << std::endl;
-		}
-
-		return 0;
-	}
+	if( vm.count("simple") )
+		return runBooleanAlgorithm<Simple>(ptrHpg,
+				"L'hypergraphe est simple.", "L'hypergraphe n'est pas simple.");
 
 	if(vm.count("path") ) {
 		std::shared_ptr<Path> pathAlgo( new Path( ptrHpg ) );
@@ -298,21 +268,9 @@ int main(int argc, char *argv[]) {
 
 	}
 
-	if( vm.count("connexe") ) {
-		NewAlgorithm(algoConnected, Connected, ptrHpg);
-
-		MotorAlgorithm::setAlgorithme( algoConnected );
-		MotorAlgorithm::runAlgorithme();
-
-		RStructure r( algoConnected->getResult() );
-		if( r.getBooleanResult() ) {
-			std::cout << "L'hypergraphe est connexe." << std::endl;
-		} else {
-			std::cout << "L'hypergraphe n'est pas connexe." << std::endl;
-		}
-
-		return 0;
-	}
+	if( vm.count("connexe") )
+		return runBooleanAlgorithm<Connected>(ptrHpg,
+				"L'hypergraphe est connexe.", "L'hypergraphe n'est pas connexe.");
 
 	if( vm.count("adjacence") ) {
 		WriterFile w( ptrHpg );

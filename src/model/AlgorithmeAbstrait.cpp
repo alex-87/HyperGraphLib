@@ -24,7 +24,7 @@
  */
 
 
-#include "include/AlgorithmeAbstrait.hh"
+#include "Hypergraph/model/AlgorithmeAbstrait.hh"
 
 AlgorithmeAbstrait::~AlgorithmeAbstrait() {
 

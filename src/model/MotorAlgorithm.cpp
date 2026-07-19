@@ -24,7 +24,7 @@
  */
 
 
-#include "include/MotorAlgorithm.hh"
+#include "Hypergraph/model/MotorAlgorithm.hh"
 
 MotorAlgorithm::MotorAlgorithm() {
 }
@@ -35,17 +35,17 @@ MotorAlgorithm::Instance() {
 }
 
 void
-MotorAlgorithm::setAlgorithme(std::shared_ptr<AlgorithmeAbstrait>& algorithme) {
-	if( MotorAlgorithm::isLock() )return;
-	_algorithme = algorithme;
+MotorAlgorithm::setAlgorithme(std::shared_ptr<AlgorithmeAbstrait>& algorithm) {
+	if( isLock() )return;
+	_algorithm = algorithm;
 }
 
 void
 MotorAlgorithm::runAlgorithme() {
-	if( MotorAlgorithm::isLock() )return;
-	MotorAlgorithm::lock();
-	_algorithme->runAlgorithme();
-	MotorAlgorithm::unlock();
+	if( isLock() )return;
+	lock();
+	_algorithm->runAlgorithme();
+	unlock();
 }
 
 bool
@@ -69,4 +69,4 @@ MotorAlgorithm::~MotorAlgorithm() {
 
 bool MotorAlgorithm::_lock = false;
 MotorAlgorithm MotorAlgorithm::_instance = MotorAlgorithm();
-std::shared_ptr<AlgorithmeAbstrait> MotorAlgorithm::_algorithme = nullptr;
+std::shared_ptr<AlgorithmeAbstrait> MotorAlgorithm::_algorithm = nullptr;

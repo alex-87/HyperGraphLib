@@ -24,12 +24,12 @@
  */
 
 
-#include "include/Path.hh"
-#include "../model/include/HyperVertex.hh"
-#include "../model/include/HyperEdge.hh"
+#include "Hypergraph/algorithm/Path.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
 
-Path::Path(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
-			_ptrHypergrapheAbstrait( ptrHypergrapheAbstrait ), _limite(0) {
+Path::Path(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) :
+			_ptrAbstractHypergraph( ptrAbstractHypergraph ) {
 }
 
 RStructure
@@ -43,13 +43,13 @@ Path::getPathResult() const {
 }
 
 void
-Path::setLimit(unsigned int limite) {
-	_limite = limite;
+Path::setLimit(unsigned int limit) {
+	_limit = limit;
 }
 
 unsigned int
 Path::getLimit() const {
-	return _limite;
+	return _limit;
 }
 
 void
@@ -76,7 +76,7 @@ void Path::runAlgorithme() {
 
 	toVisitVertex.push_back(_source);
 
-	while( (toVisitVertex.size() > 0) && (_limite > pathList->size() || _limite==0) ) {
+	while( (toVisitVertex.size() > 0) && (_limit > pathList->size() || _limit==0) ) {
 
 		std::shared_ptr<HyperVertex> currentHyperVertex( toVisitVertex.back() );
 		visitedVertex.push_back( currentHyperVertex );
@@ -115,7 +115,6 @@ Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVertex& vL
 
 void
 Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex& liste, const std::shared_ptr<HyperEdge>& hyperEdge) const {
-
 	for(unsigned int i=0; i < hyperEdge->getHyperVertexList().size(); i++) {
 		if( !vertexContained(noListe, hyperEdge->getHyperVertexList().at(i)) ) {
 			liste.push_back( hyperEdge->getHyperVertexList().at(i) );
@@ -125,7 +124,6 @@ Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex&
 
 bool
 Path::vertexContained(LibType::ListHyperVertex& liste, std::shared_ptr<HyperVertex>& vertex) const {
-
 	for(unsigned int i=0; i<liste.size(); i++) {
 		if( vertex == liste.at(i) ) {
 			return true;

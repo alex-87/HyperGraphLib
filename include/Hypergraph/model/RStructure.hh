@@ -92,7 +92,7 @@ protected:
 	/**
 	 * L'hypergraphe faisant office de résultat.
 	 */
-	std::shared_ptr<HypergrapheAbstrait> _hypergrapheResult;
+	std::shared_ptr<HypergrapheAbstrait> _hypergraphResult;
 
 };
 

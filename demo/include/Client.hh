@@ -27,12 +27,22 @@
 #ifndef CLIENT_INCLUDE_CLIENT_HH_
 #define CLIENT_INCLUDE_CLIENT_HH_
 
+#include <memory>
+#include <utility>
+
+#include "../../include/Hypergraph/model/AlgorithmeAbstrait.hh"
+
 #define VERSION_MAJOR 3
 #define VERSION_MINOR 0
 #define VERSION_BUILD 0
 
-#define NewAlgorithm(a, b, c) std::shared_ptr<AlgorithmeAbstrait> a( new b( c ) );
-#define NewAlgorithm2(a, b, c, d) std::shared_ptr<AlgorithmeAbstrait> a( new b( c , d ) );
-
+/**
+ * Build an algorithm and return it as a base-class shared pointer.
+ * Replaces the former NewAlgorithm / NewAlgorithm2 macros.
+ */
+template <typename Algorithm, typename... Args>
+std::shared_ptr<AlgorithmeAbstrait> makeAlgorithm(Args&&... args) {
+	return std::make_shared<Algorithm>(std::forward<Args>(args)...);
+}
 
 #endif /* CLIENT_INCLUDE_CLIENT_HH_ */

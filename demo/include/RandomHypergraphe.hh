@@ -44,7 +44,7 @@ public:
 protected:
 
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstrait;
+	_ptrAbstractHypergraph;
 
 };
 

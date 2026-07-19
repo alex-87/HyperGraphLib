@@ -157,5 +157,3 @@ TEST(test_model, hpg_contain, setup, teardown) {
 }
 
 MINITEST_MAIN
-
-

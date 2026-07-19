@@ -51,7 +51,7 @@ protected:
 protected:
 
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstrait;
+	_ptrAbstractHypergraph;
 
 	RStructure _result;
 

@@ -104,17 +104,17 @@ private:
 	/**
 	 * Descripteur du statut bloquant.
 	 */
-	static bool               _lock;
+	static bool _lock;
 
 	/**
 	 * Instance unique du moteur.
 	 */
-	static MotorAlgorithm     _instance;
+	static MotorAlgorithm _instance;
 
 	/**
 	 * Pointeur partagé de l'algorithme.
 	 */
-	static std::shared_ptr<AlgorithmeAbstrait> _algorithme;
+	static std::shared_ptr<AlgorithmeAbstrait> _algorithm;
 
 };
 

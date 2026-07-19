@@ -69,7 +69,7 @@ protected:
 	 * @param Le second hyper-vertex.
 	 * @return La liste des hyper-rêtes contennt les deux hyper-vertex.
 	 */
-	LibType::ListHyperEdge& allContainXY(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
+	LibType::ListHyperEdge allContainXY(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Vérifie si l'intersection entre les éléments de la liste n'est pas vide.
@@ -92,7 +92,7 @@ protected:
 	 * @param Second hyper-vertex
 	 * @return True s'il sont voisin, False sinon.
 	 */
-	bool voisin(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
+	bool areNeighbours(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * Concaténation de deux listes d'hyper-arêtes.
@@ -108,7 +108,7 @@ protected:
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstrait;
+	_ptrAbstractHypergraph;
 
 	/**
 	 * Structure des résultats.

@@ -51,7 +51,7 @@ public:
 	 * Démarrer une session de fabrication d'un hypergraphe.
 	 * @param Pointeur partagé vers l'hypergraphe.
 	 */
-	static void startSession(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait);
+	static void startSession(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph);
 
 	/**
 	 * Création d'un nouvel hyper-vertex.
@@ -132,7 +132,7 @@ private:
 	/**
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
-	static std::shared_ptr<HypergrapheAbstrait> _ptrHypergrapheAbstrait;
+	static std::shared_ptr<HypergrapheAbstrait> _ptrAbstractHypergraph;
 
 };
 

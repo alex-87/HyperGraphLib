@@ -23,30 +23,31 @@
  *
  */
 
-#include "include/kRegular.hh"
+#include "Hypergraph/algorithm/kRegular.hh"
 
-kRegular::kRegular(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
-	_ptrHypergrapheAbstrait = ptrHypergrapheAbstrait;
+kRegular::kRegular(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
+	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 }
 
 void
 kRegular::runAlgorithme() {
-
+	
+	AdjacentMatrix matrix ( _ptrAbstractHypergraph->getAdjacentMatrix() );
 	_result.setBooleanResult(true);
-	AdjacentMatrix matrix ( _ptrHypergrapheAbstrait->getAdjacentMatrix() );
 
-	int compteur = -1;
-	for(const auto& e : _ptrHypergrapheAbstrait->getIndexHyperVertex() ) {
-		if(compteur==-1) {
-			compteur = matrix.getVertexDegree(e.first);
+	int count = -1;
+	for(const auto& e : _ptrAbstractHypergraph->getIndexHyperVertex() ) {
+		if(count==-1) {
+			count = matrix.getVertexDegree(e.first);
 		} else {
-			if( (int)matrix.getVertexDegree(e.first) != compteur ) {
+			if( (int)matrix.getVertexDegree(e.first) != count ) {
 				_result.setBooleanResult(false);
 			};
 		};
 	}
 
-	if( compteur==-1 ) _result.setBooleanResult(true);
+	if(count==-1)
+		_result.setBooleanResult(true);
 }
 
 RStructure

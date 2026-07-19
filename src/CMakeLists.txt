@@ -1,5 +1,7 @@
 file(GLOB psrc */*.cpp)
 
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
 add_library(hypergraph SHARED ${psrc})
 
 install (TARGETS hypergraph DESTINATION lib)

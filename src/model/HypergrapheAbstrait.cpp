@@ -24,9 +24,9 @@
  */
 
 
-#include "include/HypergrapheAbstrait.hh"
-#include "include/HyperVertex.hh"
-#include "include/HyperEdge.hh"
+#include "Hypergraph/model/HypergrapheAbstrait.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
 
 HypergrapheAbstrait::HypergrapheAbstrait() : _adjacentMatrix(0, 0) {
 

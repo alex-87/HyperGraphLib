@@ -104,7 +104,7 @@ protected:
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstrait;
+	_ptrAbstractHypergraph;
 
 	/**
 	 * La structure des résultats - inutilisée ici.
@@ -129,12 +129,12 @@ protected:
 	/**
 	 * Le rang de l'hypergraphe
 	 */
-	unsigned int _rang;
+	unsigned int _rank;
 
 	/**
 	 * Le co-rang de l'hypergraphe
 	 */
-	unsigned int _coRang;
+	unsigned int _coRank;
 
 };
 

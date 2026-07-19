@@ -24,10 +24,10 @@
  */
 
 
-#include "include/WriterAbstrait.hh"
+#include "Hypergraph/io/WriterAbstrait.hh"
 
-WriterAbstrait::WriterAbstrait(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
-			_ptrHypergrapheAbstrait( ptrHypergrapheAbstrait ){
+WriterAbstrait::WriterAbstrait(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) :
+			_ptrAbstractHypergraph( ptrAbstractHypergraph ){
 
 }
 

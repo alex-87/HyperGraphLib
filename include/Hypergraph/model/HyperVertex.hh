@@ -47,7 +47,7 @@ public:
 	 * @param Pointeur partagé vers l'hypergraphe auquel appartient l'hyper-vertex.
 	 * @param L'identifiant numérique de l'hyper-vertex.
 	 */
-	HyperVertex(const std::shared_ptr<HypergrapheAbstrait>&, unsigned int& identifier);
+	HyperVertex(const std::shared_ptr<HypergrapheAbstrait>&, unsigned int&);
 
 	/**
 	 * Ajouter une hyper-arête à l'hyper-vertex.
@@ -102,7 +102,7 @@ protected:
 	 * Pointeur partagé sur l'hypergraphe.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergraphe;
+	_ptrHypergraph;
 
 	/**
 	 * Identifiant numérique.

@@ -34,6 +34,10 @@
 #include "../model/Hypergraphe.hh"
 #include "../model/HyperVertex.hh"
 #include "../model/HyperEdge.hh"
+#include "../model/LibType.hh"
+#include "../model/Hypergraphe.hh"
+#include "../model/HyperVertex.hh"
+#include "../model/HyperEdge.hh"
 
 class HypergrapheAbstrait;
 

@@ -49,7 +49,7 @@ public:
 	 * @param Pointeur partagé sur l'hypergraphe.
 	 * @param Valeur de k.
 	 */
-	kUniform(std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait, const unsigned int&);
+	kUniform(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph, const unsigned int&);
 
 	/**
 	 * Obtenir la structure des résultats.
@@ -77,7 +77,7 @@ protected:
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstrait;
+	_ptrAbstractHypergraph;
 
 	/**
 	 * Valeur de k.

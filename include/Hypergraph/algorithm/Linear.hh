@@ -69,7 +69,7 @@ protected:
 	 * Pointeur partagé vers l'hypergraphe.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergrapheAbstrait;
+	_ptrAbstractHypergraph;
 
 	/**
 	 * Structure des résutats.

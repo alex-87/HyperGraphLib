@@ -24,13 +24,13 @@
  */
 
 
-#include "include/Helly.hh"
-#include "../model/include/Hypergraphe.hh"
-#include "../model/include/HyperVertex.hh"
-#include "../model/include/HyperEdge.hh"
+#include "Hypergraph/algorithm/Helly.hh"
+#include "Hypergraph/model/Hypergraphe.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
 
-Helly::Helly(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
-				_ptrHypergrapheAbstrait( ptrHypergrapheAbstrait ) {
+Helly::Helly(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) :
+				_ptrAbstractHypergraph( ptrAbstractHypergraph ) {
 
 }
 
@@ -39,13 +39,13 @@ Helly::runAlgorithme() {
 
 	_result.setBooleanResult(true);
 
-	for(auto& x : _ptrHypergrapheAbstrait->getHyperVertexList()) {
-		for(auto& y : _ptrHypergrapheAbstrait->getHyperVertexList()) {
+	for(auto& x : _ptrAbstractHypergraph->getHyperVertexList()) {
+		for(auto& y : _ptrAbstractHypergraph->getHyperVertexList()) {
 
 			LibType::ListHyperEdge X_xy( allContainXY(x, y) );
-			for(auto& v : _ptrHypergrapheAbstrait->getHyperVertexList()) {
+			for(auto& v : _ptrAbstractHypergraph->getHyperVertexList()) {
 
-				if( voisin(x, v) && voisin(y, v) ) {
+				if( areNeighbours(x, v) && areNeighbours(y, v) ) {
 					LibType::ListHyperEdge X_xv( allContainXY(x, v) );
 					LibType::ListHyperEdge X_yv( allContainXY(y, v) );
 
@@ -66,7 +66,7 @@ Helly::runAlgorithme() {
 }
 
 bool
-Helly::voisin(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
+Helly::areNeighbours(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
 	for(auto& element1 : v1->getHyperEdgeList() ) {
 		for(auto& element2 : v2->getHyperEdgeList() ) {
 			if( element1==element2 ) {
@@ -79,16 +79,14 @@ Helly::voisin(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2
 
 void
 Helly::concatenate(LibType::ListHyperEdge& dest, LibType::ListHyperEdge& src) {
-	for(auto& e : src) {
-		dest.push_back(e);
-	}
+	dest.insert(dest.end(), src.begin(), src.end());
 }
 
 bool
-Helly::nonEmptyIntersection(LibType::ListHyperEdge& ensemble) {
-	for(unsigned int i=0; i<ensemble.size(); i++) {
-		for(unsigned int j=i+1; j<ensemble.size(); j++) {
-			if( !nonEmptyBetween(ensemble.at(i), ensemble.at(j)) )
+Helly::nonEmptyIntersection(LibType::ListHyperEdge& edges) {
+	for(unsigned int i=0; i<edges.size(); i++) {
+		for(unsigned int j=i+1; j<edges.size(); j++) {
+			if( !nonEmptyBetween(edges.at(i), edges.at(j)) )
 				return false;
 		}
 	}
@@ -105,15 +103,15 @@ Helly::nonEmptyBetween(std::shared_ptr<HyperEdge>& e1, std::shared_ptr<HyperEdge
 	return false;
 }
 
-LibType::ListHyperEdge&
+LibType::ListHyperEdge
 Helly::allContainXY(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
-	LibType::ListHyperEdge * elist = new LibType::ListHyperEdge();
-	for(auto& e : _ptrHypergrapheAbstrait->getHyperEdgeList()) {
+	LibType::ListHyperEdge elist;
+	for(auto& e : _ptrAbstractHypergraph->getHyperEdgeList()) {
 		if( e->containVertex(v1) && e->containVertex(v2) ) {
-			elist->push_back(e);
+			elist.push_back(e);
 		}
 	}
-	return *elist;
+	return elist;
 }
 
 RStructure

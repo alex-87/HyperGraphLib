@@ -24,76 +24,76 @@
  */
 
 
-#include "include/WriterFile.hh"
+#include "Hypergraph/io/WriterFile.hh"
 
-#include "../model/include/HypergrapheAbstrait.hh"
-#include "../model/include/HyperVertex.hh"
-#include "../model/include/HyperEdge.hh"
+#include "Hypergraph/model/HypergrapheAbstrait.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
 
 #include <tuple>
 #include <ostream>
 #include <string>
 
-WriterFile::WriterFile(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) :
-				WriterAbstrait( ptrHypergrapheAbstrait ) {
+WriterFile::WriterFile(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) :
+				WriterAbstrait( ptrAbstractHypergraph ) {
 
 }
 
 void
-WriterFile::writeAdjacentMatrix(std::ostream& sortie) const {
+WriterFile::writeAdjacentMatrix(std::ostream& output) const {
 
 	LibType::AdjacentMatrixContainerBool
-	adjacentMatrixBool( _ptrHypergrapheAbstrait->getAdjacentMatrix().getBoolAdjacentMatrix() );
+	adjacentMatrixBool( _ptrAbstractHypergraph->getAdjacentMatrix().getBoolAdjacentMatrix() );
 
 	std::tuple<unsigned int, unsigned int>
-	matrixDimension( _ptrHypergrapheAbstrait->getAdjacentMatrix().getMatrixDimension() );
+	matrixDimension( _ptrAbstractHypergraph->getAdjacentMatrix().getMatrixDimension() );
 
 	unsigned int n( std::get<0>(matrixDimension) ), m( std::get<1>(matrixDimension) );
 
 	for(unsigned int i=0; i<n; i++) {
 		for(unsigned int j=0; j<m; j++) {
-			sortie << adjacentMatrixBool(j, i) << " ";
+			output << adjacentMatrixBool(j, i) << " ";
 		}
-		sortie << " " << "\n";
+		output << " " << "\n";
 	}
 }
 
 void
-WriterFile::writeHypergraph(std::ostream& sortie) const {
+WriterFile::writeHypergraph(std::ostream& output) const {
 
-	writeHypergrapheHyperVertex( sortie );
-	writeHypergrapheHyperEdge( sortie );
+	writeHypergrapheHyperVertex( output );
+	writeHypergrapheHyperEdge( output );
 
-	LibType::ListHyperEdge listEdge( _ptrHypergrapheAbstrait->getHyperEdgeList() );
+	LibType::ListHyperEdge listEdge( _ptrAbstractHypergraph->getHyperEdgeList() );
 
 	for(const auto& edge : listEdge) {
 		LibType::ListHyperVertex vertexList( edge->getHyperVertexList() );
 		for(const auto& vertex : vertexList) {
-			sortie << edge->getIdentifier() << " " << vertex->getIdentifier() << std::endl;
+			output << edge->getIdentifier() << " " << vertex->getIdentifier() << std::endl;
 		}
 	}
 }
 
 void
-WriterFile::writeHypergrapheHyperVertex(std::ostream& sortie) const {
+WriterFile::writeHypergrapheHyperVertex(std::ostream& output) const {
 
-	LibType::ListHyperVertex listVertex( _ptrHypergrapheAbstrait->getHyperVertexList() );
+	LibType::ListHyperVertex listVertex( _ptrAbstractHypergraph->getHyperVertexList() );
 
 	for(const auto& vertex : listVertex) {
-		sortie << vertex->getIdentifier() << " ";
+		output << vertex->getIdentifier() << " ";
 	}
 
-	sortie << "\n";
+	output << "\n";
 }
 
 void
-WriterFile::writeHypergrapheHyperEdge(std::ostream& sortie) const {
+WriterFile::writeHypergrapheHyperEdge(std::ostream& output) const {
 
-	LibType::ListHyperEdge listEdge( _ptrHypergrapheAbstrait->getHyperEdgeList() );
+	LibType::ListHyperEdge listEdge( _ptrAbstractHypergraph->getHyperEdgeList() );
 
 	for(const auto& edge : listEdge) {
-		sortie << edge->getIdentifier() << " ";
+		output << edge->getIdentifier() << " ";
 	}
 
-	sortie << "\n";
+	output << "\n";
 }

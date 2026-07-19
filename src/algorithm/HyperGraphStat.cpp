@@ -24,17 +24,16 @@
  */
 
 
-#include "include/HyperGraphStat.hh"
-#include "../model/include/AdjacentMatrix.hh"
+#include "Hypergraph/algorithm/HyperGraphStat.hh"
+#include "Hypergraph/model/AdjacentMatrix.hh"
 
-HyperGraphStat::HyperGraphStat(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergrapheAbstrait) {
-	_ptrHypergrapheAbstrait = ptrHypergrapheAbstrait;
-
+HyperGraphStat::HyperGraphStat(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
+	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 	_nhEdge   = 0;
 	_nhVertex = 0;
 	_nhLink   = 0;
-	_rang     = 0;
-	_coRang   = 0;
+	_rank     = 0;
+	_coRank   = 0;
 }
 
 unsigned int
@@ -54,25 +53,25 @@ HyperGraphStat::getNbrLinks() const {
 
 unsigned int
 HyperGraphStat::getRang() const {
-	return _rang;
+	return _rank;
 }
 
 unsigned int
 HyperGraphStat::getCoRang() const {
-	return _coRang;
+	return _coRank;
 }
 
 void
 HyperGraphStat::runAlgorithme() {
 
-	_nhEdge = _ptrHypergrapheAbstrait->getHyperEdgeList().size();
-	_nhVertex = _ptrHypergrapheAbstrait->getHyperVertexList().size();
+	_nhEdge = _ptrAbstractHypergraph->getHyperEdgeList().size();
+	_nhVertex = _ptrAbstractHypergraph->getHyperVertexList().size();
 
-	AdjacentMatrix m( _ptrHypergrapheAbstrait->getAdjacentMatrix() );
-	LibType::ListHyperEdge eList( _ptrHypergrapheAbstrait->getHyperEdgeList() );
+	AdjacentMatrix m( _ptrAbstractHypergraph->getAdjacentMatrix() );
+	LibType::ListHyperEdge eList( _ptrAbstractHypergraph->getHyperEdgeList() );
 
-	_rang   = m.getRank();
-	_coRang = m.getCoRank();
+	_rank   = m.getRank();
+	_coRank = m.getCoRank();
 }
 
 RStructure

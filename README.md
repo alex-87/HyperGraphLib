@@ -17,30 +17,21 @@ Hypergraphs modelling library with algorithms, [the official page](https://alex-
 - Path finding
 - Simple
 
-## Build & Install
+## Build, Test & Install
 
 ### Requirements
-
-To compile HyperGraphLib, you need:
 
   - [cmake](https://github.com/Kitware/CMake) (>= 3.28)
   - [g++](https://gcc.gnu.org) (>= 9.0)
   - [Gecode](http://www.gecode.dev) (>= 6.2.0)
 
-### Build
+### Installation Steps
 
 ```shell
-git clone https://github.com/alex-87/HyperGraphLib.git
-cd HyperGraphLib
-cmake -B build
-cmake --build build -j
-ctest --test-dir build
-```
-
-### Install
-
-```shell
-sudo cmake --install build
+git clone https://github.com/alex-87/HyperGraphLib.git && cd HyperGraphLib
+cmake -B build && cmake --build build -j   # Build
+ctest --test-dir build                     # Test
+sudo cmake --install build                 # Install
 ```
 
 ## Documentation
@@ -135,12 +126,12 @@ int main(int argc, char * argv[]) {
 }
 ```
 
-### Compiling the example (Unix / Linux)
+### Build the Example
 
 ```shell
 g++ example.cpp -std=c++17 -o example -lhypergraph
 ```
-#### Output
+#### Execution & Output
 
 ```
 $ ./example

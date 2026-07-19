@@ -23,9 +23,9 @@
  *
  */
 
-#include "include/Simple.hh"
+#include "Hypergraph/algorithm/Simple.hh"
 
-Simple::Simple(std::shared_ptr<HypergrapheAbstrait>& ptrHypergraphe) : _ptrHypergrapheAbstrait( ptrHypergraphe ) {
+Simple::Simple(std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph) : _ptrAbstractHypergraph( ptrHypergraph ) {
 
 }
 
@@ -34,8 +34,8 @@ Simple::runAlgorithme() {
 
 	_result.setBooleanResult(true);
 
-	LibType::ListHyperVertex listVertex( _ptrHypergrapheAbstrait->getHyperVertexList() );
-	LibType::ListHyperEdge   listEdge  ( _ptrHypergrapheAbstrait->getHyperEdgeList()   );
+	LibType::ListHyperVertex listVertex( _ptrAbstractHypergraph->getHyperVertexList() );
+	LibType::ListHyperEdge   listEdge  ( _ptrAbstractHypergraph->getHyperEdgeList()   );
 
 	for(unsigned int i=0; i < listEdge.size(); i++) {
 		for(unsigned int j=i; j < listEdge.size(); j++) {
@@ -50,19 +50,15 @@ Simple::runAlgorithme() {
 
 bool
 Simple::subsetVertexList(const LibType::ListHyperVertex& vList1, const LibType::ListHyperVertex& vList2) const {
-
-	bool ret1 = true;
+	bool ret1( true ), ret2( true );
 	for(const auto& v : vList1) {
 		if( !contains(vList2, v))
 			ret1 = false;
 	}
-
-	bool ret2 = true;
 	for(const auto& v : vList2) {
 		if( !contains(vList1, v))
 			ret2 = false;
 	}
-
 	return (ret1 || ret2);
 }
 
