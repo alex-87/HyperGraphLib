@@ -31,52 +31,47 @@
 
 template <typename T>
 class Matrix2D {
+  public:
+	typedef typename std::vector<T>::reference reference;
+	typedef typename std::vector<T>::const_reference const_reference;
 
-public:
+	Matrix2D()
+	    : _m(0), _n(0) {
+	}
 
-    typedef typename std::vector<T>::reference reference;
-    typedef typename std::vector<T>::const_reference const_reference;
+	Matrix2D(std::size_t m, std::size_t n)
+	    : _m(m),
+	      _n(n),
+	      _data(m * n) {
+	}
 
-    Matrix2D() : _m(0), _n(0) {
+	void resize(std::size_t m, std::size_t n) {
+		_m = m;
+		_n = n;
+		_data.assign(m * n, T());
+	}
 
-    }
+	reference operator()(std::size_t i, std::size_t j) {
+		return _data[i * _n + j];
+	}
 
-    Matrix2D(std::size_t m, std::size_t n) :
-        _m(m),
-        _n(n),
-        _data(m * n) {
+	const_reference operator()(std::size_t i, std::size_t j) const {
+		return _data[i * _n + j];
+	}
 
-    }
+	std::size_t rows() const {
+		return _m;
+	}
 
-    void resize(std::size_t m, std::size_t n) {
-        _m = m;
-        _n = n;
-        _data.assign(m * n, T());
-    }
-
-    reference operator()(std::size_t i, std::size_t j) {
-        return _data[i * _n + j];
-    }
-
-    const_reference operator()(std::size_t i, std::size_t j) const {
-        return _data[i * _n + j];
-    }
-
-    std::size_t rows() const {
-        return _m;
-    }
-
-    std::size_t cols() const {
-        return _n;
-    }
+	std::size_t cols() const {
+		return _n;
+	}
 
 
-private:
+  private:
+	std::size_t _m, _n;
 
-    std::size_t _m, _n;
-
-    std::vector<T> _data;
-
+	std::vector<T> _data;
 };
 
 #endif // HYPERGRAPHLIB_CONTAINER_MATRIX2D

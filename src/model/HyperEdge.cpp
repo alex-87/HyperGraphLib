@@ -30,10 +30,9 @@
 #include <algorithm>
 
 
-HyperEdge::HyperEdge(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph, unsigned int& identifier) :
-	_ptrHypergraph( ptrHypergraph ),
-	_identifier( identifier ){
-
+HyperEdge::HyperEdge(const std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph, unsigned int& identifier)
+    : _ptrHypergraph(ptrHypergraph),
+      _identifier(identifier) {
 }
 
 void HyperEdge::addHyperVertex(std::shared_ptr<HyperVertex>& hyperVertex) {

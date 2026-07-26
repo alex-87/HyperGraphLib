@@ -89,7 +89,6 @@ class RStructure {
 	 * The hypergraph used as the result.
 	 */
 	std::shared_ptr<HypergrapheAbstrait> _hypergraphResult;
-
 };
 
 

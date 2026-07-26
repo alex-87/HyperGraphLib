@@ -29,11 +29,11 @@
 
 HyperGraphStat::HyperGraphStat(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
-	_nhEdge   = 0;
+	_nhEdge = 0;
 	_nhVertex = 0;
-	_nhLink   = 0;
-	_rank     = 0;
-	_coRank   = 0;
+	_nhLink = 0;
+	_rank = 0;
+	_coRank = 0;
 }
 
 unsigned int
@@ -61,16 +61,14 @@ HyperGraphStat::getCoRang() const {
 	return _coRank;
 }
 
-void
-HyperGraphStat::runAlgorithme() {
-
+void HyperGraphStat::runAlgorithme() {
 	_nhEdge = _ptrAbstractHypergraph->getHyperEdgeList().size();
 	_nhVertex = _ptrAbstractHypergraph->getHyperVertexList().size();
 
-	AdjacentMatrix m( _ptrAbstractHypergraph->getAdjacentMatrix() );
-	LibType::ListHyperEdge eList( _ptrAbstractHypergraph->getHyperEdgeList() );
+	AdjacentMatrix m(_ptrAbstractHypergraph->getAdjacentMatrix());
+	LibType::ListHyperEdge eList(_ptrAbstractHypergraph->getHyperEdgeList());
 
-	_rank   = m.getRank();
+	_rank = m.getRank();
 	_coRank = m.getCoRank();
 }
 

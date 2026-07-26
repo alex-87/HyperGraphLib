@@ -34,15 +34,15 @@
 
 #define TRACE_ALGORITHM_CONNECTED 0
 
-Connected::Connected(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) :
-			_ptrAbstractHypergraph(ptrAbstractHypergraph) {
-
+Connected::Connected(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+    : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
 void Connected::runAlgorithme() {
-	if( _ptrAbstractHypergraph->getHyperVertexList().size()==0 )return;
+	if (_ptrAbstractHypergraph->getHyperVertexList().size() == 0)
+		return;
 
-	LibType::AdjacentMatrixContainerBool matrix( _ptrAbstractHypergraph->getAdjacentMatrix().getBoolAdjacentMatrix() );
+	LibType::AdjacentMatrixContainerBool matrix(_ptrAbstractHypergraph->getAdjacentMatrix().getBoolAdjacentMatrix());
 
 	std::stack<unsigned int> stackHyperVertex;
 	std::stack<unsigned int> stackHyperEdge;
@@ -51,9 +51,9 @@ void Connected::runAlgorithme() {
 	std::vector<unsigned int> listHyperEdgeVisited;
 
 	_result.setBooleanResult(false);
-	stackHyperVertex.push( _ptrAbstractHypergraph->getHyperVertexList().at(0)->getIdentifier() );
+	stackHyperVertex.push(_ptrAbstractHypergraph->getHyperVertexList().at(0)->getIdentifier());
 
-#if(TRACE_ALGORITHM_CONNECTED)
+#if (TRACE_ALGORITHM_CONNECTED)
 	std::cout << "PUSH [vertex]: " << _ptrAbstractHypergraph->getHyperVertexList().at(0)->getIdentifier() << std::endl;
 #endif
 
@@ -110,18 +110,18 @@ void Connected::runAlgorithme() {
 		std::cout << "*** Stack[vrtx]: " << stackHyperVertex.size() << " elements" << std::endl;
 #endif
 	}
-#if(TRACE_ALGORITHM_CONNECTED)
+#if (TRACE_ALGORITHM_CONNECTED)
 	std::cout << "Finished: " << listConnectedVisited.size() << " =?= " << _ptrAbstractHypergraph->getHyperVertexList().size() << std::endl;
 #endif
-	_result.setBooleanResult( listConnectedVisited.size() == _ptrAbstractHypergraph->getHyperVertexList().size() );
+	_result.setBooleanResult(listConnectedVisited.size() == _ptrAbstractHypergraph->getHyperVertexList().size());
 }
 
 void Connected::exploreVertical(std::vector<unsigned int>& listVisited, std::stack<unsigned int>& stack, unsigned int idVert) {
 	LibType::AdjacentMatrixContainerBool
-	matrix( _ptrAbstractHypergraph->getAdjacentMatrix().getBoolAdjacentMatrix() );
+	    matrix(_ptrAbstractHypergraph->getAdjacentMatrix().getBoolAdjacentMatrix());
 
 	std::tuple<unsigned int, unsigned int>
-	dim = _ptrAbstractHypergraph->getAdjacentMatrix().getMatrixDimension();
+	    dim = _ptrAbstractHypergraph->getAdjacentMatrix().getMatrixDimension();
 
 	for (unsigned int i = 0; i < std::get<0>(dim); i++) {
 		if (matrix(idVert, i) && !isEdgeVisited(listVisited, i)) {
@@ -135,10 +135,10 @@ void Connected::exploreVertical(std::vector<unsigned int>& listVisited, std::sta
 
 void Connected::exploreHorizontal(std::vector<unsigned int>& listVisited, std::stack<unsigned int>& stack, unsigned int idHor) {
 	LibType::AdjacentMatrixContainerBool
-	matrix( _ptrAbstractHypergraph->getAdjacentMatrix().getBoolAdjacentMatrix() );
+	    matrix(_ptrAbstractHypergraph->getAdjacentMatrix().getBoolAdjacentMatrix());
 
 	std::tuple<unsigned int, unsigned int>
-	dim = _ptrAbstractHypergraph->getAdjacentMatrix().getMatrixDimension();
+	    dim = _ptrAbstractHypergraph->getAdjacentMatrix().getMatrixDimension();
 
 	for (unsigned int i = 0; i < std::get<1>(dim); i++) {
 		if (matrix(i, idHor) && !isVertexVisited(listVisited, i)) {

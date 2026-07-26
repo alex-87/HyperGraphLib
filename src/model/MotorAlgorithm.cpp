@@ -34,9 +34,9 @@ MotorAlgorithm::Instance() {
 	return _instance;
 }
 
-void
-MotorAlgorithm::setAlgorithme(std::shared_ptr<AlgorithmeAbstrait>& algorithm) {
-	if( isLock() )return;
+void MotorAlgorithm::setAlgorithme(std::shared_ptr<AlgorithmeAbstrait>& algorithm) {
+	if (isLock())
+		return;
 	_algorithm = algorithm;
 }
 

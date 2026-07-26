@@ -41,8 +41,7 @@ class RandomHypergraphe {
 
   protected:
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrAbstractHypergraph;
-
+	    _ptrAbstractHypergraph;
 };
 
 

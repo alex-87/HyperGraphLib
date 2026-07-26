@@ -91,7 +91,7 @@ class Simple : public AlgorithmeAbstrait {
 	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrAbstractHypergraph;
+	    _ptrAbstractHypergraph;
 
 	/**
 	 * Result structure.

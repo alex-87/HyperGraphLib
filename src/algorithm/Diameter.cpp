@@ -27,8 +27,8 @@
 #include "Hypergraph/algorithm/Diameter.hh"
 
 
-Diameter::Diameter(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
-
+Diameter::Diameter(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+    : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
 void Diameter::runAlgorithme() {

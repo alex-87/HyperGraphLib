@@ -31,7 +31,8 @@
 #include "Hypergraph/model/HyperVertex.hh"
 
 
-Dual::Dual(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) : _ptrDualHypergraph( new Hypergraphe() ) {
+Dual::Dual(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+    : _ptrDualHypergraph(new Hypergraphe()) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 }
 
@@ -40,11 +41,9 @@ Dual::getResult() const {
 	return _result;
 }
 
-void
-Dual::runAlgorithme() {
-
-	LibType::IndexerHyperVertex indexVertex ( _ptrAbstractHypergraph->getIndexHyperVertex() );
-	LibType::IndexerHyperEdge   indexEdge   ( _ptrAbstractHypergraph->getIndexHyperEdge()   );
+void Dual::runAlgorithme() {
+	LibType::IndexerHyperVertex indexVertex(_ptrAbstractHypergraph->getIndexHyperVertex());
+	LibType::IndexerHyperEdge indexEdge(_ptrAbstractHypergraph->getIndexHyperEdge());
 
 	LibType::ListHyperVertex listVertex;
 	LibType::ListHyperEdge listEdge;
@@ -59,24 +58,24 @@ Dual::runAlgorithme() {
 		listVertex.push_back(HyperFactory::newHyperVertex());
 	}
 
-	for(auto& itemVertex : listVertex) {
-		for(auto& itemEdge : listEdge) {
-			if( _ptrAbstractHypergraph->getAdjacentMatrix().isVertexInEdge(itemEdge->getIdentifier(), itemVertex->getIdentifier())) {
+	for (auto& itemVertex : listVertex) {
+		for (auto& itemEdge : listEdge) {
+			if (_ptrAbstractHypergraph->getAdjacentMatrix().isVertexInEdge(itemEdge->getIdentifier(), itemVertex->getIdentifier())) {
 				HyperFactory::link(itemVertex, itemEdge);
 			}
 		}
 	}
 
-	for(auto& itemVertex : listVertex) {
+	for (auto& itemVertex : listVertex) {
 		_ptrDualHypergraph->addHyperVertex(itemVertex);
 	}
 
-	for(auto& itemEdge : listEdge) {
+	for (auto& itemEdge : listEdge) {
 		_ptrDualHypergraph->addHyperEdge(itemEdge);
 	}
 
 	HyperFactory::closeSession();
 
 	_ptrDualHypergraph->flush();
-	_result.setHypergrapheResult( _ptrDualHypergraph );
+	_result.setHypergrapheResult(_ptrDualHypergraph);
 }

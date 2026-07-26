@@ -31,17 +31,17 @@
 #include <string>
 #include <sstream>
 
-ReaderFile::ReaderFile() : ReaderAbstrait(std::shared_ptr<HypergrapheAbstrait>(new Hypergraphe())) {
+ReaderFile::ReaderFile()
+    : ReaderAbstrait(std::shared_ptr<HypergrapheAbstrait>(new Hypergraphe())) {
 }
 
-void
-ReaderFile::readHypergraphe(std::istream& input) {
+void ReaderFile::readHypergraphe(std::istream& input) {
+	while (HyperFactory::isSession())
+		;
+	HyperFactory::startSession(_ptrAbstractHypergraph);
 
-	while( HyperFactory::isSession() );
-	HyperFactory::startSession( _ptrAbstractHypergraph );
-
-	readHypergrapheHyperVertex( input );
-	readHypergrapheHyperEdge( input );
+	readHypergrapheHyperVertex(input);
+	readHypergrapheHyperEdge(input);
 
 	unsigned int vertex(0);
 	unsigned int edge(0);
@@ -49,13 +49,11 @@ ReaderFile::readHypergraphe(std::istream& input) {
 	input >> edge;
 	input >> vertex;
 
-	while( input ) {
-
-		HyperFactory::link( hyperVertexById(vertex), hyperEdgeById(edge) );
+	while (input) {
+		HyperFactory::link(hyperVertexById(vertex), hyperEdgeById(edge));
 
 		input >> edge;
 		input >> vertex;
-
 	};
 
 	flush();
@@ -63,45 +61,39 @@ ReaderFile::readHypergraphe(std::istream& input) {
 	HyperFactory::closeSession();
 }
 
-void
-ReaderFile::readHypergrapheHyperVertex(std::istream& input) {
-
+void ReaderFile::readHypergrapheHyperVertex(std::istream& input) {
 	std::string s;
 	std::getline(input, s);
 
 	std::stringstream k(s);
 
-	unsigned int i( 0 );
-	while( k >> i ) {
-		std::shared_ptr<HyperVertex> ptrHv( new HyperVertex(_ptrAbstractHypergraph, i) );
-		_listHyperVertex.push_back( ptrHv );
+	unsigned int i(0);
+	while (k >> i) {
+		std::shared_ptr<HyperVertex> ptrHv(new HyperVertex(_ptrAbstractHypergraph, i));
+		_listHyperVertex.push_back(ptrHv);
 	}
 }
 
-void
-ReaderFile::readHypergrapheHyperEdge(std::istream& input) {
-
+void ReaderFile::readHypergrapheHyperEdge(std::istream& input) {
 	std::string s;
 	std::getline(input, s);
 
 	std::stringstream k(s);
 
-	unsigned int i( 0 );
-	while( k >> i ) {
-		std::shared_ptr<HyperEdge> ptrHe( new HyperEdge(_ptrAbstractHypergraph, i) );
-		_listHyperEdge.push_back( ptrHe );
+	unsigned int i(0);
+	while (k >> i) {
+		std::shared_ptr<HyperEdge> ptrHe(new HyperEdge(_ptrAbstractHypergraph, i));
+		_listHyperEdge.push_back(ptrHe);
 	}
 }
 
-void
-ReaderFile::flush() {
-
-	for(auto& vertex : _listHyperVertex) {
-		_ptrAbstractHypergraph->addHyperVertex( vertex );
+void ReaderFile::flush() {
+	for (auto& vertex : _listHyperVertex) {
+		_ptrAbstractHypergraph->addHyperVertex(vertex);
 	}
 
-	for(auto& edge : _listHyperEdge) {
-		_ptrAbstractHypergraph->addHyperEdge( edge );
+	for (auto& edge : _listHyperEdge) {
+		_ptrAbstractHypergraph->addHyperEdge(edge);
 	}
 
 	_ptrAbstractHypergraph->flush();

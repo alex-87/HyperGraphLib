@@ -29,24 +29,22 @@ kRegular::kRegular(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHyperg
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 }
 
-void
-kRegular::runAlgorithme() {
-
-	AdjacentMatrix matrix ( _ptrAbstractHypergraph->getAdjacentMatrix() );
+void kRegular::runAlgorithme() {
+	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
 	_result.setBooleanResult(true);
 
 	int count = -1;
-	for(const auto& e : _ptrAbstractHypergraph->getIndexHyperVertex() ) {
-		if(count==-1) {
+	for (const auto& e : _ptrAbstractHypergraph->getIndexHyperVertex()) {
+		if (count == -1) {
 			count = matrix.getVertexDegree(e.first);
 		} else {
-			if( (int)matrix.getVertexDegree(e.first) != count ) {
+			if ((int)matrix.getVertexDegree(e.first) != count) {
 				_result.setBooleanResult(false);
 			};
 		};
 	}
 
-	if(count==-1)
+	if (count == -1)
 		_result.setBooleanResult(true);
 }
 

@@ -40,15 +40,13 @@ namespace po {
  * Holds the raw text of a parsed option value and converts it on demand.
  */
 class OptionValue {
-
-public:
-
-	OptionValue() : _value(), _set(false) {
-
+  public:
+	OptionValue()
+	    : _value(), _set(false) {
 	}
 
-	explicit OptionValue(std::string value) : _value(std::move(value)), _set(true) {
-
+	explicit OptionValue(std::string value)
+	    : _value(std::move(value)), _set(true) {
 	}
 
 	template <typename T>
@@ -86,15 +84,15 @@ class options_description {
 		bool takesValue;
 	};
 
-	explicit options_description(std::string caption) : _caption(std::move(caption)) {
-
+	explicit options_description(std::string caption)
+	    : _caption(std::move(caption)) {
 	}
 
 
 	class adder {
-
-	public:
-		explicit adder(options_description& owner) : _owner(owner) {}
+	  public:
+		explicit adder(options_description& owner)
+		    : _owner(owner) {}
 
 		adder& operator()(const std::string& name, const std::string& help) {
 			_owner._options.push_back({name, help, false});
@@ -106,8 +104,7 @@ class options_description {
 			return *this;
 		}
 
-	private:
-
+	  private:
 		options_description& _owner;
 	};
 

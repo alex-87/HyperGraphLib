@@ -109,7 +109,7 @@ class HyperEdge {
 	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergraph;
+	    _ptrHypergraph;
 
 	/**
 	 * The numeric identifier.

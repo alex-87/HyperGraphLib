@@ -99,7 +99,7 @@ class HyperVertex {
 	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrHypergraph;
+	    _ptrHypergraph;
 
 	/**
 	 * Numeric identifier.

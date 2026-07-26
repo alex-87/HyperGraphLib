@@ -28,7 +28,8 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
-HypergrapheAbstrait::HypergrapheAbstrait() : _adjacentMatrix(0, 0) {
+HypergrapheAbstrait::HypergrapheAbstrait()
+    : _adjacentMatrix(0, 0) {
 }
 
 LibType::IndexerHyperVertex&

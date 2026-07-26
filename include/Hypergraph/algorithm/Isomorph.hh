@@ -45,10 +45,10 @@ class Isomorph : public AlgorithmeAbstrait {
 
   protected:
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrAbstractHypergraphA;
+	    _ptrAbstractHypergraphA;
 
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrAbstractHypergraphB;
+	    _ptrAbstractHypergraphB;
 
 	RStructure _result;
 };

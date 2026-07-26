@@ -29,23 +29,20 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
-Helly::Helly(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) :
-				_ptrAbstractHypergraph( ptrAbstractHypergraph ) {
-
+Helly::Helly(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+    : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
 void Helly::runAlgorithme() {
 	_result.setBooleanResult(true);
 
-	for(auto& x : _ptrAbstractHypergraph->getHyperVertexList()) {
-		for(auto& y : _ptrAbstractHypergraph->getHyperVertexList()) {
-
-			LibType::ListHyperEdge X_xy( allContainXY(x, y) );
-			for(auto& v : _ptrAbstractHypergraph->getHyperVertexList()) {
-
-				if( areNeighbours(x, v) && areNeighbours(y, v) ) {
-					LibType::ListHyperEdge X_xv( allContainXY(x, v) );
-					LibType::ListHyperEdge X_yv( allContainXY(y, v) );
+	for (auto& x : _ptrAbstractHypergraph->getHyperVertexList()) {
+		for (auto& y : _ptrAbstractHypergraph->getHyperVertexList()) {
+			LibType::ListHyperEdge X_xy(allContainXY(x, y));
+			for (auto& v : _ptrAbstractHypergraph->getHyperVertexList()) {
+				if (areNeighbours(x, v) && areNeighbours(y, v)) {
+					LibType::ListHyperEdge X_xv(allContainXY(x, v));
+					LibType::ListHyperEdge X_yv(allContainXY(y, v));
 
 					LibType::ListHyperEdge X;
 					concatenate(X, X_xy);
@@ -100,8 +97,8 @@ bool Helly::nonEmptyBetween(std::shared_ptr<HyperEdge>& e1, std::shared_ptr<Hype
 LibType::ListHyperEdge
 Helly::allContainXY(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
 	LibType::ListHyperEdge elist;
-	for(auto& e : _ptrAbstractHypergraph->getHyperEdgeList()) {
-		if( e->containVertex(v1) && e->containVertex(v2) ) {
+	for (auto& e : _ptrAbstractHypergraph->getHyperEdgeList()) {
+		if (e->containVertex(v1) && e->containVertex(v2)) {
 			elist.push_back(e);
 		}
 	}

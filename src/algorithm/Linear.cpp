@@ -27,15 +27,12 @@
 #include "Hypergraph/algorithm/Linear.hh"
 #include "Hypergraph/algorithm/Simple.hh"
 
-Linear::Linear(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) :
-				_ptrAbstractHypergraph( ptrAbstractHypergraph ) {
-
+Linear::Linear(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+    : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
-void
-Linear::runAlgorithme() {
-
-	Simple a( _ptrAbstractHypergraph );
+void Linear::runAlgorithme() {
+	Simple a(_ptrAbstractHypergraph);
 	a.runAlgorithme();
 
 	if (!a.getResult().getBooleanResult()) {
@@ -45,8 +42,8 @@ Linear::runAlgorithme() {
 
 	_result.setBooleanResult(true);
 
-	LibType::ListHyperVertex listVertex( _ptrAbstractHypergraph->getHyperVertexList() );
-	LibType::ListHyperEdge   listEdge  ( _ptrAbstractHypergraph->getHyperEdgeList()   );
+	LibType::ListHyperVertex listVertex(_ptrAbstractHypergraph->getHyperVertexList());
+	LibType::ListHyperEdge listEdge(_ptrAbstractHypergraph->getHyperEdgeList());
 
 	for (unsigned int i = 0; i < listEdge.size(); i++) {
 		for (unsigned int j = i + 1; j < listEdge.size(); j++) {

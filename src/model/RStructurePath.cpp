@@ -26,7 +26,8 @@
 
 #include "Hypergraph/model/RStructurePath.hh"
 
-RStructurePath::RStructurePath() : RStructure() {
+RStructurePath::RStructurePath()
+    : RStructure() {
 }
 
 void RStructurePath::setPathResult(LibType::PathList& pathList) {

@@ -30,7 +30,8 @@
 
 #include <iostream>
 
-Hypergraphe::Hypergraphe() : HypergrapheAbstrait() {
+Hypergraphe::Hypergraphe()
+    : HypergrapheAbstrait() {
 }
 
 void Hypergraphe::addHyperVertex(const std::shared_ptr<HyperVertex>& hyperVertex) {

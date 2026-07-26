@@ -33,23 +33,21 @@
 #include <gecode/search.hh>
 
 Isomorph::Isomorph(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraphA,
-				   const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraphB)
-				   : _ptrAbstractHypergraphA(ptrAbstractHypergraphA),
-					 _ptrAbstractHypergraphB(ptrAbstractHypergraphB) {
-
+                   const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraphB)
+    : _ptrAbstractHypergraphA(ptrAbstractHypergraphA),
+      _ptrAbstractHypergraphB(ptrAbstractHypergraphB) {
 }
 
 void Isomorph::runAlgorithme() {
 	bool ret = false;
 
-	if( _ptrAbstractHypergraphA->getHyperEdgeList().size() != _ptrAbstractHypergraphB->getHyperEdgeList().size() ||
-		_ptrAbstractHypergraphA->getHyperVertexList().size() != _ptrAbstractHypergraphB->getHyperVertexList().size()
-	  ) {
-		_result.setBooleanResult( ret );
+	if (_ptrAbstractHypergraphA->getHyperEdgeList().size() != _ptrAbstractHypergraphB->getHyperEdgeList().size() ||
+	    _ptrAbstractHypergraphA->getHyperVertexList().size() != _ptrAbstractHypergraphB->getHyperVertexList().size()) {
+		_result.setBooleanResult(ret);
 		return;
 	}
 
-	IsomorphSpace * is = new IsomorphSpace(_ptrAbstractHypergraphA, _ptrAbstractHypergraphB);
+	IsomorphSpace* is = new IsomorphSpace(_ptrAbstractHypergraphA, _ptrAbstractHypergraphB);
 	is->postConstraints();
 
 	unsigned int nbrThreadsSupported(std::thread::hardware_concurrency());

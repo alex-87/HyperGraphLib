@@ -7,8 +7,8 @@
 #include <ctime>
 #include <limits>
 
-RandomHypergraphe::RandomHypergraphe() : _ptrAbstractHypergraph( new Hypergraphe ) {
-
+RandomHypergraphe::RandomHypergraphe()
+    : _ptrAbstractHypergraph(new Hypergraphe) {
 }
 
 void RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int nbEdge) {
@@ -21,7 +21,7 @@ void RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int 
 	std::uniform_int_distribution<int> uInt8Dist(0, std::numeric_limits<unsigned char>::max());
 	auto getRand = [&]() { return uInt8Dist(gen); };
 
-	HyperFactory::startSession( _ptrAbstractHypergraph );
+	HyperFactory::startSession(_ptrAbstractHypergraph);
 
 	for (unsigned int i = 0; i < nbVertex; i++)
 		listVertex.push_back(HyperFactory::newHyperVertex());
@@ -36,18 +36,17 @@ void RandomHypergraphe::generateHypergraphe(unsigned int nbVertex, unsigned int 
 		}
 	}
 
-	for(unsigned int i=0; i<nbVertex; i++) {
-		_ptrAbstractHypergraph->addHyperVertex( listVertex.at(i) );
+	for (unsigned int i = 0; i < nbVertex; i++) {
+		_ptrAbstractHypergraph->addHyperVertex(listVertex.at(i));
 	}
 
-	for(unsigned int i=0; i<nbEdge; i++) {
-		_ptrAbstractHypergraph->addHyperEdge( listEdge.at(i) );
+	for (unsigned int i = 0; i < nbEdge; i++) {
+		_ptrAbstractHypergraph->addHyperEdge(listEdge.at(i));
 	}
 
 	HyperFactory::closeSession();
 
 	_ptrAbstractHypergraph->flush();
-
 }
 
 std::shared_ptr<HypergrapheAbstrait>&

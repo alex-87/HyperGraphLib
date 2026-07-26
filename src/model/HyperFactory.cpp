@@ -34,27 +34,25 @@ HyperFactory& HyperFactory::Instance() {
 	return _instance;
 }
 
-void
-HyperFactory::startSession(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
-
+void HyperFactory::startSession(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 	_indexVertex = _ptrAbstractHypergraph->getHyperVertexList().size();
-	_indexEdge   = _ptrAbstractHypergraph->getHyperEdgeList().size();
+	_indexEdge = _ptrAbstractHypergraph->getHyperEdgeList().size();
 	_isSession = true;
 }
 
 const std::shared_ptr<HyperVertex>
 HyperFactory::newHyperVertex() {
 	_indexVertex++;
-	unsigned int u( _indexVertex - 1);
-	return std::shared_ptr<HyperVertex>( new HyperVertex(_ptrAbstractHypergraph, u) );
+	unsigned int u(_indexVertex - 1);
+	return std::shared_ptr<HyperVertex>(new HyperVertex(_ptrAbstractHypergraph, u));
 }
 
 const std::shared_ptr<HyperEdge>
 HyperFactory::newHyperEdge() {
 	_indexEdge++;
-	unsigned int u( _indexEdge - 1);
-	return std::shared_ptr<HyperEdge>( new HyperEdge(_ptrAbstractHypergraph, u) );
+	unsigned int u(_indexEdge - 1);
+	return std::shared_ptr<HyperEdge>(new HyperEdge(_ptrAbstractHypergraph, u));
 }
 
 void HyperFactory::link(std::shared_ptr<HyperVertex>& hyperVertex, std::shared_ptr<HyperEdge>& hyperEdge) {
@@ -66,8 +64,7 @@ bool HyperFactory::isSession() {
 	return _isSession;
 }
 
-void
-HyperFactory::closeSession() {
+void HyperFactory::closeSession() {
 	_ptrAbstractHypergraph.reset();
 	_isSession = false;
 }

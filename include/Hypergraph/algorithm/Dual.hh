@@ -67,13 +67,13 @@ class Dual : public AlgorithmeAbstrait {
 	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrAbstractHypergraph;
+	    _ptrAbstractHypergraph;
 
 	/**
 	 * Shared pointer to the dual hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrDualHypergraph;
+	    _ptrDualHypergraph;
 
 	/**
 	 * Result structure.

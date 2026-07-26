@@ -29,12 +29,14 @@
 #include "Hypergraph/model/HyperEdge.hh"
 
 
-AdjacentMatrix::AdjacentMatrix() : AdjacentMatrix(0, 0) {
+AdjacentMatrix::AdjacentMatrix()
+    : AdjacentMatrix(0, 0) {
 }
 
-AdjacentMatrix::AdjacentMatrix(const unsigned int& m, const unsigned int& n) : _m(m),
-                                                                               _n(n),
-                                                                               _adjacentMatrixBool(m, n) {}
+AdjacentMatrix::AdjacentMatrix(const unsigned int& m, const unsigned int& n)
+    : _m(m),
+      _n(n),
+      _adjacentMatrixBool(m, n) {}
 
 void AdjacentMatrix::resize(const unsigned int& m, const unsigned int& n) {
 	_m = m;

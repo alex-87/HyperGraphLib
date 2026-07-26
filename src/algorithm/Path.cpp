@@ -28,8 +28,8 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
-Path::Path(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) :
-			_ptrAbstractHypergraph( ptrAbstractHypergraph ) {
+Path::Path(std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph)
+    : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
 
 RStructure
@@ -107,19 +107,17 @@ void Path::buildPathToPathList(LibType::PathList& pList, LibType::ListHyperVerte
 	pList->push_back(tmpList);
 }
 
-void
-Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex& liste, const std::shared_ptr<HyperEdge>& hyperEdge) const {
-	for(unsigned int i=0; i < hyperEdge->getHyperVertexList().size(); i++) {
-		if( !vertexContained(noListe, hyperEdge->getHyperVertexList().at(i)) ) {
-			liste.push_back( hyperEdge->getHyperVertexList().at(i) );
+void Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVertex& liste, const std::shared_ptr<HyperEdge>& hyperEdge) const {
+	for (unsigned int i = 0; i < hyperEdge->getHyperVertexList().size(); i++) {
+		if (!vertexContained(noListe, hyperEdge->getHyperVertexList().at(i))) {
+			liste.push_back(hyperEdge->getHyperVertexList().at(i));
 		}
 	}
 }
 
-bool
-Path::vertexContained(LibType::ListHyperVertex& liste, std::shared_ptr<HyperVertex>& vertex) const {
-	for(unsigned int i=0; i<liste.size(); i++) {
-		if( vertex == liste.at(i) ) {
+bool Path::vertexContained(LibType::ListHyperVertex& liste, std::shared_ptr<HyperVertex>& vertex) const {
+	for (unsigned int i = 0; i < liste.size(); i++) {
+		if (vertex == liste.at(i)) {
 			return true;
 		}
 	}

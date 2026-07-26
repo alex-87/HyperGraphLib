@@ -110,7 +110,6 @@ class MotorAlgorithm {
 	 * Shared pointer to the algorithm.
 	 */
 	static std::shared_ptr<AlgorithmeAbstrait> _algorithm;
-
 };
 
 

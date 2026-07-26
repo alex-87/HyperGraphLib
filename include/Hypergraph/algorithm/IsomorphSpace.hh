@@ -45,20 +45,19 @@ class IsomorphSpace : public Gecode::Space {
   public:
 	IsomorphSpace(const std::shared_ptr<HypergrapheAbstrait>&, const std::shared_ptr<HypergrapheAbstrait>&);
 
-    void postConstraints();
+	void postConstraints();
 
-    Gecode::Space * copy();
+	Gecode::Space* copy();
 
-    IsomorphSpace(IsomorphSpace& p);
+	IsomorphSpace(IsomorphSpace& p);
 
 
-protected:
+  protected:
+	Gecode::IntVarArray _edgeMapping;
+	Gecode::IntVarArray _vertexMapping;
 
-    Gecode::IntVarArray _edgeMapping;
-    Gecode::IntVarArray _vertexMapping;
-
-    std::shared_ptr<HypergrapheAbstrait> _ptrH1;
-    std::shared_ptr<HypergrapheAbstrait> _ptrH2;
+	std::shared_ptr<HypergrapheAbstrait> _ptrH1;
+	std::shared_ptr<HypergrapheAbstrait> _ptrH2;
 };
 
 #endif

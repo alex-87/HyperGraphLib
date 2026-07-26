@@ -25,19 +25,19 @@
 
 #include "Hypergraph/algorithm/Simple.hh"
 
-Simple::Simple(std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph) : _ptrAbstractHypergraph( ptrHypergraph ) {
-
+Simple::Simple(std::shared_ptr<HypergrapheAbstrait>& ptrHypergraph)
+    : _ptrAbstractHypergraph(ptrHypergraph) {
 }
 
 void Simple::runAlgorithme() {
 	_result.setBooleanResult(true);
 
-	LibType::ListHyperVertex listVertex( _ptrAbstractHypergraph->getHyperVertexList() );
-	LibType::ListHyperEdge   listEdge  ( _ptrAbstractHypergraph->getHyperEdgeList()   );
+	LibType::ListHyperVertex listVertex(_ptrAbstractHypergraph->getHyperVertexList());
+	LibType::ListHyperEdge listEdge(_ptrAbstractHypergraph->getHyperEdgeList());
 
-	for(unsigned int i=0; i < listEdge.size(); i++) {
-		for(unsigned int j=i; j < listEdge.size(); j++) {
-			if( i!=j && subsetVertexList(listEdge.at(i)->getHyperVertexList(), listEdge.at(j)->getHyperVertexList()) ) {
+	for (unsigned int i = 0; i < listEdge.size(); i++) {
+		for (unsigned int j = i; j < listEdge.size(); j++) {
+			if (i != j && subsetVertexList(listEdge.at(i)->getHyperVertexList(), listEdge.at(j)->getHyperVertexList())) {
 				_result.setBooleanResult(false);
 				break;
 			};
@@ -45,15 +45,14 @@ void Simple::runAlgorithme() {
 	};
 }
 
-bool
-Simple::subsetVertexList(const LibType::ListHyperVertex& vList1, const LibType::ListHyperVertex& vList2) const {
-	bool ret1( true ), ret2( true );
-	for(const auto& v : vList1) {
-		if( !contains(vList2, v))
+bool Simple::subsetVertexList(const LibType::ListHyperVertex& vList1, const LibType::ListHyperVertex& vList2) const {
+	bool ret1(true), ret2(true);
+	for (const auto& v : vList1) {
+		if (!contains(vList2, v))
 			ret1 = false;
 	}
-	for(const auto& v : vList2) {
-		if( !contains(vList1, v))
+	for (const auto& v : vList2) {
+		if (!contains(vList1, v))
 			ret2 = false;
 	}
 	return (ret1 || ret2);

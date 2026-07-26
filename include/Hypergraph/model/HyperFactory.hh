@@ -128,7 +128,6 @@ class HyperFactory {
 	 * Shared pointer to the hypergraph.
 	 */
 	static std::shared_ptr<HypergrapheAbstrait> _ptrAbstractHypergraph;
-
 };
 
 

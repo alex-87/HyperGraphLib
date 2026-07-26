@@ -47,7 +47,7 @@ class Diameter : public AlgorithmeAbstrait {
 
   protected:
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrAbstractHypergraph;
+	    _ptrAbstractHypergraph;
 
 	RStructure _result;
 };

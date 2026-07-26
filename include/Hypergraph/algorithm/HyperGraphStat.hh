@@ -99,7 +99,7 @@ class HyperGraphStat : public AlgorithmeAbstrait {
 	 * Shared pointer to the hypergraph.
 	 */
 	std::shared_ptr<HypergrapheAbstrait>
-	_ptrAbstractHypergraph;
+	    _ptrAbstractHypergraph;
 
 	/**
 	 * The result structure - unused here.
@@ -130,7 +130,6 @@ class HyperGraphStat : public AlgorithmeAbstrait {
 	 * The co-rank of the hypergraph.
 	 */
 	unsigned int _coRank;
-
 };
 
 

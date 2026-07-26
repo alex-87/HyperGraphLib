@@ -65,10 +65,10 @@ struct Registrar {
 };
 
 inline void check(bool condition, const char* expr, const std::string& message, const char* file, int line) {
-	if(!condition) {
+	if (!condition) {
 		++failureCount();
 		std::cerr << "    [FAIL] " << file << ":" << line << ": (" << expr << ")";
-		if(!message.empty())
+		if (!message.empty())
 			std::cerr << " -- " << message;
 		std::cerr << std::endl;
 	}
@@ -84,19 +84,21 @@ inline int runAll() {
 		std::cout.flush();
 
 		pid_t pid = fork();
-		if(pid == 0) {
+		if (pid == 0) {
 			/* Child: run the test in isolation. */
-			if(test.init) test.init();
+			if (test.init)
+				test.init();
 			test.body();
-			if(test.fini) test.fini();
+			if (test.fini)
+				test.fini();
 			std::cout.flush();
 			std::cerr.flush();
 			_exit(failureCount() == 0 ? 0 : 1);
-		} else if(pid > 0) {
+		} else if (pid > 0) {
 			int status = 0;
 			waitpid(pid, &status, 0);
 			bool ok = WIFEXITED(status) && WEXITSTATUS(status) == 0;
-			if(ok) {
+			if (ok) {
 				++passed;
 				std::cout << "[  OK  ] " << test.suite << "." << test.name << std::endl;
 			} else {
@@ -120,7 +122,7 @@ inline int runAll() {
 #define TEST(suite, name, init, fini)                      \
 	static void suite##_##name##_body();                   \
 	static minitest::Registrar suite##_##name##_registrar( \
-		#suite, #name, suite##_##name##_body, init, fini); \
+	    #suite, #name, suite##_##name##_body, init, fini); \
 	static void suite##_##name##_body()
 
 #define cr_expect(cond, ...) \

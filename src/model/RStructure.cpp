@@ -34,8 +34,7 @@ bool RStructure::getBooleanResult() const {
 	return _booleanResult;
 }
 
-void
-RStructure::setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
+void RStructure::setHypergrapheResult(const std::shared_ptr<HypergrapheAbstrait>& ptrAbstractHypergraph) {
 	_hypergraphResult = ptrAbstractHypergraph;
 }
 
