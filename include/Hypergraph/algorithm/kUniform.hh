@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Definition of the k-uniform algorithm class.
- */
 #ifndef ALGORITHM_INCLUDE_KUNIFORM_HH_
 #define ALGORITHM_INCLUDE_KUNIFORM_HH_
 
@@ -38,32 +35,35 @@
 #include "../model/ResultStructure.hh"
 
 /**
- * k-uniform algorithm on the hypergraph.
+ * @brief Implementation of the `KUNIFORM` algorithm.
+ *
+ * This algorithm determines whether a hypergraph is **k-uniform**,
+ * i.e. whether every hyper-edge has exactly `k` hyper-vertices.
  */
 class kUniform : public AbstractAlgorithm {
   public:
 	/**
-	 * Constructor
-	 * @param shared pointer to the hypergraph.
-	 * @param Valeur de k.
+	 * @brief Construct a new kUniform object.
+	 * @param hypergraph to which the algorithm is applied.
+	 * @param value of k.
 	 */
 	kUniform(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph, const unsigned int&);
 
 	/**
-	 * Get the result structure.
-	 * @return the result structure.
+	 * @brief Get the result.
+	 * @return ResultStructure
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~kUniform() = default;
 
 
   protected:
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 
@@ -76,7 +76,7 @@ class kUniform : public AbstractAlgorithm {
 	    _ptrAbstractHypergraph;
 
 	/**
-	 * Valeur de k.
+	 * Value of k.
 	 */
 	unsigned int _k;
 

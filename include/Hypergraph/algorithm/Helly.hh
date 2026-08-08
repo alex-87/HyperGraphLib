@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Definition of the algorithm checking the Helly property of the hypergraph.
- */
 #ifndef ALGORITHM_INCLUDE_HELLY_HH_
 #define ALGORITHM_INCLUDE_HELLY_HH_
 
@@ -33,68 +30,72 @@
 #include "../model/ResultStructure.hh"
 
 /**
- * Algorithm checking the Helly property of the hypergraph.
+ * @brief Implementation of the `HELLY` algorithm.
+ *
+ * This algorithm checks whether a hypergraph satisfies the **Helly
+ * property**: for every triple of pairwise-neighbouring hyper-vertices,
+ * the hyper-edges relating them share a common hyper-vertex.
  */
 class Helly : public AbstractAlgorithm {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new Helly object.
+	 * @param hypergraph to which the algorithm is applied.
 	 */
 	Helly(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Get the result structure.
-	 * @return the result structure.
+	 * @brief Get the result.
+	 * @return ResultStructure
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~Helly() = default;
 
   protected:
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 
 	/**
-	 * Build the list of hyper-edges containing both hyper-vertices.
-	 * @param the first hyper-vertex.
-	 * @param the second hyper-vertex.
+	 * @brief Build the list of hyper-edges containing both hyper-vertices.
+	 * @param first hyper-vertex.
+	 * @param second hyper-vertex.
 	 * @return the list of hyper-edges containing both hyper-vertices.
 	 */
 	LibType::ListHyperEdge allContainXY(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Check whether the intersection of the list elements is non-empty.
-	 * @param the list of hyper-edges.
-	 * @return true if no empty intersections, false otherwise.
+	 * @brief Check whether the intersection of the list elements is non-empty.
+	 * @param list of hyper-edges.
+	 * @return `true` if no empty intersections, `false` otherwise.
 	 */
 	bool nonEmptyIntersection(LibType::ListHyperEdge&);
 
 	/**
-	 * Check whether the intersection of these two hyper-edges is non-empty.
-	 * @param the first hyper-edge.
-	 * @param the second hyper-edge.
-	 * @return true if non-empty intersection, false otherwise.
+	 * @brief Check whether the intersection of these two hyper-edges is non-empty.
+	 * @param first hyper-edge.
+	 * @param second hyper-edge.
+	 * @return `true` if non-empty intersection, `false` otherwise.
 	 */
 	bool nonEmptyBetween(std::shared_ptr<HyperEdge>&, std::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Check whether the two hyper-vertices are neighbours.
-	 * @param the first hyper-vertex.
-	 * @param the second hyper-vertex.
-	 * @return true if neighbours, false otherwise.
+	 * @brief Check whether the two hyper-vertices are neighbours.
+	 * @param first hyper-vertex.
+	 * @param second hyper-vertex.
+	 * @return `true` if neighbours, `false` otherwise.
 	 */
 	bool areNeighbours(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Concatenation of two hyper-edge lists.
-	 * @param Destination.
-	 * @param source to concatenate.
+	 * @brief Concatenate two hyper-edge lists.
+	 * @param destination list.
+	 * @param source list to append.
 	 */
 	void concatenate(LibType::ListHyperEdge&, LibType::ListHyperEdge&);
 

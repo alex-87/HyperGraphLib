@@ -23,10 +23,6 @@
  *
  */
 
-/**
- * Definition of the Dual algorithm of the hypergraph.
- */
-
 #ifndef ALGORITHM_INCLUDE_DUAL_HH_
 #define ALGORITHM_INCLUDE_DUAL_HH_
 
@@ -35,30 +31,34 @@
 #include "../model/AbstractAlgorithm.hh"
 
 /**
- * Dual algorithm of the hypergraph.
+ * @brief Implementation of the `DUAL` algorithm.
+ *
+ * This algorithm builds the **dual hypergraph**: a hyper-vertex is
+ * created for each hyper-edge of the original hypergraph, and a
+ * hyper-edge is created for each hyper-vertex, preserving incidence.
  */
 class Dual : public AbstractAlgorithm {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new Dual object.
+	 * @param hypergraph to which the algorithm is applied.
 	 */
 	Dual(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Get the result structure.
-	 * @return the result structure.
+	 * @brief Get the result.
+	 * @return ResultStructure
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~Dual() = default;
 
   protected:
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 

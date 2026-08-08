@@ -31,24 +31,52 @@
 #include "../model/AbstractHypergraph.hh"
 #include "../model/AbstractAlgorithm.hh"
 
-
+/**
+ * @brief Implementation of the `DIAMETER` algorithm.
+ * @note This algorithm is not implemented yet.
+ * @todo Implementing the `DIAMETER` algorithm.
+ */
 class Diameter : public AbstractAlgorithm {
+
   public:
+
+	/**
+	 * @brief Construct a new Diameter object.
+	 * @param hypergraph to which the algorithm is applied.
+	 */
 	Diameter(std::shared_ptr<AbstractHypergraph>&);
 
+	/**
+	 * @brief Get the result.
+	 * @return ResultStructure 
+	 */
 	ResultStructure getResult() const;
 
+	/**
+	 * @brief Destructor.
+	 */
 	~Diameter() = default;
 
 
   protected:
+
+	/**
+	 * @brief Run the algorithm.
+	 */
 	void run();
 
 
   protected:
+
+	/**
+	 * Shared pointer to the hypergraph.
+	 */
 	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 
+	/**
+	 * Result structure.
+	 */
 	ResultStructure _result;
 };
 

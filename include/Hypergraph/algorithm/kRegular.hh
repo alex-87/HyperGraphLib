@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Definition of the k-regular algorithm class.
- */
 #ifndef ALGORITHM_INCLUDE_KREGULAR_HH_
 #define ALGORITHM_INCLUDE_KREGULAR_HH_
 
@@ -38,30 +35,33 @@
 #include "../model/ResultStructure.hh"
 
 /**
- * k-regular algorithm on the hypergraph.
+ * @brief Implementation of the `KREGULAR` algorithm.
+ *
+ * This algorithm determines whether a hypergraph is **k-regular**,
+ * i.e. whether every hyper-vertex has the same degree.
  */
 class kRegular : public AbstractAlgorithm {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new kRegular object.
+	 * @param hypergraph to which the algorithm is applied.
 	 */
 	kRegular(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Get the result structure.
-	 * @return the result structure.
+	 * @brief Get the result.
+	 * @return ResultStructure
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~kRegular() = default;
 
   protected:
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 

@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Definition of the algorithm deciding the connectivity of a hypergraph.
- */
 #ifndef ALGORITHM_INCLUDE_CONNECTED_HH_
 #define ALGORITHM_INCLUDE_CONNECTED_HH_
 
@@ -37,35 +34,42 @@
 #include <vector>
 
 /**
- * Algorithm deciding the connectivity of a hypergraph.
+ * @brief Implementation of the `CONNECTED` algorithm.
+ * 
+ * This algorithm determines if a hypergraph is **Connected**. It
+ * determines whether a path of alternating hypervertices and hyperedges
+ * exists between any given pair of nodes in a hypergraph.
  */
 class Connected : public AbstractAlgorithm {
+
   public:
+
 	/**
-	 * Constructor.
-	 * @param std::shared_ptr<AbstractHypergraph> shared pointer to the hypergraph.
+	 * @brief Construct a new Connected object.
+	 * @param hypergraph to which the algorithm is applied.
 	 */
 	Connected(std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Get the result structure.
+	 * @brief Get the result.
+	 * @return ResultStructure
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~Connected() = default;
 
 
   protected:
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 
 	/**
-	 * Explore vertically through the adjacency matrix.
+	 * @brief Explore vertically through the adjacency matrix.
 	 * @param vector of visited elements.
 	 * @param stack of vertices to visit.
 	 * @param row identifier.
@@ -73,7 +77,7 @@ class Connected : public AbstractAlgorithm {
 	void exploreVertical(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
 
 	/**
-	 * Explore horizontally through the adjacency matrix.
+	 * @brief Explore horizontally through the adjacency matrix.
 	 * @param vector of visited elements.
 	 * @param stack of vertices to visit.
 	 * @param column identifier.
@@ -81,18 +85,18 @@ class Connected : public AbstractAlgorithm {
 	void exploreHorizontal(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
 
 	/**
-	 * Check whether a hyper-vertex has already been visited.
+	 * @brief Check whether a hyper-vertex has already been visited.
 	 * @param vector of visited hyper-vertices.
 	 * @param identifier to check.
-	 * @return true if already visited, false otherwise.
+	 * @return `true` if already visited, `false` otherwise.
 	 */
 	bool isVertexVisited(std::vector<unsigned int>&, unsigned int) const;
 
 	/**
-	 * Check whether a hyper-edge has already been visited.
+	 * @brief Check whether a hyper-edge has already been visited.
 	 * @param vector of visited hyper-edges.
 	 * @param identifier to check.
-	 * @return true if already visited, false otherwise.
+	 * @return `true` if already visited, `false` otherwise.
 	 */
 	bool isEdgeVisited(std::vector<unsigned int>&, unsigned int) const;
 

@@ -23,39 +23,40 @@
  *
  */
 
-/**
- * Definition of the linear algorithm class.
- */
 #ifndef ALGORITHM_INCLUDE_LINEAR_HH_
 #define ALGORITHM_INCLUDE_LINEAR_HH_
 
 #include "../model/AbstractAlgorithm.hh"
 
 /**
- * linear algorithm on the hypergraph.
+ * @brief Implementation of the `LINEAR` algorithm.
+ *
+ * This algorithm determines whether a hypergraph is **linear**, i.e.
+ * whether any two distinct hyper-edges share at most one hyper-vertex.
  */
 class Linear : public AbstractAlgorithm {
   public:
 	/**
-	 * Constructor
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new Linear object.
+	 * @param hypergraph to which the algorithm is applied.
 	 */
 	Linear(std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Get the result structure.
+	 * @brief Get the result.
+	 * @return ResultStructure
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~Linear() = default;
 
 
   protected:
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 

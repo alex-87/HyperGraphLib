@@ -23,10 +23,6 @@
  *
  */
 
-/**
- * Definition of the algorithm generating the hypergraph statistics.
- */
-
 #ifndef ALGORITHM_INCLUDE_HPGSTAT
 #define ALGORITHM_INCLUDE_HPGSTAT
 
@@ -40,57 +36,66 @@
 
 
 /**
- * Algorithm generating the hypergraph statistics.
+ * @brief Computing statistics for a given hypergraph.
+ *
+ * This algorithm computes descriptive statistics of a hypergraph: its
+ * number of hyper-edges, number of hyper-vertices, number of
+ * vertex-edge connections, rank and co-rank.
  */
 class HyperGraphStat : public AbstractAlgorithm {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new HyperGraphStat object.
+	 * @param hypergraph to which the algorithm is applied.
 	 */
 	HyperGraphStat(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Get the result structure - unused here.
-	 * @return the result structure - unused here.
+	 * @brief Get the result — unused here.
+	 * @return ResultStructure — unused here.
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~HyperGraphStat() = default;
 
 
   public:
 	/**
-	 * Get the number of hyper-edges.
+	 * @brief Get the number of hyper-edges.
+	 * @return the number of hyper-edges.
 	 */
 	unsigned int getNbrHyperEdge() const;
 
 	/**
-	 * Get the number of hyper-vertices.
+	 * @brief Get the number of hyper-vertices.
+	 * @return the number of hyper-vertices.
 	 */
 	unsigned int getNbrHyperVertex() const;
 
 	/**
-	 * Get the number of vertex-edge connections.
+	 * @brief Get the number of vertex-edge connections.
+	 * @return the number of vertex-edge connections.
 	 */
 	unsigned int getNbrLinks() const;
 
 	/**
-	 * Get the rank of the hypergraph.
+	 * @brief Get the rank of the hypergraph.
+	 * @return the rank of the hypergraph.
 	 */
 	unsigned int getRang() const;
 
 	/**
-	 * Get the co-rank of the hypergraph.
+	 * @brief Get the co-rank of the hypergraph.
+	 * @return the co-rank of the hypergraph.
 	 */
 	unsigned int getCoRang() const;
 
   protected:
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 

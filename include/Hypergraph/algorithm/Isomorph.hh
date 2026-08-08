@@ -32,24 +32,55 @@
 #include "../model/AbstractHypergraph.hh"
 #include "../model/AbstractAlgorithm.hh"
 
+/**
+ * @brief Implementation of the `ISOMORPH` algorithm.
+ *
+ * This algorithm determines whether two hypergraphs are **isomorphic**,
+ * i.e. whether there exists a mapping between their hyper-vertices and
+ * hyper-edges that preserves incidence.
+ */
 class Isomorph : public AbstractAlgorithm {
   public:
+	/**
+	 * @brief Construct a new Isomorph object.
+	 * @param first hypergraph to compare.
+	 * @param second hypergraph to compare.
+	 */
 	Isomorph(const std::shared_ptr<AbstractHypergraph>&, const std::shared_ptr<AbstractHypergraph>&);
 
+	/**
+	 * @brief Get the result.
+	 * @return ResultStructure
+	 */
 	ResultStructure getResult() const;
 
+	/**
+	 * @brief Destructor.
+	 */
 	~Isomorph() = default;
 
   protected:
+	/**
+	 * @brief Run the algorithm.
+	 */
 	void run();
 
   protected:
+	/**
+	 * Shared pointer to the first hypergraph.
+	 */
 	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraphA;
 
+	/**
+	 * Shared pointer to the second hypergraph.
+	 */
 	std::shared_ptr<AbstractHypergraph>
 	    _ptrAbstractHypergraphB;
 
+	/**
+	 * Result structure.
+	 */
 	ResultStructure _result;
 };
 

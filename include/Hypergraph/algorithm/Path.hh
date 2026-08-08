@@ -23,11 +23,6 @@
  *
  */
 
-/**
- * Definition of the algorithm listing the set of paths in a hypergraph.
- * linking a vertex e1 to a vertex e2.
- */
-
 #ifndef ALGORITHM_INCLUDE_PATH_HH_
 #define ALGORITHM_INCLUDE_PATH_HH_
 
@@ -35,62 +30,84 @@
 #include "../model/AbstractAlgorithm.hh"
 #include "../model/ResultStructurePath.hh"
 
+/**
+ * @brief Implementation of the `PATH` algorithm.
+ *
+ * This algorithm lists the set of paths in a hypergraph linking a
+ * source hyper-vertex to a destination hyper-vertex.
+ */
 class Path : public AbstractAlgorithm {
   public:
-	/*
-	 * Constructor.
-	 * @param std::shared_ptr<AbstractHypergraph> shared pointer to the hypergraph.
+	/**
+	 * @brief Construct a new Path object.
+	 * @param hypergraph to which the algorithm is applied.
 	 */
 	Path(std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Configure the vertices used to list the paths.
+	 * @brief Configure the vertices used to list the paths.
+	 * @param source hyper-vertex.
+	 * @param destination hyper-vertex.
 	 */
 	void setHyperVertex(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Get the result structure.
+	 * @brief Get the result.
+	 * @return ResultStructure
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Get the result structure.
+	 * @brief Get the path-specific result.
+	 * @return ResultStructurePath
 	 */
 	ResultStructurePath getPathResult() const;
 
 	/**
-	 * Set the maximum number of paths. Default 0, meaning unbounded.
+	 * @brief Set the maximum number of paths. Default 0, meaning unbounded.
+	 * @param limit value.
 	 */
 	void setLimit(unsigned int);
 
 	/**
-	 * Read the limit value.
+	 * @brief Read the limit value.
+	 * @return the limit value.
 	 */
 	unsigned int getLimit() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~Path() = default;
 
 
   protected:
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 
 	/**
-	 * Check whether the hyper-vertex is contained in the list.
+	 * @brief Check whether the hyper-vertex is contained in the list.
+	 * @param list of hyper-vertices.
+	 * @param hyper-vertex to look for.
+	 * @return `true` if contained, `false` otherwise.
 	 */
 	bool vertexContained(LibType::ListHyperVertex&, std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Add the hyper-vertices of a hyper-edge to the given list.
+	 * @brief Add the hyper-vertices of a hyper-edge to the given list.
+	 * @param list of already-visited hyper-vertices.
+	 * @param list to which new hyper-vertices are added.
+	 * @param hyper-edge whose hyper-vertices are considered.
 	 */
 	void addVertexList(LibType::ListHyperVertex&, LibType::ListHyperVertex&, const std::shared_ptr<HyperEdge>&) const;
 
-
+	/**
+	 * @brief Append a path to the list of paths found so far.
+	 * @param list of paths.
+	 * @param path to append.
+	 */
 	void buildPathToPathList(LibType::PathList&, LibType::ListHyperVertex&);
 
   protected:
@@ -101,12 +118,12 @@ class Path : public AbstractAlgorithm {
 	    _ptrAbstractHypergraph;
 
 	/**
-	 * Vertex source
+	 * Source hyper-vertex.
 	 */
 	std::shared_ptr<HyperVertex> _source;
 
 	/**
-	 * Vertex destination
+	 * Destination hyper-vertex.
 	 */
 	std::shared_ptr<HyperVertex> _destination;
 
@@ -116,7 +133,7 @@ class Path : public AbstractAlgorithm {
 	ResultStructurePath _result;
 
 	/**
-	 * Valeur limite.
+	 * Limit value.
 	 */
 	unsigned int _limit;
 };

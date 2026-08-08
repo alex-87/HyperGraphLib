@@ -38,22 +38,61 @@
 
 class AbstractHypergraph;
 
+/**
+ * @brief Gecode constraint-programming space used to search for an
+ * isomorphism between two hypergraphs.
+ *
+ * The hyper-edge and hyper-vertex mappings between the two hypergraphs
+ * are modelled as Gecode integer variable arrays, constrained by
+ * `postConstraints` so that a valid assignment corresponds to an
+ * isomorphism.
+ */
 class IsomorphSpace : public Gecode::Space {
   public:
+	/**
+	 * @brief Construct a new IsomorphSpace object.
+	 * @param first hypergraph to compare.
+	 * @param second hypergraph to compare.
+	 */
 	IsomorphSpace(const std::shared_ptr<AbstractHypergraph>&, const std::shared_ptr<AbstractHypergraph>&);
 
+	/**
+	 * @brief Post the constraints modelling the isomorphism between the two hypergraphs.
+	 */
 	void postConstraints();
 
+	/**
+	 * @brief Copy the space, as required by Gecode search.
+	 * @return Gecode::Space*
+	 */
 	Gecode::Space* copy();
 
+	/**
+	 * @brief Copy constructor, as required by Gecode search.
+	 * @param space to copy.
+	 */
 	IsomorphSpace(IsomorphSpace& p);
 
 
   protected:
+	/**
+	 * Mapping variables between the hyper-edges of both hypergraphs.
+	 */
 	Gecode::IntVarArray _edgeMapping;
+
+	/**
+	 * Mapping variables between the hyper-vertices of both hypergraphs.
+	 */
 	Gecode::IntVarArray _vertexMapping;
 
+	/**
+	 * Shared pointer to the first hypergraph.
+	 */
 	std::shared_ptr<AbstractHypergraph> _ptrH1;
+
+	/**
+	 * Shared pointer to the second hypergraph.
+	 */
 	std::shared_ptr<AbstractHypergraph> _ptrH2;
 };
 

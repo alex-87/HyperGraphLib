@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Definition of the simple algorithm class.
- */
 #ifndef ALGORITHM_INCLUDE_SIMPLE_HH_
 #define ALGORITHM_INCLUDE_SIMPLE_HH_
 
@@ -39,24 +36,27 @@
 #include "Linear.hh"
 
 /**
- * simple algorithm on the hypergraph.
+ * @brief Implementation of the `SIMPLE` algorithm.
+ *
+ * This algorithm determines whether a hypergraph is **simple**, i.e.
+ * whether no hyper-edge is included in another through its hyper-vertices.
  */
 class Simple : public AbstractAlgorithm {
   public:
 	/**
-	 * Constructor
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new Simple object.
+	 * @param hypergraph to which the algorithm is applied.
 	 */
 	Simple(std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Get the result structure.
-	 * @return the result structure.
+	 * @brief Get the result.
+	 * @return ResultStructure
 	 */
 	ResultStructure getResult() const;
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~Simple() = default;
 
@@ -65,23 +65,23 @@ class Simple : public AbstractAlgorithm {
 	friend class Linear;
 
 	/**
-	 * Run the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	void run();
 
 	/**
-	 * Check inclusion between hyper-edges through their vertices.
-	 * @param the first list.
-	 * @param the second list.
-	 * @return True if included; False otherwise.
+	 * @brief Check inclusion between hyper-edges through their vertices.
+	 * @param first list of hyper-vertices.
+	 * @param second list of hyper-vertices.
+	 * @return `true` if one list is included in the other, `false` otherwise.
 	 */
 	bool subsetVertexList(const LibType::ListHyperVertex&, const LibType::ListHyperVertex&) const;
 
 	/**
-	 * Check whether a hyper-vertex is contained in the list.
+	 * @brief Check whether a hyper-vertex is contained in the list.
 	 * @param list of hyper-vertices.
-	 * @param L'hyer-vertex.
-	 * @return True if contained; False otherwise.
+	 * @param hyper-vertex to look for.
+	 * @return `true` if contained, `false` otherwise.
 	 */
 	bool contains(const LibType::ListHyperVertex&, const std::shared_ptr<HyperVertex>&) const;
 
