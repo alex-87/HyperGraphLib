@@ -23,33 +23,35 @@
  *
  */
 
-/**
- * Module writing a hypergraph instance.
- */
 #ifndef IO_INCLUDE_WRITERFILE_HH_
 #define IO_INCLUDE_WRITERFILE_HH_
 
 #include "AbstractWriter.hh"
 
 /**
- * Declaration of the hypergraph instance writer module.
+ * @brief Implementation of the plain-text hypergraph instance writer.
+ *
+ * Writes the same format read by ReaderFile: a first line listing the
+ * hypervertex identifiers, a second line listing the hyperedge
+ * identifiers, then one `edge vertex` pair per line describing the
+ * incidence relation.
  */
 class WriterFile : public AbstractWriter {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new WriterFile object.
+	 * @param hypergraph to write.
 	 */
 	WriterFile(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Write the adjacency matrix to the output stream.
+	 * @brief Write the adjacency matrix to the output stream.
 	 * @param output stream.
 	 */
 	void writeAdjacentMatrix(std::ostream&) const;
 
 	/**
-	 * Write the hypergraph instance to the output stream.
+	 * @brief Write the hypergraph instance to the output stream.
 	 * @param output stream.
 	 */
 	void writeHypergraph(std::ostream&) const;
@@ -57,13 +59,13 @@ class WriterFile : public AbstractWriter {
 
   protected:
 	/**
-	 * Write the hyper-vertices to the output stream.
+	 * @brief Write the hypervertices to the output stream.
 	 * @param output stream.
 	 */
 	void writeHypergraphHyperVertex(std::ostream&) const;
 
 	/**
-	 * Write the hyper-edges to the output stream.
+	 * @brief Write the hyperedges to the output stream.
 	 * @param output stream.
 	 */
 	void writeHypergraphHyperEdge(std::ostream&) const;

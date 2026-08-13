@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Instance writer module interface.
- */
 #ifndef IO_INCLUDE_ABSTRACT_WRITER_HH_
 #define IO_INCLUDE_ABSTRACT_WRITER_HH_
 
@@ -33,43 +30,46 @@
 #include <memory>
 
 /**
- * Declaration of the instance writer module interface.
+ * @brief Interface for the instance writer module.
+ *
+ * A writer serialises a hypergraph, or its adjacency matrix, to an
+ * output stream.
  */
 class AbstractWriter {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new AbstractWriter object.
+	 * @param hypergraph to write.
 	 */
 	AbstractWriter(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Write the adjacency matrix to the given output stream.
+	 * @brief Write the adjacency matrix to the given output stream.
 	 * @param output stream.
 	 */
 	virtual void writeAdjacentMatrix(std::ostream&) const = 0;
 
 	/**
-	 * Write the hypergraph to the output stream.
+	 * @brief Write the hypergraph to the output stream.
 	 * @param output stream.
 	 */
 	virtual void writeHypergraph(std::ostream&) const = 0;
 
 	/**
-	 * Virtual destructor.
+	 * @brief Destructor.
 	 */
 	virtual ~AbstractWriter() = default;
 
 
   protected:
 	/**
-	 * Write the hyper-vertices to the output stream.
+	 * @brief Write the hypervertices to the output stream.
 	 * @param output stream.
 	 */
 	virtual void writeHypergraphHyperVertex(std::ostream&) const = 0;
 
 	/**
-	 * Write the hyper-edges to the output stream.
+	 * @brief Write the hyperedges to the output stream.
 	 * @param output stream.
 	 */
 	virtual void writeHypergraphHyperEdge(std::ostream&) const = 0;

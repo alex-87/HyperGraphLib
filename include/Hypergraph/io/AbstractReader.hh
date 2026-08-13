@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Instance reader module interface.
- */
 #ifndef IO_INCLUDE_ABSTRACT_READER_HH_
 #define IO_INCLUDE_ABSTRACT_READER_HH_
 
@@ -33,43 +30,47 @@
 #include <memory>
 
 /**
- * Interface for the instance reader module.
+ * @brief Interface for the instance reader module.
+ *
+ * A reader builds a hypergraph from an input stream describing its
+ * instance.
  */
 class AbstractReader {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
+	 * @brief Construct a new AbstractReader object.
+	 * @param hypergraph to build.
 	 */
 	AbstractReader(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * Read the instance and build the hypergraph.
+	 * @brief Read the instance and build the hypergraph.
 	 * @param input stream.
 	 */
 	virtual void readHypergraph(std::istream&) = 0;
 
 	/**
-	 * Get the hypergraph after construction.
+	 * @brief Get the hypergraph after construction.
+	 * @return the hypergraph.
 	 */
 	std::shared_ptr<AbstractHypergraph>&
 	getHypergraph();
 
 	/**
-	 * Virtual destructor.
+	 * @brief Destructor.
 	 */
 	virtual ~AbstractReader() = default;
 
 
   protected:
 	/**
-	 * Read the hyper-vertices of the instance.
+	 * @brief Read the hypervertices of the instance.
 	 * @param input stream.
 	 */
 	virtual void readHypergraphHyperVertex(std::istream&) = 0;
 
 	/**
-	 * Read the hyper-edges of the instance.
+	 * @brief Read the hyperedges of the instance.
 	 * @param input stream.
 	 */
 	virtual void readHypergraphHyperEdge(std::istream&) = 0;

@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Module de lecture.
- */
 #ifndef IO_INCLUDE_READERFILE_HH_
 #define IO_INCLUDE_READERFILE_HH_
 
@@ -34,67 +31,73 @@
 
 
 /**
- * Declaration of the reader module.
+ * @brief Implementation of the plain-text hypergraph instance reader.
+ *
+ * The expected format is a first line listing the hypervertex
+ * identifiers, a second line listing the hyperedge identifiers, then
+ * one `edge vertex` pair per line describing the incidence relation.
  */
 class ReaderFile : public AbstractReader {
   public:
 	/**
-	 * Constructor.
+	 * @brief Construct a new ReaderFile object.
 	 */
 	ReaderFile();
 
 	/**
-	 * Read the hypergraph instance.
+	 * @brief Read the hypergraph instance.
 	 * @param input stream.
 	 */
 	void readHypergraph(std::istream&);
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~ReaderFile() = default;
 
 
   protected:
 	/**
-	 * Read the hyper-vertices of the instance.
+	 * @brief Read the hypervertices of the instance.
 	 * @param input stream.
 	 */
 	void readHypergraphHyperVertex(std::istream&);
 
 	/**
-	 * Read the hyper-edges of the instance.
+	 * @brief Read the hyperedges of the instance.
 	 * @param input stream.
 	 */
 	void readHypergraphHyperEdge(std::istream&);
 
 	/**
-	 * Get the hyper-vertex by its numeric identifier.
-	 * @param the numeric identifier.
+	 * @brief Get the hypervertex by its numeric identifier.
+	 * @param identifier.
+	 * @return the hypervertex.
 	 */
 	std::shared_ptr<HyperVertex>& hyperVertexById(unsigned int&);
 
 	/**
-	 * Get the hyper-edge by its numeric identifier.
-	 * @param the numeric identifier.
+	 * @brief Get the hyperedge by its numeric identifier.
+	 * @param identifier.
+	 * @return the hyperedge.
 	 */
 	std::shared_ptr<HyperEdge>& hyperEdgeById(unsigned int&);
 
 	/**
-	 * Build the instance after reading.
+	 * @brief Build the instance after reading.
 	 */
 	void flush();
 
 
   protected:
 	/**
-	 * List of hyper-vertices read.
+	 * List of hypervertices read.
 	 */
 	LibType::ListHyperVertex
 	    _listHyperVertex;
 
 	/**
-	 * List of hyper-edges read.
+	 * List of hyperedges read.
 	 */
 	LibType::ListHyperEdge
 	    _listHyperEdge;
