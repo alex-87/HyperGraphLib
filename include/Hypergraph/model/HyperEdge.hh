@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Model of a hyper-edge.
- */
 #ifndef _HYPEREDGE_HH
 #define _HYPEREDGE_HH
 
@@ -35,72 +32,75 @@
 #include "AbstractHypergraph.hh"
 
 /**
- * Definition of the hyper-edge.
+ * @brief Implementation of a hyperedge.
+ *
+ * A hyperedge links an arbitrary number of hypervertices within a
+ * hypergraph.
  */
 class HyperEdge {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph.
-	 * @param numeric identifier of the hyper-edge.
+	 * @brief Construct a new HyperEdge object.
+	 * @param hypergraph the hyperedge belongs to.
+	 * @param numeric identifier of the hyperedge.
 	 */
 	HyperEdge(const std::shared_ptr<AbstractHypergraph>&, unsigned int& identifier);
 
 	/**
-	 * Add a hyper-vertex to the hyper-edge.
-	 * @param the hyper-vertex to add.
+	 * @brief Add a hypervertex to the hyperedge.
+	 * @param hypervertex to add.
 	 */
 	void addHyperVertex(std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Set the list of hyper-vertices contained in the hyper-edge.
-	 * @param list of hyper-vertices.
+	 * @brief Set the list of hypervertices contained in the hyperedge.
+	 * @param list of hypervertices.
 	 */
 	void setHyperVertexList(LibType::ListHyperVertex&);
 
 	/**
-	 * Get the list of hyper-vertices contained in the hyper-edge.
-	 * @return the list of hyper-vertices.
+	 * @brief Get the list of hypervertices contained in the hyperedge.
+	 * @return the list of hypervertices.
 	 */
 	LibType::ListHyperVertex& getHyperVertexList();
 
 	/**
-	 * Get the cardinality of the hyper-edge.
-	 * @return L'effectif.
+	 * @brief Get the cardinality of the hyperedge.
+	 * @return the cardinality of the hyperedge.
 	 */
 	const unsigned int getEffectif() const;
 
 	/**
-	 * Get the numeric identifier of the hyper-edge.
-	 * @return the hyper-edge identifier.
+	 * @brief Get the numeric identifier of the hyperedge.
+	 * @return the hyperedge identifier.
 	 */
 	const unsigned int& getIdentifier() const;
 
 	/**
-	 * Check whether a hyper-vertex belongs to the hyper-edge.
-	 * @param Le vertex
-	 * @return true if the hyper-vertex is present in the hyper-edge, false otherwise.
+	 * @brief Check whether a hypervertex belongs to the hyperedge.
+	 * @param hypervertex to check.
+	 * @return `true` if the hypervertex is present in the hyperedge, `false` otherwise.
 	 */
 	bool containVertex(std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Operator overload comparing on the numeric identifier.
+	 * @brief Operator overload comparing on the numeric identifier.
 	 */
 	bool operator==(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Operator overload comparing on the numeric identifier.
+	 * @brief Operator overload comparing on the numeric identifier.
 	 */
 	bool operator<(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Operator overload comparing on the numeric identifier.
+	 * @brief Operator overload comparing on the numeric identifier.
 	 */
 	bool operator>(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Get the list of hyper-vertices contained in the hyper-edge.
-	 * @return the list of hyper-vertices.
+	 * @brief Get the list of hypervertices contained in the hyperedge.
+	 * @return the list of hypervertices.
 	 */
 	const LibType::ListHyperVertex& getHyperVertexList() const;
 
@@ -117,7 +117,7 @@ class HyperEdge {
 	unsigned int _identifier;
 
 	/**
-	 * List of hyper-vertices.
+	 * List of hypervertices.
 	 */
 	LibType::ListHyperVertex
 	    _listHyperVertex;

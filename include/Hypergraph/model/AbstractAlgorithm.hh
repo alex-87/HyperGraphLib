@@ -23,10 +23,6 @@
  *
  */
 
-/**
- * Definition of the algorithm interface.
- */
-
 #ifndef MODEL_INCLUDE_ABSTRACT_ALGORITHM_HH_
 #define MODEL_INCLUDE_ABSTRACT_ALGORITHM_HH_
 
@@ -35,18 +31,21 @@
 class AlgorithmEngine;
 
 /**
- * Abstract class defining the mandatory methods of an algorithm.
+ * @brief Interface defining the mandatory methods of an algorithm.
+ *
+ * Every algorithm of the library implements this interface so that it
+ * can be configured and executed uniformly through the AlgorithmEngine.
  */
 class AbstractAlgorithm {
   public:
 	/**
-	 * Get the result description structure.
+	 * @brief Get the result.
 	 * @return the result description structure.
 	 */
 	virtual ResultStructure getResult() const = 0;
 
 	/**
-	 * Abstract destructor.
+	 * @brief Destructor.
 	 */
 	virtual ~AbstractAlgorithm() = default;
 
@@ -55,7 +54,7 @@ class AbstractAlgorithm {
 	friend class AlgorithmEngine;
 
 	/**
-	 * Main entry point running the algorithm.
+	 * @brief Run the algorithm.
 	 */
 	virtual void run() = 0;
 };

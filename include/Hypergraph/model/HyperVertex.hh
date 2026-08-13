@@ -23,10 +23,6 @@
  *
  */
 
-/**
- * Model of the hyper-vertex.
- */
-
 #ifndef HYPER_VERTEX_HH
 #define HYPER_VERTEX_HH
 
@@ -36,60 +32,63 @@
 #include "AbstractHypergraph.hh"
 
 /**
- * Declaration of the hyper-vertex class.
+ * @brief Implementation of a hypervertex.
+ *
+ * A hypervertex belongs to an arbitrary number of hyperedges within a
+ * hypergraph.
  */
 class HyperVertex {
   public:
 	/**
-	 * Constructor.
-	 * @param shared pointer to the hypergraph the hyper-vertex belongs to.
-	 * @param the numeric identifier of the hyper-vertex.
+	 * @brief Construct a new HyperVertex object.
+	 * @param hypergraph the hypervertex belongs to.
+	 * @param numeric identifier of the hypervertex.
 	 */
 	HyperVertex(const std::shared_ptr<AbstractHypergraph>&, unsigned int& identifier);
 
 	/**
-	 * Add a hyper-edge to the hyper-vertex.
-	 * @param the hyper-edge to add.
+	 * @brief Add a hyperedge to the hypervertex.
+	 * @param hyperedge to add.
 	 */
 	void addHyperEdge(std::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Get the number of hyper-edges the hyper-vertex belongs to.
-	 * @return the number of hyper-edges the hyper-vertex belongs to.
+	 * @brief Get the number of hyperedges the hypervertex belongs to.
+	 * @return the number of hyperedges the hypervertex belongs to.
 	 */
 	const unsigned int getVertexDegree() const;
 
 	/**
-	 * Check whether the hyper-edge contains this hyper-vertex.
-	 * @param the hyper-edge.
-	 * @return true if the hyper-vertex belongs to the hyper-edge.
+	 * @brief Check whether the hyperedge contains this hypervertex.
+	 * @param hyperedge to check.
+	 * @return true if the hypervertex belongs to the hyperedge.
 	 */
 	bool containEdge(std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Get the numeric identifier of the hyper-vertex.
-	 * @return the numeric identifier of the hyper-vertex.
+	 * @brief Get the numeric identifier of the hypervertex.
+	 * @return the numeric identifier of the hypervertex.
 	 */
 	const unsigned int& getIdentifier() const;
 
 	/**
-	 * Operator overload based on the numeric identifier.
+	 * @brief Operator overload based on the numeric identifier.
 	 */
 	bool operator==(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Operator overload based on the numeric identifier.
+	 * @brief Operator overload based on the numeric identifier.
 	 */
 	bool operator<(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Operator overload based on the numeric identifier.
+	 * @brief Operator overload based on the numeric identifier.
 	 */
 	bool operator>(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Get the list of hyper-edges containing the hyper-vertex.
-	 * @return the list of hyper-edges containing the hyper-vertex.
+	 * @brief Get the list of hyperedges containing the hypervertex.
+	 * @return the list of hyperedges containing the hypervertex.
 	 */
 	const LibType::ListHyperEdge& getHyperEdgeList() const;
 
@@ -107,7 +106,7 @@ class HyperVertex {
 	unsigned int _identifier;
 
 	/**
-	 * List of hyper-edges containing the hyper-vertex.
+	 * List of hyperedges containing the hypervertex.
 	 */
 	LibType::ListHyperEdge
 	    _listHyperEdge;

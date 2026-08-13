@@ -23,24 +23,40 @@
  *
  */
 
-/**
- * Result description structure. This object
- * is the representation of the result produced by any algorithm.
- */
 #ifndef MODEL_INCLUDE_RESULT_STRUCTURE_PATH_HH_
 #define MODEL_INCLUDE_RESULT_STRUCTURE_PATH_HH_
 
 #include "ResultStructure.hh"
 
+/**
+ * @brief Result produced by the `PATH` algorithm.
+ *
+ * Extends ResultStructure with the list of paths found between the
+ * source and destination hypervertices.
+ */
 class ResultStructurePath : public ResultStructure {
   public:
+	/**
+	 * @brief Construct a new ResultStructurePath object.
+	 */
 	ResultStructurePath();
 
+	/**
+	 * @brief Set the list of paths found.
+	 * @param list of paths.
+	 */
 	void setPathResult(LibType::PathList&);
 
+	/**
+	 * @brief Get the list of paths found.
+	 * @return LibType::PathList
+	 */
 	LibType::PathList getPathResult();
 
   protected:
+	/**
+	 * List of paths found.
+	 */
 	LibType::PathList _pathList;
 };
 

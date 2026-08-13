@@ -23,10 +23,6 @@
  *
  */
 
-/**
- * Algorithm engine. The engine is configured before running an algorithm
- * to act as a runner and avoid errors during concurrent execution.
- */
 #ifndef MODEL_INCLUDE_AlgorithmEngine_HH_
 #define MODEL_INCLUDE_AlgorithmEngine_HH_
 
@@ -35,62 +31,65 @@
 #include "AbstractAlgorithm.hh"
 
 /**
- * Algorithm execution engine.
+ * @brief Runner executing a configured algorithm.
+ *
+ * The engine is configured with an algorithm before it is run; it acts
+ * as a singleton runner and guards against concurrent execution errors.
  */
 class AlgorithmEngine {
   public:
 	/**
-	 * Get the engine instance.
+	 * @brief Get the engine instance.
 	 * @return the engine instance.
 	 */
 	static AlgorithmEngine& getInstance();
 
 	/**
-	 * Set the algorithm to run.
-	 * @param shared pointer to the algorithm.
+	 * @brief Set the algorithm to run.
+	 * @param algorithm to run.
 	 */
 	static void set(std::shared_ptr<AbstractAlgorithm>&);
 
 	/**
-	 * Execute the configured algorithm.
+	 * @brief Run the configured algorithm.
 	 */
 	static void run();
 
 	/**
-	 * Check whether the engine is locked.
-	 * @return true if the runner is locked, false otherwise.
+	 * @brief Check whether the engine is locked.
+	 * @return `true` if the runner is locked, `false` otherwise.
 	 */
 	static bool isLock();
 
   private:
 	/**
-	 * Lock the setters and runner.
+	 * @brief Lock the setters and runner.
 	 */
 	static void lock();
 
 	/**
-	 * Unlock the setters and the runner.
+	 * @brief Unlock the setters and the runner.
 	 */
 	static void unlock();
 
   private:
 	/**
-	 * Copy constructor.
+	 * @brief Copy constructor, disabled to enforce the singleton pattern.
 	 */
 	AlgorithmEngine(const AlgorithmEngine&);
 
 	/**
-	 * Constructor.
+	 * @brief Assignment operator, disabled to enforce the singleton pattern.
 	 */
 	AlgorithmEngine& operator=(const AlgorithmEngine&);
 
 	/**
-	 * Constructor.
+	 * @brief Construct a new AlgorithmEngine object.
 	 */
 	AlgorithmEngine();
 
 	/**
-	 * Destructor.
+	 * @brief Destructor.
 	 */
 	~AlgorithmEngine() = default;
 

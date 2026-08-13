@@ -23,131 +23,132 @@
  *
  */
 
-/**
- * Declaration of the standard hypergraph interface.
- */
-
 #ifndef ABSTRACT_HYPERGRAPH_HH_
 #define ABSTRACT_HYPERGRAPH_HH_
 
 #include "AdjacentMatrix.hh"
 
 /**
- * Definition of the hypergraph interface.
+ * @brief Interface defining a hypergraph.
+ *
+ * A hypergraph is a generalisation of a graph in which a hyperedge can
+ * link any number of hypervertices, rather than exactly two.
  */
 class AbstractHypergraph {
   public:
 	/**
-	 * Constructor.
+	 * @brief Construct a new AbstractHypergraph object.
 	 */
 	AbstractHypergraph();
 
 	/**
-	 * Add a hyper-vertex to the hypergraph.
-	 * @param the hyper-vertex to add.
+	 * @brief Add a hypervertex to the hypergraph.
+	 * @param hypervertex to add.
 	 */
 	virtual void addHyperVertex(const std::shared_ptr<HyperVertex>&) = 0;
 
 	/**
-	 * Add a hyper-edge to the hypergraph.
-	 * @param the hyper-edge to add.
+	 * @brief Add a hyperedge to the hypergraph.
+	 * @param hyperedge to add.
 	 */
 	virtual void addHyperEdge(const std::shared_ptr<HyperEdge>&) = 0;
 
 	/**
-	 * Get the adjacency matrix of the hypergraph.
-	 * @return La matrice d'adjacence.
+	 * @brief Get the adjacency matrix of the hypergraph.
+	 * @return the adjacency matrix.
 	 */
 	AdjacentMatrix& getAdjacentMatrix();
 
 	/**
-	 * Get the hyper-vertex index table.
-	 * @return the hyper-vertex index table.
+	 * @brief Get the hypervertex index table.
+	 * @return the hypervertex index table.
 	 */
 	LibType::IndexerHyperVertex& getIndexHyperVertex();
 
 	/**
-	 * Get the hyper-edge index table.
-	 * @return the hyper-edge index table.
+	 * @brief Get the hyperedge index table.
+	 * @return the hyperedge index table.
 	 */
 	LibType::IndexerHyperEdge& getIndexHyperEdge();
 
 	/**
-	 * Get a hyper-vertex by its identifier.
-	 * @return the hyper-vertex. Undefined behaviour otherwise.
+	 * @brief Get a hypervertex by its identifier.
+	 * @param identifier of the hypervertex to get.
+	 * @return the hypervertex. Undefined behaviour otherwise.
 	 */
 	virtual std::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&) = 0;
 
 	/**
-	 * Get a hyper-edge by its identifier.
-	 * @return the hyper-edge. Undefined behaviour otherwise.
+	 * @brief Get a hyperedge by its identifier.
+	 * @param identifier of the hyperedge to get.
+	 * @return the hyperedge. Undefined behaviour otherwise.
 	 */
 	virtual std::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&) = 0;
 
 	/**
-	 * Get the list of hyper-vertices of the hypergraph.
-	 * @return the list of hyper-vertices of the hypergraph.
+	 * @brief Get the list of hypervertices of the hypergraph.
+	 * @return the list of hypervertices of the hypergraph.
 	 */
 	LibType::ListHyperVertex& getHyperVertexList();
 
 
 	/**
-	 * Get the list of hyper-edges of the hypergraph.
-	 * @return the list of hyper-edges of the hypergraph.
+	 * @brief Get the list of hyperedges of the hypergraph.
+	 * @return the list of hyperedges of the hypergraph.
 	 */
 	LibType::ListHyperEdge& getHyperEdgeList();
 
 	/**
-	 * Check whether the hyper-vertex is contained in the hyper-edge
-	 * @param hyper-vertex
-	 * @param hyper-edge
-	 * @return True or False
+	 * @brief Check whether the hypervertex is contained in the hyperedge.
+	 * @param hypervertex to check.
+	 * @param hyperedge to check.
+	 * @return `true` if the hypervertex belongs to the hyperedge, `false` otherwise.
 	 */
 	bool isHyperVertexInHyperEdge(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Internal build of the hypergraph after construction.
+	 * @brief Internal build of the hypergraph after construction.
 	 */
 	virtual void flush() = 0;
 
 	/**
-	 * Virtual destructor.
+	 * @brief Destructor.
 	 */
 	virtual ~AbstractHypergraph() = default;
 
   protected:
 	/**
-	 * The hyper-vertex table (identifier, hyper-vertex).
+	 * The hypervertex table (identifier, hypervertex).
 	 */
 	LibType::IndexerHyperVertex _indexHyperVertex;
 
 	/**
-	 * The hyper-edge table (identifier, hyper-edge).
+	 * The hyperedge table (identifier, hyperedge).
 	 */
 	LibType::IndexerHyperEdge _indexHyperEdge;
 
 	/**
-	 * List of hyper-vertices.
+	 * List of hypervertices.
 	 */
 	LibType::ListHyperVertex _listHyperVertex;
 
 	/**
-	 * List of hyper-edges.
+	 * List of hyperedges.
 	 */
 	LibType::ListHyperEdge _listHyperEdge;
 
 	/**
-	 * The hyper-vertex table (hyper-vertex, identifier).
+	 * The hypervertex table (hypervertex, identifier).
 	 */
 	LibType::HyperVertexIndexer _hyperVertexIndexer;
 
 	/**
-	 * The hyper-edge table (hyper-edge, identifier).
+	 * The hyperedge table (hyperedge, identifier).
 	 */
 	LibType::HyperEdgeIndexer _hyperEdgeIndexer;
 
 	/**
-	 * La matrice d'adjacence.
+	 * The adjacency matrix.
 	 */
 	AdjacentMatrix _adjacentMatrix;
 };

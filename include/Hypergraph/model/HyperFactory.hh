@@ -23,9 +23,6 @@
  *
  */
 
-/**
- * Definition of the hypergraph factory.
- */
 #ifndef MODEL_INCLUDE_HYPERFACTORY_HH_
 #define MODEL_INCLUDE_HYPERFACTORY_HH_
 
@@ -33,76 +30,80 @@
 #include "HyperEdge.hh"
 
 /**
- * Class modelling the hypergraph factory.
+ * @brief Factory building a hypergraph.
+ *
+ * hypervertices and hyperedges are created and linked through a
+ * construction session opened with `startSession` and closed with
+ * `closeSession`.
  */
 class HyperFactory {
   public:
 	/**
-	 * Start a hypergraph construction session.
-	 * @param shared pointer to the hypergraph.
+	 * @brief Start a hypergraph construction session.
+	 * @param hypergraph to build.
 	 */
 	static void startSession(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph);
 
 	/**
-	 * Create a new hyper-vertex.
-	 * @return the new hyper-vertex.
+	 * @brief Create a new hypervertex.
+	 * @return the new hypervertex.
 	 */
 	static const std::shared_ptr<HyperVertex> newHyperVertex();
 
 	/**
-	 * Create a new hyper-edge.
-	 * @return the new hyper-edge.
+	 * @brief Create a new hyperedge.
+	 * @return the new hyperedge.
 	 */
 	static const std::shared_ptr<HyperEdge> newHyperEdge();
 
 	/**
-	 * Link a hyper-edge to a hyper-vertex.
-	 * @param the hyper-vertex to link.
-	 * @param the hyper-edge to link.
+	 * @brief Link a hyperedge to a hypervertex.
+	 * @param hypervertex to link.
+	 * @param hyperedge to link.
 	 */
 	static void link(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Test whether a session is already open.
-	 * @return True si c'est le cas, False sinon.
+	 * @brief Test whether a session is already open.
+	 * @return `true` if a session is open, `false` otherwise.
 	 */
 	static bool isSession();
 
 	/**
-	 * Terminer la session de construction.
+	 * @brief Close the construction session.
 	 */
 	static void closeSession();
 
 
   private:
 	/**
-	 * Constructor
+	 * @brief Construct a new HyperFactory object.
 	 */
 	HyperFactory();
 
 	/**
-	 * Constructor
+	 * @brief Copy constructor, disabled to enforce the static-only usage.
 	 */
 	HyperFactory(const HyperFactory&);
 
 	/**
-	 * Constructor
+	 * @brief Assignment operator, disabled to enforce the static-only usage.
 	 */
 	HyperFactory& operator=(const HyperFactory&);
 
 	/**
-	 * Destructor
+	 * @brief Destructor.
 	 */
 	~HyperFactory() = default;
 
   private:
 	/**
-	 * Counter of hyper-vertex indices.
+	 * Counter of hypervertex indices.
 	 */
 	static unsigned int _indexVertex;
 
 	/**
-	 * Counter of hyper-edge indices.
+	 * Counter of hyperedge indices.
 	 */
 	static unsigned int _indexEdge;
 

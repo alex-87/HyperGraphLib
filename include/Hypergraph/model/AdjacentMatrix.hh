@@ -23,11 +23,6 @@
  *
  */
 
-/*
- * Model of the adjacency matrix associated with the hypergraph.
- *
- */
-
 #ifndef MODEL_INCLUDE_ADJACENTMATRIX_HH_
 #define MODEL_INCLUDE_ADJACENTMATRIX_HH_
 
@@ -40,91 +35,95 @@ class HyperVertex;
 
 
 /**
- * Declaration of the adjacency matrix.
+ * @brief Adjacency matrix associated with a hypergraph.
+ *
+ * The matrix rows represent hypervertices and the columns represent
+ * hyperedges; a `true` cell means the hypervertex belongs to the
+ * hyperedge.
  */
 class AdjacentMatrix {
   public:
 	/**
-	 * Default constructor.
+	 * @brief Construct a new AdjacentMatrix object.
 	 */
 	AdjacentMatrix();
 
 	/**
-	 * Constructor with an explicit size.
-	 * @param x the number of vertices (rows).
-	 * @param y the number of edges (columns).
+	 * @brief Construct a new AdjacentMatrix object with an explicit size.
+	 * @param number of hypervertices (rows).
+	 * @param number of hyperedges (columns).
 	 */
 	AdjacentMatrix(const unsigned int&, const unsigned int&);
 
 	/**
-	 * Resize the matrix.
-	 * @param x the number of vertices (rows).
-	 * @param y the number of edges (columns).
+	 * @brief Resize the matrix.
+	 * @param number of hypervertices (rows).
+	 * @param number of hyperedges (columns).
 	 */
 	void resize(const unsigned int&, const unsigned int&);
 
 	/**
-	 * Add a hyper-vertex to the matrix.
-	 * @param hyperVertex the hyper-vertex to add.
+	 * @brief Add a hypervertex to the matrix.
+	 * @param hypervertex to add.
 	 */
 	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * Add a hyper-edge to the matrix.
-	 * @param hyperEdge the hyper-edge to add.
+	 * @brief Add a hyperedge to the matrix.
+	 * @param hyperedge to add.
 	 */
 	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
 
 	/**
-	 * Check whether the hyper-vertex is in the hyper-edge.
-	 * @param the hyper-vertex to check.
-	 * @param the hyper-edge in which to check for the hyper-vertex.
-	 * @return true if the hyper-vertex is in the hyper-edge, false otherwise.
+	 * @brief Check whether the hypervertex is in the hyperedge.
+	 * @param hypervertex to check.
+	 * @param hyperedge in which to check for the hypervertex.
+	 * @return `true` if the hypervertex is in the hyperedge, `false` otherwise.
 	 */
 	bool isVertexInEdge(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Check whether hyper-vertex i is in hyper-edge j.
-	 * @param the hyper-vertex identifier.
-	 * @param the hyper-edge identifier.
-	 * @return True si c'est le cas, False sinon.
+	 * @brief Check whether hypervertex i is in hyperedge j.
+	 * @param hypervertex identifier.
+	 * @param hyperedge identifier.
+	 * @return `true` if the hypervertex is in the hyperedge, `false` otherwise.
 	 */
 	bool isVertexInEdge(const int&, const int&) const;
 
 	/**
-	 * Get the boolean adjacency matrix.
+	 * @brief Get the boolean adjacency matrix.
 	 * @return the boolean adjacency matrix.
 	 */
 	LibType::AdjacentMatrixContainerBool& getBoolAdjacentMatrix();
 
 	/**
-	 * Get the degree of a hyper-vertex.
-	 * @param the hyper-vertex whose degree is wanted.
-	 * @return a positive integer, the degree of the hyper-vertex.
+	 * @brief Get the degree of a hypervertex.
+	 * @param hypervertex whose degree is wanted.
+	 * @return a positive integer, the degree of the hypervertex.
 	 */
 	unsigned int getVertexDegree(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * Get the cardinality of a hyper-edge.
-	 * @param the hyper-edge whose cardinality is wanted.
-	 * @return a positive integer, the number of hyper-vertices in the hyper-edge.
+	 * @brief Get the cardinality of a hyperedge.
+	 * @param hyperedge whose cardinality is wanted.
+	 * @return a positive integer, the number of hypervertices in the hyperedge.
 	 */
 	unsigned int getEdgeSize(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
-	 * Get the co-rank of the hypergraph.
-	 * @return Un entie correspondant au co-rang.
+	 * @brief Get the co-rank of the hypergraph.
+	 * @return the co-rank of the hypergraph.
 	 */
 	unsigned int getCoRank() const;
 
 	/**
-	 * Get the rank of the hypergraph.
-	 * @return Un entie correspondant au rang.
+	 * @brief Get the rank of the hypergraph.
+	 * @return the rank of the hypergraph.
 	 */
 	unsigned int getRank() const;
 
 	/**
-	 * Get the dimensions of the adjacency matrix.
+	 * @brief Get the dimensions of the adjacency matrix.
 	 * @return a tuple whose first number is the abscissa and second the ordinate.
 	 */
 	std::tuple<unsigned int, unsigned int>

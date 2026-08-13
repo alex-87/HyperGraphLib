@@ -23,7 +23,6 @@
  *
  */
 
-
 #ifndef MODEL_INCLUDE_LIBTYPE_HH_
 #define MODEL_INCLUDE_LIBTYPE_HH_
 
@@ -35,33 +34,63 @@
 class HyperEdge;
 class HyperVertex;
 
+/**
+ * @brief Utility class grouping the type aliases used throughout the library.
+ */
 class LibType {
   public:
+	/**
+	 * Boolean adjacency matrix container.
+	 */
 	typedef Matrix2D<bool>
 	    AdjacentMatrixContainerBool;
 
+	/**
+	 * List of hypervertices.
+	 */
 	typedef std::vector<std::shared_ptr<HyperVertex>>
 	    ListHyperVertex;
 
+	/**
+	 * List of hyperedges.
+	 */
 	typedef std::vector<std::shared_ptr<HyperEdge>>
 	    ListHyperEdge;
 
+	/**
+	 * Table indexing hypervertices, mapped to an integer index.
+	 */
 	typedef std::unordered_map<std::shared_ptr<HyperVertex>, int>
 	    IndexerHyperVertex;
 
+	/**
+	 * Table indexing hyperedges, mapped to an integer index.
+	 */
 	typedef std::unordered_map<std::shared_ptr<HyperEdge>, int>
 	    IndexerHyperEdge;
 
+	/**
+	 * Table indexing hypervertices by their numeric identifier.
+	 */
 	typedef std::unordered_map<unsigned int, std::shared_ptr<HyperVertex>>
 	    HyperVertexIndexer;
 
+	/**
+	 * Table indexing hyperedges by their numeric identifier.
+	 */
 	typedef std::unordered_map<unsigned int, std::shared_ptr<HyperEdge>>
 	    HyperEdgeIndexer;
 
+	/**
+	 * List of paths, each path being a list of hypervertices.
+	 */
 	typedef std::shared_ptr<std::vector<LibType::ListHyperVertex>>
 	    PathList;
 
   private:
+	/**
+	 * Constructor, private: this is a static utility class and must not be instantiated.
+	 */
 	LibType();
 	LibType(const LibType&) = delete;
 	LibType& operator=(const LibType&) = delete;

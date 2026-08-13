@@ -23,10 +23,6 @@
  *
  */
 
-/**
- * Result description structure. This object
- * is the representation of the result produced by any algorithm.
- */
 #ifndef MODEL_INCLUDE_RESULT_STRUCTURE_HH_
 #define MODEL_INCLUDE_RESULT_STRUCTURE_HH_
 
@@ -34,31 +30,34 @@
 #include <memory>
 
 /**
- * Result description structure.
+ * @brief Result produced by an algorithm.
+ *
+ * This object is the generic representation of the result produced by
+ * any algorithm.
  */
 class ResultStructure {
   public:
 	/**
-	 * Set a boolean result.
-	 * @param the boolean result.
+	 * @brief Set a boolean result.
+	 * @param boolean result.
 	 */
 	void setBooleanResult(bool);
 
 	/**
-	 * Set a AbstractHypergraph result.
-	 * @param the hypergraph used as the result.
+	 * @brief Set a AbstractHypergraph result.
+	 * @param hypergraph used as the result.
 	 */
 	void setHypergraphResult(const std::shared_ptr<AbstractHypergraph>&);
 
   public:
 	/**
-	 * Read a boolean result.
+	 * @brief Read a boolean result.
 	 * @return the result as a boolean value.
 	 */
 	bool getBooleanResult() const;
 
 	/**
-	 * Read a AbstractHypergraph result.
+	 * @brief Read a AbstractHypergraph result.
 	 * @return the AbstractHypergraph result.
 	 */
 	std::shared_ptr<AbstractHypergraph> getHypergraphResult() const;
