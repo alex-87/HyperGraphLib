@@ -34,7 +34,6 @@
 
 #include "../include/Hypergraph/model/LibType.hh"
 #include "../include/Hypergraph/model/Hypergraph.hh"
-#include "../include/Hypergraph/model/HyperFactory.hh"
 #include "../include/Hypergraph/model/HyperVertex.hh"
 #include "../include/Hypergraph/model/HyperEdge.hh"
 #include "../include/Hypergraph/model/AlgorithmEngine.hh"

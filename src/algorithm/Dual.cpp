@@ -25,7 +25,6 @@
 
 
 #include "Hypergraph/algorithm/Dual.hh"
-#include "Hypergraph/model/HyperFactory.hh"
 #include "Hypergraph/model/Hypergraph.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 #include "Hypergraph/model/HyperVertex.hh"
@@ -42,40 +41,27 @@ Dual::getResult() const {
 }
 
 void Dual::run() {
-	LibType::IndexerHyperVertex indexVertex(_ptrAbstractHypergraph->getIndexHyperVertex());
-	LibType::IndexerHyperEdge indexEdge(_ptrAbstractHypergraph->getIndexHyperEdge());
+	const AdjacentMatrix& matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
 
+	// Each hypervertex of the original becomes a hyperedge of the dual, and vice versa.
 	LibType::ListHyperVertex listVertex;
 	LibType::ListHyperEdge listEdge;
 
-	HyperFactory::startSession(_ptrDualHypergraph);
-
-	for (unsigned int i = 0; i < indexVertex.size(); i++) {
-		listEdge.push_back(HyperFactory::newHyperEdge());
+	for (unsigned int i = 0; i < matrix.getVertexCount(); i++) {
+		listEdge.push_back(_ptrDualHypergraph->addHyperEdge());
 	}
 
-	for (unsigned int i = 0; i < indexEdge.size(); i++) {
-		listVertex.push_back(HyperFactory::newHyperVertex());
+	for (unsigned int i = 0; i < matrix.getEdgeCount(); i++) {
+		listVertex.push_back(_ptrDualHypergraph->addHyperVertex());
 	}
 
-	for (auto& itemVertex : listVertex) {
-		for (auto& itemEdge : listEdge) {
-			if (_ptrAbstractHypergraph->getAdjacentMatrix().isVertexInEdge(itemEdge->getIdentifier(), itemVertex->getIdentifier())) {
-				HyperFactory::link(itemVertex, itemEdge);
+	for (const auto& itemVertex : listVertex) {
+		for (const auto& itemEdge : listEdge) {
+			if (matrix.isVertexInEdge(itemEdge->getIdentifier(), itemVertex->getIdentifier())) {
+				_ptrDualHypergraph->link(itemVertex, itemEdge);
 			}
 		}
 	}
 
-	for (auto& itemVertex : listVertex) {
-		_ptrDualHypergraph->addHyperVertex(itemVertex);
-	}
-
-	for (auto& itemEdge : listEdge) {
-		_ptrDualHypergraph->addHyperEdge(itemEdge);
-	}
-
-	HyperFactory::closeSession();
-
-	_ptrDualHypergraph->flush();
 	_result.setHypergraphResult(_ptrDualHypergraph);
 }

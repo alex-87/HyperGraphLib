@@ -27,6 +27,8 @@
 #define MODEL_INCLUDE_HYPERGRAPH_HH_
 
 #include "AbstractHypergraph.hh"
+#include "HyperVertex.hh"
+#include "HyperEdge.hh"
 
 /**
  * @brief Concrete implementation of a hypergraph.
@@ -39,35 +41,24 @@ class Hypergraph : public AbstractHypergraph {
 	Hypergraph();
 
 	/**
-	 * @brief Add a hypervertex to the hypergraph.
-	 * @param hypervertex to add.
+	 * @brief Create a new hypervertex in the hypergraph.
+	 * @return the new hypervertex, whose identifier is the previous number of hypervertices.
 	 */
-	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
+	std::shared_ptr<HyperVertex> addHyperVertex();
 
 	/**
-	 * @brief Add a hyperedge to the hypergraph.
-	 * @param hyperedge to add.
+	 * @brief Create a new hyperedge in the hypergraph.
+	 * @return the new hyperedge, whose identifier is the previous number of hyperedges.
 	 */
-	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
+	std::shared_ptr<HyperEdge> addHyperEdge();
 
 	/**
-	 * @brief Get a hypervertex by its identifier.
-	 * @param identifier of the hypervertex to get.
-	 * @return the hypervertex.
+	 * @brief Make the hypervertex belong to the hyperedge.
+	 * @param hypervertex of this hypergraph.
+	 * @param hyperedge of this hypergraph.
+	 * @throw std::invalid_argument if an element does not belong to this hypergraph.
 	 */
-	std::shared_ptr<HyperVertex>& getHyperVertexById(const unsigned int&);
-
-	/**
-	 * @brief Get a hyperedge by its identifier.
-	 * @param identifier of the hyperedge to get.
-	 * @return the hyperedge.
-	 */
-	std::shared_ptr<HyperEdge>& getHyperEdgeById(const unsigned int&);
-
-	/**
-	 * @brief Build the hypergraph, in particular its adjacency matrix.
-	 */
-	void flush();
+	void link(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * @brief Destructor.

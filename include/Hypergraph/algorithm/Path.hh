@@ -49,7 +49,7 @@ class Path : public AbstractAlgorithm {
 	 * @param source hyper-vertex.
 	 * @param destination hyper-vertex.
 	 */
-	void setHyperVertex(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
+	void setHyperVertex(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * @brief Get the result.
@@ -93,7 +93,7 @@ class Path : public AbstractAlgorithm {
 	 * @param hyper-vertex to look for.
 	 * @return `true` if contained, `false` otherwise.
 	 */
-	bool vertexContained(LibType::ListHyperVertex&, std::shared_ptr<HyperVertex>&) const;
+	bool vertexContained(LibType::ListHyperVertex&, const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * @brief Add the hyper-vertices of a hyper-edge to the given list.

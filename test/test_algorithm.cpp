@@ -23,7 +23,6 @@
  *
  */
 
-#include "../include/Hypergraph/model/HyperFactory.hh"
 #include "../include/Hypergraph/model/AbstractHypergraph.hh"
 #include "../include/Hypergraph/model/Hypergraph.hh"
 #include "../include/Hypergraph/model/AlgorithmEngine.hh"
@@ -44,57 +43,14 @@ std::shared_ptr<AbstractHypergraph> ptrHpgAlgorithm(new Hypergraph);
 std::shared_ptr<AbstractHypergraph> ptrHpgAlgorithm2(new Hypergraph);
 
 void setupAlgorithm(void) {
-	// First hpg
-	{
-		HyperFactory::startSession(ptrHpgAlgorithm);
-
-		std::shared_ptr<HyperEdge> ptrEdge1(HyperFactory::newHyperEdge());
-		std::shared_ptr<HyperEdge> ptrEdge2(HyperFactory::newHyperEdge());
+	for (auto& ptrHpg : {ptrHpgAlgorithm, ptrHpgAlgorithm2}) {
+		std::shared_ptr<HyperEdge> ptrEdge1(ptrHpg->addHyperEdge());
+		std::shared_ptr<HyperEdge> ptrEdge2(ptrHpg->addHyperEdge());
 
 		for (unsigned int i = 0; i < 50; i++) {
-			std::shared_ptr<HyperVertex> ptrVertexA(HyperFactory::newHyperVertex());
-			std::shared_ptr<HyperVertex> ptrVertexB(HyperFactory::newHyperVertex());
-
-			HyperFactory::link(ptrVertexA, ptrEdge1);
-			HyperFactory::link(ptrVertexB, ptrEdge2);
-
-			ptrHpgAlgorithm->addHyperVertex(ptrVertexA);
-			ptrHpgAlgorithm->addHyperVertex(ptrVertexB);
+			ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge1);
+			ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge2);
 		}
-
-		ptrHpgAlgorithm->addHyperEdge(ptrEdge1);
-		ptrHpgAlgorithm->addHyperEdge(ptrEdge2);
-
-		HyperFactory::closeSession();
-
-		ptrHpgAlgorithm->flush();
-	}
-
-
-	// Second hpg
-	{
-		HyperFactory::startSession(ptrHpgAlgorithm2);
-
-		std::shared_ptr<HyperEdge> ptrEdge1(HyperFactory::newHyperEdge());
-		std::shared_ptr<HyperEdge> ptrEdge2(HyperFactory::newHyperEdge());
-
-		for (unsigned int i = 0; i < 50; i++) {
-			std::shared_ptr<HyperVertex> ptrVertexA(HyperFactory::newHyperVertex());
-			std::shared_ptr<HyperVertex> ptrVertexB(HyperFactory::newHyperVertex());
-
-			HyperFactory::link(ptrVertexA, ptrEdge1);
-			HyperFactory::link(ptrVertexB, ptrEdge2);
-
-			ptrHpgAlgorithm2->addHyperVertex(ptrVertexA);
-			ptrHpgAlgorithm2->addHyperVertex(ptrVertexB);
-		}
-
-		ptrHpgAlgorithm2->addHyperEdge(ptrEdge1);
-		ptrHpgAlgorithm2->addHyperEdge(ptrEdge2);
-
-		HyperFactory::closeSession();
-
-		ptrHpgAlgorithm2->flush();
 	}
 }
 

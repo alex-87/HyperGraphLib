@@ -58,30 +58,6 @@ class LibType {
 	    ListHyperEdge;
 
 	/**
-	 * Table indexing hypervertices, mapped to an integer index.
-	 */
-	typedef std::unordered_map<std::shared_ptr<HyperVertex>, int>
-	    IndexerHyperVertex;
-
-	/**
-	 * Table indexing hyperedges, mapped to an integer index.
-	 */
-	typedef std::unordered_map<std::shared_ptr<HyperEdge>, int>
-	    IndexerHyperEdge;
-
-	/**
-	 * Table indexing hypervertices by their numeric identifier.
-	 */
-	typedef std::unordered_map<unsigned int, std::shared_ptr<HyperVertex>>
-	    HyperVertexIndexer;
-
-	/**
-	 * Table indexing hyperedges by their numeric identifier.
-	 */
-	typedef std::unordered_map<unsigned int, std::shared_ptr<HyperEdge>>
-	    HyperEdgeIndexer;
-
-	/**
 	 * List of paths, each path being a list of hypervertices.
 	 */
 	typedef std::shared_ptr<std::vector<LibType::ListHyperVertex>>

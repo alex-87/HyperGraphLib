@@ -29,41 +29,16 @@
 #include <memory>
 
 #include "LibType.hh"
-#include "AbstractHypergraph.hh"
 
 /**
  * @brief Implementation of a hyperedge.
  *
  * A hyperedge links an arbitrary number of hypervertices within a
- * hypergraph.
+ * hypergraph. Hyperedges are created with Hypergraph::addHyperEdge()
+ * and linked with Hypergraph::link().
  */
 class HyperEdge {
   public:
-	/**
-	 * @brief Construct a new HyperEdge object.
-	 * @param hypergraph the hyperedge belongs to.
-	 * @param numeric identifier of the hyperedge.
-	 */
-	HyperEdge(const std::shared_ptr<AbstractHypergraph>&, unsigned int& identifier);
-
-	/**
-	 * @brief Add a hypervertex to the hyperedge.
-	 * @param hypervertex to add.
-	 */
-	void addHyperVertex(std::shared_ptr<HyperVertex>&);
-
-	/**
-	 * @brief Set the list of hypervertices contained in the hyperedge.
-	 * @param list of hypervertices.
-	 */
-	void setHyperVertexList(LibType::ListHyperVertex&);
-
-	/**
-	 * @brief Get the list of hypervertices contained in the hyperedge.
-	 * @return the list of hypervertices.
-	 */
-	LibType::ListHyperVertex& getHyperVertexList();
-
 	/**
 	 * @brief Get the cardinality of the hyperedge.
 	 * @return the cardinality of the hyperedge.
@@ -81,7 +56,7 @@ class HyperEdge {
 	 * @param hypervertex to check.
 	 * @return `true` if the hypervertex is present in the hyperedge, `false` otherwise.
 	 */
-	bool containVertex(std::shared_ptr<HyperVertex>&) const;
+	bool containVertex(const std::shared_ptr<HyperVertex>&) const;
 
 	/**
 	 * @brief Operator overload comparing on the numeric identifier.
@@ -105,11 +80,19 @@ class HyperEdge {
 	const LibType::ListHyperVertex& getHyperVertexList() const;
 
   protected:
+	friend class Hypergraph;
+
 	/**
-	 * Shared pointer to the hypergraph.
+	 * @brief Construct a new HyperEdge object.
+	 * @param numeric identifier of the hyperedge.
 	 */
-	std::shared_ptr<AbstractHypergraph>
-	    _ptrHypergraph;
+	explicit HyperEdge(unsigned int identifier);
+
+	/**
+	 * @brief Add a hypervertex to the hyperedge.
+	 * @param hypervertex to add.
+	 */
+	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * The numeric identifier.

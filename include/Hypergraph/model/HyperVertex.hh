@@ -29,29 +29,16 @@
 #include <memory>
 
 #include "LibType.hh"
-#include "AbstractHypergraph.hh"
 
 /**
  * @brief Implementation of a hypervertex.
  *
  * A hypervertex belongs to an arbitrary number of hyperedges within a
- * hypergraph.
+ * hypergraph. Hypervertices are created with Hypergraph::addHyperVertex()
+ * and linked with Hypergraph::link().
  */
 class HyperVertex {
   public:
-	/**
-	 * @brief Construct a new HyperVertex object.
-	 * @param hypergraph the hypervertex belongs to.
-	 * @param numeric identifier of the hypervertex.
-	 */
-	HyperVertex(const std::shared_ptr<AbstractHypergraph>&, unsigned int& identifier);
-
-	/**
-	 * @brief Add a hyperedge to the hypervertex.
-	 * @param hyperedge to add.
-	 */
-	void addHyperEdge(std::shared_ptr<HyperEdge>&);
-
 	/**
 	 * @brief Get the number of hyperedges the hypervertex belongs to.
 	 * @return the number of hyperedges the hypervertex belongs to.
@@ -63,7 +50,7 @@ class HyperVertex {
 	 * @param hyperedge to check.
 	 * @return true if the hypervertex belongs to the hyperedge.
 	 */
-	bool containEdge(std::shared_ptr<HyperEdge>&) const;
+	bool containEdge(const std::shared_ptr<HyperEdge>&) const;
 
 	/**
 	 * @brief Get the numeric identifier of the hypervertex.
@@ -92,13 +79,20 @@ class HyperVertex {
 	 */
 	const LibType::ListHyperEdge& getHyperEdgeList() const;
 
-
   protected:
+	friend class Hypergraph;
+
 	/**
-	 * Shared pointer to the hypergraph.
+	 * @brief Construct a new HyperVertex object.
+	 * @param numeric identifier of the hypervertex.
 	 */
-	std::shared_ptr<AbstractHypergraph>
-	    _ptrHypergraph;
+	explicit HyperVertex(unsigned int identifier);
+
+	/**
+	 * @brief Add a hyperedge to the hypervertex.
+	 * @param hyperedge to add.
+	 */
+	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * Numeric identifier.

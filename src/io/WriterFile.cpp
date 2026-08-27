@@ -30,7 +30,6 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
-#include <tuple>
 #include <ostream>
 #include <string>
 
@@ -39,17 +38,11 @@ WriterFile::WriterFile(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHyp
 }
 
 void WriterFile::writeAdjacentMatrix(std::ostream& output) const {
-	LibType::AdjacentMatrixContainerBool
-	    adjacentMatrixBool(_ptrAbstractHypergraph->getAdjacentMatrix().getBoolAdjacentMatrix());
+	const AdjacentMatrix& adjacentMatrix(_ptrAbstractHypergraph->getAdjacentMatrix());
 
-	std::tuple<unsigned int, unsigned int>
-	    matrixDimension(_ptrAbstractHypergraph->getAdjacentMatrix().getMatrixDimension());
-
-	unsigned int n(std::get<0>(matrixDimension)), m(std::get<1>(matrixDimension));
-
-	for (unsigned int i = 0; i < n; i++) {
-		for (unsigned int j = 0; j < m; j++) {
-			output << adjacentMatrixBool(j, i) << " ";
+	for (unsigned int i = 0; i < adjacentMatrix.getEdgeCount(); i++) {
+		for (unsigned int j = 0; j < adjacentMatrix.getVertexCount(); j++) {
+			output << adjacentMatrix.isVertexInEdge(j, i) << " ";
 		}
 		output << " " << "\n";
 	}
@@ -59,11 +52,8 @@ void WriterFile::writeHypergraph(std::ostream& output) const {
 	writeHypergraphHyperVertex(output);
 	writeHypergraphHyperEdge(output);
 
-	LibType::ListHyperEdge listEdge(_ptrAbstractHypergraph->getHyperEdgeList());
-
-	for (const auto& edge : listEdge) {
-		LibType::ListHyperVertex vertexList(edge->getHyperVertexList());
-		for (const auto& vertex : vertexList) {
+	for (const auto& edge : _ptrAbstractHypergraph->getHyperEdgeList()) {
+		for (const auto& vertex : edge->getHyperVertexList()) {
 			output << edge->getIdentifier() << " " << vertex->getIdentifier() << std::endl;
 		}
 	}

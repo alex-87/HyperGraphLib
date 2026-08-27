@@ -24,8 +24,8 @@
  */
 
 #include <memory>
+#include <stdexcept>
 
-#include "../include/Hypergraph/model/HyperFactory.hh"
 #include "../include/Hypergraph/model/AbstractHypergraph.hh"
 #include "../include/Hypergraph/model/Hypergraph.hh"
 #include "include/MiniTest.hh"
@@ -36,34 +36,13 @@ std::shared_ptr<AbstractHypergraph> ptrHpg;
 void setup(void) {
 	ptrHpg.reset(new Hypergraph);
 
-	HyperFactory::startSession(ptrHpg);
-
-	std::vector<std::shared_ptr<HyperVertex>> listVertex;
-
-	std::shared_ptr<HyperEdge> ptrEdge1(HyperFactory::newHyperEdge());
-	std::shared_ptr<HyperEdge> ptrEdge2(HyperFactory::newHyperEdge());
+	std::shared_ptr<HyperEdge> ptrEdge1(ptrHpg->addHyperEdge());
+	std::shared_ptr<HyperEdge> ptrEdge2(ptrHpg->addHyperEdge());
 
 	for (unsigned int i = 0; i < 50; i++) {
-		std::shared_ptr<HyperVertex> ptrVertexA(HyperFactory::newHyperVertex());
-		std::shared_ptr<HyperVertex> ptrVertexB(HyperFactory::newHyperVertex());
-
-		HyperFactory::link(ptrVertexA, ptrEdge1);
-		HyperFactory::link(ptrVertexB, ptrEdge2);
-
-		listVertex.push_back(ptrVertexA);
-		listVertex.push_back(ptrVertexB);
+		ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge1);
+		ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge2);
 	}
-
-	for (unsigned int t = 0; t < listVertex.size(); t++) {
-		ptrHpg->addHyperVertex(listVertex.at(t));
-	}
-
-	ptrHpg->addHyperEdge(ptrEdge1);
-	ptrHpg->addHyperEdge(ptrEdge2);
-
-	ptrHpg->flush();
-
-	HyperFactory::closeSession();
 }
 
 void teardown(void) {
@@ -100,26 +79,14 @@ TEST(test_model, hpg_rcr, setup, teardown) {
 }
 
 TEST(test_model, hpg_create_modify, setup, teardown) {
-	HyperFactory::startSession(ptrHpg);
+	std::shared_ptr<HyperEdge> ptrEdge1(ptrHpg->addHyperEdge());
+	std::shared_ptr<HyperEdge> ptrEdge2(ptrHpg->addHyperEdge());
 
-	std::shared_ptr<HyperEdge> ptrEdge1(HyperFactory::newHyperEdge());
-	std::shared_ptr<HyperEdge> ptrEdge2(HyperFactory::newHyperEdge());
+	ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge1);
+	ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge2);
 
-	std::shared_ptr<HyperVertex> ptrVertexA(HyperFactory::newHyperVertex());
-	std::shared_ptr<HyperVertex> ptrVertexB(HyperFactory::newHyperVertex());
-
-	HyperFactory::link(ptrVertexA, ptrEdge1);
-	HyperFactory::link(ptrVertexB, ptrEdge2);
-
-	ptrHpg->addHyperVertex(ptrVertexA);
-	ptrHpg->addHyperVertex(ptrVertexB);
-
-	ptrHpg->addHyperEdge(ptrEdge1);
-	ptrHpg->addHyperEdge(ptrEdge2);
-
-	ptrHpg->flush();
-
-	HyperFactory::closeSession();
+	cr_expect(ptrHpg->getAdjacentMatrix().getVertexCount() == 102, "Adjacent matrix not updated");
+	cr_expect(ptrHpg->getAdjacentMatrix().getEdgeCount() == 4, "Adjacent matrix not updated");
 
 	// Identifiers
 	for (unsigned int i = 0; i < ptrHpg->getHyperVertexList().size(); i++) {
@@ -129,20 +96,35 @@ TEST(test_model, hpg_create_modify, setup, teardown) {
 
 TEST(test_model, hpg_contain, setup, teardown) {
 	std::shared_ptr<AbstractHypergraph> cptrHpg(new Hypergraph);
-	HyperFactory::startSession(cptrHpg);
 
-	std::shared_ptr<HyperEdge> ptrEdge(HyperFactory::newHyperEdge());
-	std::shared_ptr<HyperVertex> ptrVertex(HyperFactory::newHyperVertex());
+	std::shared_ptr<HyperEdge> ptrEdge(cptrHpg->addHyperEdge());
+	std::shared_ptr<HyperVertex> ptrVertex(cptrHpg->addHyperVertex());
+	std::shared_ptr<HyperVertex> ptrOther(cptrHpg->addHyperVertex());
 
-	HyperFactory::link(ptrVertex, ptrEdge);
-	cptrHpg->addHyperEdge(ptrEdge);
-	cptrHpg->addHyperVertex(ptrVertex);
-
-	cptrHpg->flush();
-
-	HyperFactory::closeSession();
+	cptrHpg->link(ptrVertex, ptrEdge);
 
 	cr_expect(cptrHpg->isHyperVertexInHyperEdge(ptrVertex, ptrEdge) == true, "ptrEdge should contain ptrVertex");
+	cr_expect(cptrHpg->isHyperVertexInHyperEdge(ptrOther, ptrEdge) == false, "ptrEdge should not contain ptrOther");
+}
+
+TEST(test_model, hpg_link_foreign, setup, teardown) {
+	std::shared_ptr<AbstractHypergraph> otherHpg(new Hypergraph);
+	std::shared_ptr<HyperVertex> ptrForeign(otherHpg->addHyperVertex());
+
+	bool thrown(false);
+	try {
+		ptrHpg->link(ptrForeign, ptrHpg->getHyperEdgeById(0));
+	} catch (const std::invalid_argument&) {
+		thrown = true;
+	}
+	cr_expect(thrown, "Linking an element of another hypergraph should throw");
+}
+
+TEST(test_model, hpg_empty, setup, teardown) {
+	Hypergraph emptyHpg;
+
+	cr_expect(emptyHpg.getAdjacentMatrix().getRank() == 0, "Rank of an empty hypergraph");
+	cr_expect(emptyHpg.getAdjacentMatrix().getCoRank() == 0, "Co-rank of an empty hypergraph");
 }
 
 MINITEST_MAIN

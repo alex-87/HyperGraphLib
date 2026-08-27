@@ -65,7 +65,7 @@ void HyperGraphStat::run() {
 	_nhEdge = _ptrAbstractHypergraph->getHyperEdgeList().size();
 	_nhVertex = _ptrAbstractHypergraph->getHyperVertexList().size();
 
-	AdjacentMatrix m(_ptrAbstractHypergraph->getAdjacentMatrix());
+	const AdjacentMatrix& m(_ptrAbstractHypergraph->getAdjacentMatrix());
 
 	_rank = m.getRank();
 	_coRank = m.getCoRank();

@@ -67,7 +67,7 @@ class Helly : public AbstractAlgorithm {
 	 * @param second hyper-vertex.
 	 * @return the list of hyper-edges containing both hyper-vertices.
 	 */
-	LibType::ListHyperEdge allContainXY(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
+	LibType::ListHyperEdge allContainXY(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * @brief Check whether the intersection of the list elements is non-empty.
@@ -82,7 +82,7 @@ class Helly : public AbstractAlgorithm {
 	 * @param second hyper-edge.
 	 * @return `true` if non-empty intersection, `false` otherwise.
 	 */
-	bool nonEmptyBetween(std::shared_ptr<HyperEdge>&, std::shared_ptr<HyperEdge>&);
+	bool nonEmptyBetween(const std::shared_ptr<HyperEdge>&, const std::shared_ptr<HyperEdge>&);
 
 	/**
 	 * @brief Check whether the two hyper-vertices are neighbours.
@@ -90,7 +90,7 @@ class Helly : public AbstractAlgorithm {
 	 * @param second hyper-vertex.
 	 * @return `true` if neighbours, `false` otherwise.
 	 */
-	bool areNeighbours(std::shared_ptr<HyperVertex>&, std::shared_ptr<HyperVertex>&);
+	bool areNeighbours(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * @brief Concatenate two hyper-edge lists.

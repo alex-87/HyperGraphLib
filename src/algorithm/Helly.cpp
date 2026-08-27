@@ -59,7 +59,7 @@ void Helly::run() {
 	}
 }
 
-bool Helly::areNeighbours(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
+bool Helly::areNeighbours(const std::shared_ptr<HyperVertex>& v1, const std::shared_ptr<HyperVertex>& v2) {
 	for (auto& element1 : v1->getHyperEdgeList()) {
 		for (auto& element2 : v2->getHyperEdgeList()) {
 			if (element1 == element2) {
@@ -84,7 +84,7 @@ bool Helly::nonEmptyIntersection(LibType::ListHyperEdge& edges) {
 	return true;
 }
 
-bool Helly::nonEmptyBetween(std::shared_ptr<HyperEdge>& e1, std::shared_ptr<HyperEdge>& e2) {
+bool Helly::nonEmptyBetween(const std::shared_ptr<HyperEdge>& e1, const std::shared_ptr<HyperEdge>& e2) {
 	for (auto& a : e1->getHyperVertexList()) {
 		for (auto& b : e2->getHyperVertexList()) {
 			if (a == b)
@@ -95,7 +95,7 @@ bool Helly::nonEmptyBetween(std::shared_ptr<HyperEdge>& e1, std::shared_ptr<Hype
 }
 
 LibType::ListHyperEdge
-Helly::allContainXY(std::shared_ptr<HyperVertex>& v1, std::shared_ptr<HyperVertex>& v2) {
+Helly::allContainXY(const std::shared_ptr<HyperVertex>& v1, const std::shared_ptr<HyperVertex>& v2) {
 	LibType::ListHyperEdge elist;
 	for (auto& e : _ptrAbstractHypergraph->getHyperEdgeList()) {
 		for (auto& e : _ptrAbstractHypergraph->getHyperEdgeList()) {

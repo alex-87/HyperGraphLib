@@ -28,65 +28,48 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
+#include <algorithm>
 
-AdjacentMatrix::AdjacentMatrix()
-    : AdjacentMatrix(0, 0) {
+AdjacentMatrix::AdjacentMatrix() {
 }
 
-AdjacentMatrix::AdjacentMatrix(const unsigned int& m, const unsigned int& n)
-    : _m(m),
-      _n(n),
-      _adjacentMatrixBool(m, n) {}
-
-void AdjacentMatrix::resize(const unsigned int& m, const unsigned int& n) {
-	_m = m;
-	_n = n;
-	_adjacentMatrixBool.resize(m, n);
-}
-
-void AdjacentMatrix::addHyperVertex(const std::shared_ptr<HyperVertex>& hyperVertex) {
-	const unsigned int id(hyperVertex->getIdentifier());
-	LibType::ListHyperEdge heList(hyperVertex->getHyperEdgeList());
-
-	for (unsigned int u = 0; u < heList.size(); u++)
-		_adjacentMatrixBool(id, heList[u]->getIdentifier()) = true;
-}
-
-void AdjacentMatrix::addHyperEdge(const std::shared_ptr<HyperEdge>& hyperEdge) {
-	const unsigned int id(hyperEdge->getIdentifier());
-	LibType::ListHyperVertex hvList(hyperEdge->getHyperVertexList());
-
-	for (unsigned int u = 0; u < hvList.size(); u++)
-		_adjacentMatrixBool(hvList[u]->getIdentifier(), id) = true;
+AdjacentMatrix::AdjacentMatrix(const LibType::ListHyperVertex& listHyperVertex, const LibType::ListHyperEdge& listHyperEdge)
+    : _adjacentMatrixBool(listHyperVertex.size(), listHyperEdge.size()),
+      _vertexDegree(listHyperVertex.size(), 0),
+      _edgeSize(listHyperEdge.size(), 0) {
+	for (const auto& hyperEdge : listHyperEdge) {
+		const unsigned int edgeId(hyperEdge->getIdentifier());
+		for (const auto& hyperVertex : hyperEdge->getHyperVertexList()) {
+			const unsigned int vertexId(hyperVertex->getIdentifier());
+			_adjacentMatrixBool(vertexId, edgeId) = true;
+			_vertexDegree[vertexId]++;
+			_edgeSize[edgeId]++;
+		}
+	}
 }
 
 unsigned int AdjacentMatrix::getVertexDegree(const std::shared_ptr<HyperVertex>& hyperVertex) const {
-	unsigned int sum(0);
-
-	for (unsigned int i = 0; i < _n; i++) {
-		sum += _adjacentMatrixBool(hyperVertex->getIdentifier(), i);
-	};
-
-	return sum;
+	return _vertexDegree.at(hyperVertex->getIdentifier());
 }
 
 unsigned int
 AdjacentMatrix::getEdgeSize(const std::shared_ptr<HyperEdge>& hyperEdge) const {
-	unsigned int sum(0);
-
-	for (unsigned int i = 0; i < _m; i++) {
-		sum += _adjacentMatrixBool(i, hyperEdge->getIdentifier());
-	};
-
-	return sum;
+	return _edgeSize.at(hyperEdge->getIdentifier());
 }
 
-std::tuple<unsigned int, unsigned int>
-AdjacentMatrix::getMatrixDimension() {
-	return std::make_tuple(_n, _m);
+unsigned int
+AdjacentMatrix::getVertexCount() const {
+	return _adjacentMatrixBool.rows();
 }
 
-bool AdjacentMatrix::isVertexInEdge(const int& vertexId, const int& edgeId) const {
+unsigned int
+AdjacentMatrix::getEdgeCount() const {
+	return _adjacentMatrixBool.cols();
+}
+
+bool AdjacentMatrix::isVertexInEdge(unsigned int vertexId, unsigned int edgeId) const {
+	if (vertexId >= getVertexCount() || edgeId >= getEdgeCount())
+		return false;
 	return _adjacentMatrixBool(vertexId, edgeId);
 }
 
@@ -96,42 +79,19 @@ bool AdjacentMatrix::isVertexInEdge(const std::shared_ptr<HyperVertex>& hVertex,
 
 unsigned int
 AdjacentMatrix::getCoRank() const {
-	auto edgeSize = [&](const int& edgeId) {
-		unsigned int sum(0);
-		for (unsigned int i = 0; i < _m; i++) {
-			sum += _adjacentMatrixBool(i, edgeId);
-		}
-		return sum;
-	};
-
-	unsigned int corank(-1);
-	for (unsigned int k = 0; k < _n; k++) {
-		corank = (edgeSize(k) < corank ? edgeSize(k) : corank);
-	}
-
-	return corank;
+	if (_edgeSize.empty())
+		return 0;
+	return *std::min_element(_edgeSize.begin(), _edgeSize.end());
 }
-
 
 unsigned int
 AdjacentMatrix::getRank() const {
-	auto edgeSize = [&](const int& edgeId) {
-		unsigned int sum(0);
-		for (unsigned int i = 0; i < _m; i++) {
-			sum += _adjacentMatrixBool(i, edgeId);
-		}
-		return sum;
-	};
-
-	unsigned int rank(0);
-	for (unsigned int k = 0; k < _n; k++) {
-		rank = (edgeSize(k) > rank ? edgeSize(k) : rank);
-	}
-
-	return rank;
+	if (_edgeSize.empty())
+		return 0;
+	return *std::max_element(_edgeSize.begin(), _edgeSize.end());
 }
 
-LibType::AdjacentMatrixContainerBool&
-AdjacentMatrix::getBoolAdjacentMatrix() {
+const LibType::AdjacentMatrixContainerBool&
+AdjacentMatrix::getBoolAdjacentMatrix() const {
 	return _adjacentMatrixBool;
 }

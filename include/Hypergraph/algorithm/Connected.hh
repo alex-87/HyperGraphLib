@@ -70,35 +70,21 @@ class Connected : public AbstractAlgorithm {
 
 	/**
 	 * @brief Explore vertically through the adjacency matrix.
-	 * @param vector of visited elements.
-	 * @param stack of vertices to visit.
+	 * @param adjacency matrix of the hypergraph.
+	 * @param visited hyper-edges, indexed by identifier.
+	 * @param stack of hyper-edges to visit.
 	 * @param row identifier.
 	 */
-	void exploreVertical(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
+	void exploreVertical(const AdjacentMatrix&, const std::vector<bool>&, std::stack<unsigned int>&, unsigned int) const;
 
 	/**
 	 * @brief Explore horizontally through the adjacency matrix.
-	 * @param vector of visited elements.
-	 * @param stack of vertices to visit.
+	 * @param adjacency matrix of the hypergraph.
+	 * @param visited hyper-vertices, indexed by identifier.
+	 * @param stack of hyper-vertices to visit.
 	 * @param column identifier.
 	 */
-	void exploreHorizontal(std::vector<unsigned int>&, std::stack<unsigned int>&, unsigned int);
-
-	/**
-	 * @brief Check whether a hyper-vertex has already been visited.
-	 * @param vector of visited hyper-vertices.
-	 * @param identifier to check.
-	 * @return `true` if already visited, `false` otherwise.
-	 */
-	bool isVertexVisited(std::vector<unsigned int>&, unsigned int) const;
-
-	/**
-	 * @brief Check whether a hyper-edge has already been visited.
-	 * @param vector of visited hyper-edges.
-	 * @param identifier to check.
-	 * @return `true` if already visited, `false` otherwise.
-	 */
-	bool isEdgeVisited(std::vector<unsigned int>&, unsigned int) const;
+	void exploreHorizontal(const AdjacentMatrix&, const std::vector<bool>&, std::stack<unsigned int>&, unsigned int) const;
 
 
   protected:

@@ -30,12 +30,11 @@
 #include <algorithm>
 
 
-HyperVertex::HyperVertex(const std::shared_ptr<AbstractHypergraph>& ptrHypergraph, unsigned int& identifier)
-    : _ptrHypergraph(ptrHypergraph),
-      _identifier(identifier) {
+HyperVertex::HyperVertex(unsigned int identifier)
+    : _identifier(identifier) {
 }
 
-void HyperVertex::addHyperEdge(std::shared_ptr<HyperEdge>& hyperEdge) {
+void HyperVertex::addHyperEdge(const std::shared_ptr<HyperEdge>& hyperEdge) {
 	if (!containEdge(hyperEdge)) {
 		_listHyperEdge.push_back(hyperEdge);
 	};
@@ -63,7 +62,7 @@ bool HyperVertex::operator>(const std::shared_ptr<HyperVertex>& hyperVertex) con
 	return _identifier > hyperVertex->getIdentifier();
 }
 
-bool HyperVertex::containEdge(std::shared_ptr<HyperEdge>& hyperEdge) const {
+bool HyperVertex::containEdge(const std::shared_ptr<HyperEdge>& hyperEdge) const {
 	return std::find(_listHyperEdge.begin(), _listHyperEdge.end(), hyperEdge) != _listHyperEdge.end();
 }
 

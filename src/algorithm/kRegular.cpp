@@ -31,14 +31,14 @@ kRegular::kRegular(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergr
 
 void kRegular::run() {
 	_result.setBooleanResult(true);
-	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
+	const AdjacentMatrix& matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
 
 	int count = -1;
-	for (const auto& e : _ptrAbstractHypergraph->getIndexHyperVertex()) {
+	for (const auto& hyperVertex : _ptrAbstractHypergraph->getHyperVertexList()) {
 		if (count == -1) {
-			count = matrix.getVertexDegree(e.first);
+			count = matrix.getVertexDegree(hyperVertex);
 		} else {
-			if ((int)matrix.getVertexDegree(e.first) != count) {
+			if ((int)matrix.getVertexDegree(hyperVertex) != count) {
 				_result.setBooleanResult(false);
 			};
 		};

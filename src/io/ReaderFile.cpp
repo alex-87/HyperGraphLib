@@ -25,21 +25,17 @@
 
 
 #include "Hypergraph/io/ReaderFile.hh"
-#include "Hypergraph/model/HyperFactory.hh"
 #include "Hypergraph/model/Hypergraph.hh"
 
 #include <string>
 #include <sstream>
+#include <stdexcept>
 
 ReaderFile::ReaderFile()
     : AbstractReader(std::shared_ptr<AbstractHypergraph>(new Hypergraph())) {
 }
 
 void ReaderFile::readHypergraph(std::istream& input) {
-	while (HyperFactory::isSession())
-		;
-	HyperFactory::startSession(_ptrAbstractHypergraph);
-
 	readHypergraphHyperVertex(input);
 	readHypergraphHyperEdge(input);
 
@@ -50,15 +46,11 @@ void ReaderFile::readHypergraph(std::istream& input) {
 	input >> vertex;
 
 	while (input) {
-		HyperFactory::link(hyperVertexById(vertex), hyperEdgeById(edge));
+		_ptrAbstractHypergraph->link(hyperVertexById(vertex), hyperEdgeById(edge));
 
 		input >> edge;
 		input >> vertex;
 	};
-
-	flush();
-
-	HyperFactory::closeSession();
 }
 
 void ReaderFile::readHypergraphHyperVertex(std::istream& input) {
@@ -69,8 +61,7 @@ void ReaderFile::readHypergraphHyperVertex(std::istream& input) {
 
 	unsigned int i(0);
 	while (k >> i) {
-		std::shared_ptr<HyperVertex> ptrHv(new HyperVertex(_ptrAbstractHypergraph, i));
-		_listHyperVertex.push_back(ptrHv);
+		_hyperVertexByFileId[i] = _ptrAbstractHypergraph->addHyperVertex();
 	}
 }
 
@@ -82,38 +73,22 @@ void ReaderFile::readHypergraphHyperEdge(std::istream& input) {
 
 	unsigned int i(0);
 	while (k >> i) {
-		std::shared_ptr<HyperEdge> ptrHe(new HyperEdge(_ptrAbstractHypergraph, i));
-		_listHyperEdge.push_back(ptrHe);
+		_hyperEdgeByFileId[i] = _ptrAbstractHypergraph->addHyperEdge();
 	}
 }
 
-void ReaderFile::flush() {
-	for (auto& vertex : _listHyperVertex) {
-		_ptrAbstractHypergraph->addHyperVertex(vertex);
-	}
-
-	for (auto& edge : _listHyperEdge) {
-		_ptrAbstractHypergraph->addHyperEdge(edge);
-	}
-
-	_ptrAbstractHypergraph->flush();
-	_ptrAbstractHypergraph->flush();
+const std::shared_ptr<HyperVertex>&
+ReaderFile::hyperVertexById(unsigned int id) const {
+	auto it = _hyperVertexByFileId.find(id);
+	if (it == _hyperVertexByFileId.end())
+		throw std::invalid_argument("ReaderFile: unknown hypervertex identifier " + std::to_string(id));
+	return it->second;
 }
 
-std::shared_ptr<HyperVertex>&
-ReaderFile::hyperVertexById(unsigned int& id) {
-	int r = 0;
-	for (unsigned int i = 0; i < _listHyperVertex.size(); i++)
-		if (id == _listHyperVertex.at(i)->getIdentifier())
-			r = i;
-	return _listHyperVertex.at(r);
-}
-
-std::shared_ptr<HyperEdge>&
-ReaderFile::hyperEdgeById(unsigned int& id) {
-	int r = 0;
-	for (unsigned int i = 0; i < _listHyperEdge.size(); i++)
-		if (id == _listHyperEdge.at(i)->getIdentifier())
-			r = i;
-	return _listHyperEdge.at(r);
+const std::shared_ptr<HyperEdge>&
+ReaderFile::hyperEdgeById(unsigned int id) const {
+	auto it = _hyperEdgeByFileId.find(id);
+	if (it == _hyperEdgeByFileId.end())
+		throw std::invalid_argument("ReaderFile: unknown hyperedge identifier " + std::to_string(id));
+	return it->second;
 }

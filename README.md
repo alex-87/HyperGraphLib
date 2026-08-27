@@ -46,7 +46,6 @@ Reference documentation, generated using [Doxygen](http://www.doxygen.org) is av
 #include <iostream>
 #include <memory>
 #include <Hypergraph/model/Hypergraph.hh>
-#include <Hypergraph/model/HyperFactory.hh>
 #include <Hypergraph/model/AlgorithmEngine.hh>
 #include <Hypergraph/algorithm/Isomorph.hh>
 #include <Hypergraph/algorithm/Simple.hh>
@@ -56,35 +55,18 @@ int main(int argc, char * argv[]) {
     // Creating the hypergraph inside smart pointer
     std::shared_ptr<AbstractHypergraph> ptrHpg( new Hypergraph() );
 
-    // Starting the create session
-    HyperFactory::startSession(ptrHpg);
-
     // Creating the hyper-edges
-    std::shared_ptr<HyperEdge> ptrEdge1 ( HyperFactory::newHyperEdge() );
-    std::shared_ptr<HyperEdge> ptrEdge2 ( HyperFactory::newHyperEdge() );
+    std::shared_ptr<HyperEdge> ptrEdge1( ptrHpg->addHyperEdge() );
+    std::shared_ptr<HyperEdge> ptrEdge2( ptrHpg->addHyperEdge() );
 
     // Creating the hyper-vertexes
-    std::shared_ptr<HyperVertex> ptrVertexA( HyperFactory::newHyperVertex() );
-    std::shared_ptr<HyperVertex> ptrVertexB( HyperFactory::newHyperVertex() );
+    std::shared_ptr<HyperVertex> ptrVertexA( ptrHpg->addHyperVertex() );
+    std::shared_ptr<HyperVertex> ptrVertexB( ptrHpg->addHyperVertex() );
 
     // The hyper-vertex A is contained inside the hyper-edge 1
-    HyperFactory::link(ptrVertexA, ptrEdge1);
+    ptrHpg->link(ptrVertexA, ptrEdge1);
     // The hyper-vertex B is contained inside the hyper-edge 2
-    HyperFactory::link(ptrVertexB, ptrEdge2);
-
-    // Adding the hyper-vertexes in the hypergraph
-    ptrHpg->addHyperVertex(ptrVertexA);
-    ptrHpg->addHyperVertex(ptrVertexB);
-
-    // Adding the hyper-edges in the hypergraph
-    ptrHpg->addHyperEdge(ptrEdge1);
-    ptrHpg->addHyperEdge(ptrEdge2);
-
-    // Creating the adjacent matrix inside the hypergraph
-    ptrHpg->flush();
-
-    // Closing the session
-    HyperFactory::closeSession();
+    ptrHpg->link(ptrVertexB, ptrEdge2);
 
     // -- -- --
 

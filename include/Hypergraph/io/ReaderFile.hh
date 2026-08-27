@@ -28,6 +28,7 @@
 
 #include "AbstractReader.hh"
 #include <istream>
+#include <unordered_map>
 
 
 /**
@@ -36,6 +37,8 @@
  * The expected format is a first line listing the hypervertex
  * identifiers, a second line listing the hyperedge identifiers, then
  * one `edge vertex` pair per line describing the incidence relation.
+ * File identifiers may be arbitrary: the hypergraph assigns its own dense
+ * identifiers in reading order.
  */
 class ReaderFile : public AbstractReader {
   public:
@@ -70,37 +73,34 @@ class ReaderFile : public AbstractReader {
 	void readHypergraphHyperEdge(std::istream&);
 
 	/**
-	 * @brief Get the hypervertex by its numeric identifier.
-	 * @param identifier.
+	 * @brief Get the hypervertex read with the given file identifier.
+	 * @param identifier in the file.
 	 * @return the hypervertex.
+	 * @throw std::invalid_argument if the identifier was not declared.
 	 */
-	std::shared_ptr<HyperVertex>& hyperVertexById(unsigned int&);
+	const std::shared_ptr<HyperVertex>& hyperVertexById(unsigned int) const;
 
 	/**
-	 * @brief Get the hyperedge by its numeric identifier.
-	 * @param identifier.
+	 * @brief Get the hyperedge read with the given file identifier.
+	 * @param identifier in the file.
 	 * @return the hyperedge.
+	 * @throw std::invalid_argument if the identifier was not declared.
 	 */
-	std::shared_ptr<HyperEdge>& hyperEdgeById(unsigned int&);
-
-	/**
-	 * @brief Build the instance after reading.
-	 */
-	void flush();
+	const std::shared_ptr<HyperEdge>& hyperEdgeById(unsigned int) const;
 
 
   protected:
 	/**
-	 * List of hypervertices read.
+	 * Hypervertices read, by their identifier in the file.
 	 */
-	LibType::ListHyperVertex
-	    _listHyperVertex;
+	std::unordered_map<unsigned int, std::shared_ptr<HyperVertex>>
+	    _hyperVertexByFileId;
 
 	/**
-	 * List of hyperedges read.
+	 * Hyperedges read, by their identifier in the file.
 	 */
-	LibType::ListHyperEdge
-	    _listHyperEdge;
+	std::unordered_map<unsigned int, std::shared_ptr<HyperEdge>>
+	    _hyperEdgeByFileId;
 };
 
 

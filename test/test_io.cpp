@@ -23,7 +23,6 @@
  *
  */
 
-#include "../include/Hypergraph/model/HyperFactory.hh"
 #include "../include/Hypergraph/model/AbstractHypergraph.hh"
 #include "../include/Hypergraph/model/Hypergraph.hh"
 
@@ -40,34 +39,13 @@ std::shared_ptr<AbstractHypergraph> ptrHpg;
 void setup(void) {
 	ptrHpg.reset(new Hypergraph);
 
-	HyperFactory::startSession(ptrHpg);
-
-	std::vector<std::shared_ptr<HyperVertex>> listVertex;
-
-	std::shared_ptr<HyperEdge> ptrEdge1(HyperFactory::newHyperEdge());
-	std::shared_ptr<HyperEdge> ptrEdge2(HyperFactory::newHyperEdge());
+	std::shared_ptr<HyperEdge> ptrEdge1(ptrHpg->addHyperEdge());
+	std::shared_ptr<HyperEdge> ptrEdge2(ptrHpg->addHyperEdge());
 
 	for (unsigned int i = 0; i < 50; i++) {
-		std::shared_ptr<HyperVertex> ptrVertexA(HyperFactory::newHyperVertex());
-		std::shared_ptr<HyperVertex> ptrVertexB(HyperFactory::newHyperVertex());
-
-		HyperFactory::link(ptrVertexA, ptrEdge1);
-		HyperFactory::link(ptrVertexB, ptrEdge2);
-
-		listVertex.push_back(ptrVertexA);
-		listVertex.push_back(ptrVertexB);
+		ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge1);
+		ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge2);
 	}
-
-	for (unsigned int t = 0; t < listVertex.size(); t++) {
-		ptrHpg->addHyperVertex(listVertex.at(t));
-	}
-
-	ptrHpg->addHyperEdge(ptrEdge1);
-	ptrHpg->addHyperEdge(ptrEdge2);
-
-	ptrHpg->flush();
-
-	HyperFactory::closeSession();
 }
 
 void teardown(void) {
@@ -87,11 +65,26 @@ TEST(test_model, hpg_io, setup, teardown) {
 	fReader.readHypergraph(trsf);
 
 	WriterFile fWriter2(fReader.getHypergraph());
-	fWriter.writeHypergraph(trsf2);
+	fWriter2.writeHypergraph(trsf2);
 
 	b << trsf2.str();
 
 	cr_expect(a.str() == b.str(), "Input / Output not eqal");
+}
+
+TEST(test_model, hpg_io_sparse_ids, setup, teardown) {
+	std::stringstream input("10 20 30\n7 9\n7 10\n7 30\n9 20\n");
+
+	ReaderFile fReader;
+	fReader.readHypergraph(input);
+
+	std::shared_ptr<AbstractHypergraph> hpg(fReader.getHypergraph());
+	cr_expect(hpg->getHyperVertexList().size() == 3, "Incorrect HyperVertexList size");
+	cr_expect(hpg->getHyperEdgeList().size() == 2, "Incorrect HyperEdgeList size");
+	cr_expect(hpg->getAdjacentMatrix().isVertexInEdge(0u, 0u), "10 should be in 7");
+	cr_expect(hpg->getAdjacentMatrix().isVertexInEdge(2u, 0u), "30 should be in 7");
+	cr_expect(hpg->getAdjacentMatrix().isVertexInEdge(1u, 1u), "20 should be in 9");
+	cr_expect(!hpg->getAdjacentMatrix().isVertexInEdge(1u, 0u), "20 should not be in 7");
 }
 
 MINITEST_MAIN

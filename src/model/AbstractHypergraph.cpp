@@ -29,34 +29,38 @@
 #include "Hypergraph/model/HyperEdge.hh"
 
 AbstractHypergraph::AbstractHypergraph()
-    : _adjacentMatrix(0, 0) {
+    : _isAdjacentMatrixOutdated(false) {
 }
 
-LibType::IndexerHyperVertex&
-AbstractHypergraph::getIndexHyperVertex() {
-	return _indexHyperVertex;
-}
-
-LibType::IndexerHyperEdge&
-AbstractHypergraph::getIndexHyperEdge() {
-	return _indexHyperEdge;
-}
-
-LibType::ListHyperVertex&
-AbstractHypergraph::getHyperVertexList() {
+const LibType::ListHyperVertex&
+AbstractHypergraph::getHyperVertexList() const {
 	return _listHyperVertex;
 }
 
-LibType::ListHyperEdge&
-AbstractHypergraph::getHyperEdgeList() {
+const LibType::ListHyperEdge&
+AbstractHypergraph::getHyperEdgeList() const {
 	return _listHyperEdge;
 }
 
-AdjacentMatrix&
-AbstractHypergraph::getAdjacentMatrix() {
+const std::shared_ptr<HyperVertex>&
+AbstractHypergraph::getHyperVertexById(unsigned int id) const {
+	return _listHyperVertex.at(id);
+}
+
+const std::shared_ptr<HyperEdge>&
+AbstractHypergraph::getHyperEdgeById(unsigned int id) const {
+	return _listHyperEdge.at(id);
+}
+
+const AdjacentMatrix&
+AbstractHypergraph::getAdjacentMatrix() const {
+	if (_isAdjacentMatrixOutdated) {
+		_adjacentMatrix = AdjacentMatrix(_listHyperVertex, _listHyperEdge);
+		_isAdjacentMatrixOutdated = false;
+	}
 	return _adjacentMatrix;
 }
 
-bool AbstractHypergraph::isHyperVertexInHyperEdge(std::shared_ptr<HyperVertex>& hv, std::shared_ptr<HyperEdge>& he) const {
-	return _adjacentMatrix.isVertexInEdge(hv->getIdentifier(), he->getIdentifier());
+bool AbstractHypergraph::isHyperVertexInHyperEdge(const std::shared_ptr<HyperVertex>& hv, const std::shared_ptr<HyperEdge>& he) const {
+	return getAdjacentMatrix().isVertexInEdge(hv, he);
 }

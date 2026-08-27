@@ -27,7 +27,6 @@
 #define MODEL_INCLUDE_ADJACENTMATRIX_HH_
 
 #include "LibType.hh"
-#include <tuple>
 
 class HyperEdge;
 
@@ -39,40 +38,25 @@ class HyperVertex;
  *
  * The matrix rows represent hypervertices and the columns represent
  * hyperedges; a `true` cell means the hypervertex belongs to the
- * hyperedge.
+ * hyperedge. The matrix is read-only: it is built from the hypergraph
+ * elements and is kept up to date by the hypergraph itself.
  */
 class AdjacentMatrix {
   public:
 	/**
-	 * @brief Construct a new AdjacentMatrix object.
+	 * @brief Construct an empty AdjacentMatrix object.
 	 */
 	AdjacentMatrix();
 
 	/**
-	 * @brief Construct a new AdjacentMatrix object with an explicit size.
-	 * @param number of hypervertices (rows).
-	 * @param number of hyperedges (columns).
+	 * @brief Construct the AdjacentMatrix of a set of hypervertices and hyperedges.
+	 *
+	 * Identifiers must be dense: every hypervertex identifier is lower than
+	 * the number of hypervertices, and likewise for hyperedges.
+	 * @param list of hypervertices (rows).
+	 * @param list of hyperedges (columns).
 	 */
-	AdjacentMatrix(const unsigned int&, const unsigned int&);
-
-	/**
-	 * @brief Resize the matrix.
-	 * @param number of hypervertices (rows).
-	 * @param number of hyperedges (columns).
-	 */
-	void resize(const unsigned int&, const unsigned int&);
-
-	/**
-	 * @brief Add a hypervertex to the matrix.
-	 * @param hypervertex to add.
-	 */
-	void addHyperVertex(const std::shared_ptr<HyperVertex>&);
-
-	/**
-	 * @brief Add a hyperedge to the matrix.
-	 * @param hyperedge to add.
-	 */
-	void addHyperEdge(const std::shared_ptr<HyperEdge>&);
+	AdjacentMatrix(const LibType::ListHyperVertex&, const LibType::ListHyperEdge&);
 
 	/**
 	 * @brief Check whether the hypervertex is in the hyperedge.
@@ -86,15 +70,16 @@ class AdjacentMatrix {
 	 * @brief Check whether hypervertex i is in hyperedge j.
 	 * @param hypervertex identifier.
 	 * @param hyperedge identifier.
-	 * @return `true` if the hypervertex is in the hyperedge, `false` otherwise.
+	 * @return `true` if the hypervertex is in the hyperedge, `false` otherwise
+	 * (including when an identifier is out of range).
 	 */
-	bool isVertexInEdge(const int&, const int&) const;
+	bool isVertexInEdge(unsigned int, unsigned int) const;
 
 	/**
 	 * @brief Get the boolean adjacency matrix.
 	 * @return the boolean adjacency matrix.
 	 */
-	LibType::AdjacentMatrixContainerBool& getBoolAdjacentMatrix();
+	const LibType::AdjacentMatrixContainerBool& getBoolAdjacentMatrix() const;
 
 	/**
 	 * @brief Get the degree of a hypervertex.
@@ -112,38 +97,43 @@ class AdjacentMatrix {
 
 	/**
 	 * @brief Get the co-rank of the hypergraph.
-	 * @return the co-rank of the hypergraph.
+	 * @return the co-rank of the hypergraph, 0 if it has no hyperedge.
 	 */
 	unsigned int getCoRank() const;
 
 	/**
 	 * @brief Get the rank of the hypergraph.
-	 * @return the rank of the hypergraph.
+	 * @return the rank of the hypergraph, 0 if it has no hyperedge.
 	 */
 	unsigned int getRank() const;
 
 	/**
-	 * @brief Get the dimensions of the adjacency matrix.
-	 * @return a tuple whose first number is the abscissa and second the ordinate.
+	 * @brief Get the number of hypervertices (rows).
+	 * @return the number of hypervertices.
 	 */
-	std::tuple<unsigned int, unsigned int>
-	getMatrixDimension();
+	unsigned int getVertexCount() const;
+
+	/**
+	 * @brief Get the number of hyperedges (columns).
+	 * @return the number of hyperedges.
+	 */
+	unsigned int getEdgeCount() const;
 
   protected:
-	/**
-	 * The abscissa.
-	 */
-	unsigned int _m;
-
-	/**
-	 * The ordinate.
-	 */
-	unsigned int _n;
-
 	/**
 	 * The boolean adjacency matrix data.
 	 */
 	LibType::AdjacentMatrixContainerBool _adjacentMatrixBool;
+
+	/**
+	 * Degree of each hypervertex, indexed by identifier.
+	 */
+	std::vector<unsigned int> _vertexDegree;
+
+	/**
+	 * Cardinality of each hyperedge, indexed by identifier.
+	 */
+	std::vector<unsigned int> _edgeSize;
 };
 
 

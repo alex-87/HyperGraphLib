@@ -38,11 +38,11 @@ kUniform::getResult() const {
 }
 
 void kUniform::run() {
-	AdjacentMatrix matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
+	const AdjacentMatrix& matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
 	_result.setBooleanResult(true);
 
-	for (const auto& e : _ptrAbstractHypergraph->getIndexHyperEdge()) {
-		if (matrix.getEdgeSize(e.first) != _k) {
+	for (const auto& hyperEdge : _ptrAbstractHypergraph->getHyperEdgeList()) {
+		if (matrix.getEdgeSize(hyperEdge) != _k) {
 			_result.setBooleanResult(false);
 			break;
 		};

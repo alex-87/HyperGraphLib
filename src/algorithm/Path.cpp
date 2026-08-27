@@ -51,7 +51,7 @@ Path::getLimit() const {
 	return _limit;
 }
 
-void Path::setHyperVertex(std::shared_ptr<HyperVertex>& source, std::shared_ptr<HyperVertex>& destination) {
+void Path::setHyperVertex(const std::shared_ptr<HyperVertex>& source, const std::shared_ptr<HyperVertex>& destination) {
 	_source = source;
 	_destination = destination;
 }
@@ -115,7 +115,7 @@ void Path::addVertexList(LibType::ListHyperVertex& noListe, LibType::ListHyperVe
 	}
 }
 
-bool Path::vertexContained(LibType::ListHyperVertex& liste, std::shared_ptr<HyperVertex>& vertex) const {
+bool Path::vertexContained(LibType::ListHyperVertex& liste, const std::shared_ptr<HyperVertex>& vertex) const {
 	for (unsigned int i = 0; i < liste.size(); i++) {
 		if (vertex == liste.at(i)) {
 			return true;

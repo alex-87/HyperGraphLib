@@ -28,46 +28,38 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
-#include <iostream>
+#include <stdexcept>
 
 Hypergraph::Hypergraph()
     : AbstractHypergraph() {
 }
 
-void Hypergraph::addHyperVertex(const std::shared_ptr<HyperVertex>& hyperVertex) {
-	_indexHyperVertex[hyperVertex] = hyperVertex->getIdentifier();
-	_hyperVertexIndexer.insert(std::pair<unsigned int, std::shared_ptr<HyperVertex>>(hyperVertex->getIdentifier(), hyperVertex));
+std::shared_ptr<HyperVertex>
+Hypergraph::addHyperVertex() {
+	std::shared_ptr<HyperVertex> hyperVertex(new HyperVertex(_listHyperVertex.size()));
 	_listHyperVertex.push_back(hyperVertex);
+	_isAdjacentMatrixOutdated = true;
+	return hyperVertex;
 }
 
-void Hypergraph::addHyperEdge(const std::shared_ptr<HyperEdge>& hyperEdge) {
-	_indexHyperEdge[hyperEdge] = hyperEdge->getIdentifier();
-	_hyperEdgeIndexer.insert(std::pair<unsigned int, std::shared_ptr<HyperEdge>>(hyperEdge->getIdentifier(), hyperEdge));
+std::shared_ptr<HyperEdge>
+Hypergraph::addHyperEdge() {
+	std::shared_ptr<HyperEdge> hyperEdge(new HyperEdge(_listHyperEdge.size()));
 	_listHyperEdge.push_back(hyperEdge);
+	_isAdjacentMatrixOutdated = true;
+	return hyperEdge;
 }
 
-std::shared_ptr<HyperVertex>&
-Hypergraph::getHyperVertexById(const unsigned int& id) {
-	return _hyperVertexIndexer.at(id);
-}
+void Hypergraph::link(const std::shared_ptr<HyperVertex>& hyperVertex, const std::shared_ptr<HyperEdge>& hyperEdge) {
+	const unsigned int vertexId(hyperVertex->getIdentifier());
+	const unsigned int edgeId(hyperEdge->getIdentifier());
 
-std::shared_ptr<HyperEdge>&
-Hypergraph::getHyperEdgeById(const unsigned int& id) {
-	return _hyperEdgeIndexer.at(id);
-}
+	if (vertexId >= _listHyperVertex.size() || _listHyperVertex[vertexId] != hyperVertex)
+		throw std::invalid_argument("Hypergraph::link: the hypervertex does not belong to this hypergraph");
+	if (edgeId >= _listHyperEdge.size() || _listHyperEdge[edgeId] != hyperEdge)
+		throw std::invalid_argument("Hypergraph::link: the hyperedge does not belong to this hypergraph");
 
-void Hypergraph::flush() {
-	unsigned int m(_hyperVertexIndexer.size());
-	unsigned int n(_hyperEdgeIndexer.size());
-
-	_adjacentMatrix.resize(0, 0);
-	_adjacentMatrix.resize(m, n);
-
-	for (const auto& it : _hyperVertexIndexer) {
-		_adjacentMatrix.addHyperVertex(it.second);
-	}
-
-	for (const auto& it : _hyperEdgeIndexer) {
-		_adjacentMatrix.addHyperEdge(it.second);
-	}
+	hyperVertex->addHyperEdge(hyperEdge);
+	hyperEdge->addHyperVertex(hyperVertex);
+	_isAdjacentMatrixOutdated = true;
 }
