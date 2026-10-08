@@ -42,7 +42,8 @@ void HyperVertex::addHyperEdge(const std::shared_ptr<HyperEdge>& hyperEdge) {
 
 const unsigned int
 HyperVertex::getVertexDegree() const {
-	return _listHyperEdge.size();
+	return std::count_if(_listHyperEdge.begin(), _listHyperEdge.end(),
+	                     [](const std::weak_ptr<HyperEdge>& hyperEdge) { return !hyperEdge.expired(); });
 }
 
 const unsigned int&
@@ -63,10 +64,16 @@ bool HyperVertex::operator>(const std::shared_ptr<HyperVertex>& hyperVertex) con
 }
 
 bool HyperVertex::containEdge(const std::shared_ptr<HyperEdge>& hyperEdge) const {
-	return std::find(_listHyperEdge.begin(), _listHyperEdge.end(), hyperEdge) != _listHyperEdge.end();
+	return std::any_of(_listHyperEdge.begin(), _listHyperEdge.end(),
+	                   [&](const std::weak_ptr<HyperEdge>& item) { return item.lock() == hyperEdge; });
 }
 
-const LibType::ListHyperEdge&
+LibType::ListHyperEdge
 HyperVertex::getHyperEdgeList() const {
-	return _listHyperEdge;
+	LibType::ListHyperEdge listHyperEdge;
+	for (const auto& item : _listHyperEdge) {
+		if (std::shared_ptr<HyperEdge> hyperEdge = item.lock())
+			listHyperEdge.push_back(hyperEdge);
+	}
+	return listHyperEdge;
 }

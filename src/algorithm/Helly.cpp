@@ -60,8 +60,9 @@ void Helly::run() {
 }
 
 bool Helly::areNeighbours(const std::shared_ptr<HyperVertex>& v1, const std::shared_ptr<HyperVertex>& v2) {
-	for (auto& element1 : v1->getHyperEdgeList()) {
-		for (auto& element2 : v2->getHyperEdgeList()) {
+	const LibType::ListHyperEdge listHyperEdge2(v2->getHyperEdgeList());
+	for (const auto& element1 : v1->getHyperEdgeList()) {
+		for (const auto& element2 : listHyperEdge2) {
 			if (element1 == element2) {
 				return true;
 			}

@@ -36,6 +36,10 @@
  * A hypervertex belongs to an arbitrary number of hyperedges within a
  * hypergraph. Hypervertices are created with Hypergraph::addHyperVertex()
  * and linked with Hypergraph::link().
+ *
+ * A hyperedge owns its hypervertices, whereas a hypervertex only observes
+ * its hyperedges (weak references), so that they do not keep each other
+ * alive. Hyperedges that no longer exist are ignored.
  */
 class HyperVertex {
   public:
@@ -75,9 +79,9 @@ class HyperVertex {
 
 	/**
 	 * @brief Get the list of hyperedges containing the hypervertex.
-	 * @return the list of hyperedges containing the hypervertex.
+	 * @return a copy of the list of hyperedges containing the hypervertex.
 	 */
-	const LibType::ListHyperEdge& getHyperEdgeList() const;
+	LibType::ListHyperEdge getHyperEdgeList() const;
 
   protected:
 	friend class Hypergraph;
@@ -100,9 +104,10 @@ class HyperVertex {
 	unsigned int _identifier;
 
 	/**
-	 * List of hyperedges containing the hypervertex.
+	 * List of hyperedges containing the hypervertex, as weak references
+	 * to avoid an ownership cycle with the hyperedges.
 	 */
-	LibType::ListHyperEdge
+	std::vector<std::weak_ptr<HyperEdge>>
 	    _listHyperEdge;
 };
 

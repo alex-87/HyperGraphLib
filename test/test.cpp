@@ -120,6 +120,26 @@ TEST(test_model, hpg_link_foreign, setup, teardown) {
 	cr_expect(thrown, "Linking an element of another hypergraph should throw");
 }
 
+TEST(test_model, hpg_release, setup, teardown) {
+	std::weak_ptr<HyperVertex> weakVertex;
+	std::weak_ptr<HyperEdge> weakEdge;
+	{
+		std::shared_ptr<AbstractHypergraph> localHpg(new Hypergraph);
+		std::shared_ptr<HyperVertex> ptrVertex(localHpg->addHyperVertex());
+		std::shared_ptr<HyperEdge> ptrEdge(localHpg->addHyperEdge());
+		localHpg->link(ptrVertex, ptrEdge);
+
+		cr_expect(ptrVertex->getHyperEdgeList().size() == 1, "Vertex should see its edge");
+		cr_expect(ptrVertex->containEdge(ptrEdge), "Vertex should contain its edge");
+		cr_expect(ptrVertex->getVertexDegree() == 1, "Vertex degree should be 1");
+
+		weakVertex = ptrVertex;
+		weakEdge = ptrEdge;
+	}
+	cr_expect(weakVertex.expired(), "Hypervertex leaked after the hypergraph was released");
+	cr_expect(weakEdge.expired(), "Hyperedge leaked after the hypergraph was released");
+}
+
 TEST(test_model, hpg_empty, setup, teardown) {
 	Hypergraph emptyHpg;
 

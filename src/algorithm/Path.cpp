@@ -87,8 +87,8 @@ void Path::run() {
 			toVisitVertex.push_back(_source);
 		}
 
-		for (unsigned int cn = 0; cn < currentHyperVertex->getHyperEdgeList().size(); cn++) {
-			addVertexList(visitedVertex, toVisitVertex, currentHyperVertex->getHyperEdgeList().at(cn));
+		for (const auto& hyperEdge : currentHyperVertex->getHyperEdgeList()) {
+			addVertexList(visitedVertex, toVisitVertex, hyperEdge);
 		}
 
 		currentPath.push_back(currentHyperVertex);
