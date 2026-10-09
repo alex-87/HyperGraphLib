@@ -81,10 +81,10 @@ TEST(test_model, hpg_io_sparse_ids, setup, teardown) {
 	std::shared_ptr<AbstractHypergraph> hpg(fReader.getHypergraph());
 	cr_expect(hpg->getHyperVertexList().size() == 3, "Incorrect HyperVertexList size");
 	cr_expect(hpg->getHyperEdgeList().size() == 2, "Incorrect HyperEdgeList size");
-	cr_expect(hpg->getAdjacentMatrix().isVertexInEdge(0u, 0u), "10 should be in 7");
-	cr_expect(hpg->getAdjacentMatrix().isVertexInEdge(2u, 0u), "30 should be in 7");
-	cr_expect(hpg->getAdjacentMatrix().isVertexInEdge(1u, 1u), "20 should be in 9");
-	cr_expect(!hpg->getAdjacentMatrix().isVertexInEdge(1u, 0u), "20 should not be in 7");
+	cr_expect(hpg->getIncidenceMatrix().isVertexInEdge(0u, 0u), "10 should be in 7");
+	cr_expect(hpg->getIncidenceMatrix().isVertexInEdge(2u, 0u), "30 should be in 7");
+	cr_expect(hpg->getIncidenceMatrix().isVertexInEdge(1u, 1u), "20 should be in 9");
+	cr_expect(!hpg->getIncidenceMatrix().isVertexInEdge(1u, 0u), "20 should not be in 7");
 }
 
 MINITEST_MAIN

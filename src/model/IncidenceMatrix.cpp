@@ -24,74 +24,74 @@
  */
 
 
-#include "Hypergraph/model/AdjacentMatrix.hh"
+#include "Hypergraph/model/IncidenceMatrix.hh"
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
 #include <algorithm>
 
-AdjacentMatrix::AdjacentMatrix() {
+IncidenceMatrix::IncidenceMatrix() {
 }
 
-AdjacentMatrix::AdjacentMatrix(const LibType::ListHyperVertex& listHyperVertex, const LibType::ListHyperEdge& listHyperEdge)
-    : _adjacentMatrixBool(listHyperVertex.size(), listHyperEdge.size()),
+IncidenceMatrix::IncidenceMatrix(const LibType::ListHyperVertex& listHyperVertex, const LibType::ListHyperEdge& listHyperEdge)
+    : _incidenceMatrixBool(listHyperVertex.size(), listHyperEdge.size()),
       _vertexDegree(listHyperVertex.size(), 0),
       _edgeSize(listHyperEdge.size(), 0) {
 	for (const auto& hyperEdge : listHyperEdge) {
 		const unsigned int edgeId(hyperEdge->getIdentifier());
 		for (const auto& hyperVertex : hyperEdge->getHyperVertexList()) {
 			const unsigned int vertexId(hyperVertex->getIdentifier());
-			_adjacentMatrixBool(vertexId, edgeId) = true;
+			_incidenceMatrixBool(vertexId, edgeId) = true;
 			_vertexDegree[vertexId]++;
 			_edgeSize[edgeId]++;
 		}
 	}
 }
 
-unsigned int AdjacentMatrix::getVertexDegree(const std::shared_ptr<HyperVertex>& hyperVertex) const {
+unsigned int IncidenceMatrix::getVertexDegree(const std::shared_ptr<HyperVertex>& hyperVertex) const {
 	return _vertexDegree.at(hyperVertex->getIdentifier());
 }
 
 unsigned int
-AdjacentMatrix::getEdgeSize(const std::shared_ptr<HyperEdge>& hyperEdge) const {
+IncidenceMatrix::getEdgeSize(const std::shared_ptr<HyperEdge>& hyperEdge) const {
 	return _edgeSize.at(hyperEdge->getIdentifier());
 }
 
 unsigned int
-AdjacentMatrix::getVertexCount() const {
-	return _adjacentMatrixBool.rows();
+IncidenceMatrix::getVertexCount() const {
+	return _incidenceMatrixBool.rows();
 }
 
 unsigned int
-AdjacentMatrix::getEdgeCount() const {
-	return _adjacentMatrixBool.cols();
+IncidenceMatrix::getEdgeCount() const {
+	return _incidenceMatrixBool.cols();
 }
 
-bool AdjacentMatrix::isVertexInEdge(unsigned int vertexId, unsigned int edgeId) const {
+bool IncidenceMatrix::isVertexInEdge(unsigned int vertexId, unsigned int edgeId) const {
 	if (vertexId >= getVertexCount() || edgeId >= getEdgeCount())
 		return false;
-	return _adjacentMatrixBool(vertexId, edgeId);
+	return _incidenceMatrixBool(vertexId, edgeId);
 }
 
-bool AdjacentMatrix::isVertexInEdge(const std::shared_ptr<HyperVertex>& hVertex, const std::shared_ptr<HyperEdge>& hEdge) const {
+bool IncidenceMatrix::isVertexInEdge(const std::shared_ptr<HyperVertex>& hVertex, const std::shared_ptr<HyperEdge>& hEdge) const {
 	return isVertexInEdge(hVertex->getIdentifier(), hEdge->getIdentifier());
 }
 
 unsigned int
-AdjacentMatrix::getCoRank() const {
+IncidenceMatrix::getCoRank() const {
 	if (_edgeSize.empty())
 		return 0;
 	return *std::min_element(_edgeSize.begin(), _edgeSize.end());
 }
 
 unsigned int
-AdjacentMatrix::getRank() const {
+IncidenceMatrix::getRank() const {
 	if (_edgeSize.empty())
 		return 0;
 	return *std::max_element(_edgeSize.begin(), _edgeSize.end());
 }
 
-const LibType::AdjacentMatrixContainerBool&
-AdjacentMatrix::getBoolAdjacentMatrix() const {
-	return _adjacentMatrixBool;
+const LibType::IncidenceMatrixContainerBool&
+IncidenceMatrix::getBoolIncidenceMatrix() const {
+	return _incidenceMatrixBool;
 }

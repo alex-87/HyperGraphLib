@@ -75,7 +75,7 @@ void IsomorphSpace::postConstraints() {
 	// the form "w * y + x". (x, y) being the coordinates of the cell, and w the row length.
 	Gecode::IntSharedArray flatMatrixH2(nbr_edge_h1 * nbr_vertex_h1);
 
-	{ // H1 hypergraph adjacency matrix
+	{ // H1 hypergraph incidence matrix
 		unsigned int i = 0;
 		for (std::shared_ptr<HyperEdge>& e : edgeH1) {
 			unsigned int j = 0;
@@ -86,7 +86,7 @@ void IsomorphSpace::postConstraints() {
 			i++;
 		}
 	}
-	{ // H2 hypergraph adjacency matrix (flat)
+	{ // H2 hypergraph incidence matrix (flat)
 		unsigned int p = 0;
 		for (std::shared_ptr<HyperEdge>& e : edgeH2) {
 			unsigned int q = 0;

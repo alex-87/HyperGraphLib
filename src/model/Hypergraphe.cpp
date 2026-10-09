@@ -38,7 +38,7 @@ std::shared_ptr<HyperVertex>
 Hypergraph::addHyperVertex() {
 	std::shared_ptr<HyperVertex> hyperVertex(new HyperVertex(_listHyperVertex.size()));
 	_listHyperVertex.push_back(hyperVertex);
-	_isAdjacentMatrixOutdated = true;
+	_isIncidenceMatrixOutdated = true;
 	return hyperVertex;
 }
 
@@ -46,7 +46,7 @@ std::shared_ptr<HyperEdge>
 Hypergraph::addHyperEdge() {
 	std::shared_ptr<HyperEdge> hyperEdge(new HyperEdge(_listHyperEdge.size()));
 	_listHyperEdge.push_back(hyperEdge);
-	_isAdjacentMatrixOutdated = true;
+	_isIncidenceMatrixOutdated = true;
 	return hyperEdge;
 }
 
@@ -61,5 +61,5 @@ void Hypergraph::link(const std::shared_ptr<HyperVertex>& hyperVertex, const std
 
 	hyperVertex->addHyperEdge(hyperEdge);
 	hyperEdge->addHyperVertex(hyperVertex);
-	_isAdjacentMatrixOutdated = true;
+	_isIncidenceMatrixOutdated = true;
 }

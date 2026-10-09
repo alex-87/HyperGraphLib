@@ -41,7 +41,7 @@ Dual::getResult() const {
 }
 
 void Dual::run() {
-	const AdjacentMatrix& matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
+	const IncidenceMatrix& matrix(_ptrAbstractHypergraph->getIncidenceMatrix());
 
 	// Each hypervertex of the original becomes a hyperedge of the dual, and vice versa.
 	LibType::ListHyperVertex listVertex;

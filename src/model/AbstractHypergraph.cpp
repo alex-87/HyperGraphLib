@@ -29,7 +29,7 @@
 #include "Hypergraph/model/HyperEdge.hh"
 
 AbstractHypergraph::AbstractHypergraph()
-    : _isAdjacentMatrixOutdated(false) {
+    : _isIncidenceMatrixOutdated(false) {
 }
 
 const LibType::ListHyperVertex&
@@ -52,15 +52,15 @@ AbstractHypergraph::getHyperEdgeById(unsigned int id) const {
 	return _listHyperEdge.at(id);
 }
 
-const AdjacentMatrix&
-AbstractHypergraph::getAdjacentMatrix() const {
-	if (_isAdjacentMatrixOutdated) {
-		_adjacentMatrix = AdjacentMatrix(_listHyperVertex, _listHyperEdge);
-		_isAdjacentMatrixOutdated = false;
+const IncidenceMatrix&
+AbstractHypergraph::getIncidenceMatrix() const {
+	if (_isIncidenceMatrixOutdated) {
+		_incidenceMatrix = IncidenceMatrix(_listHyperVertex, _listHyperEdge);
+		_isIncidenceMatrixOutdated = false;
 	}
-	return _adjacentMatrix;
+	return _incidenceMatrix;
 }
 
 bool AbstractHypergraph::isHyperVertexInHyperEdge(const std::shared_ptr<HyperVertex>& hv, const std::shared_ptr<HyperEdge>& he) const {
-	return getAdjacentMatrix().isVertexInEdge(hv, he);
+	return getIncidenceMatrix().isVertexInEdge(hv, he);
 }

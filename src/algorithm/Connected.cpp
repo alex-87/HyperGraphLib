@@ -39,7 +39,7 @@ void Connected::run() {
 	if (_ptrAbstractHypergraph->getHyperVertexList().size() == 0)
 		return;
 
-	const AdjacentMatrix& matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
+	const IncidenceMatrix& matrix(_ptrAbstractHypergraph->getIncidenceMatrix());
 
 	std::stack<unsigned int> stackHyperVertex;
 	std::stack<unsigned int> stackHyperEdge;
@@ -77,7 +77,7 @@ void Connected::run() {
 	_result.setBooleanResult(nbVertexVisited == matrix.getVertexCount());
 }
 
-void Connected::exploreVertical(const AdjacentMatrix& matrix, const std::vector<bool>& visited, std::stack<unsigned int>& stack, unsigned int idVert) const {
+void Connected::exploreVertical(const IncidenceMatrix& matrix, const std::vector<bool>& visited, std::stack<unsigned int>& stack, unsigned int idVert) const {
 	for (unsigned int i = 0; i < matrix.getEdgeCount(); i++) {
 		if (matrix.isVertexInEdge(idVert, i) && !visited[i]) {
 			stack.push(i);
@@ -85,7 +85,7 @@ void Connected::exploreVertical(const AdjacentMatrix& matrix, const std::vector<
 	}
 }
 
-void Connected::exploreHorizontal(const AdjacentMatrix& matrix, const std::vector<bool>& visited, std::stack<unsigned int>& stack, unsigned int idHor) const {
+void Connected::exploreHorizontal(const IncidenceMatrix& matrix, const std::vector<bool>& visited, std::stack<unsigned int>& stack, unsigned int idHor) const {
 	for (unsigned int i = 0; i < matrix.getVertexCount(); i++) {
 		if (matrix.isVertexInEdge(i, idHor) && !visited[i]) {
 			stack.push(i);

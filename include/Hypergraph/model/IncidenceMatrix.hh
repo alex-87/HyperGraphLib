@@ -23,8 +23,8 @@
  *
  */
 
-#ifndef MODEL_INCLUDE_ADJACENTMATRIX_HH_
-#define MODEL_INCLUDE_ADJACENTMATRIX_HH_
+#ifndef MODEL_INCLUDE_INCIDENCEMATRIX_HH_
+#define MODEL_INCLUDE_INCIDENCEMATRIX_HH_
 
 #include "LibType.hh"
 
@@ -34,29 +34,29 @@ class HyperVertex;
 
 
 /**
- * @brief Adjacency matrix associated with a hypergraph.
+ * @brief Incidence matrix associated with a hypergraph.
  *
  * The matrix rows represent hypervertices and the columns represent
  * hyperedges; a `true` cell means the hypervertex belongs to the
  * hyperedge. The matrix is read-only: it is built from the hypergraph
  * elements and is kept up to date by the hypergraph itself.
  */
-class AdjacentMatrix {
+class IncidenceMatrix {
   public:
 	/**
-	 * @brief Construct an empty AdjacentMatrix object.
+	 * @brief Construct an empty IncidenceMatrix object.
 	 */
-	AdjacentMatrix();
+	IncidenceMatrix();
 
 	/**
-	 * @brief Construct the AdjacentMatrix of a set of hypervertices and hyperedges.
+	 * @brief Construct the IncidenceMatrix of a set of hypervertices and hyperedges.
 	 *
 	 * Identifiers must be dense: every hypervertex identifier is lower than
 	 * the number of hypervertices, and likewise for hyperedges.
 	 * @param list of hypervertices (rows).
 	 * @param list of hyperedges (columns).
 	 */
-	AdjacentMatrix(const LibType::ListHyperVertex&, const LibType::ListHyperEdge&);
+	IncidenceMatrix(const LibType::ListHyperVertex&, const LibType::ListHyperEdge&);
 
 	/**
 	 * @brief Check whether the hypervertex is in the hyperedge.
@@ -76,10 +76,10 @@ class AdjacentMatrix {
 	bool isVertexInEdge(unsigned int, unsigned int) const;
 
 	/**
-	 * @brief Get the boolean adjacency matrix.
-	 * @return the boolean adjacency matrix.
+	 * @brief Get the boolean incidence matrix.
+	 * @return the boolean incidence matrix.
 	 */
-	const LibType::AdjacentMatrixContainerBool& getBoolAdjacentMatrix() const;
+	const LibType::IncidenceMatrixContainerBool& getBoolIncidenceMatrix() const;
 
 	/**
 	 * @brief Get the degree of a hypervertex.
@@ -121,9 +121,9 @@ class AdjacentMatrix {
 
   protected:
 	/**
-	 * The boolean adjacency matrix data.
+	 * The boolean incidence matrix data.
 	 */
-	LibType::AdjacentMatrixContainerBool _adjacentMatrixBool;
+	LibType::IncidenceMatrixContainerBool _incidenceMatrixBool;
 
 	/**
 	 * Degree of each hypervertex, indexed by identifier.
@@ -137,4 +137,4 @@ class AdjacentMatrix {
 };
 
 
-#endif
+#endif // MODEL_INCLUDE_INCIDENCEMATRIX_HH_

@@ -73,7 +73,7 @@ static int runBooleanAlgorithm(std::shared_ptr<AbstractHypergraph>& ptrHpg,
 
 int main(int argc, char* argv[]) {
 	po::options_description desc("Parameters");
-	desc.add_options()("version", "Print the version")("help", "Print help message")("inputfile", po::value<std::string>(), "Input file")("random", po::value<int>(), "Random n-vertex Hypergraph")("adjacence", "Print adjacent matrix of the hypergraph")("dual", "Produce the Dual of the hypergraph")("kuniform", po::value<int>(), "Decide whether the hypergraph is k-uniforme")("linear", "Decide whether the hypergraph is linear")("kregular", "Decide whether the hypergraph is k-regular")("simple", "Decide whether the hypergraph is simple")("helly", "Decide whether the hypergraph has the Helly property")("connected", "Decide whether the hypergraph is connected")("isomorph", po::value<std::string>(), "Decide whether the hypergraph is isomorph")("stat", "Print hypergraph stats")("path", "Compute the path")("source", po::value<int>(), "Source of the path")("destination", po::value<int>(), "Destination of the path");
+	desc.add_options()("version", "Print the version")("help", "Print help message")("inputfile", po::value<std::string>(), "Input file")("random", po::value<int>(), "Random n-vertex Hypergraph")("incidence", "Print incidence matrix of the hypergraph")("dual", "Produce the Dual of the hypergraph")("kuniform", po::value<int>(), "Decide whether the hypergraph is k-uniforme")("linear", "Decide whether the hypergraph is linear")("kregular", "Decide whether the hypergraph is k-regular")("simple", "Decide whether the hypergraph is simple")("helly", "Decide whether the hypergraph has the Helly property")("connected", "Decide whether the hypergraph is connected")("isomorph", po::value<std::string>(), "Decide whether the hypergraph is isomorph")("stat", "Print hypergraph stats")("path", "Compute the path")("source", po::value<int>(), "Source of the path")("destination", po::value<int>(), "Destination of the path");
 	po::variables_map vm;
 	try {
 		po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -96,11 +96,7 @@ int main(int argc, char* argv[]) {
 		          << std::endl
 		          << "Université de Caen Basse-Normandie, 2015 - Alexis LE GOADEC."
 		          << std::endl
-		          << "GCC version: " << __VERSION__ << std::endl
-#ifdef __x86_64
-		          << "x86_64: " << __x86_64 << std::endl
-#endif
-		          << "---" << std::endl;
+		          << "Compiled with GCC version: " << __VERSION__ << std::endl;
 		return 0;
 	}
 
@@ -181,8 +177,8 @@ int main(int argc, char* argv[]) {
 		ResultStructure r(dualAlgo->getResult());
 
 		WriterFile w(r.getHypergraphResult());
-		if (vm.count("adjacence")) {
-			w.writeAdjacentMatrix(std::cout);
+		if (vm.count("incidence")) {
+			w.writeIncidenceMatrix(std::cout);
 		} else {
 			w.writeHypergraph(std::cout);
 		}
@@ -248,9 +244,9 @@ int main(int argc, char* argv[]) {
 		return runBooleanAlgorithm<Connected>(ptrHpg,
 		                                      "The hypergraph is conected.", "The hypergraph is not connected.");
 
-	if (vm.count("adjacence")) {
+	if (vm.count("incidence")) {
 		WriterFile w(ptrHpg);
-		w.writeAdjacentMatrix(std::cout);
+		w.writeIncidenceMatrix(std::cout);
 	} else {
 		WriterFile w(ptrHpg);
 		w.writeHypergraph(std::cout);

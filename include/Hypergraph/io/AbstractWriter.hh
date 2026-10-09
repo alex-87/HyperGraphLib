@@ -32,7 +32,7 @@
 /**
  * @brief Interface for the instance writer module.
  *
- * A writer serialises a hypergraph, or its adjacency matrix, to an
+ * A writer serialises a hypergraph, or its incidence matrix, to an
  * output stream.
  */
 class AbstractWriter {
@@ -44,10 +44,10 @@ class AbstractWriter {
 	AbstractWriter(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * @brief Write the adjacency matrix to the given output stream.
+	 * @brief Write the incidence matrix to the given output stream.
 	 * @param output stream.
 	 */
-	virtual void writeAdjacentMatrix(std::ostream&) const = 0;
+	virtual void writeIncidenceMatrix(std::ostream&) const = 0;
 
 	/**
 	 * @brief Write the hypergraph to the output stream.

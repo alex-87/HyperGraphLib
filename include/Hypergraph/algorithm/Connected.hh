@@ -69,22 +69,22 @@ class Connected : public AbstractAlgorithm {
 	void run();
 
 	/**
-	 * @brief Explore vertically through the adjacency matrix.
-	 * @param adjacency matrix of the hypergraph.
+	 * @brief Explore vertically through the incidence matrix.
+	 * @param incidence matrix of the hypergraph.
 	 * @param visited hyper-edges, indexed by identifier.
 	 * @param stack of hyper-edges to visit.
 	 * @param row identifier.
 	 */
-	void exploreVertical(const AdjacentMatrix&, const std::vector<bool>&, std::stack<unsigned int>&, unsigned int) const;
+	void exploreVertical(const IncidenceMatrix&, const std::vector<bool>&, std::stack<unsigned int>&, unsigned int) const;
 
 	/**
-	 * @brief Explore horizontally through the adjacency matrix.
-	 * @param adjacency matrix of the hypergraph.
+	 * @brief Explore horizontally through the incidence matrix.
+	 * @param incidence matrix of the hypergraph.
 	 * @param visited hyper-vertices, indexed by identifier.
 	 * @param stack of hyper-vertices to visit.
 	 * @param column identifier.
 	 */
-	void exploreHorizontal(const AdjacentMatrix&, const std::vector<bool>&, std::stack<unsigned int>&, unsigned int) const;
+	void exploreHorizontal(const IncidenceMatrix&, const std::vector<bool>&, std::stack<unsigned int>&, unsigned int) const;
 
 
   protected:

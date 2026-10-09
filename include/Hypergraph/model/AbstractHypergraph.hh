@@ -26,7 +26,7 @@
 #ifndef ABSTRACT_HYPERGRAPH_HH_
 #define ABSTRACT_HYPERGRAPH_HH_
 
-#include "AdjacentMatrix.hh"
+#include "IncidenceMatrix.hh"
 
 /**
  * @brief Interface defining a hypergraph.
@@ -65,13 +65,13 @@ class AbstractHypergraph {
 	virtual void link(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperEdge>&) = 0;
 
 	/**
-	 * @brief Get the adjacency matrix of the hypergraph.
+	 * @brief Get the incidence matrix of the hypergraph.
 	 *
 	 * The matrix is rebuilt on demand when the hypergraph changed since the
 	 * previous call.
-	 * @return the adjacency matrix.
+	 * @return the incidence matrix.
 	 */
-	const AdjacentMatrix& getAdjacentMatrix() const;
+	const IncidenceMatrix& getIncidenceMatrix() const;
 
 	/**
 	 * @brief Get a hypervertex by its identifier.
@@ -127,14 +127,14 @@ class AbstractHypergraph {
 	LibType::ListHyperEdge _listHyperEdge;
 
 	/**
-	 * The adjacency matrix, a cache rebuilt from the hyperedges when outdated.
+	 * The incidence matrix, a cache rebuilt from the hyperedges when outdated.
 	 */
-	mutable AdjacentMatrix _adjacentMatrix;
+	mutable IncidenceMatrix _incidenceMatrix;
 
 	/**
-	 * Whether the hypergraph changed since the adjacency matrix was built.
+	 * Whether the hypergraph changed since the incidence matrix was built.
 	 */
-	mutable bool _isAdjacentMatrixOutdated;
+	mutable bool _isIncidenceMatrixOutdated;
 };
 
 #endif // ABSTRACT_HYPERGRAPH_HH_

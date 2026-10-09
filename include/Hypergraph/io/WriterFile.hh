@@ -45,10 +45,10 @@ class WriterFile : public AbstractWriter {
 	WriterFile(const std::shared_ptr<AbstractHypergraph>&);
 
 	/**
-	 * @brief Write the adjacency matrix to the output stream.
+	 * @brief Write the incidence matrix to the output stream.
 	 * @param output stream.
 	 */
-	void writeAdjacentMatrix(std::ostream&) const;
+	void writeIncidenceMatrix(std::ostream&) const;
 
 	/**
 	 * @brief Write the hypergraph instance to the output stream.

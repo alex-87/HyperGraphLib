@@ -38,7 +38,7 @@ kUniform::getResult() const {
 }
 
 void kUniform::run() {
-	const AdjacentMatrix& matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
+	const IncidenceMatrix& matrix(_ptrAbstractHypergraph->getIncidenceMatrix());
 	_result.setBooleanResult(true);
 
 	for (const auto& hyperEdge : _ptrAbstractHypergraph->getHyperEdgeList()) {

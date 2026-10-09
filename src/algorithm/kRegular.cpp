@@ -31,7 +31,7 @@ kRegular::kRegular(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergr
 
 void kRegular::run() {
 	_result.setBooleanResult(true);
-	const AdjacentMatrix& matrix(_ptrAbstractHypergraph->getAdjacentMatrix());
+	const IncidenceMatrix& matrix(_ptrAbstractHypergraph->getIncidenceMatrix());
 
 	int count = -1;
 	for (const auto& hyperVertex : _ptrAbstractHypergraph->getHyperVertexList()) {

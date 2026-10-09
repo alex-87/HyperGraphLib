@@ -25,7 +25,7 @@
 
 
 #include "Hypergraph/algorithm/HyperGraphStat.hh"
-#include "Hypergraph/model/AdjacentMatrix.hh"
+#include "Hypergraph/model/IncidenceMatrix.hh"
 
 HyperGraphStat::HyperGraphStat(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
@@ -65,7 +65,7 @@ void HyperGraphStat::run() {
 	_nhEdge = _ptrAbstractHypergraph->getHyperEdgeList().size();
 	_nhVertex = _ptrAbstractHypergraph->getHyperVertexList().size();
 
-	const AdjacentMatrix& m(_ptrAbstractHypergraph->getAdjacentMatrix());
+	const IncidenceMatrix& m(_ptrAbstractHypergraph->getIncidenceMatrix());
 
 	_rank = m.getRank();
 	_coRank = m.getCoRank();

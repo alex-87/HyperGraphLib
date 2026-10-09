@@ -65,16 +65,16 @@ TEST(test_model, hpg_mtx, setup, teardown) {
 	const std::shared_ptr<HyperEdge> e1 = ptrHpg->getHyperEdgeById(0);
 	const std::shared_ptr<HyperEdge> e2 = ptrHpg->getHyperEdgeById(1);
 
-	// Adjacent matrix
-	cr_expect(ptrHpg->getAdjacentMatrix().getEdgeSize(e1) == e1->getEffectif(), "adj. mtx1 issue");
-	cr_expect(ptrHpg->getAdjacentMatrix().getEdgeSize(e2) == e2->getEffectif(), "adj. mtx2 issue");
+	// Incidence matrix
+	cr_expect(ptrHpg->getIncidenceMatrix().getEdgeSize(e1) == e1->getEffectif(), "adj. mtx1 issue");
+	cr_expect(ptrHpg->getIncidenceMatrix().getEdgeSize(e2) == e2->getEffectif(), "adj. mtx2 issue");
 }
 
 TEST(test_model, hpg_rcr, setup, teardown) {
-	unsigned int rank(ptrHpg->getAdjacentMatrix().getRank());
-	unsigned int co_rank(ptrHpg->getAdjacentMatrix().getCoRank());
+	unsigned int rank(ptrHpg->getIncidenceMatrix().getRank());
+	unsigned int co_rank(ptrHpg->getIncidenceMatrix().getCoRank());
 
-	// Adjacent matrix
+	// Incidence matrix
 	cr_expect(rank == co_rank, "rank / co-rank issue");
 }
 
@@ -85,8 +85,8 @@ TEST(test_model, hpg_create_modify, setup, teardown) {
 	ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge1);
 	ptrHpg->link(ptrHpg->addHyperVertex(), ptrEdge2);
 
-	cr_expect(ptrHpg->getAdjacentMatrix().getVertexCount() == 102, "Adjacent matrix not updated");
-	cr_expect(ptrHpg->getAdjacentMatrix().getEdgeCount() == 4, "Adjacent matrix not updated");
+	cr_expect(ptrHpg->getIncidenceMatrix().getVertexCount() == 102, "Incidence matrix not updated");
+	cr_expect(ptrHpg->getIncidenceMatrix().getEdgeCount() == 4, "Incidence matrix not updated");
 
 	// Identifiers
 	for (unsigned int i = 0; i < ptrHpg->getHyperVertexList().size(); i++) {
@@ -143,8 +143,8 @@ TEST(test_model, hpg_release, setup, teardown) {
 TEST(test_model, hpg_empty, setup, teardown) {
 	Hypergraph emptyHpg;
 
-	cr_expect(emptyHpg.getAdjacentMatrix().getRank() == 0, "Rank of an empty hypergraph");
-	cr_expect(emptyHpg.getAdjacentMatrix().getCoRank() == 0, "Co-rank of an empty hypergraph");
+	cr_expect(emptyHpg.getIncidenceMatrix().getRank() == 0, "Rank of an empty hypergraph");
+	cr_expect(emptyHpg.getIncidenceMatrix().getCoRank() == 0, "Co-rank of an empty hypergraph");
 }
 
 MINITEST_MAIN

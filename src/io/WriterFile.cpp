@@ -37,12 +37,12 @@ WriterFile::WriterFile(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHyp
     : AbstractWriter(ptrAbstractHypergraph) {
 }
 
-void WriterFile::writeAdjacentMatrix(std::ostream& output) const {
-	const AdjacentMatrix& adjacentMatrix(_ptrAbstractHypergraph->getAdjacentMatrix());
+void WriterFile::writeIncidenceMatrix(std::ostream& output) const {
+	const IncidenceMatrix& incidenceMatrix(_ptrAbstractHypergraph->getIncidenceMatrix());
 
-	for (unsigned int i = 0; i < adjacentMatrix.getEdgeCount(); i++) {
-		for (unsigned int j = 0; j < adjacentMatrix.getVertexCount(); j++) {
-			output << adjacentMatrix.isVertexInEdge(j, i) << " ";
+	for (unsigned int i = 0; i < incidenceMatrix.getEdgeCount(); i++) {
+		for (unsigned int j = 0; j < incidenceMatrix.getVertexCount(); j++) {
+			output << incidenceMatrix.isVertexInEdge(j, i) << " ";
 		}
 		output << " " << "\n";
 	}

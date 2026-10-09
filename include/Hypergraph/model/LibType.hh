@@ -40,10 +40,10 @@ class HyperVertex;
 class LibType {
   public:
 	/**
-	 * Boolean adjacency matrix container.
+	 * Boolean incidence matrix container.
 	 */
 	typedef Matrix2D<bool>
-	    AdjacentMatrixContainerBool;
+	    IncidenceMatrixContainerBool;
 
 	/**
 	 * List of hypervertices.
