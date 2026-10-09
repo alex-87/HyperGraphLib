@@ -56,16 +56,14 @@ class kUniform : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
-	 * @brief Destructor.
-	 */
-	~kUniform() = default;
-
-
-  protected:
-	/**
 	 * @brief Run the algorithm.
 	 */
 	void run();
+
+	/**
+	 * @brief Destructor.
+	 */
+	~kUniform() = default;
 
 
   protected:

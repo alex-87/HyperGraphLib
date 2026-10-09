@@ -76,16 +76,17 @@ class Path : public AbstractAlgorithm {
 	unsigned int getLimit() const;
 
 	/**
+	 * @brief Run the algorithm.
+	 */
+	void run();
+
+	/**
 	 * @brief Destructor.
 	 */
 	~Path() = default;
 
 
   protected:
-	/**
-	 * @brief Run the algorithm.
-	 */
-	void run();
 
 	/**
 	 * @brief Check whether the hypervertex is contained in the list.

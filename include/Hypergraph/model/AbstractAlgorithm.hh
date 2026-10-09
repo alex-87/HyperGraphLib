@@ -28,16 +28,21 @@
 
 #include "ResultStructure.hh"
 
-class AlgorithmEngine;
-
 /**
  * @brief Interface defining the mandatory methods of an algorithm.
  *
  * Every algorithm of the library implements this interface so that it
- * can be configured and executed uniformly through the AlgorithmEngine.
+ * can be executed uniformly through run() and queried through getResult().
  */
 class AbstractAlgorithm {
   public:
+	/**
+	 * @brief Run the algorithm.
+	 *
+	 * The result is then available through getResult().
+	 */
+	virtual void run() = 0;
+
 	/**
 	 * @brief Get the result.
 	 * @return the result description structure.
@@ -48,15 +53,6 @@ class AbstractAlgorithm {
 	 * @brief Destructor.
 	 */
 	virtual ~AbstractAlgorithm() = default;
-
-
-  protected:
-	friend class AlgorithmEngine;
-
-	/**
-	 * @brief Run the algorithm.
-	 */
-	virtual void run() = 0;
 };
 
 

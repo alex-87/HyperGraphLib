@@ -55,15 +55,14 @@ class Isomorph : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
-	 * @brief Destructor.
-	 */
-	~Isomorph() = default;
-
-  protected:
-	/**
 	 * @brief Run the algorithm.
 	 */
 	void run();
+
+	/**
+	 * @brief Destructor.
+	 */
+	~Isomorph() = default;
 
   protected:
 	/**

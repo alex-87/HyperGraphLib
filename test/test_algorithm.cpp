@@ -25,7 +25,6 @@
 
 #include "../include/Hypergraph/model/AbstractHypergraph.hh"
 #include "../include/Hypergraph/model/Hypergraph.hh"
-#include "../include/Hypergraph/model/AlgorithmEngine.hh"
 #include "../include/Hypergraph/model/ResultStructure.hh"
 #include "../include/Hypergraph/model/AbstractAlgorithm.hh"
 
@@ -60,11 +59,7 @@ void teardownAlgorithm(void) {
 
 TEST(test_algorithm, hpg_connected, setupAlgorithm, teardownAlgorithm) {
 	std::shared_ptr<AbstractAlgorithm> cn(new Connected(ptrHpgAlgorithm));
-	AlgorithmEngine::set(cn);
-
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
-	AlgorithmEngine::run();
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	cn->run();
 
 	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == false, "Graphe is connexe");
@@ -72,11 +67,7 @@ TEST(test_algorithm, hpg_connected, setupAlgorithm, teardownAlgorithm) {
 
 TEST(test_algorithm, hpg_kregular, setupAlgorithm, teardownAlgorithm) {
 	std::shared_ptr<AbstractAlgorithm> cn(new kRegular(ptrHpgAlgorithm));
-	AlgorithmEngine::set(cn);
-
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
-	AlgorithmEngine::run();
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	cn->run();
 
 	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == true, "Graphe is not k-regular");
@@ -84,11 +75,7 @@ TEST(test_algorithm, hpg_kregular, setupAlgorithm, teardownAlgorithm) {
 
 TEST(test_algorithm, hpg_simple, setupAlgorithm, teardownAlgorithm) {
 	std::shared_ptr<AbstractAlgorithm> cn(new Simple(ptrHpgAlgorithm));
-	AlgorithmEngine::set(cn);
-
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
-	AlgorithmEngine::run();
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	cn->run();
 
 	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == true, "Graphe not simple");
@@ -96,11 +83,7 @@ TEST(test_algorithm, hpg_simple, setupAlgorithm, teardownAlgorithm) {
 
 TEST(test_algorithm, hpg_linear, setupAlgorithm, teardownAlgorithm) {
 	std::shared_ptr<AbstractAlgorithm> cn(new Linear(ptrHpgAlgorithm));
-	AlgorithmEngine::set(cn);
-
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
-	AlgorithmEngine::run();
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	cn->run();
 
 	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == true, "Graphe is not Linear");
@@ -108,11 +91,7 @@ TEST(test_algorithm, hpg_linear, setupAlgorithm, teardownAlgorithm) {
 
 TEST(test_algorithm, hpg_isomorph, setupAlgorithm, teardownAlgorithm) {
 	std::shared_ptr<AbstractAlgorithm> cn(new Isomorph(ptrHpgAlgorithm, ptrHpgAlgorithm2));
-	AlgorithmEngine::set(cn);
-
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
-	AlgorithmEngine::run();
-	cr_expect(AlgorithmEngine::isLock() == false, "Should be false");
+	cn->run();
 
 	ResultStructure r(cn->getResult());
 	cr_expect(r.getBooleanResult() == true, "Graphe is not isomorph");
@@ -125,10 +104,7 @@ TEST(test_algorithm, hpg_path, setupAlgorithm, teardownAlgorithm) {
 	    ptrHpgAlgorithm->getHyperVertexById(0),
 	    ptrHpgAlgorithm->getHyperVertexById(1));
 
-	std::shared_ptr<AbstractAlgorithm> algoPathAbstract(pathAlgo);
-
-	AlgorithmEngine::set(algoPathAbstract);
-	AlgorithmEngine::run();
+	pathAlgo->run();
 
 	ResultStructurePath r(pathAlgo->getPathResult());
 
@@ -149,9 +125,7 @@ static std::shared_ptr<AbstractHypergraph> buildHypergraph(unsigned int nbVertex
 
 static unsigned int runDiameter(const std::shared_ptr<AbstractHypergraph>& hpg, bool& finite) {
 	std::shared_ptr<Diameter> diameter(new Diameter(hpg));
-	std::shared_ptr<AbstractAlgorithm> algo(diameter);
-	AlgorithmEngine::set(algo);
-	AlgorithmEngine::run();
+	diameter->run();
 	finite = diameter->getResult().getBooleanResult();
 	return diameter->getDiameter();
 }

@@ -51,16 +51,17 @@ class Helly : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
+	 * @brief Run the algorithm.
+	 */
+	void run();
+
+	/**
 	 * @brief Destructor.
 	 */
 	~Helly() = default;
 
   protected:
-	/**
-	 * @brief Run the algorithm.
-	 */
-	void run();
-
+	
 	/**
 	 * @brief Build the list of hyperedges containing both hypervertices.
 	 * @param first hypervertex.

@@ -57,17 +57,17 @@ class Connected : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
+	 * @brief Run the algorithm.
+	 */
+	void run();
+
+	/**
 	 * @brief Destructor.
 	 */
 	~Connected() = default;
 
 
   protected:
-	/**
-	 * @brief Run the algorithm.
-	 */
-	void run();
-
 	/**
 	 * @brief Explore vertically through the incidence matrix.
 	 * @param incidence matrix of the hypergraph.

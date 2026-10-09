@@ -74,6 +74,11 @@ class Diameter : public AbstractAlgorithm {
 	unsigned int getDiameter() const;
 
 	/**
+	 * @brief Run the algorithm.
+	 */
+	void run();
+
+	/**
 	 * @brief Destructor.
 	 */
 	~Diameter() = default;
@@ -81,14 +86,9 @@ class Diameter : public AbstractAlgorithm {
 
   protected:
 	/**
-	 * @brief Run the algorithm.
-	 */
-	void run();
-
-	/**
-	 * @brief Compute the distances from a hypervertex to all the others.
-	 * @param identifier of the source hypervertex.
-	 * @param for each hypervertex, the identifiers of the hyperedges containing it.
+	 * @brief Compute the distances from a hyper-vertex to all the others.
+	 * @param identifier of the source hyper-vertex.
+	 * @param for each hyper-vertex, the identifiers of the hyper-edges containing it.
 	 * @return the greatest distance from the source, or INFINITE_DIAMETER if
 	 * a hypervertex cannot be reached.
 	 */

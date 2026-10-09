@@ -55,15 +55,14 @@ class kRegular : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
-	 * @brief Destructor.
-	 */
-	~kRegular() = default;
-
-  protected:
-	/**
 	 * @brief Run the algorithm.
 	 */
 	void run();
+
+	/**
+	 * @brief Destructor.
+	 */
+	~kRegular() = default;
 
   protected:
 	/**

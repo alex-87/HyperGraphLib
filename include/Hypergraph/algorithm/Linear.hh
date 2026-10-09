@@ -49,16 +49,14 @@ class Linear : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
-	 * @brief Destructor.
-	 */
-	~Linear() = default;
-
-
-  protected:
-	/**
 	 * @brief Run the algorithm.
 	 */
 	void run();
+
+	/**
+	 * @brief Destructor.
+	 */
+	~Linear() = default;
 
 
   protected:

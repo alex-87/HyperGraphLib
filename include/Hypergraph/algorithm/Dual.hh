@@ -52,15 +52,14 @@ class Dual : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
-	 * @brief Destructor.
-	 */
-	~Dual() = default;
-
-  protected:
-	/**
 	 * @brief Run the algorithm.
 	 */
 	void run();
+
+	/**
+	 * @brief Destructor.
+	 */
+	~Dual() = default;
 
   protected:
 	/**

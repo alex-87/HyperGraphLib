@@ -36,7 +36,6 @@
 #include "../include/Hypergraph/model/Hypergraph.hh"
 #include "../include/Hypergraph/model/HyperVertex.hh"
 #include "../include/Hypergraph/model/HyperEdge.hh"
-#include "../include/Hypergraph/model/AlgorithmEngine.hh"
 
 #include "../include/Hypergraph/algorithm/Dual.hh"
 #include "../include/Hypergraph/algorithm/Path.hh"
@@ -64,8 +63,7 @@ static int runBooleanAlgorithm(std::shared_ptr<AbstractHypergraph>& ptrHpg,
                                const std::string& whenTrue,
                                const std::string& whenFalse) {
 	auto algo = makeAlgorithm<Algorithm>(ptrHpg);
-	AlgorithmEngine::set(algo);
-	AlgorithmEngine::run();
+	algo->run();
 
 	ResultStructure r(algo->getResult());
 	std::cout << (r.getBooleanResult() ? whenTrue : whenFalse) << std::endl;
@@ -151,8 +149,7 @@ int main(int argc, char* argv[]) {
 
 		auto isomorphHpg = makeAlgorithm<Isomorph>(ptrHpg, ptrHpg2);
 
-		AlgorithmEngine::set(isomorphHpg);
-		AlgorithmEngine::run();
+		isomorphHpg->run();
 
 		ResultStructure r(isomorphHpg->getResult());
 
@@ -174,8 +171,7 @@ int main(int argc, char* argv[]) {
 	if (vm.count("stat")) {
 		auto statHpg = makeAlgorithm<HyperGraphStat>(ptrHpg);
 
-		AlgorithmEngine::set(statHpg);
-		AlgorithmEngine::run();
+		statHpg->run();
 
 		std::shared_ptr<HyperGraphStat> s = std::static_pointer_cast<HyperGraphStat>(statHpg);
 
@@ -191,8 +187,7 @@ int main(int argc, char* argv[]) {
 	if (vm.count("dual")) {
 		auto dualAlgo = makeAlgorithm<Dual>(ptrHpg);
 
-		AlgorithmEngine::set(dualAlgo);
-		AlgorithmEngine::run();
+		dualAlgo->run();
 
 		ResultStructure r(dualAlgo->getResult());
 
@@ -208,8 +203,7 @@ int main(int argc, char* argv[]) {
 
 	if (vm.count("kuniform")) {
 		std::shared_ptr<AbstractAlgorithm> kuniformAlgo(new kUniform(ptrHpg, vm["kuniform"].as<int>()));
-		AlgorithmEngine::set(kuniformAlgo);
-		AlgorithmEngine::run();
+		kuniformAlgo->run();
 
 		ResultStructure r(kuniformAlgo->getResult());
 		if (r.getBooleanResult()) {
@@ -244,10 +238,7 @@ int main(int argc, char* argv[]) {
 		    ptrHpg->getHyperVertexById(vm["source"].as<int>()),
 		    ptrHpg->getHyperVertexById(vm["destination"].as<int>()));
 
-		std::shared_ptr<AbstractAlgorithm> algoPathAbstract(pathAlgo);
-
-		AlgorithmEngine::set(algoPathAbstract);
-		AlgorithmEngine::run();
+		pathAlgo->run();
 
 		ResultStructurePath r(pathAlgo->getPathResult());
 
@@ -263,9 +254,7 @@ int main(int argc, char* argv[]) {
 	if (vm.count("diameter")) {
 		std::shared_ptr<Diameter> diameterAlgo(new Diameter(ptrHpg));
 
-		std::shared_ptr<AbstractAlgorithm> algoDiameterAbstract(diameterAlgo);
-		AlgorithmEngine::set(algoDiameterAbstract);
-		AlgorithmEngine::run();
+		diameterAlgo->run();
 
 		if (diameterAlgo->getResult().getBooleanResult()) {
 			std::cout << "The diameter of the hypergraph is " << diameterAlgo->getDiameter() << "." << std::endl;

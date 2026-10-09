@@ -56,6 +56,11 @@ class Simple : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
+	 * @brief Run the algorithm.
+	 */
+	void run();
+
+	/**
 	 * @brief Destructor.
 	 */
 	~Simple() = default;
@@ -64,11 +69,7 @@ class Simple : public AbstractAlgorithm {
   protected:
 	friend class Linear;
 
-	/**
-	 * @brief Run the algorithm.
-	 */
-	void run();
-
+	
 	/**
 	 * @brief Check inclusion between hyperedges through their vertices.
 	 * @param first list of hypervertices.

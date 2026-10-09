@@ -57,6 +57,11 @@ class HyperGraphStat : public AbstractAlgorithm {
 	ResultStructure getResult() const;
 
 	/**
+	 * @brief Run the algorithm.
+	 */
+	void run();
+
+	/**
 	 * @brief Destructor.
 	 */
 	~HyperGraphStat() = default;
@@ -92,12 +97,6 @@ class HyperGraphStat : public AbstractAlgorithm {
 	 * @return the co-rank of the hypergraph.
 	 */
 	unsigned int getCoRang() const;
-
-  protected:
-	/**
-	 * @brief Run the algorithm.
-	 */
-	void run();
 
   protected:
 	/**

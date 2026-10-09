@@ -46,7 +46,6 @@ Reference documentation, generated using [Doxygen](http://www.doxygen.org) is av
 #include <iostream>
 #include <memory>
 #include <Hypergraph/model/Hypergraph.hh>
-#include <Hypergraph/model/AlgorithmEngine.hh>
 #include <Hypergraph/algorithm/Isomorph.hh>
 #include <Hypergraph/algorithm/Simple.hh>
 
@@ -73,11 +72,8 @@ int main(int argc, char * argv[]) {
     // Initializing the Isomorphism algorithm with ptrHpg (twice, just for the example)
     std::shared_ptr<AbstractAlgorithm> isomorphPtr( new Isomorph(ptrHpg, ptrHpg) );
 
-    // Setting the engine's algorithm
-    AlgorithmEngine::setAlgorithme(isomorphPtr);
-
-    // Running the engine
-    AlgorithmEngine::runAlgorithme();
+    // Running the algorithm
+    isomorphPtr->run();
 
     // Getting the result
     ResultStructure r1( isomorphPtr->getResult() );
@@ -91,11 +87,8 @@ int main(int argc, char * argv[]) {
     // Initializing the Simple algorithm with ptrHpg (twice, just for the example)
     std::shared_ptr<AbstractAlgorithm> simplephPtr( new Simple( ptrHpg ) );
 
-    // Setting the engine's algorithm
-    AlgorithmEngine::set(simplephPtr);
-
-    // Running the engine
-    AlgorithmEngine::run();
+    // Running the algorithm
+    simplephPtr->run();
 
     // Getting the result
     ResultStructure r2( simplephPtr->getResult() );
