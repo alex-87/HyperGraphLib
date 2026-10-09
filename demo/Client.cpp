@@ -46,6 +46,7 @@
 #include "../include/Hypergraph/algorithm/Simple.hh"
 #include "../include/Hypergraph/algorithm/Linear.hh"
 #include "../include/Hypergraph/algorithm/Connected.hh"
+#include "../include/Hypergraph/algorithm/Diameter.hh"
 #include "../include/Hypergraph/algorithm/HyperGraphStat.hh"
 #include "../include/Hypergraph/algorithm/Isomorph.hh"
 
@@ -73,7 +74,26 @@ static int runBooleanAlgorithm(std::shared_ptr<AbstractHypergraph>& ptrHpg,
 
 int main(int argc, char* argv[]) {
 	po::options_description desc("Parameters");
-	desc.add_options()("version", "Print the version")("help", "Print help message")("inputfile", po::value<std::string>(), "Input file")("random", po::value<int>(), "Random n-vertex Hypergraph")("incidence", "Print incidence matrix of the hypergraph")("dual", "Produce the Dual of the hypergraph")("kuniform", po::value<int>(), "Decide whether the hypergraph is k-uniforme")("linear", "Decide whether the hypergraph is linear")("kregular", "Decide whether the hypergraph is k-regular")("simple", "Decide whether the hypergraph is simple")("helly", "Decide whether the hypergraph has the Helly property")("connected", "Decide whether the hypergraph is connected")("isomorph", po::value<std::string>(), "Decide whether the hypergraph is isomorph")("stat", "Print hypergraph stats")("path", "Compute the path")("source", po::value<int>(), "Source of the path")("destination", po::value<int>(), "Destination of the path");
+	desc.add_options()
+		("version", "Print the version")
+		("help", "Print help message")
+		("inputfile", po::value<std::string>(), "Input file")
+		("random", po::value<int>(), "Random n-vertex Hypergraph")
+		("incidence", "Print incidence matrix of the hypergraph")
+		("dual", "Produce the Dual of the hypergraph")
+		("kuniform", po::value<int>(), "Decide whether the hypergraph is k-uniforme")
+		("linear", "Decide whether the hypergraph is linear")
+		("kregular", "Decide whether the hypergraph is k-regular")
+		("simple", "Decide whether the hypergraph is simple")
+		("helly", "Decide whether the hypergraph has the Helly property")
+		("connected", "Decide whether the hypergraph is connected")
+		("diameter", "Compute the diameter of the hypergraph")
+		("isomorph", po::value<std::string>(), "Decide whether the hypergraph is isomorph")
+		("stat", "Print hypergraph stats")
+		("path", "Compute the path")
+		("source", po::value<int>(), "Source of the path")
+		("destination", po::value<int>(), "Destination of the path");
+
 	po::variables_map vm;
 	try {
 		po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -238,6 +258,22 @@ int main(int argc, char* argv[]) {
 			}
 			std::cout << std::endl;
 		}
+	}
+
+	if (vm.count("diameter")) {
+		std::shared_ptr<Diameter> diameterAlgo(new Diameter(ptrHpg));
+
+		std::shared_ptr<AbstractAlgorithm> algoDiameterAbstract(diameterAlgo);
+		AlgorithmEngine::set(algoDiameterAbstract);
+		AlgorithmEngine::run();
+
+		if (diameterAlgo->getResult().getBooleanResult()) {
+			std::cout << "The diameter of the hypergraph is " << diameterAlgo->getDiameter() << "." << std::endl;
+		} else {
+			std::cout << "The hypergraph is not connected: its diameter is infinite." << std::endl;
+		}
+
+		return 0;
 	}
 
 	if (vm.count("connected"))

@@ -25,13 +25,86 @@
 
 
 #include "Hypergraph/algorithm/Diameter.hh"
+#include "Hypergraph/model/HyperVertex.hh"
+#include "Hypergraph/model/HyperEdge.hh"
+
+#include <algorithm>
+#include <queue>
+#include <vector>
 
 
-Diameter::Diameter(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
-    : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
+Diameter::Diameter(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
+    : _ptrAbstractHypergraph(ptrAbstractHypergraph),
+      _diameter(0) {
+}
+
+unsigned int
+Diameter::getDiameter() const {
+	return _diameter;
 }
 
 void Diameter::run() {
+	const LibType::ListHyperVertex& listVertex(_ptrAbstractHypergraph->getHyperVertexList());
+	const LibType::ListHyperEdge& listEdge(_ptrAbstractHypergraph->getHyperEdgeList());
+
+	// Edges of each vertex, built once from the hyperedges.
+	std::vector<std::vector<unsigned int>> edgesOfVertex(listVertex.size());
+	for (const auto& hyperEdge : listEdge) {
+		for (const auto& hyperVertex : hyperEdge->getHyperVertexList()) {
+			edgesOfVertex[hyperVertex->getIdentifier()].push_back(hyperEdge->getIdentifier());
+		}
+	}
+
+	_diameter = 0;
+	for (unsigned int source = 0; source < listVertex.size(); source++) {
+		const unsigned int distance(eccentricity(source, edgesOfVertex));
+		if (distance == INFINITE_DIAMETER) {
+			// One vertex cannot reach another: the hypergraph is not connected.
+			_diameter = INFINITE_DIAMETER;
+			break;
+		}
+		_diameter = std::max(_diameter, distance);
+	}
+
+	_result.setBooleanResult(_diameter != INFINITE_DIAMETER);
+}
+
+unsigned int
+Diameter::eccentricity(unsigned int source, const std::vector<std::vector<unsigned int>>& edgesOfVertex) const {
+	const LibType::ListHyperEdge& listEdge(_ptrAbstractHypergraph->getHyperEdgeList());
+
+	std::vector<unsigned int> distance(edgesOfVertex.size(), INFINITE_DIAMETER);
+	std::vector<bool> edgeVisited(listEdge.size(), false);
+	std::queue<unsigned int> toVisit;
+
+	distance[source] = 0;
+	toVisit.push(source);
+
+	unsigned int nbReached(1);
+	unsigned int farthest(0);
+
+	while (!toVisit.empty()) {
+		const unsigned int current(toVisit.front());
+		toVisit.pop();
+
+		for (const unsigned int edgeId : edgesOfVertex[current]) {
+			if (edgeVisited[edgeId])
+				continue;
+			edgeVisited[edgeId] = true;
+
+			for (const auto& hyperVertex : listEdge[edgeId]->getHyperVertexList()) {
+				const unsigned int next(hyperVertex->getIdentifier());
+				if (distance[next] == INFINITE_DIAMETER) {
+					distance[next] = distance[current] + 1;
+					farthest = std::max(farthest, distance[next]);
+					nbReached++;
+					toVisit.push(next);
+				}
+			}
+		}
+	}
+
+	return nbReached == edgesOfVertex.size() ? farthest : INFINITE_DIAMETER;
 }
 
 ResultStructure

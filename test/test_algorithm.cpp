@@ -35,6 +35,7 @@
 #include "../include/Hypergraph/algorithm/Simple.hh"
 #include "../include/Hypergraph/algorithm/Linear.hh"
 #include "../include/Hypergraph/algorithm/Path.hh"
+#include "../include/Hypergraph/algorithm/Diameter.hh"
 
 #include "include/MiniTest.hh"
 
@@ -132,6 +133,81 @@ TEST(test_algorithm, hpg_path, setupAlgorithm, teardownAlgorithm) {
 	ResultStructurePath r(pathAlgo->getPathResult());
 
 	cr_expect(r.getPathResult()->size() == 0, "Path issue");
+}
+
+static std::shared_ptr<AbstractHypergraph> buildHypergraph(unsigned int nbVertex, const std::vector<std::vector<unsigned int>>& edges) {
+	std::shared_ptr<AbstractHypergraph> hpg(new Hypergraph);
+	for (unsigned int i = 0; i < nbVertex; i++)
+		hpg->addHyperVertex();
+	for (const auto& edge : edges) {
+		std::shared_ptr<HyperEdge> hyperEdge(hpg->addHyperEdge());
+		for (unsigned int id : edge)
+			hpg->link(hpg->getHyperVertexById(id), hyperEdge);
+	}
+	return hpg;
+}
+
+static unsigned int runDiameter(const std::shared_ptr<AbstractHypergraph>& hpg, bool& finite) {
+	std::shared_ptr<Diameter> diameter(new Diameter(hpg));
+	std::shared_ptr<AbstractAlgorithm> algo(diameter);
+	AlgorithmEngine::set(algo);
+	AlgorithmEngine::run();
+	finite = diameter->getResult().getBooleanResult();
+	return diameter->getDiameter();
+}
+
+TEST(test_algorithm, hpg_diameter_chain, setupAlgorithm, teardownAlgorithm) {
+	// 0 -e0- 1 -e1- 2 -e2- 3 : the diameter is 3
+	bool finite(false);
+	unsigned int d(runDiameter(buildHypergraph(4, {{0, 1}, {1, 2}, {2, 3}}), finite));
+	cr_expect(finite, "A chain is connected");
+	cr_expect(d == 3, "Diameter of a chain of 3 edges should be 3");
+}
+
+TEST(test_algorithm, hpg_diameter_hyperedges, setupAlgorithm, teardownAlgorithm) {
+	// 0 and 3 are only linked through e0 then e1: the diameter is 2, not 3
+	bool finite(false);
+	unsigned int d(runDiameter(buildHypergraph(4, {{0, 1, 2}, {2, 3}}), finite));
+	cr_expect(finite, "Should be connected");
+	cr_expect(d == 2, "Diameter should count hyperedges, not vertices");
+}
+
+TEST(test_algorithm, hpg_diameter_single_edge, setupAlgorithm, teardownAlgorithm) {
+	bool finite(false);
+	unsigned int d(runDiameter(buildHypergraph(5, {{0, 1, 2, 3, 4}}), finite));
+	cr_expect(finite, "Should be connected");
+	cr_expect(d == 1, "Diameter with a single hyperedge should be 1");
+}
+
+TEST(test_algorithm, hpg_diameter_cycle, setupAlgorithm, teardownAlgorithm) {
+	// 6-cycle: the farthest vertices are 3 edges apart
+	bool finite(false);
+	unsigned int d(runDiameter(buildHypergraph(6, {{0, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 0}}), finite));
+	cr_expect(finite, "Should be connected");
+	cr_expect(d == 3, "Diameter of a 6-cycle should be 3");
+}
+
+TEST(test_algorithm, hpg_diameter_disconnected, setupAlgorithm, teardownAlgorithm) {
+	bool finite(true);
+	unsigned int d(runDiameter(ptrHpgAlgorithm, finite));
+	cr_expect(!finite, "Two disjoint hyperedges are not connected");
+	cr_expect(d == Diameter::INFINITE_DIAMETER, "Diameter of a disconnected hypergraph is infinite");
+
+	// A vertex belonging to no hyperedge cannot be reached
+	finite = true;
+	d = runDiameter(buildHypergraph(3, {{0, 1}}), finite);
+	cr_expect(!finite, "An isolated vertex disconnects the hypergraph");
+	cr_expect(d == Diameter::INFINITE_DIAMETER, "Diameter should be infinite");
+}
+
+TEST(test_algorithm, hpg_diameter_trivial, setupAlgorithm, teardownAlgorithm) {
+	bool finite(false);
+	unsigned int d(runDiameter(buildHypergraph(0, {}), finite));
+	cr_expect(finite && d == 0, "Empty hypergraph has diameter 0");
+
+	finite = false;
+	d = runDiameter(buildHypergraph(1, {}), finite);
+	cr_expect(finite && d == 0, "A single vertex has diameter 0");
 }
 
 MINITEST_MAIN
