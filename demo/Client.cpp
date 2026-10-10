@@ -72,6 +72,7 @@ static int runBooleanAlgorithm(std::shared_ptr<AbstractHypergraph>& ptrHpg,
 
 int main(int argc, char* argv[]) {
 	po::options_description desc("Parameters");
+	// clang-format off
 	desc.add_options()
 		("version", "Print the version")
 		("help", "Print help message")
@@ -91,6 +92,7 @@ int main(int argc, char* argv[]) {
 		("path", "Compute the path")
 		("source", po::value<int>(), "Source of the path")
 		("destination", po::value<int>(), "Destination of the path");
+	// clang-format on
 
 	po::variables_map vm;
 	try {

@@ -23,15 +23,16 @@ Hypergraphs modelling library with algorithms, [the official page](https://alex-
 
   - [cmake](https://github.com/Kitware/CMake) (>= 3.28)
   - [g++](https://gcc.gnu.org) (>= 9.0)
-  - [Gecode](http://www.gecode.dev) (>= 6.2.0)
+  - [Gecode](http://www.gecode.dev) (>= 6.5.0,<7.0.0)
 
 ### Installation Steps
 
 ```shell
 git clone https://github.com/alex-87/HyperGraphLib.git && cd HyperGraphLib
-cmake -B build && cmake --build build -j   # Build
-ctest --test-dir build                     # Test
-sudo cmake --install build                 # Install
+cmake -B build -DHYPERGRAPH_FETCH_GECODE=ON # Prepare the build
+cmake --build build -j                      # Build
+ctest --test-dir build                      # Test
+sudo cmake --install build                  # Install
 ```
 
 ## Documentation

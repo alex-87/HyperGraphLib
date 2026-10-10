@@ -9,6 +9,8 @@ cmake-build-*/
 # CMake
 CMakeCache.txt
 CMakeFiles/
+_deps/
+doc/
 cmake_install.cmake
 CTestTestfile.cmake
 CPackConfig.cmake
