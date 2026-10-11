@@ -29,10 +29,10 @@ Hypergraphs modelling library with algorithms, [the official page](https://alex-
 
 ```shell
 git clone https://github.com/alex-87/HyperGraphLib.git && cd HyperGraphLib
-cmake -B build -DHYPERGRAPH_FETCH_GECODE=ON # Prepare the build
-cmake --build build -j                      # Build
-ctest --test-dir build                      # Test
-sudo cmake --install build                  # Install
+cmake -B build -DHYPERGRAPH_FETCH_GECODE=ON  # Prepare the build
+cmake --build build -j                       # Build
+ctest --test-dir build                       # Test
+sudo cmake --install build                   # Install
 ```
 
 ## Documentation
@@ -50,18 +50,21 @@ Reference documentation, generated using [Doxygen](http://www.doxygen.org) is av
 #include <Hypergraph/algorithm/Isomorph.hh>
 #include <Hypergraph/algorithm/Simple.hh>
 
+
 int main(int argc, char * argv[]) {
 
     // Creating the hypergraph inside smart pointer
-    std::shared_ptr<AbstractHypergraph> ptrHpg( new Hypergraph() );
+    std::shared_ptr<hypergraphlib::AbstractHypergraph> ptrHpg(
+        new hypergraphlib::Hypergraph()
+    );
 
     // Creating the hyperedges
-    std::shared_ptr<HyperEdge> ptrEdge1( ptrHpg->addHyperEdge() );
-    std::shared_ptr<HyperEdge> ptrEdge2( ptrHpg->addHyperEdge() );
+    std::shared_ptr<hypergraphlib::HyperEdge> ptrEdge1( ptrHpg->addHyperEdge() );
+    std::shared_ptr<hypergraphlib::HyperEdge> ptrEdge2( ptrHpg->addHyperEdge() );
 
     // Creating the hypervertexes
-    std::shared_ptr<HyperVertex> ptrVertexA( ptrHpg->addHyperVertex() );
-    std::shared_ptr<HyperVertex> ptrVertexB( ptrHpg->addHyperVertex() );
+    std::shared_ptr<hypergraphlib::HyperVertex> ptrVertexA( ptrHpg->addHyperVertex() );
+    std::shared_ptr<hypergraphlib::HyperVertex> ptrVertexB( ptrHpg->addHyperVertex() );
 
     // The hypervertex A is contained inside the hyperedge 1
     ptrHpg->link(ptrVertexA, ptrEdge1);
@@ -71,13 +74,15 @@ int main(int argc, char * argv[]) {
     // -- -- --
 
     // Initializing the Isomorphism algorithm with ptrHpg (twice, just for the example)
-    std::shared_ptr<AbstractAlgorithm> isomorphPtr( new Isomorph(ptrHpg, ptrHpg) );
+    std::shared_ptr<hypergraphlib::AbstractAlgorithm> isomorphPtr(
+        new hypergraphlib::algorithm::Isomorph(ptrHpg, ptrHpg)
+    );
 
     // Running the algorithm
     isomorphPtr->run();
 
     // Getting the result
-    ResultStructure r1( isomorphPtr->getResult() );
+    hypergraphlib::ResultStructure r1( isomorphPtr->getResult() );
 
     if( r1.getBooleanResult() ) {
     	std::cout << "The hypergraph is isomorph with itself" << std::endl;
@@ -86,13 +91,15 @@ int main(int argc, char * argv[]) {
     // -- -- --
 
     // Initializing the Simple algorithm with ptrHpg (twice, just for the example)
-    std::shared_ptr<AbstractAlgorithm> simplephPtr( new Simple( ptrHpg ) );
+    std::shared_ptr<hypergraphlib::AbstractAlgorithm> simplephPtr(
+        new hypergraphlib::algorithm::Simple( ptrHpg )
+    );
 
     // Running the algorithm
     simplephPtr->run();
 
     // Getting the result
-    ResultStructure r2( simplephPtr->getResult() );
+    hypergraphlib::ResultStructure r2( simplephPtr->getResult() );
 
     if( r2.getBooleanResult() ) {
         std::cout << "The hypergraph is simple." << std::endl;

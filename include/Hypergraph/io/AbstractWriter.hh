@@ -29,6 +29,8 @@
 #include "../model/AbstractHypergraph.hh"
 #include <memory>
 
+namespace hypergraphlib::io {
+
 /**
  * @brief Interface for the instance writer module.
  *
@@ -83,5 +85,7 @@ class AbstractWriter {
 	    _ptrAbstractHypergraph;
 };
 
+
+} // namespace hypergraphlib::io
 
 #endif /* IO_INCLUDE_ABSTRACT_WRITER_HH_ */

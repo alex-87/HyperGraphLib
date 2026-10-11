@@ -27,6 +27,8 @@
 #include "Hypergraph/algorithm/Linear.hh"
 #include "Hypergraph/algorithm/Simple.hh"
 
+namespace hypergraphlib::algorithm {
+
 Linear::Linear(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
@@ -65,3 +67,5 @@ ResultStructure
 Linear::getResult() const {
 	return _result;
 }
+
+} // namespace hypergraphlib::algorithm

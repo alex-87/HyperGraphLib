@@ -25,6 +25,8 @@
 
 #include "Hypergraph/algorithm/kRegular.hh"
 
+namespace hypergraphlib::algorithm {
+
 kRegular::kRegular(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 }
@@ -52,3 +54,5 @@ ResultStructure
 kRegular::getResult() const {
 	return _result;
 }
+
+} // namespace hypergraphlib::algorithm

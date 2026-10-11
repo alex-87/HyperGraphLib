@@ -35,6 +35,8 @@
 #include "../model/ResultStructure.hh"
 #include "Linear.hh"
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `SIMPLE` algorithm.
  *
@@ -100,5 +102,7 @@ class Simple : public AbstractAlgorithm {
 	ResultStructure _result;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif /* ALGORITHM_INCLUDE_SIMPLE_HH_ */

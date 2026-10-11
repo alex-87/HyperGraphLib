@@ -31,6 +31,8 @@
 #include <memory>
 #include "../container/matrix2D.hpp"
 
+namespace hypergraphlib {
+
 class HyperEdge;
 class HyperVertex;
 
@@ -72,5 +74,7 @@ class LibType {
 	LibType& operator=(const LibType&) = delete;
 };
 
+
+} // namespace hypergraphlib
 
 #endif /* MODEL_INCLUDE_LIBTYPE_HH_ */

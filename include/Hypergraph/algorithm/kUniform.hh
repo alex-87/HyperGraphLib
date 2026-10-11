@@ -34,6 +34,8 @@
 #include "../model/AbstractAlgorithm.hh"
 #include "../model/ResultStructure.hh"
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `KUNIFORM` algorithm.
  *
@@ -84,5 +86,7 @@ class kUniform : public AbstractAlgorithm {
 	ResultStructure _result;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif /* ALGORITHM_INCLUDE_KUNIFORM_HH_ */

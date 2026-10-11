@@ -28,6 +28,8 @@
 
 #include "ResultStructure.hh"
 
+namespace hypergraphlib {
+
 /**
  * @brief Interface defining the mandatory methods of an algorithm.
  *
@@ -55,5 +57,7 @@ class AbstractAlgorithm {
 	virtual ~AbstractAlgorithm() = default;
 };
 
+
+} // namespace hypergraphlib
 
 #endif /* MODEL_INCLUDE_ABSTRACT_ALGORITHM_HH_ */

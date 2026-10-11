@@ -26,6 +26,10 @@
 
 #include "Hypergraph/io/AbstractWriter.hh"
 
+namespace hypergraphlib::io {
+
 AbstractWriter::AbstractWriter(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
+
+} // namespace hypergraphlib::io

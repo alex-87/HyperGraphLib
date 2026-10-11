@@ -30,6 +30,8 @@
 
 #include "LibType.hh"
 
+namespace hypergraphlib {
+
 /**
  * @brief Implementation of a hyperedge.
  *
@@ -105,5 +107,7 @@ class HyperEdge {
 	LibType::ListHyperVertex
 	    _listHyperVertex;
 };
+
+} // namespace hypergraphlib
 
 #endif

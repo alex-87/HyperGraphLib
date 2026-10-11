@@ -28,6 +28,8 @@
 
 #include "LibType.hh"
 
+namespace hypergraphlib {
+
 class HyperEdge;
 
 class HyperVertex;
@@ -136,5 +138,7 @@ class IncidenceMatrix {
 	std::vector<unsigned int> _edgeSize;
 };
 
+
+} // namespace hypergraphlib
 
 #endif // MODEL_INCLUDE_INCIDENCEMATRIX_HH_

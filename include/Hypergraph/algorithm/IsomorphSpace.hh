@@ -36,7 +36,7 @@
 #include "../model/HyperVertex.hh"
 #include "../model/HyperEdge.hh"
 
-class AbstractHypergraph;
+namespace hypergraphlib::algorithm {
 
 /**
  * @brief Gecode constraint-programming space used to search for an
@@ -95,5 +95,7 @@ class IsomorphSpace : public Gecode::Space {
 	 */
 	std::shared_ptr<AbstractHypergraph> _ptrH2;
 };
+
+} // namespace hypergraphlib::algorithm
 
 #endif

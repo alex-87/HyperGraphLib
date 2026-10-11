@@ -29,6 +29,7 @@
 
 #include <algorithm>
 
+namespace hypergraphlib {
 
 HyperEdge::HyperEdge(unsigned int identifier)
     : _identifier(identifier) {
@@ -70,3 +71,5 @@ const LibType::ListHyperVertex&
 HyperEdge::getHyperVertexList() const {
 	return _listHyperVertex;
 }
+
+} // namespace hypergraphlib

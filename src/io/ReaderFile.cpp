@@ -31,6 +31,8 @@
 #include <sstream>
 #include <stdexcept>
 
+namespace hypergraphlib::io {
+
 ReaderFile::ReaderFile()
     : AbstractReader(std::shared_ptr<AbstractHypergraph>(new Hypergraph())) {
 }
@@ -92,3 +94,5 @@ ReaderFile::hyperEdgeById(unsigned int id) const {
 		throw std::invalid_argument("ReaderFile: unknown hyperedge identifier " + std::to_string(id));
 	return it->second;
 }
+
+} // namespace hypergraphlib::io

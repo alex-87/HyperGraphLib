@@ -30,6 +30,8 @@
 #include "HyperVertex.hh"
 #include "HyperEdge.hh"
 
+namespace hypergraphlib {
+
 /**
  * @brief Concrete implementation of a hypergraph.
  */
@@ -68,5 +70,7 @@ class Hypergraph : public AbstractHypergraph {
   protected:
 };
 
+
+} // namespace hypergraphlib
 
 #endif /* MODEL_INCLUDE_HYPERGRAPH_HH_ */

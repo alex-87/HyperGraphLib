@@ -30,6 +30,7 @@
 #include "Hypergraph/model/HyperEdge.hh"
 #include <stack>
 
+namespace hypergraphlib::algorithm {
 
 Connected::Connected(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
@@ -97,3 +98,5 @@ ResultStructure
 Connected::getResult() const {
 	return _result;
 }
+
+} // namespace hypergraphlib::algorithm

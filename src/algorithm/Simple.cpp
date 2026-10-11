@@ -25,6 +25,8 @@
 
 #include "Hypergraph/algorithm/Simple.hh"
 
+namespace hypergraphlib::algorithm {
+
 Simple::Simple(std::shared_ptr<AbstractHypergraph>& ptrHypergraph)
     : _ptrAbstractHypergraph(ptrHypergraph) {
 }
@@ -69,3 +71,5 @@ ResultStructure
 Simple::getResult() const {
 	return _result;
 }
+
+} // namespace hypergraphlib::algorithm

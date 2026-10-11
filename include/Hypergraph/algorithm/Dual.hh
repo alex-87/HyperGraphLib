@@ -30,6 +30,8 @@
 #include "../model/AbstractHypergraph.hh"
 #include "../model/AbstractAlgorithm.hh"
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `DUAL` algorithm.
  *
@@ -80,5 +82,7 @@ class Dual : public AbstractAlgorithm {
 	ResultStructure _result;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif

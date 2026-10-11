@@ -28,6 +28,8 @@
 
 #include "IncidenceMatrix.hh"
 
+namespace hypergraphlib {
+
 /**
  * @brief Interface defining a hypergraph.
  *
@@ -136,5 +138,7 @@ class AbstractHypergraph {
 	 */
 	mutable bool _isIncidenceMatrixOutdated;
 };
+
+} // namespace hypergraphlib
 
 #endif // ABSTRACT_HYPERGRAPH_HH_

@@ -29,6 +29,7 @@
 #include "Hypergraph/model/HyperEdge.hh"
 #include "Hypergraph/model/HyperVertex.hh"
 
+namespace hypergraphlib::algorithm {
 
 Dual::Dual(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrDualHypergraph(new Hypergraph()) {
@@ -65,3 +66,5 @@ void Dual::run() {
 
 	_result.setHypergraphResult(_ptrDualHypergraph);
 }
+
+} // namespace hypergraphlib::algorithm

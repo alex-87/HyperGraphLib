@@ -26,6 +26,8 @@
 
 #include "Hypergraph/io/AbstractReader.hh"
 
+namespace hypergraphlib::io {
+
 AbstractReader::AbstractReader(const std::shared_ptr<AbstractHypergraph>& p) {
 	_ptrAbstractHypergraph = p;
 }
@@ -34,3 +36,5 @@ std::shared_ptr<AbstractHypergraph>&
 AbstractReader::getHypergraph() {
 	return _ptrAbstractHypergraph;
 }
+
+} // namespace hypergraphlib::io

@@ -30,6 +30,8 @@
 
 #include "LibType.hh"
 
+namespace hypergraphlib {
+
 /**
  * @brief Implementation of a hypervertex.
  *
@@ -110,5 +112,7 @@ class HyperVertex {
 	std::vector<std::weak_ptr<HyperEdge>>
 	    _listHyperEdge;
 };
+
+} // namespace hypergraphlib
 
 #endif

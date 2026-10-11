@@ -38,6 +38,9 @@
 
 #include "include/MiniTest.hh"
 
+using namespace hypergraphlib;
+using namespace hypergraphlib::algorithm;
+
 
 std::shared_ptr<AbstractHypergraph> ptrHpgAlgorithm(new Hypergraph);
 std::shared_ptr<AbstractHypergraph> ptrHpgAlgorithm2(new Hypergraph);

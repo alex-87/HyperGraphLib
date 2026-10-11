@@ -29,6 +29,8 @@
 #include "../model/AbstractHypergraph.hh"
 #include <memory>
 
+namespace hypergraphlib::io {
+
 /**
  * @brief Interface for the instance reader module.
  *
@@ -84,5 +86,7 @@ class AbstractReader {
 	    _ptrAbstractHypergraph;
 };
 
+
+} // namespace hypergraphlib::io
 
 #endif /* IO_INCLUDE_ABSTRACT_READER_HH_ */

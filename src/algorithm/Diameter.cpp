@@ -32,6 +32,7 @@
 #include <queue>
 #include <vector>
 
+namespace hypergraphlib::algorithm {
 
 Diameter::Diameter(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph),
@@ -111,3 +112,5 @@ ResultStructure
 Diameter::getResult() const {
 	return _result;
 }
+
+} // namespace hypergraphlib::algorithm

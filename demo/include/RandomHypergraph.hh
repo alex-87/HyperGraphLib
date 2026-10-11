@@ -36,11 +36,11 @@ class RandomHypergraph {
 
 	void generateHypergraph(unsigned int, unsigned int);
 
-	std::shared_ptr<AbstractHypergraph>&
+	std::shared_ptr<hypergraphlib::AbstractHypergraph>&
 	getHypergraph();
 
   protected:
-	std::shared_ptr<AbstractHypergraph>
+	std::shared_ptr<hypergraphlib::AbstractHypergraph>
 	    _ptrAbstractHypergraph;
 };
 

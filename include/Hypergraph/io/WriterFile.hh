@@ -28,6 +28,8 @@
 
 #include "AbstractWriter.hh"
 
+namespace hypergraphlib::io {
+
 /**
  * @brief Implementation of the plain-text hypergraph instance writer.
  *
@@ -74,5 +76,7 @@ class WriterFile : public AbstractWriter {
   protected:
 };
 
+
+} // namespace hypergraphlib::io
 
 #endif /* IO_INCLUDE_WRITERFILE_HH_ */

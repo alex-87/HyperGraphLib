@@ -27,6 +27,7 @@
 #include <iostream>
 #include <gecode/minimodel.hh>
 
+namespace hypergraphlib::algorithm {
 
 IsomorphSpace::IsomorphSpace(
     const std::shared_ptr<AbstractHypergraph>& h1,
@@ -233,3 +234,5 @@ Gecode::Space*
 IsomorphSpace::copy() {
 	return new IsomorphSpace(*this);
 }
+
+} // namespace hypergraphlib::algorithm

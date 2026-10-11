@@ -30,6 +30,8 @@
 
 #include <algorithm>
 
+namespace hypergraphlib {
+
 IncidenceMatrix::IncidenceMatrix() {
 }
 
@@ -95,3 +97,5 @@ const LibType::IncidenceMatrixContainerBool&
 IncidenceMatrix::getBoolIncidenceMatrix() const {
 	return _incidenceMatrixBool;
 }
+
+} // namespace hypergraphlib

@@ -30,6 +30,8 @@
 
 #include <stdexcept>
 
+namespace hypergraphlib {
+
 Hypergraph::Hypergraph()
     : AbstractHypergraph() {
 }
@@ -63,3 +65,5 @@ void Hypergraph::link(const std::shared_ptr<HyperVertex>& hyperVertex, const std
 	hyperEdge->addHyperVertex(hyperVertex);
 	_isIncidenceMatrixOutdated = true;
 }
+
+} // namespace hypergraphlib

@@ -26,6 +26,8 @@
 
 #include "Hypergraph/model/ResultStructure.hh"
 
+namespace hypergraphlib {
+
 void ResultStructure::setBooleanResult(bool result) {
 	_booleanResult = result;
 }
@@ -42,3 +44,5 @@ std::shared_ptr<AbstractHypergraph>
 ResultStructure::getHypergraphResult() const {
 	return _hypergraphResult;
 }
+
+} // namespace hypergraphlib

@@ -25,3 +25,7 @@
 
 
 #include "Hypergraph/model/AbstractAlgorithm.hh"
+
+namespace hypergraphlib {
+
+} // namespace hypergraphlib

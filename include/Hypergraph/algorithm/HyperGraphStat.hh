@@ -34,6 +34,8 @@
 #include "../model/AbstractAlgorithm.hh"
 #include "../model/ResultStructure.hh"
 
+namespace hypergraphlib::algorithm {
+
 
 /**
  * @brief Computing statistics for a given hypergraph.
@@ -136,5 +138,7 @@ class HyperGraphStat : public AbstractAlgorithm {
 	unsigned int _coRank;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif

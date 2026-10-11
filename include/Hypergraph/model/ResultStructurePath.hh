@@ -28,6 +28,8 @@
 
 #include "ResultStructure.hh"
 
+namespace hypergraphlib {
+
 /**
  * @brief Result produced by the `PATH` algorithm.
  *
@@ -59,5 +61,7 @@ class ResultStructurePath : public ResultStructure {
 	 */
 	LibType::PathList _pathList;
 };
+
+} // namespace hypergraphlib
 
 #endif // MODEL_INCLUDE_RESULT_STRUCTURE_PATH_HH_

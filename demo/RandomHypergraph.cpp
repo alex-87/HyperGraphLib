@@ -6,6 +6,8 @@
 #include <ctime>
 #include <limits>
 
+using namespace hypergraphlib;
+
 RandomHypergraph::RandomHypergraph()
     : _ptrAbstractHypergraph(new Hypergraph) {
 }

@@ -52,6 +52,10 @@
 #include "../include/Hypergraph/io/WriterFile.hh"
 #include "../include/Hypergraph/io/ReaderFile.hh"
 
+using namespace hypergraphlib;
+using namespace hypergraphlib::algorithm;
+using namespace hypergraphlib::io;
+
 
 /**
  * Run an algorithm whose result is a single boolean, print the matching

@@ -29,6 +29,8 @@
 #include "../model/AbstractAlgorithm.hh"
 #include "../model/ResultStructure.hh"
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `HELLY` algorithm.
  *
@@ -114,5 +116,7 @@ class Helly : public AbstractAlgorithm {
 	ResultStructure _result;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif

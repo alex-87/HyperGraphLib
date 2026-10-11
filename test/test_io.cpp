@@ -33,6 +33,9 @@
 #include <iostream>
 #include <sstream>
 
+using namespace hypergraphlib;
+using namespace hypergraphlib::io;
+
 
 std::shared_ptr<AbstractHypergraph> ptrHpg;
 

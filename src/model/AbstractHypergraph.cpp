@@ -28,6 +28,8 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
+namespace hypergraphlib {
+
 AbstractHypergraph::AbstractHypergraph()
     : _isIncidenceMatrixOutdated(false) {
 }
@@ -64,3 +66,5 @@ AbstractHypergraph::getIncidenceMatrix() const {
 bool AbstractHypergraph::isHyperVertexInHyperEdge(const std::shared_ptr<HyperVertex>& hv, const std::shared_ptr<HyperEdge>& he) const {
 	return getIncidenceMatrix().isVertexInEdge(hv, he);
 }
+
+} // namespace hypergraphlib

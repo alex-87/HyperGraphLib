@@ -30,6 +30,8 @@
 #include <istream>
 #include <unordered_map>
 
+namespace hypergraphlib::io {
+
 
 /**
  * @brief Implementation of the plain-text hypergraph instance reader.
@@ -103,5 +105,7 @@ class ReaderFile : public AbstractReader {
 	    _hyperEdgeByFileId;
 };
 
+
+} // namespace hypergraphlib::io
 
 #endif /* IO_INCLUDE_READERFILE_HH_ */

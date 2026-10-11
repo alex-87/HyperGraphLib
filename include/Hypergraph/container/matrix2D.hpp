@@ -29,6 +29,8 @@
 #include <vector>
 #include <cstddef>
 
+namespace hypergraphlib {
+
 template <typename T>
 class Matrix2D {
   public:
@@ -73,5 +75,7 @@ class Matrix2D {
 
 	std::vector<T> _data;
 };
+
+} // namespace hypergraphlib
 
 #endif // HYPERGRAPHLIB_CONTAINER_MATRIX2D

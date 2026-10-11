@@ -26,6 +26,8 @@
 
 #include "Hypergraph/model/ResultStructurePath.hh"
 
+namespace hypergraphlib {
+
 ResultStructurePath::ResultStructurePath()
     : ResultStructure() {
 }
@@ -38,3 +40,5 @@ LibType::PathList
 ResultStructurePath::getPathResult() {
 	return _pathList;
 }
+
+} // namespace hypergraphlib

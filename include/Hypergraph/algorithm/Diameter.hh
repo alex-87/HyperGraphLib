@@ -33,6 +33,8 @@
 #include "../model/AbstractHypergraph.hh"
 #include "../model/AbstractAlgorithm.hh"
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `DIAMETER` algorithm.
  *
@@ -113,5 +115,7 @@ class Diameter : public AbstractAlgorithm {
 	ResultStructure _result;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif /* ALGORITHM_INCLUDE_DIAMETER_HH_ */

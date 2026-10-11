@@ -29,6 +29,8 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
+namespace hypergraphlib::algorithm {
+
 Helly::Helly(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph) {
 }
@@ -112,3 +114,5 @@ ResultStructure
 Helly::getResult() const {
 	return _result;
 }
+
+} // namespace hypergraphlib::algorithm

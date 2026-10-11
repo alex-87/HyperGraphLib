@@ -30,6 +30,8 @@
 #include "../model/AbstractAlgorithm.hh"
 #include "../model/ResultStructurePath.hh"
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `PATH` algorithm.
  *
@@ -139,5 +141,7 @@ class Path : public AbstractAlgorithm {
 	unsigned int _limit;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif /* SRC_ALGORITHM_INCLUDE_PATH_HH_ */

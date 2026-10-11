@@ -28,6 +28,8 @@
 #include "Hypergraph/model/HyperVertex.hh"
 #include "Hypergraph/model/HyperEdge.hh"
 
+namespace hypergraphlib::algorithm {
+
 Path::Path(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph), _limit(0) {
 }
@@ -123,3 +125,5 @@ bool Path::vertexContained(LibType::ListHyperVertex& liste, const std::shared_pt
 	}
 	return false;
 }
+
+} // namespace hypergraphlib::algorithm

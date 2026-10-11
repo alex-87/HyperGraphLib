@@ -30,6 +30,8 @@
 #include "../include/Hypergraph/model/Hypergraph.hh"
 #include "include/MiniTest.hh"
 
+using namespace hypergraphlib;
+
 
 std::shared_ptr<AbstractHypergraph> ptrHpg;
 

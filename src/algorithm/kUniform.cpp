@@ -26,6 +26,7 @@
 
 #include "Hypergraph/algorithm/kUniform.hh"
 
+namespace hypergraphlib::algorithm {
 
 kUniform::kUniform(std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph, const unsigned int& k)
     : _ptrAbstractHypergraph(ptrAbstractHypergraph),
@@ -48,3 +49,5 @@ void kUniform::run() {
 		};
 	}
 }
+
+} // namespace hypergraphlib::algorithm

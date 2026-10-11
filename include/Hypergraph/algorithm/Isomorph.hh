@@ -32,6 +32,8 @@
 #include "../model/AbstractHypergraph.hh"
 #include "../model/AbstractAlgorithm.hh"
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `ISOMORPH` algorithm.
  *
@@ -83,5 +85,7 @@ class Isomorph : public AbstractAlgorithm {
 	ResultStructure _result;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif

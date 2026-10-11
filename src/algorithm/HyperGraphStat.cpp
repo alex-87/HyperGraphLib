@@ -27,6 +27,8 @@
 #include "Hypergraph/algorithm/HyperGraphStat.hh"
 #include "Hypergraph/model/IncidenceMatrix.hh"
 
+namespace hypergraphlib::algorithm {
+
 HyperGraphStat::HyperGraphStat(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph) {
 	_ptrAbstractHypergraph = ptrAbstractHypergraph;
 	_nhEdge = 0;
@@ -75,3 +77,5 @@ ResultStructure
 HyperGraphStat::getResult() const {
 	return _result;
 }
+
+} // namespace hypergraphlib::algorithm

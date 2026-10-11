@@ -33,6 +33,8 @@
 #include <stack>
 #include <vector>
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `CONNECTED` algorithm.
  * 
@@ -100,5 +102,7 @@ class Connected : public AbstractAlgorithm {
 	ResultStructure _result;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif /* ALGORITHM_INCLUDE_CONNECTED_HH_ */

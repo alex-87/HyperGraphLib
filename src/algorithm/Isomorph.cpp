@@ -32,6 +32,8 @@
 #include <thread>
 #include <gecode/search.hh>
 
+namespace hypergraphlib::algorithm {
+
 Isomorph::Isomorph(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraphA,
                    const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraphB)
     : _ptrAbstractHypergraphA(ptrAbstractHypergraphA),
@@ -72,3 +74,5 @@ ResultStructure
 Isomorph::getResult() const {
 	return _result;
 }
+
+} // namespace hypergraphlib::algorithm

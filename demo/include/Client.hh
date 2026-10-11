@@ -41,7 +41,7 @@
  * Replaces the former NewAlgorithm / NewAlgorithm2 macros.
  */
 template <typename Algorithm, typename... Args>
-std::shared_ptr<AbstractAlgorithm> makeAlgorithm(Args&&... args) {
+std::shared_ptr<hypergraphlib::AbstractAlgorithm> makeAlgorithm(Args&&... args) {
 	return std::make_shared<Algorithm>(std::forward<Args>(args)...);
 }
 

@@ -33,6 +33,8 @@
 #include <ostream>
 #include <string>
 
+namespace hypergraphlib::io {
+
 WriterFile::WriterFile(const std::shared_ptr<AbstractHypergraph>& ptrAbstractHypergraph)
     : AbstractWriter(ptrAbstractHypergraph) {
 }
@@ -78,3 +80,5 @@ void WriterFile::writeHypergraphHyperEdge(std::ostream& output) const {
 
 	output << "\n";
 }
+
+} // namespace hypergraphlib::io

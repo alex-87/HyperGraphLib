@@ -28,6 +28,8 @@
 
 #include "../model/AbstractAlgorithm.hh"
 
+namespace hypergraphlib::algorithm {
+
 /**
  * @brief Implementation of the `LINEAR` algorithm.
  *
@@ -72,5 +74,7 @@ class Linear : public AbstractAlgorithm {
 	ResultStructure _result;
 };
 
+
+} // namespace hypergraphlib::algorithm
 
 #endif /* ALGORITHM_INCLUDE_LINEAR_HH_ */

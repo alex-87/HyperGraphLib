@@ -29,6 +29,8 @@
 #include "AbstractHypergraph.hh"
 #include <memory>
 
+namespace hypergraphlib {
+
 /**
  * @brief Result produced by an algorithm.
  *
@@ -74,5 +76,7 @@ class ResultStructure {
 	std::shared_ptr<AbstractHypergraph> _hypergraphResult;
 };
 
+
+} // namespace hypergraphlib
 
 #endif /* MODEL_INCLUDE_RESULT_STRUCTURE_HH_ */
