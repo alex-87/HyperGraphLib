@@ -38,7 +38,7 @@
  * @brief Implementation of the `KUNIFORM` algorithm.
  *
  * This algorithm determines whether a hypergraph is **k-uniform**,
- * i.e. whether every hyper-edge has exactly `k` hyper-vertices.
+ * i.e. whether every hyperedge has exactly `k` hypervertices.
  */
 class kUniform : public AbstractAlgorithm {
   public:

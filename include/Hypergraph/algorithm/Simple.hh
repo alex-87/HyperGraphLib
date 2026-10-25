@@ -39,7 +39,7 @@
  * @brief Implementation of the `SIMPLE` algorithm.
  *
  * This algorithm determines whether a hypergraph is **simple**, i.e.
- * whether no hyper-edge is included in another through its hyper-vertices.
+ * whether no hyperedge is included in another through its hypervertices.
  */
 class Simple : public AbstractAlgorithm {
   public:
@@ -70,17 +70,17 @@ class Simple : public AbstractAlgorithm {
 	void run();
 
 	/**
-	 * @brief Check inclusion between hyper-edges through their vertices.
-	 * @param first list of hyper-vertices.
-	 * @param second list of hyper-vertices.
+	 * @brief Check inclusion between hyperedges through their vertices.
+	 * @param first list of hypervertices.
+	 * @param second list of hypervertices.
 	 * @return `true` if one list is included in the other, `false` otherwise.
 	 */
 	bool subsetVertexList(const LibType::ListHyperVertex&, const LibType::ListHyperVertex&) const;
 
 	/**
-	 * @brief Check whether a hyper-vertex is contained in the list.
-	 * @param list of hyper-vertices.
-	 * @param hyper-vertex to look for.
+	 * @brief Check whether a hypervertex is contained in the list.
+	 * @param list of hypervertices.
+	 * @param hypervertex to look for.
 	 * @return `true` if contained, `false` otherwise.
 	 */
 	bool contains(const LibType::ListHyperVertex&, const std::shared_ptr<HyperVertex>&) const;

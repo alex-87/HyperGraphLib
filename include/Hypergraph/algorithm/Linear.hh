@@ -32,7 +32,7 @@
  * @brief Implementation of the `LINEAR` algorithm.
  *
  * This algorithm determines whether a hypergraph is **linear**, i.e.
- * whether any two distinct hyper-edges share at most one hyper-vertex.
+ * whether any two distinct hyperedges share at most one hypervertex.
  */
 class Linear : public AbstractAlgorithm {
   public:

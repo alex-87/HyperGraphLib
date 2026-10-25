@@ -42,7 +42,7 @@ class AbstractHypergraph;
  * @brief Gecode constraint-programming space used to search for an
  * isomorphism between two hypergraphs.
  *
- * The hyper-edge and hyper-vertex mappings between the two hypergraphs
+ * The hyperedge and hypervertex mappings between the two hypergraphs
  * are modelled as Gecode integer variable arrays, constrained by
  * `postConstraints` so that a valid assignment corresponds to an
  * isomorphism.
@@ -76,12 +76,12 @@ class IsomorphSpace : public Gecode::Space {
 
   protected:
 	/**
-	 * Mapping variables between the hyper-edges of both hypergraphs.
+	 * Mapping variables between the hyperedges of both hypergraphs.
 	 */
 	Gecode::IntVarArray _edgeMapping;
 
 	/**
-	 * Mapping variables between the hyper-vertices of both hypergraphs.
+	 * Mapping variables between the hypervertices of both hypergraphs.
 	 */
 	Gecode::IntVarArray _vertexMapping;
 

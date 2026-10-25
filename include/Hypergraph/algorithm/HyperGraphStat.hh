@@ -39,7 +39,7 @@
  * @brief Computing statistics for a given hypergraph.
  *
  * This algorithm computes descriptive statistics of a hypergraph: its
- * number of hyper-edges, number of hyper-vertices, number of
+ * number of hyperedges, number of hypervertices, number of
  * vertex-edge connections, rank and co-rank.
  */
 class HyperGraphStat : public AbstractAlgorithm {
@@ -64,14 +64,14 @@ class HyperGraphStat : public AbstractAlgorithm {
 
   public:
 	/**
-	 * @brief Get the number of hyper-edges.
-	 * @return the number of hyper-edges.
+	 * @brief Get the number of hyperedges.
+	 * @return the number of hyperedges.
 	 */
 	unsigned int getNbrHyperEdge() const;
 
 	/**
-	 * @brief Get the number of hyper-vertices.
-	 * @return the number of hyper-vertices.
+	 * @brief Get the number of hypervertices.
+	 * @return the number of hypervertices.
 	 */
 	unsigned int getNbrHyperVertex() const;
 
@@ -112,12 +112,12 @@ class HyperGraphStat : public AbstractAlgorithm {
 	ResultStructure _result;
 
 	/**
-	 * The number of hyper-edges.
+	 * The number of hyperedges.
 	 */
 	unsigned int _nhEdge;
 
 	/**
-	 * The number of hyper-vertices.
+	 * The number of hypervertices.
 	 */
 	unsigned int _nhVertex;
 

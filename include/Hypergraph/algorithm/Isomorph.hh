@@ -36,8 +36,8 @@
  * @brief Implementation of the `ISOMORPH` algorithm.
  *
  * This algorithm determines whether two hypergraphs are **isomorphic**,
- * i.e. whether there exists a mapping between their hyper-vertices and
- * hyper-edges that preserves incidence.
+ * i.e. whether there exists a mapping between their hypervertices and
+ * hyperedges that preserves incidence.
  */
 class Isomorph : public AbstractAlgorithm {
   public:

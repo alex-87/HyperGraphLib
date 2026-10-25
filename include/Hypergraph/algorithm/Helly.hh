@@ -33,8 +33,8 @@
  * @brief Implementation of the `HELLY` algorithm.
  *
  * This algorithm checks whether a hypergraph satisfies the **Helly
- * property**: for every triple of pairwise-neighbouring hyper-vertices,
- * the hyper-edges relating them share a common hyper-vertex.
+ * property**: for every triple of pairwise-neighbouring hypervertices,
+ * the hyperedges relating them share a common hypervertex.
  */
 class Helly : public AbstractAlgorithm {
   public:
@@ -62,38 +62,38 @@ class Helly : public AbstractAlgorithm {
 	void run();
 
 	/**
-	 * @brief Build the list of hyper-edges containing both hyper-vertices.
-	 * @param first hyper-vertex.
-	 * @param second hyper-vertex.
-	 * @return the list of hyper-edges containing both hyper-vertices.
+	 * @brief Build the list of hyperedges containing both hypervertices.
+	 * @param first hypervertex.
+	 * @param second hypervertex.
+	 * @return the list of hyperedges containing both hypervertices.
 	 */
 	LibType::ListHyperEdge allContainXY(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperVertex>&);
 
 	/**
 	 * @brief Check whether the intersection of the list elements is non-empty.
-	 * @param list of hyper-edges.
+	 * @param list of hyperedges.
 	 * @return `true` if no empty intersections, `false` otherwise.
 	 */
 	bool nonEmptyIntersection(LibType::ListHyperEdge&);
 
 	/**
-	 * @brief Check whether the intersection of these two hyper-edges is non-empty.
-	 * @param first hyper-edge.
-	 * @param second hyper-edge.
+	 * @brief Check whether the intersection of these two hyperedges is non-empty.
+	 * @param first hyperedge.
+	 * @param second hyperedge.
 	 * @return `true` if non-empty intersection, `false` otherwise.
 	 */
 	bool nonEmptyBetween(const std::shared_ptr<HyperEdge>&, const std::shared_ptr<HyperEdge>&);
 
 	/**
-	 * @brief Check whether the two hyper-vertices are neighbours.
-	 * @param first hyper-vertex.
-	 * @param second hyper-vertex.
+	 * @brief Check whether the two hypervertices are neighbours.
+	 * @param first hypervertex.
+	 * @param second hypervertex.
 	 * @return `true` if neighbours, `false` otherwise.
 	 */
 	bool areNeighbours(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperVertex>&);
 
 	/**
-	 * @brief Concatenate two hyper-edge lists.
+	 * @brief Concatenate two hyperedge lists.
 	 * @param destination list.
 	 * @param source list to append.
 	 */

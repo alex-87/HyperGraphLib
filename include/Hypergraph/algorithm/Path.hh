@@ -34,7 +34,7 @@
  * @brief Implementation of the `PATH` algorithm.
  *
  * This algorithm lists the set of paths in a hypergraph linking a
- * source hyper-vertex to a destination hyper-vertex.
+ * source hypervertex to a destination hypervertex.
  */
 class Path : public AbstractAlgorithm {
   public:
@@ -46,8 +46,8 @@ class Path : public AbstractAlgorithm {
 
 	/**
 	 * @brief Configure the vertices used to list the paths.
-	 * @param source hyper-vertex.
-	 * @param destination hyper-vertex.
+	 * @param source hypervertex.
+	 * @param destination hypervertex.
 	 */
 	void setHyperVertex(const std::shared_ptr<HyperVertex>&, const std::shared_ptr<HyperVertex>&);
 
@@ -88,18 +88,18 @@ class Path : public AbstractAlgorithm {
 	void run();
 
 	/**
-	 * @brief Check whether the hyper-vertex is contained in the list.
-	 * @param list of hyper-vertices.
-	 * @param hyper-vertex to look for.
+	 * @brief Check whether the hypervertex is contained in the list.
+	 * @param list of hypervertices.
+	 * @param hypervertex to look for.
 	 * @return `true` if contained, `false` otherwise.
 	 */
 	bool vertexContained(LibType::ListHyperVertex&, const std::shared_ptr<HyperVertex>&) const;
 
 	/**
-	 * @brief Add the hyper-vertices of a hyper-edge to the given list.
-	 * @param list of already-visited hyper-vertices.
-	 * @param list to which new hyper-vertices are added.
-	 * @param hyper-edge whose hyper-vertices are considered.
+	 * @brief Add the hypervertices of a hyperedge to the given list.
+	 * @param list of already-visited hypervertices.
+	 * @param list to which new hypervertices are added.
+	 * @param hyperedge whose hypervertices are considered.
 	 */
 	void addVertexList(LibType::ListHyperVertex&, LibType::ListHyperVertex&, const std::shared_ptr<HyperEdge>&) const;
 
@@ -118,12 +118,12 @@ class Path : public AbstractAlgorithm {
 	    _ptrAbstractHypergraph;
 
 	/**
-	 * Source hyper-vertex.
+	 * Source hypervertex.
 	 */
 	std::shared_ptr<HyperVertex> _source;
 
 	/**
-	 * Destination hyper-vertex.
+	 * Destination hypervertex.
 	 */
 	std::shared_ptr<HyperVertex> _destination;
 

@@ -55,17 +55,17 @@ int main(int argc, char * argv[]) {
     // Creating the hypergraph inside smart pointer
     std::shared_ptr<AbstractHypergraph> ptrHpg( new Hypergraph() );
 
-    // Creating the hyper-edges
+    // Creating the hyperedges
     std::shared_ptr<HyperEdge> ptrEdge1( ptrHpg->addHyperEdge() );
     std::shared_ptr<HyperEdge> ptrEdge2( ptrHpg->addHyperEdge() );
 
-    // Creating the hyper-vertexes
+    // Creating the hypervertexes
     std::shared_ptr<HyperVertex> ptrVertexA( ptrHpg->addHyperVertex() );
     std::shared_ptr<HyperVertex> ptrVertexB( ptrHpg->addHyperVertex() );
 
-    // The hyper-vertex A is contained inside the hyper-edge 1
+    // The hypervertex A is contained inside the hyperedge 1
     ptrHpg->link(ptrVertexA, ptrEdge1);
-    // The hyper-vertex B is contained inside the hyper-edge 2
+    // The hypervertex B is contained inside the hyperedge 2
     ptrHpg->link(ptrVertexB, ptrEdge2);
 
     // -- -- --

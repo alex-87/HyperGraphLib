@@ -71,8 +71,8 @@ class Connected : public AbstractAlgorithm {
 	/**
 	 * @brief Explore vertically through the incidence matrix.
 	 * @param incidence matrix of the hypergraph.
-	 * @param visited hyper-edges, indexed by identifier.
-	 * @param stack of hyper-edges to visit.
+	 * @param visited hyperedges, indexed by identifier.
+	 * @param stack of hyperedges to visit.
 	 * @param row identifier.
 	 */
 	void exploreVertical(const IncidenceMatrix&, const std::vector<bool>&, std::stack<unsigned int>&, unsigned int) const;
@@ -80,8 +80,8 @@ class Connected : public AbstractAlgorithm {
 	/**
 	 * @brief Explore horizontally through the incidence matrix.
 	 * @param incidence matrix of the hypergraph.
-	 * @param visited hyper-vertices, indexed by identifier.
-	 * @param stack of hyper-vertices to visit.
+	 * @param visited hypervertices, indexed by identifier.
+	 * @param stack of hypervertices to visit.
 	 * @param column identifier.
 	 */
 	void exploreHorizontal(const IncidenceMatrix&, const std::vector<bool>&, std::stack<unsigned int>&, unsigned int) const;

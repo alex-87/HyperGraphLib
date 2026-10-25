@@ -33,9 +33,9 @@
 /**
  * @brief Implementation of the `DUAL` algorithm.
  *
- * This algorithm builds the **dual hypergraph**: a hyper-vertex is
- * created for each hyper-edge of the original hypergraph, and a
- * hyper-edge is created for each hyper-vertex, preserving incidence.
+ * This algorithm builds the **dual hypergraph**: a hypervertex is
+ * created for each hyperedge of the original hypergraph, and a
+ * hyperedge is created for each hypervertex, preserving incidence.
  */
 class Dual : public AbstractAlgorithm {
   public:

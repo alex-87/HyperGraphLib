@@ -38,7 +38,7 @@
  * @brief Implementation of the `KREGULAR` algorithm.
  *
  * This algorithm determines whether a hypergraph is **k-regular**,
- * i.e. whether every hyper-vertex has the same degree.
+ * i.e. whether every hypervertex has the same degree.
  */
 class kRegular : public AbstractAlgorithm {
   public:
